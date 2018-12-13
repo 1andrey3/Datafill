@@ -1,0 +1,25 @@
+#btnDrive {
+  background: #fff;
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 1px 3px #2b296b;
+  -moz-box-shadow: 0px 1px 3px #2b296b;
+  box-shadow: 0px 1px 3px #2b296b;
+  padding: 5px;
+  border: solid #cad1e6 1px;
+  text-decoration: none;
+}
+
+#btnDrive:hover {
+  background: #fff;
+  background-image: -webkit-linear-gradient(top, #dddddd, #dddddd);
+  background-image: -moz-linear-gradient(top, #dddddd, #dddddd);
+  background-image: -ms-linear-gradient(top, #dddddd, #dddddd);
+  background-image: -o-linear-gradient(top, #dddddd, #dddddd);
+  background-image: linear-gradient(to bottom, #dddddd, #dddddd);
+  text-decoration: none;
+}
+#imgIcon {
+  max-width: 25px;
+}

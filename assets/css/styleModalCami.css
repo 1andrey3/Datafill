@@ -1,0 +1,70 @@
+.modal-header{
+    background-color: #207be5;
+    color: #fff;    
+    box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.91);
+}
+.modal-header h4{
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: verdana;
+}
+
+.modal-footer{
+    background-color: #207be5;
+    box-shadow: -1px -1px 9px rgba(0, 0, 0, 0.91);
+}
+.modal-footer button{
+    height:30px;
+    width:10%;
+    padding:0;
+    border: 1px solid #727272;
+}
+.foot {
+    display:inline-block;
+    float: left;
+    margin: 0;
+    font-size:13px;
+    color:#fff;
+    padding-top:16px
+
+}
+.modalImage {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+}
+
+#btn_actualizar_links {
+        padding: 5px 60px;
+    background-color: #207be5;
+    color: #fff;
+    border: 1px solid #c3c3c3;
+    border-radius: 6px;
+    float: right;
+    margin: -18px 0px;
+}
+
+#btn_actualizar_links:hover{
+    background-color:#fff;
+    color:#207be5;
+    border: 1px solid;
+    box-shadow: inset 0px 0px 8px 1px #acc8e8;
+}
+
+.subtitulo {
+    padding: 20px 0px;
+    color:#207be5
+}
+
+#tablaActividades td {
+    font-size:11px
+}
+
+#tablaActividades thead {
+    background-color:#207be5;
+    color:#fff;
+    font-size:11px
+}
+
+
