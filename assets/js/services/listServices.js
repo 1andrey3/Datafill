@@ -23,7 +23,7 @@ $(function () {
 
         //------------Obtener ingenieros asignados...------------
         getEngs: function(obj){
-            // console.log(obj);
+            console.log(obj);
             //contamos la canbtidad de actividades
              var cantActividades = obj.services.length;
              var ing = [];
@@ -116,7 +116,6 @@ $(function () {
         },
 
         getDescription: function(obj){
-          console.log(obj);
              // console.log(obj.services[0].claroDescription);
             var ini = obj.services[0].claroDescription.substring(0,45);
             var description ="";
@@ -266,7 +265,6 @@ $(function () {
                 // callback
                 function(data){
                     var res = JSON.parse(data);
-                    console.log(res);
                     if (res == 'ok') {
                         swal("Se actualizo correctamente!", "", "success");
 
@@ -307,7 +305,6 @@ $(function () {
                 return;
             }
             var record = table.row(tr).data();
-            // console.log(tr, record);
             $('#formDetallesBasicos').fillForm(record);
             $('#modalPreview').modal('show');
         },
