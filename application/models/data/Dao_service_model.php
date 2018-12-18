@@ -110,27 +110,27 @@
               }
                $timezone = date_default_timezone_get();
                $date = date('m-d-Y', time());
-
                $sql3 = "SELECT  COUNT(*) FROM specific_service where K_IDCLARO = ".$activity->getIdClaro().";";
                $result = $session->query($sql3);
                $row = $result->fetch_assoc();
                if($row['COUNT(*)'] == 0){
-                  $sql2 = "INSERT INTO specific_service (K_IDUSER, K_IDCLARO, N_DESCRIPTION, N_CLARO_DESCRIPTION, D_DATE_CREATION, D_FORECAST, K_IDORDER, K_IDSITE, K_IDSERVICE, N_ING_SOL, N_PROYECTO,N_ESTADO, N_CANTIDAD, N_REGION, D_DATE_START_P) values ("
-                  .$activity->getId().", "
-                  .$activity->getIdClaro().",'"
-                  .$activity->getDescription()."', '"
-                  .$activity->getClaroDescription()."',
-                  STR_TO_DATE('".$activity->getDateCreation()."','%Y-%m-%d'),
-                  STR_TO_DATE('".$activity->getDateForecast()."','%Y-%m-%d'),"
-                  .$activity->getOrder().","
-                  .$activity->getSite().","
-                  .$activity->getService().",'"
-                  .$activity->getIngSol()."','"
-                  .$activity->getProyecto()."','"
-                  .$activity->getEstado()."' ,"
-                  .$activity->getQuantity().", '"
-                  .$activity->getRegion()."',
-                  STR_TO_DATE('".$date."','%m-%d-%Y'));";
+                  $sql2 = "INSERT INTO specific_service (K_IDUSER, K_IDCLARO, N_DESCRIPTION, N_CLARO_DESCRIPTION, D_DATE_CREATION, D_FORECAST, K_IDORDER, K_IDSITE, K_IDSERVICE, N_ING_SOL, N_PROYECTO,N_ESTADO, N_CANTIDAD, N_REGION, D_DATE_START_P, K_ID_DOCUMENTADOR) values ("
+                            .$activity->getId().", "
+                            .$activity->getIdClaro().",'"
+                            .$activity->getDescription()."', '"
+                            .$activity->getClaroDescription()."',
+                            STR_TO_DATE('".$activity->getDateCreation()."','%Y-%m-%d'),
+                            STR_TO_DATE('".$activity->getDateForecast()."','%Y-%m-%d'),"
+                            .$activity->getOrder().","
+                            .$activity->getSite().","
+                            .$activity->getService().",'"
+                            .$activity->getIngSol()."','"
+                            .$activity->getProyecto()."','"
+                            .$activity->getEstado()."' ,"
+                            .$activity->getQuantity().", '"
+                            .$activity->getRegion()."',
+                            STR_TO_DATE('".$date."','%m-%d-%Y'),"
+                            .$activity->getNumDoc().");";
                     $result = $session->query($sql2);
                     $count++;
                }
@@ -719,7 +719,7 @@
       public function cantFechasInconsistentes(){
         $where = ($_SESSION['role'] == 4) ? "" : "and (ss.K_IDUSER = ".$_SESSION['id'].")";
         $query = $this->db->query("
-          SELECT count(*) as cant
+          SELECT count(*) AS cant
           FROM specific_service ss
           INNER JOIN ot 
           ON  ss.K_IDORDER = ot.K_IDORDER
@@ -734,6 +734,21 @@
           ".$where.";          
           ");
         return $query->row();
+      }
+
+      // Retorna actividades de specific services where K_IDCLARO in (arg $id_actividades)
+      public function get_services_by_ids($id_actividades){
+        echo '<pre>'; print_r($id_actividades); echo '</pre>';
+        if (count($id_actividades) == 0) {
+          return false;
+        }
+
+        $query = $this->db->select("K_IDORDER, N_ING_SOL, D_DATE_CREATION, N_PROYECTO, N_DESCRIPTION, K_IDCLARO,n_region, n_cantidad,N_CLARO_DESCRIPTION, D_FORECAST")
+                          ->from("specific_service")
+                          ->where_in('K_IDCLARO', $id_actividades)
+                          ->get();
+
+        return $query->result();
       }
 
 

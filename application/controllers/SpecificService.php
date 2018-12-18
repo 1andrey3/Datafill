@@ -13,6 +13,7 @@ class SpecificService extends CI_Controller {
         $this->load->model('order_model');
         $this->load->model('rf_model');
         $this->load->model('data/Dao_service_model');
+        $this->load->model('data/Dao_user_model');
         // $this->load->model('mail/mail_manager_model');
         $this->load->model('data/configdb_model');
         //  $this->load->library('session');
@@ -23,7 +24,7 @@ class SpecificService extends CI_Controller {
         $answer['services'] = $this->dao_service_model->getAllServices();
     }
 
-    //=================
+    //========================================================================
     public function assignByMail() {
         //$dic es el campo de validacion q uso para saber si la copia viene de outlook o z-mail
         $dic = str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])[4]);
@@ -150,6 +151,8 @@ class SpecificService extends CI_Controller {
                 }
                 $asignar['eng'] = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
 
+                $asignar['document'] = $this->dao_user_model->getAllDocs();
+
                 $array['asignar'] = $asignar;
                 $this->load->view('excelAssign', $array);
             } else {
@@ -270,7 +273,8 @@ class SpecificService extends CI_Controller {
                         $plus++;
                     }
                 }
-                $asignar['eng'] = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
+                $asignar['eng']      = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
+                $asignar['document'] = $this->Dao_user_model->getAllDocs();
                 /*print_r($asignar);*/
                 $array['asignar'] = $asignar;
                 $this->load->view('excelAssign', $array);
@@ -736,197 +740,318 @@ class SpecificService extends CI_Controller {
 
 //**************************guardar en bd asignar con mail**************************
     public function saveServicesExcel() {
-        header('Content-Type: text/plain');
-        print_r($_POST);
-//         $order = new order_model;
-//         $order->createOrder(str_replace(array("\n", "\r", "\t", " "), '', $_POST['OT']), "", $_POST['fCreacion']);
-//         $order->setPrioridad($_POST['prioridad']);
-//         $order->setD_ASIG_Z($_POST['D_ASIG_Z']);
-//         $this->dao_order_model->insertOrder($order);
-//         $activity  = new service_spec_model;
-//         $count2    = 0;
-//         $flag      = 0;
-//         $ingeMails = [];
+        //  header('Content-Type: text/plain');
+        // print_r($_POST);
+        $order = new order_model;
+        $order->createOrder(str_replace(array("\n", "\r", "\t", " "), '', $_POST['OT']), "", $_POST['fCreacion']);
+        $order->setPrioridad($_POST['prioridad']);
+        $order->setD_ASIG_Z($_POST['D_ASIG_Z']);
 
-//         for ($g = 0; $g < $_POST['contador']; $g++) {
-//             $existe = $this->dao_service_model->getServiceByIdActivity($_POST['actividades_' . $g]);
-//             if ($existe) {
-//                 $flag = 1;
-//             } else {
-//                 if ($_POST['actividades_' . $g] != "") {
+        $this->dao_order_model->insertOrder($order);
+        $activity  = new service_spec_model;
+        $count2    = 0;
+        $flag      = 0;
+        $ingeMails = [];
 
-//                     $cant1 = $_POST['cantidad1'];
-//                     $cant2 = $_POST['cantidad2'] + $cant1;
-//                     $cant3 = $_POST['cantidad3'] + $cant2;
-//                     $eng   = $_POST['inge1'];
-//                     if ($cant1 < $g) {
-//                         $eng = $_POST['inge2'];
-//                     }
-//                     if ($cant2 < $g) {
-//                         $eng = $_POST['inge3'];
-//                     }
-//                     //le sumo 1 porque del formulario viene desed name= [inge1] y  del for inicia en 0
-//                     $h = $g + 1;
-//                     //capturo los mails de los ingenieros para el envio de correo algunos indices quedan vacios
-//                     $ingeMails[$g] = $this->dao_user_model->getMailById($_POST["inge" . $h]);
-//                     //-----------creacion del objeto---------------------------
-//                     $activity = new service_spec_model;
-//                     $activity->createServiceS($eng, "", $_POST['actividades_' . $g], $_POST['descripcionActividad_' . $g], "", "", $_POST['fCreacion'], $_POST['forecast_' . $g], $_POST['OT'], $_POST['sitio_' . $g], $_POST['tipo_' . $g], "", $_POST['descripcion'], $_POST['solicitante'], $_POST['proyecto'], "Asignada", "");
-//                     $activity->setQuantity($_POST['cantidadActiv_' . $g]);
-//                     $activity->setRegion($_POST['regional_' . $g]);
-//                     $countActivities = $this->dao_service_model->insertFromExcel($activity);
-//                     $count2 += $countActivities;
-//                     $actividades[$g] = $activity;
+        for ($g = 0; $g < $_POST['contador']; $g++) {
+            $existe = $this->dao_service_model->getServiceByIdActivity($_POST['actividades_' . $g]);
+            if ($existe) {
+                $flag = 1;
+            } else {
+                if ($_POST['actividades_' . $g] != "") {
+                    $cant1 = $_POST['cantidad1'];
+                    $cant2 = $_POST['cantidad2'] + $cant1;
+                    $cant3 = $_POST['cantidad3'] + $cant2;
+                    $eng   = $_POST['inge1'];
+                    if ($cant1 < $g) {
+                        $eng = $_POST['inge2'];
+                    }
+                    if ($cant2 < $g) {
+                        $eng = $_POST['inge3'];
+                    }
+                    //le sumo 1 porque del formulario viene desed name= [inge1] y  del for inicia en 0
+                    $h = $g + 1;
+                    //capturo los mails de los ingenieros para el envio de correo algunos indices quedan vacios
+                    $ingeMails[$g] = $this->dao_user_model->getMailById($_POST["inge" . $h]);
+                    //-----------creacion del objeto---------------------------
+                    $activity = new service_spec_model;
+                    $activity->createServiceS($eng, "", $_POST['actividades_' . $g], $_POST['descripcionActividad_' . $g], "", "", $_POST['fCreacion'], $_POST['forecast_' . $g], $_POST['OT'], $_POST['sitio_' . $g], $_POST['tipo_' . $g], "", $_POST['descripcion'], $_POST['solicitante'], $_POST['proyecto'], "Asignada", "");
+                    $activity->setQuantity($_POST['cantidadActiv_' . $g]);
+                    $activity->setRegion($_POST['regional_' . $g]);
+                    $activity->setNumDoc($this->input->post('id_documentador_' . $g));
+                    // $activity->setNumDoc($_POST['id_documentador_'.$g]);
 
-//                 }
-//             }
-//         }
-//         //si flag es 1 es porque la actividad ya existe
-//         //*-***************************************************************************************************************
-//         if ($flag == 0) {
-//             //limpio el arreglo eliminando indices vacios
-//             $ingeMails = array_filter($ingeMails, "strlen");
-//             //Convierto el arreglo en string separado por ", "
-//             $correos = "";
-//             $correos = implode(", ", $ingeMails);
-//             $cantAct = count($actividades);
-//             if ($count2 > 0) {
+                    $countActivities = $this->dao_service_model->insertFromExcel($activity);
+                    $count2 += $countActivities;
+                    $actividades[$g] = $activity;
 
-//                 //Ingenieros de claro
-//                 //$engs = $this->dao_user_model->getAllEngineersClaro();
-//                 $asig = $this->dao_user_model->getUserById($eng);
+                    // Inicio correos para documentadores seleccionados
+                    if ($_POST["id_documentador_$g"] != 0) {
+                        if (!isset($array_doc[$_POST["id_documentador_$g"]])) {
+                            $array_doc[$_POST["id_documentador_$g"]] = [];
+                        }
 
-//                 //comparacion Ingenieros claro para extraer su mail con su id
+                        array_push($array_doc[$_POST["id_documentador_$g"]], $_POST["actividades_$g"]);
+                    }
 
-//                 /*$engC = $_SESSION['excel'][0][2][1];
-//                 for ($i=0; $i <count($engs) ; $i++) {
-//                 similar_text((explode(" ", $engC))[0], explode(" ", $engs[$i]->getName())[0], $pName);//porcentaje de similar entre primer nombre de db y primera palabra (nombre) de excel
-//                 similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[1], $pLastname1);//porcentaje de similar entre primer apellido de db y segunda palabra (apellido) de excel
-//                 similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[2], $pLastname2);//porcentaje de similar entre primer apellido de db y tercera (apellido) de excel
-//                 similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[3], $pLastname3);//porcentaje de similar entre primer apellido de db y cuarta (apellido) de excel
-//                 if ($pName > 70) {
-//                 if ($pLastname1 > 69 || $pLastname2 > 69 || $pLastname3 > 69) {
-//                 $mailEngC = $engs[$i]->getMail();
-//                 $engName = $engs[$i]->getName();
-//                 }
-//                 }
-//                 }*/
+                }
+            }
+        }
+        //si flag es 1 es porque la actividad ya existe
+        //*-***************************************************************************************************************
+        if ($flag == 0) {
+            //limpio el arreglo eliminando indices vacios
+            $ingeMails = array_filter($ingeMails, "strlen");
+            //Convierto el arreglo en string separado por ", "
+            $correos = "";
+            $correos = implode(", ", $ingeMails);
+            $cantAct = count($actividades);
+            if ($count2 > 0) {
 
-//                 //-------------------------------email------------------
-//                 $cuerpo = "<html>
-//                                   <head>
-//                                   <title>asignacion</title>
-//                                    <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css'>
-//                                    <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css'>
-//                                     <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+                //Ingenieros de claro
+                //$engs = $this->dao_user_model->getAllEngineersClaro();
+                $asig = $this->dao_user_model->getUserById($eng);
 
-//                                   </head>
-//                                  <body>
-//                                   <h4 style= 'color: blue'>Buen Día ingeniero, le han sido asignadas actividades de la orden " . $actividades[0]->order . "</h4><br>
+                //comparacion Ingenieros claro para extraer su mail con su id
 
-//                           <div class='box-header'>
-//                              <h5>OT: " . $actividades[0]->order . "</h5>
-//                              <h5>Solicitante: " . $actividades[0]->ingSol . "</h5>
-//                              <h5>Fecha de Creacion: " . $actividades[0]->dateCreation . "</h5>
-//                              <h5>Proyecto: " . $actividades[0]->proyecto . "</h5>
-//                              <h5>Descripción: " . $actividades[0]->claroDescription . "</h5>
-//                            </div>
+                /*$engC = $_SESSION['excel'][0][2][1];
+                for ($i=0; $i <count($engs) ; $i++) {
+                similar_text((explode(" ", $engC))[0], explode(" ", $engs[$i]->getName())[0], $pName);//porcentaje de similar entre primer nombre de db y primera palabra (nombre) de excel
+                similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[1], $pLastname1);//porcentaje de similar entre primer apellido de db y segunda palabra (apellido) de excel
+                similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[2], $pLastname2);//porcentaje de similar entre primer apellido de db y tercera (apellido) de excel
+                similar_text(explode(" ", $engs[$i]->getLastname())[0], explode(" ", $engC)[3], $pLastname3);//porcentaje de similar entre primer apellido de db y cuarta (apellido) de excel
+                if ($pName > 70) {
+                if ($pLastname1 > 69 || $pLastname2 > 69 || $pLastname3 > 69) {
+                $mailEngC = $engs[$i]->getMail();
+                $engName = $engs[$i]->getName();
+                }
+                }
+                }*/
 
-//                             <div class='box-body'>
-//                                <table id='example1' class='table table-bordered table-striped' border = '1'>
-//                                  <thead style='background-color: #818181;color: #fff;'>
-//                                  <tr>
-//                                    <th>ID Actividad</th>
-//                                    <th>Regional</th>
-//                                    <th>Cantidad</th>
-//                                    <th>Descripcion</th>
-//                                    <th>Forecast</th>
-//                                  </tr>
-//                                  </thead>
-//                                  <tbody>
-//                                  ";
+                //-------------------------------email------------------
+                $cuerpo = "<html>
+                                  <head>
+                                  <title>asignacion</title>
+                                   <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css'>
+                                   <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css'>
+                                    <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
 
-//                 for ($i = 0; $i < $cantAct; $i++) {
-//                     $cuerpo = $cuerpo . "<tr>
-//                                                  <td>" . $actividades[$i]->idClaro . "</td>
-//                                                  <td>" . $actividades[$i]->region . "</td>
-//                                                  <td>" . $actividades[$i]->quantity . "</td>
-//                                                  <td>" . $actividades[$i]->description . "</td>
-//                                                  <td>" . $actividades[$i]->dateForecast . "</td>
-//                                                </tr>
-//                                                ";
-//                 }
+                                  </head>
+                                 <body>
+                                  <h4 style= 'color: blue'>Buen Día ingeniero, le han sido asignadas actividades de la orden " . $actividades[0]->order . "</h4><br>
 
-//                 $cuerpo = $cuerpo . "<tfoot style='background-color: #818181;color: #fff;'>
-//                                                  <tr>
-//                                                    <th>ID Actividad</th>
-//                                                    <th>Regional</th>
-//                                                    <th>Cantidad</th>
-//                                                    <th>Descripcion</th>
-//                                                    <th>Forecast</th>
-//                                                  </tr>
-//                                               </tfoot>
-//                                </table>
-//                              </div><br><br>
-//                              <p style= 'color: blue'> Este es un correo automático. Por favor, no responda este mensaje. </p>
+                          <div class='box-header'>
+                             <h5>OT: " . $actividades[0]->order . "</h5>
+                             <h5>Solicitante: " . $actividades[0]->ingSol . "</h5>
+                             <h5>Fecha de Creacion: " . $actividades[0]->dateCreation . "</h5>
+                             <h5>Proyecto: " . $actividades[0]->proyecto . "</h5>
+                             <h5>Descripción: " . $actividades[0]->claroDescription . "</h5>
+                           </div>
 
-//                           </body>
-//                           </html>
-//                       ";
+                            <div class='box-body'>
+                               <table id='example1' class='table table-bordered table-striped' border = '1'>
+                                 <thead style='background-color: #818181;color: #fff;'>
+                                 <tr>
+                                   <th>ID Actividad</th>
+                                   <th>Regional</th>
+                                   <th>Cantidad</th>
+                                   <th>Descripcion</th>
+                                   <th>Forecast</th>
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 ";
 
-// /********************************************************************************************************************/
+                for ($i = 0; $i < $cantAct; $i++) {
+                    $cuerpo = $cuerpo . "<tr>
+                                                 <td>" . $actividades[$i]->idClaro . "</td>
+                                                 <td>" . $actividades[$i]->region . "</td>
+                                                 <td>" . $actividades[$i]->quantity . "</td>
+                                                 <td>" . $actividades[$i]->description . "</td>
+                                                 <td>" . $actividades[$i]->dateForecast . "</td>
+                                               </tr>
+                                               ";
+                }
 
-//                 $this->load->library('parser');
+                $cuerpo = $cuerpo . "<tfoot style='background-color: #818181;color: #fff;'>
+                                                 <tr>
+                                                   <th>ID Actividad</th>
+                                                   <th>Regional</th>
+                                                   <th>Cantidad</th>
+                                                   <th>Descripcion</th>
+                                                   <th>Forecast</th>
+                                                 </tr>
+                                              </tfoot>
+                               </table>
+                             </div><br><br>
+                             <p style= 'color: blue'> Este es un correo automático. Por favor, no responda este mensaje. </p>
 
-//                 $config = Array(
-//                     'protocol'  => 'smtp',
-//                     'smtp_host' => 'ssl://smtp.googlemail.com',
-//                     'smtp_port' => 465,
-//                     'smtp_user' => 'zolid.datafill@gmail.com',
-//                     'smtp_pass' => 'z0lid.datafil1',
-//                     'mailtype'  => 'html',
-//                     'charset'   => 'utf-8',
-//                     'priority'  => 5,
-//                 );
+                          </body>
+                          </html>
+                      ";
 
-//                 $this->load->library('email', $config);
-//                 $this->email->set_newline("\r\n");
-//                 $this->email->from('zolid.datafill@gmail.com', 'ZOLID'); // change it to yours
-//                 $this->email->to($correos); // change it to yours
-//                 // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
-//                 $this->email->subject("Notificacion de ASIGNACIÓN de orden de servicio. Orden: " . $actividades[0]->order . ". Proyecto: " . $actividades[0]->proyecto . ".");
-//                 $this->email->message($cuerpo);
-//                 $this->email->send();
+                /********************************************************************************************************************/
 
-//                 // if($this->email->send())
-//                 // {
-//                 //   echo "se envio correctamente";
-//                 // }
-//                 // else
-//                 // {
-//                 //     show_error($this->email->print_debugger());
-//                 // }
+                $this->load->library('parser');
 
-// /********************************************************************************************************************/
+                $config = Array(
+                    'protocol'  => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'zolid.datafill@gmail.com',
+                    'smtp_pass' => 'z0lid.datafil1',
+                    'mailtype'  => 'html',
+                    'charset'   => 'utf-8',
+                    'priority'  => 5,
+                );
 
-//                 // $this->load->library('email');
-//                 // $config['mailtype'] = 'html'; // o text
-//                 // $this->email->initialize($config);
-//                 // $this->email->from('datafill@zte.com', 'DATAFILL');
-//                 // $this->email->to($correos);
+                $this->load->library('email', $config);
+                $this->email->set_newline("\r\n");
+                $this->email->from('zolid.datafill@gmail.com', 'ZOLID'); // change it to yours
+                $this->email->to($correos); // change it to yours
+                // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
+                $this->email->subject("Notificacion de ASIGNACIÓN de orden de servicio. Orden: " . $actividades[0]->order . ". Proyecto: " . $actividades[0]->proyecto . ".");
+                $this->email->message($cuerpo);
+                $this->email->send();
 
-//                 // $this->email->subject("Notificacion de ASIGNACIÓN de orden de servicio. Orden: ".$actividades[0]->order.". Proyecto: ".$actividades[0]->proyecto.".");
-//                 // $this->email->message($cuerpo);
-//                 // $this->email->send();
-//             }
-//             $mensaje["message"] = 'ok';
-//             $this->load->view('assignService', $mensaje);
-//             // header('Location: '. URL::to("Service/listServices"));
-//         } else {
-//             $mensaje["message"] = 'error';
-//             $this->load->view('assignService', $mensaje);
-//             // header('Location: '. URL::to("Service/listServices"));
-//         }
+                $this->mail_to_doc($array_doc);
+
+                // if($this->email->send())
+                // {
+                //   echo "se envio correctamente";
+                // }
+                // else
+                // {
+                //     show_error($this->email->print_debugger());
+                // }
+
+                /********************************************************************************************************************/
+
+                // $this->load->library('email');
+                // $config['mailtype'] = 'html'; // o text
+                // $this->email->initialize($config);
+                // $this->email->from('datafill@zte.com', 'DATAFILL');
+                // $this->email->to($correos);
+
+                // $this->email->subject("Notificacion de ASIGNACIÓN de orden de servicio. Orden: ".$actividades[0]->order.". Proyecto: ".$actividades[0]->proyecto.".");
+                // $this->email->message($cuerpo);
+                // $this->email->send();
+            }
+            $mensaje["message"] = 'ok';
+            // $this->load->view('assignService', $mensaje);
+            // header('Location: '. URL::to("Service/listServices"));
+        } else {
+            $mensaje["message"] = 'error';
+            $this->load->view('assignService', $mensaje);
+            // header('Location: '. URL::to("Service/listServices"));
+        }
+    }
+
+    //Funcion para obtener datos de correos de asignacion a los documentadores
+    private function mail_to_doc($array_doc) {
+        foreach ($array_doc as $cedula => $actividades) {
+            // retorno actividades asignadas al documentador
+            $specific_services = $this->Dao_service_model->get_services_by_ids($actividades);
+            if ($specific_services) {
+                // OPbtenes correo del documentados segun su cedula
+                $mail_doc = $this->Dao_user_model->getMailById($cedula);
+
+                // Enviar correo a documentador
+                $this->send_to_doc($specific_services, $mail_doc);
+            }
+
+        }
+    }
+
+    //  enviar correo al documentador
+    private function send_to_doc($data, $correo) {
+    	echo '<pre>yyyyyyyyyyyyyy'; print_r($correo); echo 'xxxxxxxxxxxxxxx</pre>';
+        $cuerpo = "<html>
+              <head>
+              <title>asignacion</title>
+               <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css'>
+               <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css'>
+                <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+
+              </head>
+             <body>
+              <h4 style= 'color: blue'>Buen Día, le han sido asignadas actividades de la orden " . $data[0]->K_IDORDER . " para ser documentadas</h4><br>
+
+      <div class='box-header'>
+         <h5>OT: " . $data[0]->K_IDORDER . "</h5>
+         <h5>Solicitante: " . $data[0]->N_ING_SOL . "</h5>
+         <h5>Fecha de Creacion: " . $data[0]->D_DATE_CREATION . "</h5>
+         <h5>Proyecto: " . $data[0]->N_PROYECTO . "</h5>
+         <h5>Descripción: " . $data[0]->N_CLARO_DESCRIPTION . "</h5>
+       </div>
+
+        <div class='box-body'>
+           <table id='example1' class='table table-bordered table-striped' border = '1'>
+             <thead style='background-color: #818181;color: #fff;'>
+             <tr>
+               <th>ID Actividad</th>
+               <th>Regional</th>
+               <th>Cantidad</th>
+               <th>Descripcion</th>
+               <th>Forecast</th>
+             </tr>
+             </thead>
+             <tbody>
+             ";
+
+        for ($i = 0; $i < count($data); $i++) {
+            $cuerpo = $cuerpo . "<tr>
+	                                 <td>" . $data[$i]->K_IDCLARO . "</td>
+	                                 <td>" . $data[$i]->n_region . "</td>
+	                                 <td>" . $data[$i]->n_cantidad . "</td>
+	                                 <td>" . $data[$i]->N_DESCRIPTION . "</td>
+	                                 <td>" . $data[$i]->D_FORECAST . "</td>
+                               </tr>
+	                               ";
+        }
+
+        $cuerpo = $cuerpo . "<tfoot style='background-color: #818181;color: #fff;'>
+                                                 <tr>
+                                                   <th>ID Actividad</th>
+                                                   <th>Regional</th>
+                                                   <th>Cantidad</th>
+                                                   <th>Descripcion</th>
+                                                   <th>Forecast</th>
+                                                 </tr>
+                                              </tfoot>
+                               </table>
+                             </div><br><br>
+                             <p style= 'color: blue'> <i>Este es un correo automático. Por favor, no responda este mensaje. </i></p>
+
+                          </body>
+                          </html>
+                      ";
+
+        /********************************************************************************************************************/
+
+        $this->load->library('parser');
+
+        $config = Array(
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'zolid.datafill@gmail.com',
+            'smtp_pass' => 'z0lid.datafil1',
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'priority'  => 5,
+        );
+        echo '<pre>'; print_r($cuerpo); echo '</pre>';
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('zolid.datafill@gmail.com', 'ZOLID'); // change it to yours
+        $this->email->to($correo); // change it to yours
+        // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
+        $this->email->subject("Notificacion de Documentación de orden de servicio. Orden: " . $data[0]->K_IDORDER . ". Proyecto: " . $data[0]->N_PROYECTO . ".");
+        $this->email->message($cuerpo);
+        $this->email->send();
+
     }
 
     public function saveCancelExcel() {

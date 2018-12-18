@@ -42,6 +42,11 @@ $(function () {
              return engs;
         },
 
+        getDocs: function(nose){
+            console.log(nose.asignadas);
+            
+        },
+
         //------------Obtener barras de progreso------------
         getProgress: function(obj){
             var total = parseInt(obj.canceladas) + parseInt(obj.ejecutadas) + parseInt(obj.enviadas) + parseInt(obj.asignadas);
@@ -169,6 +174,7 @@ $(function () {
                     {title: "Proyecto", data: "services.0.proyecto"},
                     {title: "Region", data: "services.0.region"},
                     {title: "Ingenieros Asignados", data: vista.getEngs},
+                    // {title: "Documentadores Asignados", data: vista.getDocs},
                     {title: "Descripción de la orden", data: vista.getDescription},
                     {title: "Prioridad", data: vista.getPrioridad},// Cantidad de actividades
                     {title: "#", data: "services.length"},// Cantidad de actividades
