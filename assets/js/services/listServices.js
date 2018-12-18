@@ -31,20 +31,25 @@ $(function () {
              if (obj.services.length > 0) {
                 // En el arreglo ing ingresamos ingeniero asignado para cada actividad
                 for (var i = 0; i < cantActividades; i++) {
-                    ing[i] = "- " + obj.services[i].user.name + " " + obj.services[i].user.lastname + "<br>";
+                    ing[i] = "- " + obj.services[i].user.name + " " + obj.services[i].user.lastname + "<hr>";
                 }
                 //Eliminamos ingenieros duplicados para mostrar unico
+                // console.log(ing);
                 engs = ing.reduce(function(a,b){
                     if (a.indexOf(b) < 0 ) a.push(b);
                     return a;
                   },[]);
              }
+            //  console.log(engs);
+             
              return engs;
         },
 
         getDocs: function(nose){
-            console.log(nose.asignadas);
-            
+            if(nose.documentador_id == 0){
+                nose.documentador_id ="|-|";
+            }
+            return nose.documentador_id[0];
         },
 
         //------------Obtener barras de progreso------------
@@ -174,7 +179,7 @@ $(function () {
                     {title: "Proyecto", data: "services.0.proyecto"},
                     {title: "Region", data: "services.0.region"},
                     {title: "Ingenieros Asignados", data: vista.getEngs},
-                    // {title: "Documentadores Asignados", data: vista.getDocs},
+                    {title: "Documentadores Asignados", data: vista.getDocs},
                     {title: "Descripción de la orden", data: vista.getDescription},
                     {title: "Prioridad", data: vista.getPrioridad},// Cantidad de actividades
                     {title: "#", data: "services.length"},// Cantidad de actividades

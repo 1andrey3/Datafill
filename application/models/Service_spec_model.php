@@ -149,7 +149,7 @@
             $this->setSite($site);
             $this->setService($service);
             $this->setUser($user);
-			$this->setIngSol($ingSol);
+ 			$this->setIngSol($ingSol);
 			$this->setProyecto($proyecto);
 			$this->setEstado($estado);
             $this->setCRQ($CRQ);

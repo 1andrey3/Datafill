@@ -89,11 +89,13 @@ class Dao_order_model extends CI_Model {
 
         if ($search) {
             //Se obtienen los registros por límite de x a 10...
-            $sqlIni = "select ot.K_IDORDER, ot.D_ASIG_Z, ot.N_PRIORIDAD, $SQL_PERCENTAGE ot.N_DRIVE, ot.D_DATE_CREATION, se.N_ING_SOL, se.D_FORECAST, se.D_DATE_START_P, se.N_PROYECTO, se.n_region, u.N_NAME, u.N_LASTNAME, se.N_CLARO_DESCRIPTION, se.D_CLARO_F 
+            $sqlIni = "select ot.K_IDORDER, ot.D_ASIG_Z, ot.N_PRIORIDAD, $SQL_PERCENTAGE ot.N_DRIVE, ot.D_DATE_CREATION, se.N_ING_SOL, se.D_FORECAST, se.D_DATE_START_P, se.N_PROYECTO, se.n_region, u.N_NAME, u.N_LASTNAME, se.K_ID_DOCUMENTADOR, CONCAT(ud.N_NAME,' ', ud.N_LASTNAME) AS documentador , se.N_CLARO_DESCRIPTION, se.D_CLARO_F 
                   from ot inner join specific_service se
                   on ot.K_IDORDER = se.K_IDORDER  
                   inner join user u 
                   on u.K_IDUSER = se.K_IDUSER 
+                  inner join user ud 
+                  ON ud.K_ID_USER = se.K_ID_DOCUMENTADOR 
                   WHERE " . $typeSQL . $whereIngeniero . " AND (ot.K_IDORDER LIKE '%" . $search . "%' 
                   OR ot.N_PRIORIDAD LIKE '%" . $search . "%'                   
                   OR ot.D_ASIG_Z LIKE '%" . $search . "%'                   
@@ -105,6 +107,7 @@ class Dao_order_model extends CI_Model {
                   OR se.n_region LIKE '%" . $search . "%' 
                   OR u.N_NAME LIKE '%" . $search . "%' 
                   OR u.N_LASTNAME LIKE '%" . $search . "%' 
+                  OR CONCAT(ud.N_NAME,' ', ud.N_LASTNAME) LIKE '%" . $search . "%'
                   OR se.N_CLARO_DESCRIPTION LIKE '%" . $search . "%') group by ot.K_IDORDER order by " . $orderSQL . " ";
 
             $sql = $sqlIni . " limit " . $start . ", " . $length . ";";
@@ -135,12 +138,14 @@ class Dao_order_model extends CI_Model {
             }
         } else {
             //Si no se está filtrando se realiza la consulta normalmnete limitada de x a 10...                    
-            $sqlIni = "select ot.K_IDORDER, ot.D_ASIG_Z, ot.N_PRIORIDAD, $SQL_PERCENTAGE ot.N_DRIVE, ot.D_DATE_CREATION, se.N_ING_SOL, se.D_FORECAST, se.D_DATE_START_P, se.N_PROYECTO, se.n_region, u.N_NAME, u.N_LASTNAME, se.N_CLARO_DESCRIPTION, se.D_CLARO_F 
+            $sqlIni = "select ot.K_IDORDER, ot.D_ASIG_Z, ot.N_PRIORIDAD, $SQL_PERCENTAGE ot.N_DRIVE, ot.D_DATE_CREATION, se.N_ING_SOL, se.D_FORECAST, se.D_DATE_START_P, se.N_PROYECTO, se.n_region, u.N_NAME, u.N_LASTNAME, se.K_ID_DOCUMENTADOR ,CONCAT(ud.N_NAME,' ', ud.N_LASTNAME) AS documentador , se.N_CLARO_DESCRIPTION, se.D_CLARO_F 
                   from ot 
                   inner join specific_service se
                   on ot.K_IDORDER = se.K_IDORDER 
                   inner join user u 
-                  on u.K_IDUSER = se.K_IDUSER WHERE " . $typeSQL . $whereIngeniero . " group by ot.K_IDORDER";
+                  on u.K_IDUSER = se.K_IDUSER 
+                  inner join user ud
+                  WHERE " . $typeSQL . $whereIngeniero . " group by ot.K_IDORDER";
 
             $sql = $sqlIni . " order by " . $orderSQL . " limit " . $start . ", " . $length . ";";
 
@@ -157,6 +162,7 @@ class Dao_order_model extends CI_Model {
                         $order->setLink($row['N_DRIVE']);
                         $order->setPrioridad($row['N_PRIORIDAD']);
                         $order->setD_ASIG_Z($row['D_ASIG_Z']);
+                        $order->setNumDoc($row['K_ID_DOCUMENTADOR']);
 
                         $sercicios = $this->dao_service_model->getServiceByIdOrder($row['K_IDORDER']);
                         $order->services = $sercicios;
