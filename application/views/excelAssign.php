@@ -203,12 +203,12 @@
             </div>
         </nav>
      </header><br><br><br><br>
-
-<form class="form-group" action=" " method="post"  id="assignEng" name="assignEng"> 
-  <div id="content">
+<!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
+<form class="form-group" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
     <div class="btn-group col-xs-8" id="botones">
         <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus" 
+        aria-hidden="true"></span></a>
         <div class="form-group" style="display: flex; padding-left: 108px;">
             <label class="col-md-4 control-label">Fecha Asignación ZTE:</label>
             <div class="col-md-9 selectContainer">
@@ -222,6 +222,10 @@
             </div>
         </div>
             <span class="advertencia" style="display: none;"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;  La fecha de asignación a ZTE no puede ser menor a la de creación &nbsp;&nbsp; <i class="glyphicon glyphicon-warning-sign"></i></span>
+            <!-- <?php
+              // echo var_dump($document);
+              echo print_r($asignar['document']);
+            ?> -->
 <?php
         echo "<input type='hidden' name='OT' id='OT' value='".$asignar['ot']."'>";
         echo "<input type='hidden' name='prioridad' id='prioridad' value='".$asignar['prioridad']."'>";
@@ -238,11 +242,12 @@
           echo "<input type='hidden' name='descripcionActividad_".$r."' id='descripcionActividad_".$r."' value='".$asignar['descripcionActividad'][$r]."'>";
           echo "<input type='hidden' name='forecast_".$r."' id='forecast".$r."' value='".$asignar['forecast'][$r]."'>";
           echo "<input type='hidden' name='sitio_".$r."' id='sitio".$r."' value='".$asignar['sitio']['id'][$r]."'>";
+          echo "<input type='hidden' placeholder='documentador#$r' name='id_documentador_".$r."' id='documentador_".$r."'>";
         }
   
  ?>
     </div>
-      <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "this.form.action = '<?= URL::to('SpecificService/saveServicesExcel'); ?>'">
+      <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "validar_selects_doc()">
         <table id="tabla" class="table table-bordered">
         <thead>
           <tr>
@@ -280,6 +285,7 @@
              echo "<th>Cantidad</th>";
              echo "<th>Descripcion</th>";
              echo "<th>Forecast</th>";
+             echo "<th>Documentador</th>";
            echo "</tr>";
            echo "</thead>";
            echo "<tbody>";
@@ -292,9 +298,14 @@
              echo "<td>".$asignar['cantidad'][$i]."</td>";//cantidad
              echo "<td>".$asignar['descripcionActividad'][$i]."</td>";//descripcion actividad
              echo "<td>".$asignar['forecast'][$i]."</td>";//forecast
+             echo "<td> <select name='documentador' class='select_doc form-control'>
+                  <option value='0'>seleccione documentador</option>";
+                  for ($j=0; $j < count($asignar['document']); $j++) { 
+                    echo "<option value='".$asignar['document'][$j]->K_IDUSER."'>".$asignar['document'][$j]->nombres."</option>";
+                  }
+             echo '</select></td>';// documentador
            echo "</tr>";
            }
-
            echo "<tfoot>";
            echo "<tr>";
              echo "<th>ID Actividad</th>";
@@ -303,6 +314,7 @@
              echo "<th>Cantidad</th>";
              echo "<th>Descripcion</th>";
              echo "<th>Forecast</th>";
+             echo "<th>Documentador</th>";
            echo "</tr>";
            echo "</tfoot>";
          echo "</table>";
@@ -324,10 +336,13 @@
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
+<script src="<?= URL::to('assets/js/documentador.js'); ?>"></script> 
 
 <script>
   $(function () {
-    $("#example").DataTable();
+    $("#example").DataTable({
+      "paging": false
+    });
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

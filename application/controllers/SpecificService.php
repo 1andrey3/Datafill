@@ -13,6 +13,7 @@
         $this->load->model('order_model');
         $this->load->model('rf_model');
         $this->load->model('data/Dao_service_model');
+        $this->load->model('data/Dao_user_model');
        // $this->load->model('mail/mail_manager_model');
         $this->load->model('data/configdb_model');
       //  $this->load->library('session');
@@ -23,7 +24,7 @@
         $answer['services'] = $this->dao_service_model->getAllServices();
       }
 
-      //=================
+      //========================================================================
       public function assignByMail(){
         //$dic es el campo de validacion q uso para saber si la copia viene de outlook o z-mail
         $dic = str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])[4]);
@@ -148,6 +149,9 @@
                   }
                     $asignar['eng'] = $this->dao_user_model->getAllEngineers();//llama todos los ing para pintar en select
 
+
+                    $asignar['document'] = $this->dao_user_model->getAllDocs();
+
                     $array['asignar'] = $asignar;
                     $this->load->view('excelAssign', $array);
                   }else{
@@ -267,6 +271,7 @@
                     }
                   }
                     $asignar['eng'] = $this->dao_user_model->getAllEngineers();//llama todos los ing para pintar en select
+                    $asignar['document'] = $this->Dao_user_model->getAllDocs();
                     /*print_r($asignar);*/           
                     $array['asignar'] = $asignar;
                     $this->load->view('excelAssign', $array);
@@ -747,25 +752,26 @@
 
 //**************************guardar en bd asignar con mail**************************
       public function saveServicesExcel(){
-         // header('Content-Type: text/plain');
+        //  header('Content-Type: text/plain');
+        // print_r($_POST);
        $order = new order_model;
        $order->createOrder(str_replace(array("\n", "\r", "\t", " "), '',$_POST['OT']),"",$_POST['fCreacion']);
        $order->setPrioridad($_POST['prioridad']);
        $order->setD_ASIG_Z($_POST['D_ASIG_Z']);
+       
        $this->dao_order_model->insertOrder($order);
        $activity = new service_spec_model;
        $count2 = 0; 
        $flag = 0;
        $ingeMails = [];
-
-
-        for ($g=0; $g < $_POST['contador'] ; $g++) {
+       
+       
+       for ($g=0; $g < $_POST['contador'] ; $g++) {
           $existe = $this->dao_service_model->getServiceByIdActivity($_POST['actividades_'.$g]);
           if ($existe) {
             $flag = 1;            
           }else{
             if ($_POST['actividades_'.$g] !="") {
-              
                $cant1 = $_POST['cantidad1'];
                $cant2 = $_POST['cantidad2'] + $cant1;
                $cant3 = $_POST['cantidad3'] + $cant2;
@@ -784,7 +790,9 @@
                   $activity = new service_spec_model;
               $activity->createServiceS($eng, "", $_POST['actividades_'.$g], $_POST['descripcionActividad_'.$g], "", "", $_POST['fCreacion'], $_POST['forecast_'.$g], $_POST['OT'], $_POST['sitio_'.$g], $_POST['tipo_'.$g], "", $_POST['descripcion'], $_POST['solicitante'], $_POST['proyecto'], "Asignada","");
               $activity->setQuantity($_POST['cantidadActiv_'.$g]);
-              $activity->setRegion($_POST['regional_'.$g]);              
+              $activity->setRegion($_POST['regional_'.$g]);
+              $activity->setNumDoc($this->input->post('id_documentador_'.$g));
+              // $activity->setNumDoc($_POST['id_documentador_'.$g]);
               $countActivities = $this->dao_service_model->insertFromExcel($activity);
               $count2+=$countActivities;
               $actividades[$g] = $activity;
@@ -959,7 +967,7 @@
               $flag = 1;
             }
           }
-        }       
+        }
 
         if($flag == 0){
            $cuerpo = "<html>

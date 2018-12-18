@@ -110,27 +110,27 @@
               }
                $timezone = date_default_timezone_get();
                $date = date('m-d-Y', time());
-
                $sql3 = "SELECT  COUNT(*) FROM specific_service where K_IDCLARO = ".$activity->getIdClaro().";";
                $result = $session->query($sql3);
                $row = $result->fetch_assoc();
                if($row['COUNT(*)'] == 0){
-                  $sql2 = "INSERT INTO specific_service (K_IDUSER, K_IDCLARO, N_DESCRIPTION, N_CLARO_DESCRIPTION, D_DATE_CREATION, D_FORECAST, K_IDORDER, K_IDSITE, K_IDSERVICE, N_ING_SOL, N_PROYECTO,N_ESTADO, N_CANTIDAD, N_REGION, D_DATE_START_P) values ("
-                  .$activity->getId().", "
-                  .$activity->getIdClaro().",'"
-                  .$activity->getDescription()."', '"
-                  .$activity->getClaroDescription()."',
-                  STR_TO_DATE('".$activity->getDateCreation()."','%Y-%m-%d'),
-                  STR_TO_DATE('".$activity->getDateForecast()."','%Y-%m-%d'),"
-                  .$activity->getOrder().","
-                  .$activity->getSite().","
-                  .$activity->getService().",'"
-                  .$activity->getIngSol()."','"
-                  .$activity->getProyecto()."','"
-                  .$activity->getEstado()."' ,"
-                  .$activity->getQuantity().", '"
-                  .$activity->getRegion()."',
-                  STR_TO_DATE('".$date."','%m-%d-%Y'));";
+                  $sql2 = "INSERT INTO specific_service (K_IDUSER, K_IDCLARO, N_DESCRIPTION, N_CLARO_DESCRIPTION, D_DATE_CREATION, D_FORECAST, K_IDORDER, K_IDSITE, K_IDSERVICE, N_ING_SOL, N_PROYECTO,N_ESTADO, N_CANTIDAD, N_REGION, D_DATE_START_P, K_ID_DOCUMENTADOR) values ("
+                            .$activity->getId().", "
+                            .$activity->getIdClaro().",'"
+                            .$activity->getDescription()."', '"
+                            .$activity->getClaroDescription()."',
+                            STR_TO_DATE('".$activity->getDateCreation()."','%Y-%m-%d'),
+                            STR_TO_DATE('".$activity->getDateForecast()."','%Y-%m-%d'),"
+                            .$activity->getOrder().","
+                            .$activity->getSite().","
+                            .$activity->getService().",'"
+                            .$activity->getIngSol()."','"
+                            .$activity->getProyecto()."','"
+                            .$activity->getEstado()."' ,"
+                            .$activity->getQuantity().", '"
+                            .$activity->getRegion()."',
+                            STR_TO_DATE('".$date."','%m-%d-%Y'),"
+                            .$activity->getNumDoc().");";
                     $result = $session->query($sql2);
                     $count++;
                }

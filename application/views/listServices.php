@@ -36,10 +36,14 @@
     function modalEditar(servicio, orden, idIng, role){
 
       $('#orden').html("Orden: "+orden);
+      console.log(idIng);
+      
       var body = "";
     //------------------Tabla Modal------------------
     for (var i = 0; i < servicio.services.length; i++) {
       if (servicio.services[i].user.id == idIng || role == 0 || role == 4 || role == 5) {
+        console.log(servicio);
+        
         body += "<tr>";
         body += "<input type='hidden' name='ot' id='ot' value='"+orden+"'>";
         body += "<th><input type='checkbox' class='checkbox' name='checkbox[]' id= "+i+" value="+servicio.services[i].idClaro+" onclick='validarForm()'></th>";
@@ -50,6 +54,22 @@
       body += "<td>"+servicio.services[i].quantity+"</td>";
       body += "<td>"+servicio.services[i].site.name+"</td>";
       body += "<td>"+servicio.services[i].user.name+" "+servicio.services[i].user.lastname+"</td>";
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      // body += "<td>"+(123)+"</td>"; ACÁ DEBO TRAER EL NOMBRE DE LOS DOCUMENTADORES
+      //
+      //
+      //
+      //
+      //
+      //
+      //
       body += "<td>"+servicio.services[i].dateStartP+"</td>";
       if (servicio.services[i].estado == 'Cancelado') {
         body += "<td>"+servicio.services[i].dateStartP+"</td>";
@@ -481,6 +501,10 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 //        //===================================<!-- fin tabla GDATOS ===================================-->
 }
 ?>
+
+
+
+
 <!-- Modal -->
 <form method="post" action="" id="formularioModal" class="well form-horizontal">
   <form method="post">
@@ -510,6 +534,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                     <th>Cant.</th>
                     <th>Estación base</th>
                     <th>Ingeniero Asignado</th>
+                    <th>Documentador Asignado</th>
                     <th>F. Asignación</th>
                     <th>Fecha Cierre </th>
                     <th>F. Forecast</th>
@@ -523,7 +548,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                 </table>
                 <input type="button" id="btn_actualizar_links" value="Actualizar Evidencia">
               </div>
-              <!-- if ($_SESSION["role"] == 0 || $_SESSION["role"] == 4) { -->
+                <!-- if ($_SESSION["role"] == 0 || $_SESSION["role"] == 4) { -->
               <div style='display: none;background-color: #fafafa;width: 97%;border-radius: 19px;border: 1px solid #f0f0f0; margin: 15px 16px;' id='reasignar' class="container">
                 <h3 class="subtitulo">Reasignar Actividades</h3>
                 <div class='row-fluid'>
@@ -651,6 +676,10 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
     </div>
   </div>
 </form>
+
+
+
+
 <!--  container  -->
 <!--footer-->
 <div class="for-full-back " id="footer">
