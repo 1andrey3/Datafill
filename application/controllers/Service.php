@@ -33,6 +33,7 @@ class Service extends CI_Controller {
 
     public function getListServices() {
         $res = $this->dao_order_model->getAllOrders();
+
         $answer['services'] = $res["services"];
         $answer['count'] = $res["count"];
         // -----------Consulto cuantas actividades enviadas, canceladas, ejecutadas  y asignadas que existen-----------

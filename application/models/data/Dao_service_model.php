@@ -221,7 +221,7 @@
                   $i = 0;
                     while($row = $result->fetch_assoc()) {
                     $sService = new service_spec_model();
-                     $sService->createServiceS($row['K_ID_SP_SERVICE'], $row['N_DURATION'], $row['K_IDCLARO'], $row['N_DESCRIPTION'], $row['D_DATE_START_P'], $row['D_DATE_FINISH_P'], $row['D_DATE_CREATION'], $row['D_FORECAST'], $row['K_IDORDER'], $this->dao_site_model->getSitePerId($row['K_IDSITE']), $this->getServicePerId($row['K_IDSERVICE']), $this->dao_user_model->getUserById($row['K_IDUSER']), $row['N_CLARO_DESCRIPTION'], $row['N_ING_SOL'], $row['N_PROYECTO'], $row['N_ESTADO'], $row['N_CRQ']);
+                     $sService->createServiceS($row['K_ID_SP_SERVICE'], $row['N_DURATION'], $row['K_IDCLARO'], $row['N_DESCRIPTION'], $row['D_DATE_START_P'], $row['D_DATE_FINISH_P'], $row['D_DATE_CREATION'], $row['D_FORECAST'], $row['K_IDORDER'], $this->dao_site_model->getSitePerId($row['K_IDSITE']), $this->getServicePerId($row['K_IDSERVICE']), $this->dao_user_model->getUserById($row['K_IDUSER']), $row['N_CLARO_DESCRIPTION'], $row['N_ING_SOL'], $row['N_PROYECTO'], $row['N_ESTADO'], $row['N_CRQ'],$row['K_ID_DOCUMENTADOR']);
                        $sService->setDateFinishR($row['D_DATE_FINISH_R']);
                        $sService->setDateStartR($row['D_DATE_START_R']);
                        $sService->setCierreDescription($row['N_CIERRE_DESCRIPTION']);
@@ -230,6 +230,7 @@
                        $sService->setDateFinishClaro($row['D_CLARO_F']);
                        $sService->setLink1($row['N_LINK_SEND']);
                        $sService->setLink2($row['N_LINK_EXECUTE']);
+                       $sService->setNumDoc($row['K_ID_DOCUMENTADOR']);
                        $answer[$i] = $sService;
                        $i++;
                     }
