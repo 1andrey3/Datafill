@@ -938,7 +938,7 @@ class SpecificService extends CI_Controller {
                 // $this->email->send();
             }
             $mensaje["message"] = 'ok';
-            // $this->load->view('assignService', $mensaje);
+            $this->load->view('assignService', $mensaje);
             // header('Location: '. URL::to("Service/listServices"));
         } else {
             $mensaje["message"] = 'error';
@@ -965,7 +965,6 @@ class SpecificService extends CI_Controller {
 
     //  enviar correo al documentador
     private function send_to_doc($data, $correo) {
-    	echo '<pre>yyyyyyyyyyyyyy'; print_r($correo); echo 'xxxxxxxxxxxxxxx</pre>';
         $cuerpo = "<html>
               <head>
               <title>asignacion</title>
@@ -1041,7 +1040,6 @@ class SpecificService extends CI_Controller {
             'charset'   => 'utf-8',
             'priority'  => 5,
         );
-        echo '<pre>'; print_r($cuerpo); echo '</pre>';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");

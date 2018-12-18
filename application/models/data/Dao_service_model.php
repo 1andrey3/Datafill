@@ -221,7 +221,7 @@
                   $i = 0;
                     while($row = $result->fetch_assoc()) {
                     $sService = new service_spec_model();
-                     $sService->createServiceS($row['K_ID_SP_SERVICE'], $row['N_DURATION'], $row['K_IDCLARO'], $row['N_DESCRIPTION'], $row['D_DATE_START_P'], $row['D_DATE_FINISH_P'], $row['D_DATE_CREATION'], $row['D_FORECAST'], $row['K_IDORDER'], $this->dao_site_model->getSitePerId($row['K_IDSITE']), $this->getServicePerId($row['K_IDSERVICE']), $this->dao_user_model->getUserById($row['K_IDUSER']), $row['N_CLARO_DESCRIPTION'], $row['N_ING_SOL'], $row['N_PROYECTO'], $row['N_ESTADO'], $row['N_CRQ'],$row['K_ID_DOCUMENTADOR']);
+                     $sService->createServiceS($row['K_ID_SP_SERVICE'], $row['N_DURATION'], $row['K_IDCLARO'], $row['N_DESCRIPTION'], $row['D_DATE_START_P'], $row['D_DATE_FINISH_P'], $row['D_DATE_CREATION'], $row['D_FORECAST'], $row['K_IDORDER'], $this->dao_site_model->getSitePerId($row['K_IDSITE']), $this->getServicePerId($row['K_IDSERVICE']), $this->dao_user_model->getUserById($row['K_IDUSER']), $row['N_CLARO_DESCRIPTION'], $row['N_ING_SOL'], $row['N_PROYECTO'], $row['N_ESTADO'], $row['N_CRQ']);
                        $sService->setDateFinishR($row['D_DATE_FINISH_R']);
                        $sService->setDateStartR($row['D_DATE_START_R']);
                        $sService->setCierreDescription($row['N_CIERRE_DESCRIPTION']);
@@ -238,6 +238,7 @@
               } else{
                   $answer = "Error de informacion";
               }
+
             return $answer;
           }
 
@@ -739,7 +740,6 @@
 
       // Retorna actividades de specific services where K_IDCLARO in (arg $id_actividades)
       public function get_services_by_ids($id_actividades){
-        echo '<pre>'; print_r($id_actividades); echo '</pre>';
         if (count($id_actividades) == 0) {
           return false;
         }

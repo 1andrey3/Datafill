@@ -62,6 +62,7 @@
 		      		<td>CANT</td>
 		      		<td>ESTACION</td>
 		      		<td>NOMBRE ING</td>
+              <td>NOMBRE DOCUMENTADOR</td>
 		      		<td>F ASIFGNACION</td>
 		      		<td>F CIERRE ING</td>
 		      		<td>F EJECUCION</td>
@@ -87,6 +88,7 @@
 				      		echo '<td>'.$value->CANT.'</td>';
 				      		echo '<td>'.utf8_decode($value->ESTACION).'</td>';
 				      		echo '<td>'.utf8_decode($value->NOMBRE_ING).'</td>';
+                  echo '<td> este es el documentador</td>';
 				      		echo '<td>'.$value->F_ASIFGNACION.'</td>';
 				      		echo '<td>'.$value->F_CIERRE_ING.'</td>';
 				      		echo '<td>'.$value->F_EJECUCION.'</td>';

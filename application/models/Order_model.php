@@ -61,23 +61,13 @@ class Order_model extends CI_Model {
         $this->D_ASIG_Z = $D_ASIG_Z;
     }
 
-    public function getNumDoc()
-    {
-        return $this->doc;
-    }
-
-    public function setNumDoc($documentador_id)
-    {
-        $this->documentador_id = $documentador_id;
-    }
-
     public function createOrder($id, $name, $creationDate) {
         $this->setId($id);
         $this->setName($name);
         $this->setCreationDate($creationDate);
         $this->setPrioridad($prioridad);
         $this->setD_ASIG_Z($D_ASIG_Z);
-        $this->setNumDoc($documentador_id);
+     
     }
 
 }

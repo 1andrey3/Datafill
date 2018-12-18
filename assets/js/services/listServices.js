@@ -23,7 +23,6 @@ $(function () {
 
         //------------Obtener ingenieros asignados...------------
         getEngs: function(obj){
-            console.log(obj);
             //contamos la canbtidad de actividades
              var cantActividades = obj.services.length;
              var ing = [];
@@ -31,26 +30,41 @@ $(function () {
              if (obj.services.length > 0) {
                 // En el arreglo ing ingresamos ingeniero asignado para cada actividad
                 for (var i = 0; i < cantActividades; i++) {
-                    ing[i] = "- " + obj.services[i].user.name + " " + obj.services[i].user.lastname + "<hr>";
+                    ing[i] = obj.services[i].user.name + " " + obj.services[i].user.lastname ;
                 }
                 //Eliminamos ingenieros duplicados para mostrar unico
-                // console.log(ing);
                 engs = ing.reduce(function(a,b){
                     if (a.indexOf(b) < 0 ) a.push(b);
                     return a;
                   },[]);
              }
-            //  console.log(engs);
-             
+             engs = engs.join(' - ');
              return engs;
         },
 
-        getDocs: function(nose){
-            if(nose.documentador_id == 0){
-                nose.documentador_id ="|-|";
-            }
-            return nose.documentador_id[0];
+        getDocs: function(obj){
+            let cadena = '';
+            const docs = vista.arrayColumn(obj.services, 'idDocumentador');
+            const uniques = docs.reduce(function(a,b){
+                if (a.indexOf(b) < 0 ) a.push(b);
+                    return a;
+            } ,[]);
+            uniques.forEach(function(doc){
+                if (doc != '0')
+                    cadena += docs_names[doc] + ' - ';
+            });
+
+            return cadena.slice(0,-3);
         },
+
+        // equivalente de array_column de php
+        arrayColumn: function(array, columnName){
+            return array.map(function(value,index) {
+                return value[columnName];
+            })
+        },
+
+
 
         //------------Obtener barras de progreso------------
         getProgress: function(obj){

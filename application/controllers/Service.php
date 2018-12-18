@@ -24,9 +24,8 @@ class Service extends CI_Controller {
     }
 
     public function listServices() {
-        //Recibimos la variable global con el mensaje
-        $message = isset($_SESSION["message"]) ? $_SESSION["message"] : null;
-        $this->load->view('listServices', ["message" => $message]);
+        $res['list_docs'] = $this->dao_user_model->getAllDocs();
+        $this->load->view('listServices', $res);
         //Limpiamos la variable glogal
         unset($_SESSION["message"]);
     }

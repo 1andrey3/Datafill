@@ -34,15 +34,14 @@
   <script type="text/javascript" charset="utf-8" async defer>
     //Funcion para mostrar mensaje de error de validacion de datos
     function modalEditar(servicio, orden, idIng, role){
+      console.log("servicio", servicio);
 
       $('#orden').html("Orden: "+orden);
-      console.log(idIng);
       
       var body = "";
     //------------------Tabla Modal------------------
     for (var i = 0; i < servicio.services.length; i++) {
       if (servicio.services[i].user.id == idIng || role == 0 || role == 4 || role == 5) {
-        console.log(servicio);
         
         body += "<tr>";
         body += "<input type='hidden' name='ot' id='ot' value='"+orden+"'>";
@@ -54,6 +53,8 @@
       body += "<td>"+servicio.services[i].quantity+"</td>";
       body += "<td>"+servicio.services[i].site.name+"</td>";
       body += "<td>"+servicio.services[i].user.name+" "+servicio.services[i].user.lastname+"</td>";
+      body += "<td>"+ ((servicio.services[i].idDocumentador == 0) ? '' : docs_names[servicio.services[i].idDocumentador]) +"</td>";
+
       //
       //
       //
@@ -716,6 +717,7 @@ if (isset($message)) {
   }
 
 
+
   $(function(){
     $("#btn_actualizar_links").click(function(){
       $.ajax({
@@ -733,7 +735,17 @@ if (isset($message)) {
     });
   });
 </script>
-<script type="text/javascript">var baseurl = "<?php echo URL::base(); ?>";</script>
+<script type="text/javascript"> 
+  const list_docs = '<?php echo json_encode($list_docs); ?>';
+  const docs_name = JSON.parse(list_docs);
+  // console.log("docs_name", docs_name);
+  const docs_names = {};
+  $.each(docs_name, function(i, item) {
+     docs_names[item.K_IDUSER] = item['nombres'];
+  });
+
+  var baseurl = "<?php echo URL::base(); ?>";
+</script>
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>

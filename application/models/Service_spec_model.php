@@ -25,7 +25,7 @@
         public $region;
         public $link1;
         public $link2;
-        // public $idDocumentador;
+        public $idDocumentador;
 
 		public function __construct(){
 
