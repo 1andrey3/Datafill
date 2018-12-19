@@ -49,6 +49,7 @@ class Service extends CI_Controller {
             "recordsFiltered" => intval($answer['count']),
             "data" => $answer['services'],
             "sql" => $sql,
+            "query" => $res['query']
         ];
         echo json_encode($data);
     }
@@ -104,3 +105,4 @@ class Service extends CI_Controller {
     }
 
 }
+

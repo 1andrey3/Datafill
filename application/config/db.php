@@ -24,7 +24,7 @@ return [
       |
      */
 
-    'default' => 'mysql',
+    'default' => 'mysqlLocalhost',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
