@@ -24,15 +24,15 @@ class Service extends CI_Controller {
     }
 
     public function listServices() {
-        //Recibimos la variable global con el mensaje
-        $message = isset($_SESSION["message"]) ? $_SESSION["message"] : null;
-        $this->load->view('listServices', ["message" => $message]);
+        $res['list_docs'] = $this->dao_user_model->getAllDocs();
+        $this->load->view('listServices', $res);
         //Limpiamos la variable glogal
         unset($_SESSION["message"]);
     }
 
     public function getListServices() {
         $res = $this->dao_order_model->getAllOrders();
+
         $answer['services'] = $res["services"];
         $answer['count'] = $res["count"];
         // -----------Consulto cuantas actividades enviadas, canceladas, ejecutadas  y asignadas que existen-----------

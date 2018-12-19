@@ -91,6 +91,18 @@
           return $answer;
         }
 
+        public function getAllDocs()
+        {
+          $query = $this->db->select("K_IDUSER, CONCAT(N_NAME,' ',N_LASTNAME) AS nombres,")
+                        ->from('user')
+                        ->where("K_IDROLE","6")
+                        ->get();
+          // $query = $this->db->query("
+          //   SELECT K_IDUSER,
+          // ");
+            return $query->result();
+        }
+
         public function getUsernamePassword($username){
           $dbConnection = new configdb_model();
           $session = $dbConnection->openSession();
