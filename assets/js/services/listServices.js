@@ -140,7 +140,6 @@ $(function () {
         },
 
         getDescription: function(obj){
-             // console.log(obj.services[0].claroDescription);
             var ini = obj.services[0].claroDescription.substring(0,45);
             var description ="";
             $(document).ready(function(){
@@ -164,7 +163,6 @@ $(function () {
 
         getdateStartP: function (obj){
 
-            // console.log(obj);
 
            var role=$('#session_role').val();
 
@@ -178,7 +176,6 @@ $(function () {
         },
 
         genericCogDataTable: function (url, table) {
-            // console.log();
             // $('.contentPrincipal').removeClass('hidden');
             return {
                 columns: [

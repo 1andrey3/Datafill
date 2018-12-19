@@ -394,6 +394,7 @@
                 ss.D_CLARO_F as F_EJECUCION,
                 ss.N_ESTADO as ESTADO,
                 ss.N_PROYECTO as PROYECTO,
+                CONCAT(ud.N_NAME,' ',ud.N_LASTNAME) AS documentador,
 
                 ss.D_FORECAST as F_FORECAST,
                 ss.D_DATE_CREATION as F_CREACION,
@@ -403,6 +404,8 @@
                 from specific_service ss
                 inner join user u
                 on ss.K_IDUSER = u.K_IDUSER
+                LEFT JOIN user ud 
+                ON ss.K_ID_DOCUMENTADOR = ud.K_IDUSER
                 inner join site s
                 on ss.K_IDSITE = s.K_IDSITE
                 inner join service

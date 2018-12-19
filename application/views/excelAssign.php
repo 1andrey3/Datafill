@@ -82,8 +82,6 @@
           }
         }
 
-        // console.log(users);
-        // console.log(tipo);
 
         cont++;
         var fila='<tr class="selected" id="fila'+cont+'" >';
@@ -124,7 +122,6 @@
           sumados = sumados + parseInt(s.value);
     // sumados += s.value;
     var porc = document.getElementById("porcen"+i);
-    //console.log(porc);
     porc.value = 100/cantidadExcel*parseInt(s.value);
     }
     if(sumados != cantidadExcel){
@@ -133,8 +130,6 @@
     } else {
       var btform = document.getElementById("bt_form");
       btform.style.display = 'block';    }
-      console.log(sumados);
-      console.log(cantidadExcel);
     }
     function reordenar(){
       var num=1;
@@ -204,7 +199,7 @@
         </nav>
      </header><br><br><br><br>
 <!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
-<form class="form-group" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
+<form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
     <div class="btn-group col-xs-8" id="botones">
         <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
         <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus" 

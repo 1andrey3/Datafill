@@ -52,7 +52,7 @@
       <table>
       	<tr>
       		<td>
-		      <table width="80%" border="1">
+		      <table width="100%" border="1" >
       			<h4 align="center">Reporte Datafill del <?php echo date('d-M-Y H:i:a') ?></h4>
 		      	<tr bgcolor="blue" style="color: white;" align="center">
 		      		<td>ORDEN</td>
@@ -73,7 +73,7 @@
 		      		<td>F CREACION</td>
 		      		<td>SOLICITANTE</td>
               <td>REGION</td>
-		      		<td>DESCRIPCION</td>
+		      		<td colspan="10">DESCRIPCION</td>
 
 				</tr>
 <?php 
@@ -88,7 +88,7 @@
 				      		echo '<td>'.$value->CANT.'</td>';
 				      		echo '<td>'.utf8_decode($value->ESTACION).'</td>';
 				      		echo '<td>'.utf8_decode($value->NOMBRE_ING).'</td>';
-                  echo '<td> este es el documentador</td>';
+                  echo '<td>'.utf8_decode($value->documentador).'</td>';
 				      		echo '<td>'.$value->F_ASIFGNACION.'</td>';
 				      		echo '<td>'.$value->F_CIERRE_ING.'</td>';
 				      		echo '<td>'.$value->F_EJECUCION.'</td>';
@@ -112,7 +112,7 @@
 				      		echo '<td>'.$value->F_CREACION.'</td>';
 				      		echo '<td>'.$value->SOLICITANTE.'</td>';
                   echo '<td>'.$value->REGION.'</td>';
-				      		echo '<td>'.$value->DESCRIPCION.'</td>';
+				      		echo '<td colspan="10">'.$value->DESCRIPCION.'</td>';
 						echo '</tr>';
 					}
 

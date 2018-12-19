@@ -311,7 +311,6 @@ $(function () {
         },
         // dibujo el boton de opciones
         getButtons: function (obj) {
-            console.log(obj);
             var boton = '';
             if (obj.K_IDORDER != null) {
                 boton = '<div class="btn-group">'
@@ -323,7 +322,6 @@ $(function () {
 
         // Dibujo boton de opciones
         getButtonsChanges: function(obj){
-            console.log(obj);
             return '<div class="btn-group">'
                         + '<a class="btn btn-default btn-xs ver-log" data-toggle="tooltip" title="Historial"><span class="fa fa-fw fa-info"></span></a>'
                         + '</div>';

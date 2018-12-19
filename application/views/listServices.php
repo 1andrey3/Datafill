@@ -34,7 +34,6 @@
   <script type="text/javascript" charset="utf-8" async defer>
     //Funcion para mostrar mensaje de error de validacion de datos
     function modalEditar(servicio, orden, idIng, role){
-      console.log("servicio", servicio);
 
       $('#orden').html("Orden: "+orden);
       
@@ -688,6 +687,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 </div>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> -->
 <?php
+$r = time();
 if (isset($message)) {
   echo '<script type="text/javascript">showMessage("'.$message.'");</script>';
 }
@@ -738,7 +738,6 @@ if (isset($message)) {
 <script type="text/javascript"> 
   const list_docs = '<?php echo json_encode($list_docs); ?>';
   const docs_name = JSON.parse(list_docs);
-  // console.log("docs_name", docs_name);
   const docs_names = {};
   $.each(docs_name, function(i, item) {
      docs_names[item.K_IDUSER] = item['nombres'];
@@ -750,7 +749,7 @@ if (isset($message)) {
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 <!-- llenar tablas -->
-<script type="text/javascript" src="<?= URL::to('assets/js/services/listServices.js?v= time() '); ?>"></script>
+<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=$r"); ?>"></script>
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>

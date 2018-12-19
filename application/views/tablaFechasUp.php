@@ -288,9 +288,7 @@
 		                },
 		                // callback
 		                function(data){
-		                    console.log(data);
 		                    var res = JSON.parse(data);
-		                    console.log(res);
 		                    if (res == 1) {
 		                        swal("Se actualizo correctamente!", "", "success");
 		                       // location.reload(vista.urlbase + "Service/tablaFechasUp");
