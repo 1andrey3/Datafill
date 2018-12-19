@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Asignar</title>
@@ -18,7 +18,7 @@
         <script src="<?= URL::to('assets/js/jquery-2.1.1.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/js/bootstrap.js'); ?>"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
+
 <style>
 
   #content{
@@ -149,7 +149,7 @@
 
 </head>
 <body>
-  <?php 
+  <?php
     // header('Content-Type: text/plain');
     // print_r($asignar['eng']);
 
@@ -190,6 +190,8 @@
                         </li>
                          <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
                         </li>
+                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+                        </li>
                         </li>
                          <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
                         </li>
@@ -202,7 +204,7 @@
 <form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
     <div class="btn-group col-xs-8" id="botones">
         <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus" 
+        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus"
         aria-hidden="true"></span></a>
         <div class="form-group" style="display: flex; padding-left: 108px;">
             <label class="col-md-4 control-label">Fecha Asignación ZTE:</label>
@@ -229,7 +231,7 @@
         echo "<input type='hidden' name='proyecto' id='proyecto' value='".$asignar['proyecto']."'>";
         echo "<input type='hidden' name='descripcion' id='descripcion' value='".$asignar['descripcion']."'>";
         echo "<input type='hidden' name='contador' id='contador' value='".count($asignar['actividades'])."'>";
-        for ($r=0; $r < count($asignar['actividades']); $r++) {          
+        for ($r=0; $r < count($asignar['actividades']); $r++) {
           echo "<input type='hidden' name='actividades_".$r."' id='actividades_".$r."' value='".$asignar['actividades'][$r]."'>";
           echo "<input type='hidden' name='tipo_".$r."' id='tipo_".$r."' value='".$asignar['tipo']['idTipo'][$r]."'>";
           echo "<input type='hidden' name='regional_".$r."' id='regional_".$r."' value='".$asignar['regional'][$r]."'>";
@@ -239,7 +241,7 @@
           echo "<input type='hidden' name='sitio_".$r."' id='sitio".$r."' value='".$asignar['sitio']['id'][$r]."'>";
           echo "<input type='hidden' placeholder='documentador#$r' name='id_documentador_".$r."' id='documentador_".$r."'>";
         }
-  
+
  ?>
     </div>
       <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "validar_selects_doc()">
@@ -253,7 +255,7 @@
           </tr>
         </thead>
   </table>
-  </div>         
+  </div>
 </form>
 <!--      fin header         -->
 <section class="content">
@@ -284,8 +286,8 @@
            echo "</tr>";
            echo "</thead>";
            echo "<tbody>";
-           for ($i=0; $i < count($asignar['actividades']) ; $i++) { 
-             
+           for ($i=0; $i < count($asignar['actividades']) ; $i++) {
+
            echo "<tr>";
              echo "<td>".$asignar['actividades'][$i]."</td>";//id actividad
              echo "<td>".$asignar['tipo']['name'][$i]."</td>";//tipo actividad
@@ -295,7 +297,7 @@
              echo "<td>".$asignar['forecast'][$i]."</td>";//forecast
              echo "<td> <select name='documentador' class='select_doc form-control'>
                   <option value='0'>seleccione documentador</option>";
-                  for ($j=0; $j < count($asignar['document']); $j++) { 
+                  for ($j=0; $j < count($asignar['document']); $j++) {
                     echo "<option value='".$asignar['document'][$j]->K_IDUSER."'>".$asignar['document'][$j]->nombres."</option>";
                   }
              echo '</select></td>';// documentador
@@ -331,7 +333,7 @@
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
-<script src="<?= URL::to('assets/js/documentador.js'); ?>"></script> 
+<script src="<?= URL::to('assets/js/documentador.js'); ?>"></script>
 
 <script>
   $(function () {
