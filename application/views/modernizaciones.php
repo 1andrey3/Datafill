@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ejecutar con Excel</title>
+        <title>Modernizaciones</title>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--   ICONO PAGINA    -->
         <link rel="icon" href="http://cellaron.com/media/wysiwyg/zte-mwc-2015-8-l-124x124.png">
         <!--   BOOTSTRAP    -->
-        <link href="<?= URL::to('assets/css/bootstrap.css" rel="stylesheet'); ?>" />
+        <link href="<?= URL::to('assets/css/bootstrap.css'); ?>" rel="stylesheet" />
+        <script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
+        <script type="text/javascript" src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
+        <!-- bottstrap select -->
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> -->
+        <!-- modal stilo -->
+        <link rel="stylesheet" href="<?= URL::to('assets/css/emergente.min.css'); ?>">
+        <!-- datatables-->
         <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-        <link href="<?= URL::to('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap2.css'); ?>" rel="stylesheet">
+        <link href="<?= URL::to('assets/css/bootstrap.min.css" rel="stylesheet'); ?>">
         <!--   HEADER CSS    -->
-        <link href="<?= URL::to('assets/css/styleHeader.css'); ?>" rel="stylesheet" />
-        <!--   INPUTFILE CSS    -->
-        <link href="<?= URL::to('assets/css/inputFile.css'); ?>" rel="stylesheet" />
-
-
+        <link href="<?= URL::to('assets/css/styleHeader.css?v=1.0'); ?>" rel="stylesheet" />
+        <!-- boton -->
+        <link href="<?= URL::to('assets/css/styleBoton.css'); ?>" rel="stylesheet" />
+        <!-- menu sticky -->
+        <link href="<?= URL::to('assets/css/styleMenuSticky.css'); ?>" rel="stylesheet" />
+        <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
+        <!-- checkbox -->
+        <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
+        <!--   SWEET ALERT    -->
+        <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
+        <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
-    <body data-base="<?= URL::base() ?>">
+    <body data-url="<?= URL::base(); ?>">
+        <input type="hidden" id="session_id" value="<?= $_SESSION["id"] ?>"/>
+        <input type="hidden" id="session_role" value="<?= $_SESSION["role"] ?>"/>
         <!-- Navigation -->
         <header>
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -35,7 +51,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName'] ?></a>
+                            <li class="cam"><a >Bienvenid@ <?php print_r($_SESSION['userName']) ?></a>
                             </li>
                             <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -43,7 +59,7 @@
                             <li class="cam"><a href="#services">Servicios</a>
                                 <ul>
                                     <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
-                                    <li><a href="<?= URL::to('Service/listServices'); ?>">Ver Actividades</a></li>
+                                    <li><a href="<?= URL::to('Service/listService'); ?>s">Ver Actividades</a></li>
                                     <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
                                 </ul>
                             </li>
@@ -64,38 +80,31 @@
                     </div>
                 </div>
             </nav>
-        </header><br><br><br><br>
-
+        </header>
         <!--      fin header         -->
-        <form method="post" enctype="multipart/form-data" id="formFileUpload">
-            <input type="file" name="idarchivo">
-            <p>Arrastra tu archivo aquí o haz clic en esta área.</p>
-            <button id="btnUploadFile" type="submit" class="btn btn-primary" >UpLoad  <span class="glyphicon glyphicon-ok"></span></button>
-        </form>
+        <br><br><br><br>
+        <div class="container">
+            <center>
+                <legend>Modernizaciones</legend>
+            </center>
+            <div class="col col-md-12">
+                <table id="tabla_modernizaciones" class="table table-bordered table-striped dataTable no-footer"></table>
+            </div>
+        </div>
+        <!--  container  -->
+        <!--footer-->
+        <div class="for-full-back " id="footer">
+            Zolid By ZTE Colombia | All Right Reserved
+        </div>
+
         <script type="text/javascript">var baseurl = "<?php echo URL::base(); ?>";</script>
-        <script src="<?= URL::to('assets/plugins/jQuery/jquery-2.2.3.min.js'); ?>"></script>
         <!-- DataTables -->
         <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
-
-        <script src="<?= URL::to("assets/js/utils/app.global.js") ?>" type="text/javascript"></script>
-        <script src="<?= URL::to("assets/js/utils/app.dom.js") ?>" type="text/javascript"></script>
-        <!-- sweet alert -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.min.js"></script>
-        <!-- para cargar los archivos excel xlsx -->
-        <script src="<?= URL::to("assets/js/services/loadInformation.js") ?>" type="text/javascript"></script>
-
-        <script>
-            $(document).ready(function() {
-                $('form input').change(function() {
-                    $('form p').text(this.files.length + " file(s) selected");
-                });
-            });
-
-
-        </script>
-
-
-
+        <!-- llenar tablas -->
+        <script type="text/javascript" src="<?= URL::to('assets/js/services/listServices.js?v= time() '); ?>"></script>
+        <!-- alertas de proximidad de tiempo -->
+        <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
+        <script type="text/javascript" src="<?= URL::to('assets/js/modernizacion.js'); ?>"></script>
     </body>
 </html>

@@ -48,10 +48,12 @@
                                 <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                             </ul>
                         </li>
-                         <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                        <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                        </li>
+                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                         </li>
                         </li>
-                         <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                        <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
                         </li>
                     </ul>
                 </div>
