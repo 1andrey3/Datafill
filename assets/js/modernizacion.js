@@ -28,7 +28,6 @@ $(function() {
         printTable: function(data) {
             // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
             recorded.tabla_modernizaciones = $('#tabla_modernizaciones').DataTable(recorded.configTable(data, [
-
                 {title: "OT", data: "K_IDORDER"},
                 {title: "Actividad", data: "K_IDCLARO"},
                 {title: "Tipo", data: "tipo_orden"},
@@ -36,6 +35,7 @@ $(function() {
                 {title: "Trabajo", data: "trabajo"},
                 {title: "Id", data: "id"},
                 {title: "Tipo tecnologia", data: "tipo_tecnologia"},
+                {title: "Opciones", data: recorded.getButtons},
             ]));
         },
 
@@ -62,6 +62,13 @@ $(function() {
                 drawCallback: onDraw
             }
         },
+
+        getButtons: function(obj) {
+            var botones = "<div class='btn-group-vertical'>"
+                    + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-edit'></span></a>"
+                    + "</div>";
+            return botones;
+        }
 
     };
     recorded.init();

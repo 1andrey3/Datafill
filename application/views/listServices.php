@@ -751,7 +751,7 @@ if (isset($message)) {
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 <!-- llenar tablas -->
-<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=$r"); ?>"></script>
+<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=24"); ?>"></script>
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>

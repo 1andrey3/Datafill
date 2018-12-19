@@ -94,7 +94,7 @@ class Dao_order_model extends CI_Model {
                   on ot.K_IDORDER = se.K_IDORDER  
                   inner join user u 
                   on u.K_IDUSER = se.K_IDUSER 
-                  inner join user ud 
+                  LEFT join user ud 
                   ON ud.K_IDUSER = se.K_ID_DOCUMENTADOR 
                   WHERE " . $typeSQL . $whereIngeniero . " AND (ot.K_IDORDER LIKE '%" . $search . "%' 
                   OR ot.N_PRIORIDAD LIKE '%" . $search . "%'                   
@@ -144,7 +144,8 @@ class Dao_order_model extends CI_Model {
                   on ot.K_IDORDER = se.K_IDORDER 
                   inner join user u 
                   on u.K_IDUSER = se.K_IDUSER 
-                  inner join user ud
+                  LEFT join user ud
+                  ON ud.K_IDUSER = se.K_ID_DOCUMENTADOR 
                   WHERE " . $typeSQL . $whereIngeniero . " group by ot.K_IDORDER";
 
             $sql = $sqlIni . " order by " . $orderSQL . " limit " . $start . ", " . $length . ";";
@@ -174,7 +175,8 @@ class Dao_order_model extends CI_Model {
 
         return [
             "services" => $answer,
-            "count" => $count
+            "count" => $count,
+            "query" => $this->db->last_query()
         ];
         // }
     }
