@@ -75,6 +75,9 @@ $(function() {
             var trParent = aLinkLog.parents('tr');
             var record = modernizacion.tabla_modernizaciones.row(trParent).data();
 
+            const url = baseurl + `/Modernizaciones/c_getOrdenDetail/${record.K_IDORDER}`;
+            window.open(url, '_blank');
+
 //            modernizacion.showDetailsOrdenModer(record);
             console.log(record);
         },
