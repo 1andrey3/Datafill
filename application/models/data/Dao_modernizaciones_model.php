@@ -11,7 +11,7 @@ class Dao_modernizaciones_model extends CI_Model {
 
     public function get_modernizaciones() {
         $query = $this->db->query("
-            SELECT ss.K_IDORDER, ss.K_IDCLARO, moder.tipo_orden,ss.K_IDSITE, moder.trabajo, moder.id, moder.tipo_tecnologia
+            SELECT moder.id_moder, ss.K_IDORDER, ss.K_IDCLARO, moder.tipo_orden,ss.K_IDSITE, moder.trabajo, moder.id, moder.tipo_tecnologia
             FROM modernizacion moder
             INNER JOIN specific_service ss ON ss.K_ID_SP_SERVICE = moder.k_id_sp_services
         ");

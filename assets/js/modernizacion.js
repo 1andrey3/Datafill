@@ -1,13 +1,13 @@
 $(function() {
-    recorded = {
+    modernizacion = {
         init: function() {
-            recorded.events();
-            recorded.getList_modernzaciones();
+            modernizacion.events();
+            modernizacion.getList_modernzaciones();
 
         },
         //Eventos de la ventana.
         events: function() {
-
+            $('#tabla_modernizaciones').on('click', 'a.opc-orden', modernizacion.onClickBtnEditOrden);
         },
 
         getList_modernzaciones: function() {
@@ -20,14 +20,14 @@ $(function() {
                             function(data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
-                                recorded.printTable(obj);
+                                modernizacion.printTable(obj);
                             }
                     );
                 },
 
         printTable: function(data) {
             // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
-            recorded.tabla_modernizaciones = $('#tabla_modernizaciones').DataTable(recorded.configTable(data, [
+            modernizacion.tabla_modernizaciones = $('#tabla_modernizaciones').DataTable(modernizacion.configTable(data, [
                 {title: "OT", data: "K_IDORDER"},
                 {title: "Actividad", data: "K_IDCLARO"},
                 {title: "Tipo", data: "tipo_orden"},
@@ -35,7 +35,7 @@ $(function() {
                 {title: "Trabajo", data: "trabajo"},
                 {title: "Id", data: "id"},
                 {title: "Tipo tecnologia", data: "tipo_tecnologia"},
-                {title: "Opciones", data: recorded.getButtons},
+                {title: "Opciones", data: modernizacion.getButtons},
             ]));
         },
 
@@ -65,11 +65,20 @@ $(function() {
 
         getButtons: function(obj) {
             var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-edit'></span></a>"
+                    + "<a class='btn btn-default btn-xs opc-orden btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-edit'></span></a>"
                     + "</div>";
             return botones;
-        }
+        },
+
+        onClickBtnEditOrden: function(e) {
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var record = modernizacion.tabla_modernizaciones.row(trParent).data();
+
+//            modernizacion.showDetailsOrdenModer(record);
+            console.log(record);
+        },
 
     };
-    recorded.init();
+    modernizacion.init();
 });
