@@ -22,6 +22,12 @@ class Modernizaciones extends CI_Controller {
         echo json_encode($get_modernizaciones);
     }
 
+    public function c_getOrdenDetail($idOrden) {
+
+        
+        $this->load->view('ordenModerDetail', $datos);
+    }
+
 }
 
 ?>
