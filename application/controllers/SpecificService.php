@@ -70,7 +70,7 @@ class SpecificService extends CI_Controller {
                         $service = (explode("-", $id[$x + 1])[0]); // funcion para dividir una cadena de caracteres dependiendo la llave, en este caso se usa para tomar la primera parte, antes del guion (-)
 
                         if ((explode("-", $id[$x + 1])[0][2]) == "0") {
-//los T10 T11 Y T12 hay q convertirlos en C1 C2 Y C3 respectivamente
+                        //los T10 T11 Y T12 hay q convertirlos en C1 C2 Y C3 respectivamente
                             $service = "C1";
                         }
                         if ((explode("-", $id[$x + 1])[0][2]) == "1") {
@@ -89,7 +89,7 @@ class SpecificService extends CI_Controller {
                         //traer todos los servicios
                         $allService = $this->dao_service_model->getAllServices(); //trae todos los servicios
                         for ($i = 0; $i < count($allService); $i++) {
-//comparacion de tipo excel y bd y con a id
+                        //comparacion de tipo excel y bd y con a id
                             if ($service == $allService[$i]->getType()) {
                                 $typeId   = $allService[$i]->getId(); //id del tipo de db
                                 $typeName = $allService[$i]->getType(); //id del tipo de db
@@ -118,34 +118,28 @@ class SpecificService extends CI_Controller {
                         //fin creacion  forecast
 
                         //creacion site
-                        //funcion para traer solo el sitio especifico de una cadena larga de caracteres con la funcion substr_count(x,y), la cual cuenta cuantas veces esta el string(y) en el string(x)
-                        $allSites = $this->dao_site_model->getAllSites(); //llama todos los sitios de la db
-                        $site     = $id[$x + 4]; //celda del excel o arreglo donde esta el sitio
-                        $flag2    = 0;
-                        for ($i = 0; $i < count($allSites); $i++) {
-                            $flag = substr_count($site, $allSites[$i]->getName()); //cuenta cuantas veces esta allsites en site
-                            if ($flag == 1) {
-                                //nombre del sitio (BD)
-                                $asignar['sitio']['name'][$plus] = $allSites[$i]->getName();
-                                //ID del sitio (BD)
-                                $asignar['sitio']['id'][$plus] = $allSites[$i]->getId();
-                                $flag2                         = 1;
-                            }
-                        }
-                        //si no existe el sitio, lo añade a bd con id
-                        // str_replace(array("\n", "\r", "\t"), '', $res[$f]->k_id_onair)
-                        if ($flag2 == 0) {
-                            $asignar['sitio']['name'][$plus] = (explode("staciones:", $site)[1]);
-                            //elimino los parentecis
-                            $asignar['sitio']['name'][$plus] = str_replace(array("(", ")"), '', $asignar['sitio']['name'][$plus]);
-                            $asignar['sitio']['id'][$plus]   = count($allSites) + 1; //añade id nuevo
-                            $newSite                         = new site_model;
-                            $newSite->createSite($asignar['sitio']['id'][$plus], $asignar['sitio']['name'][$plus]);
+                        $site     = str_replace(array("(", ")", "\n", "\r", "\t"), '', explode("staciones:", $id[$x + 4])[1]); //celda del correo o arreglodonde esta el sitio
+                        $site_minusc_sin_spaces = strtolower( str_replace(' ', '', $site) );// sitio sin mayusculas ni espacios para 
+                        $allSite = $this->dao_site_model->getAllSites(); //llama todos los sitios de la db
+                        $allSites = array_column($allSite, 'N_NAME', 'K_IDSITE'); // sitios sin mayusculas ni espacios
+
+                        // comparar si existe el sitio del correo en la base de datos (en el arreglo que viene de base de datos)
+                        if ( in_array( $site_minusc_sin_spaces, $allSites) ) {
+                            // si existe el sitio se seta el objeto
+                            $id_site = array_search($site_minusc_sin_spaces, $allSites);
+                            //nombre del sitio (BD)
+                            $asignar['sitio']['name'][$plus] = $site;
+                            //ID del sitio (BD)
+                            $asignar['sitio']['id'][$plus] = $id_site;
+                            
+                        } else {
+                            $asignar['sitio']['name'][$plus] = $site;   
+                            $asignar['sitio']['id'][$plus]   = ($this->dao_site_model->get_id_max() + 1); //añade id nuevo
+                            $newSite = new site_model;
+                            // $newSite->createSite($asignar['sitio']['id'][$plus], $asignar['sitio']['name'][$plus]);
                             $this->dao_site_model->insertNewSite($newSite);
-                            $allSites[count($allSites)] = $newSite;
                         }
                         //fin creacion site
-
                         $plus++;
                     }
                 }
@@ -154,7 +148,7 @@ class SpecificService extends CI_Controller {
                 $asignar['document'] = $this->dao_user_model->getAllDocs();
 
                 $array['asignar'] = $asignar;
-                $this->load->view('excelAssign', $array);
+                // $this->load->view('excelAssign', $array);
             } else {
                 $answer['error'] = "error";
                 $this->load->view('assignService', $answer);
@@ -199,7 +193,7 @@ class SpecificService extends CI_Controller {
                         $service = (explode("-", $id[$x + 2])[0]); // funcion para dividir una cadena de caracteres dependiendo la llave, en este caso se usa para tomar la primera parte, antes del guion (-)
 
                         if ((explode("-", $id[$x + 2])[0][2]) == "0") {
-//los T10 T11 Y T12 hay q convertirlos en C1 C2 Y C3 respectivamente
+                        //los T10 T11 Y T12 hay q convertirlos en C1 C2 Y C3 respectivamente
                             $service = "C1";
                         }
                         if ((explode("-", $id[$x + 2])[0][2]) == "1") {
@@ -217,7 +211,7 @@ class SpecificService extends CI_Controller {
                         //traer todos los servicios
                         $allService = $this->dao_service_model->getAllServices(); //trae todos los servicios
                         for ($i = 0; $i < count($allService); $i++) {
-//comparacion de tipo excel y bd y con a id
+                        //comparacion de tipo excel y bd y con a id
                             if ($service == $allService[$i]->getType()) {
                                 $typeId   = $allService[$i]->getId(); //id del tipo de db
                                 $typeName = $allService[$i]->getType(); //id del tipo de db
@@ -246,28 +240,28 @@ class SpecificService extends CI_Controller {
                         //fin creacion  forecast
 
                         //creacion site
-                        //funcion para traer solo el sitio especifico de una cadena larga de caracteres con la funcion substr_count(x,y), la cual cuenta cuantas veces esta el string(y) en el string(x)
-                        $allSites = $this->dao_site_model->getAllSites(); //llama todos los sitios de la db
-                        $site     = $id[$x + 8]; //celda del excel o arreglo donde esta el sitio
-                        $flag2    = 0;
-                        for ($i = 0; $i < count($allSites); $i++) {
-                            $flag = substr_count($site, $allSites[$i]->getName()); //cuenta cuantas veces esta allsites en site
-                            if ($flag == 1) {
-                                //nombre del sitio (BD)
-                                $asignar['sitio']['name'][$plus] = $allSites[$i]->getName();
-                                //ID del sitio (BD)
-                                $asignar['sitio']['id'][$plus] = $allSites[$i]->getId();
-                                $flag2                         = 1;
-                            }
-                        }
-                        //si no existe el sitio, lo añade a bd con id
-                        if ($flag2 == 0) {
-                            $asignar['sitio']['name'][$plus] = (explode("staciones:", $site)[1]);
-                            $asignar['sitio']['id'][$plus]   = count($allSites) + 1; //añade id nuevo
-                            $newSite                         = new site_model;
+                        $site     = str_replace(array("(", ")", "\n", "\r", "\t"), '', explode("staciones:", $id[$x + 8])[1]); //celda del excel o arreglo donde esta el sitio
+                        $site_minusc_sin_spaces = strtolower( str_replace(' ', '', $site) );// sitio sin mayusculas ni espacios para 
+
+                        $allSite = $this->dao_site_model->getAllSites(); //llama todos los sitios de la db
+                        $allSites = array_column($allSite, 'N_NAME', 'K_IDSITE'); // sitios sin mayusculas ni espacios
+
+
+                        // comparar si existe el sitio del correo en la base de datos (en el arreglo que viene de base de datos)
+                        if (in_array( $site_minusc_sin_spaces, $allSites)) {
+                            // si existe el sitio se seta el objeto
+                            $id_site = array_search($site_minusc_sin_spaces, $allSites);
+                            //nombre del sitio (BD)
+                            $asignar['sitio']['name'][$plus] = $site;
+                            //ID del sitio (BD)
+                            $asignar['sitio']['id'][$plus] = $id_site;
+                            
+                        } else {
+                            $asignar['sitio']['name'][$plus] = $site;   
+                            $asignar['sitio']['id'][$plus]   = ($this->dao_site_model->get_id_max() + 1); //añade id nuevo
+                            $newSite = new site_model;
                             $newSite->createSite($asignar['sitio']['id'][$plus], $asignar['sitio']['name'][$plus]);
                             $this->dao_site_model->insertNewSite($newSite);
-                            $allSites[count($allSites)] = $newSite;
                         }
                         //fin creacion site
                         $plus++;
@@ -275,7 +269,6 @@ class SpecificService extends CI_Controller {
                 }
                 $asignar['eng']      = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
                 $asignar['document'] = $this->Dao_user_model->getAllDocs();
-                /*print_r($asignar);*/
                 $array['asignar'] = $asignar;
                 $this->load->view('excelAssign', $array);
             } else {
