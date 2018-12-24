@@ -25,6 +25,7 @@
         public $region;
         public $link1;
         public $link2;
+        public $idDocumentador;
 
 		public function __construct(){
 
@@ -130,6 +131,10 @@
 
     public function setLink2($link2){$this->link2 = $link2;}
 
+    public function getNumDoc(){return $this->idDocumentador;}
+
+    public function setNumDoc($idDocumentador){$this->idDocumentador = $idDocumentador;}
+
 		public function createServiceS($id, $duration, $idClaro, $description, $dateStartP, $dateFinishP, $dateCreation, $dateForecast, $order, $site, $service, $user, $claroDescription, $ingSol, $proyecto, $estado, $CRQ){
 			$this->setId($id);
 			$this->setDuration($duration);
@@ -144,12 +149,12 @@
             $this->setSite($site);
             $this->setService($service);
             $this->setUser($user);
-			$this->setIngSol($ingSol);
+ 			$this->setIngSol($ingSol);
 			$this->setProyecto($proyecto);
 			$this->setEstado($estado);
             $this->setCRQ($CRQ);
             $this->setLink1($link1);
-			$this->setLink2($link2);
+      $this->setLink2($link2);
         }
 //camilo--------------------------------------------------------------------------------------
         public function closeService($dateStartR, $dateFinishR, $CRQ, $estado, $cierreDescription){

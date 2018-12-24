@@ -23,7 +23,6 @@ $(function () {
 
         //------------Obtener ingenieros asignados...------------
         getEngs: function(obj){
-            // console.log(obj);
             //contamos la canbtidad de actividades
              var cantActividades = obj.services.length;
              var ing = [];
@@ -31,7 +30,7 @@ $(function () {
              if (obj.services.length > 0) {
                 // En el arreglo ing ingresamos ingeniero asignado para cada actividad
                 for (var i = 0; i < cantActividades; i++) {
-                    ing[i] = "- " + obj.services[i].user.name + " " + obj.services[i].user.lastname + "<br>";
+                    ing[i] = obj.services[i].user.name + " " + obj.services[i].user.lastname ;
                 }
                 //Eliminamos ingenieros duplicados para mostrar unico
                 engs = ing.reduce(function(a,b){
@@ -39,8 +38,33 @@ $(function () {
                     return a;
                   },[]);
              }
+             engs = engs.join(' - ');
              return engs;
         },
+
+        getDocs: function(obj){
+            let cadena = '';
+            const docs = vista.arrayColumn(obj.services, 'idDocumentador');
+            const uniques = docs.reduce(function(a,b){
+                if (a.indexOf(b) < 0 ) a.push(b);
+                    return a;
+            } ,[]);
+            uniques.forEach(function(doc){
+                if (doc != '0')
+                    cadena += docs_names[doc] + ' - ';
+            });
+
+            return cadena.slice(0,-3);
+        },
+
+        // equivalente de array_column de php
+        arrayColumn: function(array, columnName){
+            return array.map(function(value,index) {
+                return value[columnName];
+            })
+        },
+
+
 
         //------------Obtener barras de progreso------------
         getProgress: function(obj){
@@ -116,8 +140,6 @@ $(function () {
         },
 
         getDescription: function(obj){
-          console.log(obj);
-             // console.log(obj.services[0].claroDescription);
             var ini = obj.services[0].claroDescription.substring(0,45);
             var description ="";
             $(document).ready(function(){
@@ -141,7 +163,6 @@ $(function () {
 
         getdateStartP: function (obj){
 
-            // console.log(obj);
 
            var role=$('#session_role').val();
 
@@ -155,7 +176,6 @@ $(function () {
         },
 
         genericCogDataTable: function (url, table) {
-            // console.log();
             // $('.contentPrincipal').removeClass('hidden');
             return {
                 columns: [
@@ -170,6 +190,7 @@ $(function () {
                     {title: "Proyecto", data: "services.0.proyecto"},
                     {title: "Region", data: "services.0.region"},
                     {title: "Ingenieros Asignados", data: vista.getEngs},
+                    {title: "Documentadores Asignados", data: vista.getDocs},
                     {title: "Descripción de la orden", data: vista.getDescription},
                     {title: "Prioridad", data: vista.getPrioridad},// Cantidad de actividades
                     {title: "#", data: "services.length"},// Cantidad de actividades
@@ -266,7 +287,6 @@ $(function () {
                 // callback
                 function(data){
                     var res = JSON.parse(data);
-                    console.log(res);
                     if (res == 'ok') {
                         swal("Se actualizo correctamente!", "", "success");
 
@@ -307,7 +327,6 @@ $(function () {
                 return;
             }
             var record = table.row(tr).data();
-            // console.log(tr, record);
             $('#formDetallesBasicos').fillForm(record);
             $('#modalPreview').modal('show');
         },

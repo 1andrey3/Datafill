@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="<?= URL::to('assets/css/emergente.min.css'); ?>">
   <!-- datatables-->
   <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-  <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap2.css'); ?>" rel="stylesheet">
   <link href="<?= URL::to('assets/css/bootstrap.min.css" rel="stylesheet'); ?>">
   <!--   HEADER CSS    -->
   <link href="<?= URL::to('assets/css/styleHeader.css?v=1.0'); ?>" rel="stylesheet" />
@@ -31,15 +30,18 @@
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
   <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
   <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
   <script type="text/javascript" charset="utf-8" async defer>
     //Funcion para mostrar mensaje de error de validacion de datos
     function modalEditar(servicio, orden, idIng, role){
 
       $('#orden').html("Orden: "+orden);
+      
       var body = "";
     //------------------Tabla Modal------------------
     for (var i = 0; i < servicio.services.length; i++) {
       if (servicio.services[i].user.id == idIng || role == 0 || role == 4 || role == 5) {
+        
         body += "<tr>";
         body += "<input type='hidden' name='ot' id='ot' value='"+orden+"'>";
         body += "<th><input type='checkbox' class='checkbox' name='checkbox[]' id= "+i+" value="+servicio.services[i].idClaro+" onclick='validarForm()'></th>";
@@ -50,6 +52,24 @@
       body += "<td>"+servicio.services[i].quantity+"</td>";
       body += "<td>"+servicio.services[i].site.name+"</td>";
       body += "<td>"+servicio.services[i].user.name+" "+servicio.services[i].user.lastname+"</td>";
+      body += "<td>"+ ((servicio.services[i].idDocumentador == 0) ? '' : docs_names[servicio.services[i].idDocumentador]) +"</td>";
+
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      // body += "<td>"+(123)+"</td>"; ACÁ DEBO TRAER EL NOMBRE DE LOS DOCUMENTADORES
+      //
+      //
+      //
+      //
+      //
+      //
+      //
       body += "<td>"+servicio.services[i].dateStartP+"</td>";
       if (servicio.services[i].estado == 'Cancelado') {
         body += "<td>"+servicio.services[i].dateStartP+"</td>";
@@ -329,6 +349,8 @@ function showMessage(mensaje){
             </li>
             <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
             </li>
+            <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+            </li>
           </li>
           <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
           </li>
@@ -439,7 +461,7 @@ function showMessage(mensaje){
         <h4 class="modal-title" id="titleEvent">Modal tabla vencidas</h4>
       </div>
       <div class="modal-body" id="cuerpoModal">
-        <table id="tableEventosPrioritarios" class='table table-bordered table-striped' width='100%'>
+        <table id="tableEventosPrioritarios" class='table_cr table-hover table-striped table ' width='100%'>
         </table>
       </div>
       <div class="modal-footer">
@@ -452,13 +474,14 @@ function showMessage(mensaje){
 <!--========================================= tabla transporte =========================================-->
 <?php
 if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
-  echo "<div style='display: block; padding-top: 40px' id='section_transport'></div><div class='container'>";
+  // echo "<div style='display: block; padding-top: 40px' id='section_transport'></div><div class='container-fluid'>";
+  echo "<br><br>";
 //<!-- /.box-header -->
-  echo "<div class='box-body'>";
+  echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
   echo "<legend >Lista de Actividades TRANSPORTE</legend>";
   echo "</center>";
-  echo "<table id='tableTransport' class='table table-bordered table-striped' width='100%'>";
+  echo "<table id='tableTransport' class='table-hover table_cr table table-striped' width='100%'>";
   echo "</table>";
   echo "</div>";
   echo "</div>";
@@ -468,19 +491,23 @@ if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
 //   //========================================<!-- tabla gdatos========================================-->
   echo "<div id='section_GDATOS'></div><br><br><br>";
-  echo "<div class='container' >";
+  echo "<div>";
 //       //<!-- /.box-header -->
-  echo "<div class='box-body'>";
+  echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
   echo "<legend>Lista de Actividades GDATOS</legend>";
   echo "</center>";
-  echo "<table id='tableGDATOS' class='table table-bordered table-striped'>";
+  echo "<table id='tableGDATOS' class='table_cr table  table-hover table-striped'>";
   echo "</table>";
   echo "</div>";
   echo "</div>";
 //        //===================================<!-- fin tabla GDATOS ===================================-->
 }
 ?>
+
+
+
+
 <!-- Modal -->
 <form method="post" action="" id="formularioModal" class="well form-horizontal">
   <form method="post">
@@ -495,7 +522,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
           <div class="container">
             <div class="modal-body">
               <h3 class="subtitulo">Tabla Actividades</h3>
-              <table id='tablaActividades' class='table table-bordered table-striped'>
+              <table id='tablaActividades' class='table-hover table_cr table table-striped'>
                 <thead>
                   <tr>
                     <th>
@@ -510,6 +537,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                     <th>Cant.</th>
                     <th>Estación base</th>
                     <th>Ingeniero Asignado</th>
+                    <th>Documentador Asignado</th>
                     <th>F. Asignación</th>
                     <th>Fecha Cierre </th>
                     <th>F. Forecast</th>
@@ -523,8 +551,8 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                 </table>
                 <input type="button" id="btn_actualizar_links" value="Actualizar Evidencia">
               </div>
-              <!-- if ($_SESSION["role"] == 0 || $_SESSION["role"] == 4) { -->
-              <div style='display: none;background-color: #fafafa;width: 97%;border-radius: 19px;border: 1px solid #f0f0f0; margin: 15px 16px;' id='reasignar' class="container">
+                <!-- if ($_SESSION["role"] == 0 || $_SESSION["role"] == 4) { -->
+              <div style='transition: 2s; display: none;background-color: #fafafa;width: 97%;border-radius: 19px;border: 1px solid #f0f0f0; margin: 15px 16px;' id='reasignar' class="container">
                 <h3 class="subtitulo">Reasignar Actividades</h3>
                 <div class='row-fluid'>
                   <div class='input-group'>
@@ -651,6 +679,10 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
     </div>
   </div>
 </form>
+
+
+
+
 <!--  container  -->
 <!--footer-->
 <div class="for-full-back " id="footer">
@@ -658,6 +690,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 </div>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> -->
 <?php
+$r = time();
 if (isset($message)) {
   echo '<script type="text/javascript">showMessage("'.$message.'");</script>';
 }
@@ -687,6 +720,7 @@ if (isset($message)) {
   }
 
 
+
   $(function(){
     $("#btn_actualizar_links").click(function(){
       $.ajax({
@@ -704,12 +738,21 @@ if (isset($message)) {
     });
   });
 </script>
-<script type="text/javascript">var baseurl = "<?php echo URL::base(); ?>";</script>
+<script type="text/javascript"> 
+  const list_docs = '<?php echo json_encode($list_docs); ?>';
+  const docs_name = JSON.parse(list_docs);
+  const docs_names = {};
+  $.each(docs_name, function(i, item) {
+     docs_names[item.K_IDUSER] = item['nombres'];
+  });
+
+  var baseurl = "<?php echo URL::base(); ?>";
+</script>
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 <!-- llenar tablas -->
-<script type="text/javascript" src="<?= URL::to('assets/js/services/listServices.js?v= time() '); ?>"></script>
+<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=24"); ?>"></script>
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>

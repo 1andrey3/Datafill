@@ -1,0 +1,103 @@
+/* #tableTransport thead th, #tableGDATOS  thead th, #tableRF thead tr, #tableEventosPrioritarios thead tr, #tablaActividades thead tr,#tableEventos thead tr, #tableEventosChanges thead tr, #tableLog thead tr,#table-fechas thead tr, #tableHistorialLog thead tr, #example thead tr, #example tfoot tr th{ */
+.table_cr thead th, .table_cr thead tr, .table_cr tfoot tr th{
+    background: linear-gradient(#175f9e,#0c2440);
+    color: white;
+    text-align: center;
+    font-weight: normal !important;
+    border: none;
+}
+/* #tableTransport thead th.sorting:hover, #tableGDATOS  thead th:hover, th.sorting_desc:hover, th.sorting_asc:hover, #tableEventosPrioritarios thead tr th:hover, th.sorting_des{ */
+/* #tableTransport thead th.sorting:hover, #tableGDATOS  thead th:hover, th.sorting_desc:hover,tr.sorting_desc:hover, th.sorting_asc:hover,tr.sorting_asc:hover, #tableEventosPrioritarios thead tr th:hover, th.sorting_des:hover, th.sorting:hover{ */
+/* .table_cr thead th:hover,.table_cr tfoot tr th:hover,.table_cr thead tr td:hover.table_cr thead tr:hover{ */
+.table_cr thead th:hover,.table_cr tfoot tr th:hover,.table_cr thead tr td:hover{
+    background: linear-gradient(#163a5a,#061b33) !important;
+}
+.sorting:after{color: #4ace8b;}
+.table_cr a.link-ver-actividades{
+    cursor: pointer;
+    background: #1767c4;
+    padding: 6px 2px;
+    color: #ffffff;
+    position: relative;
+    left: -8px;
+    top: 26px;
+    transition: .5s;
+    text-decoration: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    float: left;
+}
+.table_cr a.link-ver-actividades:hover{
+    background: #126d15;
+    transition: .2s;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+a.link-ver-actividades:active{
+    background: #10529c;
+    border: 1px solid #a6c7ff;
+    border-left: none;
+}
+th.sorting:active,th.sorting_desc:active,th.sorting_asc:active{
+    transition: .3s;
+    background: #061b33;
+}   
+th.sorting_desc,th.sorting_asc, th.sorting{
+    transition: .3s;
+    text-align: center;
+}
+/* body #tableTransport_length, #tableTransport_filter, #tableGDATOS_length,#tableGDATOS_filter, #tableRF_filter label, #tableEventosPrioritarios_length, #tableEventosPrioritarios_filter,#table-fechas_filter,#table-fechas_length, #example_filter { */
+.dataTables_length,.dataTables_filter{
+    background: linear-gradient(#10355b,#175e9a);
+    position: relative;
+    top: 6px;   
+    padding: 20px 20px 12px 20px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid gray;
+    border-bottom: none;
+    color: white;
+    font-weight: normal;
+    font-size: 11px;
+    text-align: center;
+}
+/* body #tableTransport_length, #tableTransport_filter,.table_cr, #tableEventosPrioritarios, #tableGDATOS_length, #tableGDATOS_filter,#tableEventosPrioritarios_length,#tableEventosPrioritarios_filter{
+     */
+/* } */
+#tableGDATOS{
+    width: 100% !important;
+}
+div.collapse navbar-collapse navbar-ex1-collapse a{
+    background: red !important;
+}
+table{
+    border: 1px solid #d0cdcd;
+    border-top: none
+}
+td#Asignada{
+    background: #97e4cf;
+    border: 1px solid #15549c;
+}
+td#Asignada,#ejecutado,#Cancelado,#Enviado{
+    vertical-align: middle;    
+}
+button.dt-button.buttons-columnVisibility.active, button.dt-button.buttons-columnVisibility{
+    color: black !important;
+}
+
+div.dataTables_processing {
+    position: absolute;
+    left: 32.5%;
+    top: 4em;
+    padding: 20px 14.8%;
+    border: 3px solid;
+    border-radius: 31px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    animation: bucle 3s infinite !important;
+}
+ @keyframes bucle {
+	 0%{background-color: #175e9d; color: whitesmoke;border-color: whitesmoke;}
+	 50%{background-color: whitesmoke;color: #175e9d;border-color: #175e9d;}
+	 100%{background-color: #175e9d; color: whitesmoke;border-color: whitesmoke;}
+ }

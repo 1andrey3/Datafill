@@ -17,7 +17,7 @@
     <!-- Navigation -->
     <header>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
+            <div class="container navbar-inverse">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -48,10 +48,12 @@
                                 <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                             </ul>
                         </li>
-                         <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                        <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                        </li>
+                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                         </li>
                         </li>
-                         <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                        <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
                         </li>
                     </ul>
                 </div>

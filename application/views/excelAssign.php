@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Asignar</title>
@@ -18,7 +18,8 @@
         <script src="<?= URL::to('assets/js/jquery-2.1.1.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/js/bootstrap.js'); ?>"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
+
 <style>
 
   #content{
@@ -36,6 +37,7 @@
   }
   #botones{
     margin-bottom: 15px;
+    display: inline-block;
   }
 
   .selected{
@@ -49,6 +51,49 @@
     background-color: rgba(0, 0, 0, 0.1);
     color: white;
   }
+  .stylesxx{
+    background-color: #32bd54 !important;
+    display: none;
+    top: -55px;
+    float: right;
+    color: #fff !important;
+    z-index: 2;
+    animation: aparecer .5s ease;
+    border: 2px solid #32bd54;
+    transition: .3s;
+    font-weight: bold;
+  }
+  .stylesxx:hover{
+    background: #fff !important;
+    color: #32bd54 !IMPORTANT;
+  }
+  @keyframes aparecer{
+    from{transform: scale(0)};
+    to{transform: scale(1)};
+  }
+  #bt_delall,#bt_add{
+    border: 1px solid #ddd;
+    transition: .3s;
+    background: #eeeeee;
+    color: #555555;
+  }
+  #bt_delall:hover,#bt_add:hover{
+    /* border-color: black; */
+    transition: .3s;
+    /* color: white; */
+    background: white;
+    border-width: 1.6px;
+  }
+  #bt_delall:hover{
+    border-color: #dc1c1c;
+    color: #dc1c1c;
+  }
+  #bt_add:hover{
+    border-color: #4dbd38;
+    color: #4dbd38;
+  }
+
+
 </style>
     <script>
       var cont = 0;
@@ -82,8 +127,6 @@
           }
         }
 
-        // console.log(users);
-        // console.log(tipo);
 
         cont++;
         var fila='<tr class="selected" id="fila'+cont+'" >';
@@ -102,7 +145,7 @@
         fila = fila + '</select>';
         fila = fila + '</td>';
         fila = fila + '<td>';
-        fila = fila + '<input type="text" class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
+        fila = fila + '<input type="text"  disabled class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
         fila = fila + '</td>';
         fila = fila + '<td>';
         if(cont>1){
@@ -124,7 +167,6 @@
           sumados = sumados + parseInt(s.value);
     // sumados += s.value;
     var porc = document.getElementById("porcen"+i);
-    //console.log(porc);
     porc.value = 100/cantidadExcel*parseInt(s.value);
     }
     if(sumados != cantidadExcel){
@@ -133,8 +175,6 @@
     } else {
       var btform = document.getElementById("bt_form");
       btform.style.display = 'block';    }
-      console.log(sumados);
-      console.log(cantidadExcel);
     }
     function reordenar(){
       var num=1;
@@ -154,7 +194,7 @@
 
 </head>
 <body>
-  <?php 
+  <?php
     // header('Content-Type: text/plain');
     // print_r($asignar['eng']);
 
@@ -195,6 +235,8 @@
                         </li>
                          <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
                         </li>
+                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+                        </li>
                         </li>
                          <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
                         </li>
@@ -203,25 +245,30 @@
             </div>
         </nav>
      </header><br><br><br><br>
-
-<form class="form-group" action=" " method="post"  id="assignEng" name="assignEng"> 
-  <div id="content">
-    <div class="btn-group col-xs-8" id="botones">
-        <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-        <div class="form-group" style="display: flex; padding-left: 108px;">
-            <label class="col-md-4 control-label">Fecha Asignación ZTE:</label>
-            <div class="col-md-9 selectContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
-                    <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
-                    <div class="input-group-btn">
-                        <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </div>
-                </div>
-            </div>
+<!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
+<form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
+  <div id="botones">
+    <div class="btn-group" style="float:left;">
+      <a id="bt_add" class="btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+      <a id="bt_delall" class="btn" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <label class="control-label" style="float: left;padding: 0px 39px;position: relative;top: 6px;">Fecha Asignación  ZTE:</label>
+      <div class="selectContainer col-sm-3" style="padding:0px;">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
+          <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
+          <div class="input-group-btn">
+            <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon  glyphicon-calendar"></i></button>
+          </div>
         </div>
+      </div>
+    </div>
             <span class="advertencia" style="display: none;"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;  La fecha de asignación a ZTE no puede ser menor a la de creación &nbsp;&nbsp; <i class="glyphicon glyphicon-warning-sign"></i></span>
+            <!-- <?php
+              // echo var_dump($document);
+              echo print_r($asignar['document']);
+            ?> -->
 <?php
         echo "<input type='hidden' name='OT' id='OT' value='".$asignar['ot']."'>";
         echo "<input type='hidden' name='prioridad' id='prioridad' value='".$asignar['prioridad']."'>";
@@ -230,7 +277,7 @@
         echo "<input type='hidden' name='proyecto' id='proyecto' value='".$asignar['proyecto']."'>";
         echo "<input type='hidden' name='descripcion' id='descripcion' value='".$asignar['descripcion']."'>";
         echo "<input type='hidden' name='contador' id='contador' value='".count($asignar['actividades'])."'>";
-        for ($r=0; $r < count($asignar['actividades']); $r++) {          
+        for ($r=0; $r < count($asignar['actividades']); $r++) {
           echo "<input type='hidden' name='actividades_".$r."' id='actividades_".$r."' value='".$asignar['actividades'][$r]."'>";
           echo "<input type='hidden' name='tipo_".$r."' id='tipo_".$r."' value='".$asignar['tipo']['idTipo'][$r]."'>";
           echo "<input type='hidden' name='regional_".$r."' id='regional_".$r."' value='".$asignar['regional'][$r]."'>";
@@ -238,12 +285,13 @@
           echo "<input type='hidden' name='descripcionActividad_".$r."' id='descripcionActividad_".$r."' value='".$asignar['descripcionActividad'][$r]."'>";
           echo "<input type='hidden' name='forecast_".$r."' id='forecast".$r."' value='".$asignar['forecast'][$r]."'>";
           echo "<input type='hidden' name='sitio_".$r."' id='sitio".$r."' value='".$asignar['sitio']['id'][$r]."'>";
+          echo "<input type='hidden' placeholder='documentador#$r' name='id_documentador_".$r."' id='documentador_".$r."'>";
         }
-  
+
  ?>
     </div>
-      <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "this.form.action = '<?= URL::to('SpecificService/saveServicesExcel'); ?>'">
-        <table id="tabla" class="table table-bordered">
+      <input type="submit" name="bt_form" id="bt_form" value="Enviar Asignación " class="btn col-xs-5 stylesxx" onclick = "validar_selects_doc()">
+        <table id="tabla" class="table_cr table">
         <thead>
           <tr>
             <td>Nº</td>
@@ -253,7 +301,7 @@
           </tr>
         </thead>
   </table>
-  </div>         
+  </div>
 </form>
 <!--      fin header         -->
 <section class="content">
@@ -271,7 +319,7 @@
        echo "</div>";
        echo "<!-- /.box-header -->";
        echo "<div class='box-body'>";
-         echo "<table id='example' class='table table-bordered table-striped'>";
+         echo "<table id='example' class='table_cr table-hover table table-striped'>";
            echo "<thead>";
            echo "<tr>";
              echo "<th>ID Actividad</th>";
@@ -280,11 +328,12 @@
              echo "<th>Cantidad</th>";
              echo "<th>Descripcion</th>";
              echo "<th>Forecast</th>";
+             echo "<th>Documentador</th>";
            echo "</tr>";
            echo "</thead>";
            echo "<tbody>";
-           for ($i=0; $i < count($asignar['actividades']) ; $i++) { 
-             
+           for ($i=0; $i < count($asignar['actividades']) ; $i++) {
+
            echo "<tr>";
              echo "<td>".$asignar['actividades'][$i]."</td>";//id actividad
              echo "<td>".$asignar['tipo']['name'][$i]."</td>";//tipo actividad
@@ -292,9 +341,14 @@
              echo "<td>".$asignar['cantidad'][$i]."</td>";//cantidad
              echo "<td>".$asignar['descripcionActividad'][$i]."</td>";//descripcion actividad
              echo "<td>".$asignar['forecast'][$i]."</td>";//forecast
+             echo "<td> <select name='documentador' class='select_doc form-control'>
+                  <option value='0'>seleccione documentador</option>";
+                  for ($j=0; $j < count($asignar['document']); $j++) {
+                    echo "<option value='".$asignar['document'][$j]->K_IDUSER."'>".$asignar['document'][$j]->nombres."</option>";
+                  }
+             echo '</select></td>';// documentador
            echo "</tr>";
            }
-
            echo "<tfoot>";
            echo "<tr>";
              echo "<th>ID Actividad</th>";
@@ -303,6 +357,7 @@
              echo "<th>Cantidad</th>";
              echo "<th>Descripcion</th>";
              echo "<th>Forecast</th>";
+             echo "<th>Documentador</th>";
            echo "</tr>";
            echo "</tfoot>";
          echo "</table>";
@@ -324,10 +379,13 @@
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
+<script src="<?= URL::to('assets/js/documentador.js'); ?>"></script>
 
 <script>
   $(function () {
-    $("#example").DataTable();
+    $("#example").DataTable({
+      "paging": false
+    });
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

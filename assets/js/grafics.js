@@ -167,7 +167,6 @@ $(function () {
         },
 
         printTableModal: function(data){
-            // console.log(data);
             if(vista.tableModal){
                 var tabla = vista.tableModal;
                 tabla.clear().draw();
@@ -226,7 +225,6 @@ $(function () {
         showModal: function (parametros, mes){
             $('#graficsModal').modal('show');
             $('#titleMonth').html('Graficas del mes de <b>'+mes+' </b>');
-            // console.log(mes);
             $('#contentModalGrafics').html('<canvas id="modalGrafics" width="400" height="150"></canvas>');
             var ctx = $("#modalGrafics");
             var myChart = new Chart(ctx, {
