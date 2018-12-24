@@ -123,6 +123,7 @@ class SpecificService extends CI_Controller {
                         $allSite = $this->dao_site_model->getAllSites(); //llama todos los sitios de la db
                         $allSites = array_column($allSite, 'N_NAME', 'K_IDSITE'); // sitios sin mayusculas ni espacios
 
+
                         // comparar si existe el sitio del correo en la base de datos (en el arreglo que viene de base de datos)
                         if ( in_array( $site_minusc_sin_spaces, $allSites) ) {
                             // si existe el sitio se seta el objeto
@@ -132,11 +133,14 @@ class SpecificService extends CI_Controller {
                             //ID del sitio (BD)
                             $asignar['sitio']['id'][$plus] = $id_site;
                             
+
+
+                            
                         } else {
                             $asignar['sitio']['name'][$plus] = $site;   
                             $asignar['sitio']['id'][$plus]   = ($this->dao_site_model->get_id_max() + 1); //añade id nuevo
                             $newSite = new site_model;
-                            // $newSite->createSite($asignar['sitio']['id'][$plus], $asignar['sitio']['name'][$plus]);
+                            $newSite->createSite($asignar['sitio']['id'][$plus], $asignar['sitio']['name'][$plus]);
                             $this->dao_site_model->insertNewSite($newSite);
                         }
                         //fin creacion site
@@ -148,7 +152,7 @@ class SpecificService extends CI_Controller {
                 $asignar['document'] = $this->dao_user_model->getAllDocs();
 
                 $array['asignar'] = $asignar;
-                // $this->load->view('excelAssign', $array);
+                $this->load->view('excelAssign', $array);
             } else {
                 $answer['error'] = "error";
                 $this->load->view('assignService', $answer);
