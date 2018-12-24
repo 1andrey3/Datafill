@@ -33,6 +33,7 @@ class Configdb_model extends CI_Model {
     //   }
     //   return $connection;
     // }
+    
     // /**************************servidor del cliente**************************/
     // public function openSession(){
     //   $user = "adminZTE";

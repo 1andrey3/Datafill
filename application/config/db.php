@@ -24,7 +24,7 @@ return [
       |
      */
 
-    'default' => 'mysqlLocalhost',
+    'default' => 'local',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
@@ -41,7 +41,7 @@ return [
       |
      */
     'connections' => [
-        'mysql' => [
+        'servidor' => [
             'driver' => 'mysql',
             'host' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
             'port' => '3306',
@@ -54,7 +54,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-        'mysqlLocalhost' => [
+        'local' => [
             'driver' => 'mysql',
             'host' => 'localhost',
             'port' => '3306',
