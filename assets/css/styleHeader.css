@@ -1,46 +1,46 @@
 
-            * {
-                margin:0px;
-                padding:0px;
-            }
+* {
+    margin:0px;
+    padding:0px;
+}
 
 
-            ul, ol {
-                list-style:none;
-            }
+ul, ol {
+    list-style:none;
+}
 
-            .nav li a {
-                background-color:#207be5;
-                text-decoration:'Open Sans', sans-serif;;
-                padding:15px 12px;
-                display:block;
-            }
+.nav li a {
+    background-color:#207be5;
+    text-decoration:'Open Sans', sans-serif;;
+    padding:15px 12px;
+    display:block;
+}
 
 
-            .nav li ul {
-                display:none;
-                position:absolute;
-                min-width:180px;
-            }
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:180px;
+}
 
-            .nav li a:hover {
-                background-color: rgba(22, 69, 231, 0.6);
-            }
-            .nav li:hover > ul {
-                display:block;
-            }
-            .navbar a {
-                color:#ffffff !important;
-            }
+.nav li a:hover {
+    background-color: rgba(22, 69, 231, 0.6);
+}
+.nav li:hover > ul {
+    display:block;
+}
+.navbar a {
+    color:#ffffff !important;
+}
 
-            .cam:hover{
-                background: rgba(0,0,0,0.1);
-            }
-            .navbar-inverse {
-            background-color: #207be5;
-            border-color: blue;
-            }
-  /*----------------------------------------------------*/
+.cam:hover{
+    background: rgba(0,0,0,0.1);
+}
+.navbar-inverse {
+    background-color: #207be5;
+    border-color: blue;
+}
+/*----------------------------------------------------*/
 
 #Cancelado{
     color: white;
@@ -60,16 +60,16 @@
 }
 
 body {
-          font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size:14px;
 }
 
 
 #logo{
-height: 30px;
-width: 60px;
-margin-top: 10px;
-/*margin-left: -80px;*/
+    height: 30px;
+    width: 60px;
+    margin-top: 10px;
+    /*margin-left: -80px;*/
 }
 
 
@@ -100,51 +100,51 @@ margin-top: 10px;
     display: none !important;
 }
 table#tableTransport{
-  display: block !important;;
-  width: 100% !important;
-  
+    display: block !important;;
+    width: 100% !important;
+
 }
 table#tableTransport th{
-  font-size: 12px;
-  background-color:#207be5;
-  color:#fff;
-  text-align:center;
-  border: 1px solid #545458;
-  text-shadow: .5px 0.5px 0px #000;
+    font-size: 12px;
+    background-color:#207be5;
+    color:#fff;
+    text-align:center;
+    border: 1px solid #545458;
+    text-shadow: .5px 0.5px 0px #000;
 }
 table#tableTransport td{
-  font-size: 13px;
+    font-size: 13px;
 }
-table#tableTransport td:nth-child(1){    
-  max-width: 25px !important;
+table#tableTransport td:nth-child(1){
+    max-width: 25px !important;
 }
-table#tableTransport td:nth-child(2){      
-  max-width: 40px !important;
+table#tableTransport td:nth-child(2){
+    max-width: 40px !important;
 }
 table#tableTransport td:nth-child(9){
-  max-width: 120px !important;
-  word-wrap: break-word;
+    max-width: 120px !important;
+    word-wrap: break-word;
 }
 table#tableGDATOS th{
-  font-size: 12px;
-  background-color:#207be5;
-  color:#fff;
-  text-align:center;
-  border: 1px solid #545458;
-  text-shadow: .5px 0.5px 0px #000;
+    font-size: 12px;
+    background-color:#207be5;
+    color:#fff;
+    text-align:center;
+    border: 1px solid #545458;
+    text-shadow: .5px 0.5px 0px #000;
 }
 .h1-c{
-  text-align: center;
-  letter-spacing: 5px;
-  word-spacing: 15px;
-  font-weight: bold;
-  margin-bottom: 2%;
-  text-shadow: 1px 1px 1px #207be5;
+    text-align: center;
+    letter-spacing: 5px;
+    word-spacing: 15px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    text-shadow: 1px 1px 1px #207be5;
 }
 
 .panelCami {
     height: 40px;
-    
+
     padding-top: 0;
 }
 
@@ -161,7 +161,7 @@ table#tableGDATOS th{
 
 .navCami li a:active{
     padding: 8px 25px;
-    background-color: rgba(51, 122, 183, 0.79);  
+    background-color: rgba(51, 122, 183, 0.79);
 }
 
 .advertencia {
@@ -175,45 +175,45 @@ table#tableGDATOS th{
 /************ TABLA FECHAS INCONSISTENTES*********** */
 
 table#table-fechas{
-  display: block !important;;
-  width: 100% !important;
-  border: 2px solid #c5c4c4;
-  
+    display: block !important;;
+    width: 100% !important;
+    border: 2px solid #c5c4c4;
+
 }
 table#table-fechas th{
-  font-size: 11px;
-  background-color:#207be5;
-  color:#fff;
-  text-align:center;
-  border: 1px solid #545458;
-  text-shadow: .5px 0.5px 0px #000;
+    font-size: 11px;
+    background-color:#207be5;
+    color:#fff;
+    text-align:center;
+    border: 1px solid #545458;
+    text-shadow: .5px 0.5px 0px #000;
 }
 table#table-fechas td{
-  font-size: 11px;
+    font-size: 11px;
 }
-table#table-fechas td:nth-child(5){    
-  max-width: 90px !important;
+table#table-fechas td:nth-child(5){
+    max-width: 90px !important;
 }
-table#table-fechas td:nth-child(7){      
-  max-width: 90px !important;
+table#table-fechas td:nth-child(7){
+    max-width: 90px !important;
 }
 table#table-fechas td:nth-child(8){
-  max-width: 90px !important;
+    max-width: 90px !important;
 }
 table#table-fechas td:nth-child(9){
-  max-width: 110px !important;
+    max-width: 110px !important;
 }
 table#table-fechas td:nth-child(11){
-  max-width: 110px !important;
+    max-width: 110px !important;
 }
 table#table-fechas td:nth-child(12){
-  max-width: 0px !important;
-  font-size: 9px
+    max-width: 0px !important;
+    font-size: 9px
 }
 
 table#table-fechas input{
-  height: 20px;
-  width: 110px;
+    height: 20px;
+    width: 110px;
 }
 
 .container-max {
@@ -232,5 +232,24 @@ table#table-fechas input{
 }
 
 .fz-18{
-  font-size: 18px;
+    font-size: 18px;
+}
+
+.btn-cami_cool {
+    background: transparent;
+    border-radius: 0;
+    border: 1px solid #084c6f;
+    color: #084c6f;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 6px 35px;
+    transition: all 0.4s ease-in-out;
+}
+.btn-cami_cool:hover {
+    background: #084c6f;
+    color: #ffffff;
+}
+
+.dt-buttons{
+    text-align: center;
 }
