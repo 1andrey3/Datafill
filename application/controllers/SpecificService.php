@@ -379,9 +379,10 @@ class SpecificService extends CI_Controller {
     public function executeByExcel() {
         $dic = str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])[40]);
         if ($dic != "Fecha ejecución") {
+
             $_POST['actividades'] = str_replace("\t", "\n", $_POST['actividades']);
             $clave                = str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])[23]);
-            if ($clave == "Fecha ejecución") {
+            if ($clave == "Fecha ejecución" || $clave == "Estado") {
                 $orden                   = explode("Servicios unitarios", $_POST['actividades']);
                 $ejecutar['ot']          = str_replace(array("\n", "\r", "\t", " "), '', explode("\n", $orden[0])[3]);
                 $ejecutar['solicitante'] = explode("\n", $orden[0])[5];
