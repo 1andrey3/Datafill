@@ -88,7 +88,7 @@
                 <legend>Modernizaciones asociadas a la orden <b><?= $idOrden; ?></b></legend>
             </center>
             <div class="col col-md-12">
-                <table id="tabla_ordenAsoc" class="table table-bordered table-striped dataTable no-footer"></table>
+                <table id="tabla_ordenAsoc" class="table table-bordered table-striped table-hover dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->
@@ -99,9 +99,22 @@
 
         <script type="text/javascript">var baseurl = "<?php echo URL::base(); ?>";</script>
         <script type="text/javascript">var idOrden = <?php echo $idOrden; ?>;</script>
+        <script type="text/javascript">
+            var formato_fecha = new Date();
+            const meses_anual = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+            var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+        </script>
         <!-- DataTables -->
         <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
+
         <!-- llenar tablas -->
         <script type="text/javascript" src="<?= URL::to('assets/js/services/listServices.js?v= time() '); ?>"></script>
         <!-- alertas de proximidad de tiempo -->
