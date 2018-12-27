@@ -7,17 +7,15 @@
         <!--   ICONO PAGINA    -->
         <link rel="icon" href="http://cellaron.com/media/wysiwyg/zte-mwc-2015-8-l-124x124.png">
         <!--   BOOTSTRAP    -->
-        <link href="<?= URL::to('assets/css/bootstrap.css'); ?>" rel="stylesheet" />
         <script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
         <script type="text/javascript" src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/bootstrap/css/bootstrap.min.css'); ?>">
         <!-- bottstrap select -->
         <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> -->
         <!-- modal stilo -->
         <link rel="stylesheet" href="<?= URL::to('assets/css/emergente.min.css'); ?>">
         <!-- datatables-->
-        <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-        <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap2.css'); ?>" rel="stylesheet">
-        <link href="<?= URL::to('assets/css/bootstrap.min.css" rel="stylesheet'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css'); ?>">
         <!--   HEADER CSS    -->
         <link href="<?= URL::to('assets/css/styleHeader.css?v=1.0'); ?>" rel="stylesheet" />
         <!-- boton -->
@@ -88,7 +86,7 @@
                 <legend>Modernizaciones asociadas a la orden <b><?= $idOrden; ?></b></legend>
             </center>
             <div class="col col-md-12">
-                <table id="tabla_ordenAsoc" class="table table-bordered table-striped table-hover dataTable no-footer"></table>
+                <table id="tabla_ordenAsoc" class="table table-bordered table-striped table-hover dataTable dataTable_camilo"></table>
             </div>
         </div>
         <!--  container  -->
@@ -105,20 +103,19 @@
             var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
         </script>
         <!-- DataTables -->
-        <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
-        <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
-        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
+        <script src="<?= URL::to('assets/plugins/datatables2/DataTables-1.10.16/js/jquery.dataTables.min.js'); ?>"></script>
+        <script src="<?= URL::to('assets/plugins/datatables2/js/dataTables.bootstrap.js?v=1.0'); ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/dataTables.buttons.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/jszip.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/pdfmake.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/vfs_fonts.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/buttons.html5.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/buttons.print.min.js") ?>"></script>
+        <script type="text/javascript" src="<?= URL::to("assets/plugins/datatables2/js/dataTables.select.min.js") ?>"></script>
+        
 
         <!-- llenar tablas -->
-        <script type="text/javascript" src="<?= URL::to('assets/js/services/listServices.js?v= time() '); ?>"></script>
         <!-- alertas de proximidad de tiempo -->
-        <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
         <script type="text/javascript" src="<?= URL::to('assets/js/ordenModerDetail.js'); ?>"></script>
     </body>
 </html>
