@@ -1,5 +1,5 @@
 .modal-header{
-    background-color: #207be5;
+    background-color: #1e3f67;
     color: #fff;    
     box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.91);
 }
@@ -11,7 +11,7 @@
 }
 
 .modal-footer{
-    background-color: #207be5;
+    background-color: #1e3f67;
     box-shadow: -1px -1px 9px rgba(0, 0, 0, 0.91);
 }
 .modal-footer button{
@@ -43,6 +43,7 @@
     border-radius: 6px;
     float: right;
     margin: -18px 0px;
+    transition: .5s;
 }
 
 #btn_actualizar_links:hover{
@@ -50,21 +51,18 @@
     color:#207be5;
     border: 1px solid;
     box-shadow: inset 0px 0px 8px 1px #acc8e8;
+    transition: .5s;
 }
 
 .subtitulo {
     padding: 20px 0px;
-    color:#207be5
+    color:#000
 }
 
-#tablaActividades td {
+#tablaActividades td, #tablaActividades thead{
     font-size:11px
 }
 
-#tablaActividades thead {
-    background-color:#207be5;
-    color:#fff;
-    font-size:11px
-}
+
 
 

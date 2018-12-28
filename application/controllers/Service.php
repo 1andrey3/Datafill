@@ -166,5 +166,3 @@ class Service extends CI_Controller {
     }
 
 }
-
-

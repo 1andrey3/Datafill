@@ -27,14 +27,25 @@
             }
 
             .nav li a {
-                background-color:#207be5;
-                text-decoration:'Open Sans', sans-serif;;
+                background-color: inherit;
                 padding:15px 12px;
                 display:block;
             }
 
+            .nav li a:hover {
+                background-color: rgb(32, 123, 229);
+                transition: .4s;
+            }
+            .navbar a {
+                color:#ffffff !important;
+                text-decoration: none;
+            }
+            .navbar a:hover {
+                background-color: rgb(32, 123, 229)!important;
+            }
 
             .nav li ul {
+                background: #004c96;
                 display:none;
                 position:absolute;
                 min-width:180px;
@@ -142,8 +153,10 @@ nav {
 }
 
 .navbar-inverse {
-background-color: #207be5;
-border-color: blue;
+    background: linear-gradient(#0e2d4e,#15538a);
+    border-color: blue;
+    transition: 1.2s;
+    font-size: 13px;
 }
 #logo{
 height: 30px;
@@ -303,10 +316,11 @@ color: #5e5d5d ;
 
 
 #footer {
-    background-color:#207be5;
+    background: linear-gradient(#155289,#0f3357);
     color:#fff;
     padding:20px 50px 20px 50px;
     text-align:center;
+    position:relative;
 }
 
 

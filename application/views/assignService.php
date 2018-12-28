@@ -98,8 +98,6 @@
         <br>
 
         <?php
-        echo "<div class='wrapper tabs'>";
-        $meses[1] = 'Agendamiento';
 
         echo "<center>";
         echo "<ul class='nav'>";
@@ -117,25 +115,22 @@
 
         echo "<div class='container'>";
         echo "<form class= 'well form-horizontal' action='' method='post'  id='assignService' name='assignServie' enctype= 'multipart/form-data'>";
+            echo "<div class='row' style='padding-top: 2em;'>
+                    <div class='col-sm-4 cen'><button  name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\">Asignación  <span class= 'glyphicon glyphicon-plus'></span></button></div>";
+            echo "<div class='col-sm-4 cen'><button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\">Cancelación  <span class= 'glyphicon glyphicon-remove-circle'></span></button></div>";
+            echo "<div class='col-sm-4 cen'><button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\">Ejecución  <span class= 'glyphicon glyphicon-ok-circle'></span></button></div></div><br>";
         echo "<fieldset>";
         echo "<legend >Agendamiento de actividades</legend>";
         //-------- Text area------
         echo "<div class='form-group'>";
-        echo "<label class='col-md-1 control-label'></label>";
-        echo "<div class='col-md-9 inputGroupContainer'>";
+        echo "<div class='col-md-12 inputGroupContainer'>";
         echo "<div class='input-group'>";
         echo "<span class='input-group-addon'><i class='glyphicon glyphicon-file'></i></span>";
         echo "<textarea class='form-control' rows='14' name='actividades' placeholder='Copiar asignación'></textarea>";
         echo "</div>";
-        echo "</div><br><br><br><br>";
-        echo "<center>";
-
-        echo "<button  name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\">Asignación  <span class= 'glyphicon glyphicon-ok'></span></button><br><br>";
-        echo "<button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\">Cancelación  <span class= 'glyphicon glyphicon-ok'></span></button><br><br>";
-        echo "<button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\">Ejecución  <span class= 'glyphicon glyphicon-ok'></span></button>";
-        echo "</center>";
-
-
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
         echo "</fieldset>";
         echo "</form>";
         echo "</div>";

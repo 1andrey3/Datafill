@@ -545,7 +545,6 @@ class Dao_service_model extends CI_Model {
              ss.N_ESTADO != 'Ejecutado' and
              ss.N_ESTADO != 'Cancelado' and
              (ss.N_LINK_SEND is null or ss.N_LINK_EXECUTE is null or ss.N_LINK_SEND = '' or ss.N_LINK_EXECUTE = '') " . $user . "
-             limit 1
 
         ");
 

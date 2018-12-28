@@ -1,0 +1,245 @@
+.table_cr thead th, .table_cr thead tr, .table_cr tfoot tr th{
+    background: linear-gradient(#175f9e,#0c2440);
+    color: white;
+    text-align: center;
+    font-weight: normal !important;
+    border: none;
+}
+.table_cr thead th:hover,.table_cr tfoot tr th:hover,.table_cr thead tr td:hover{
+    background: linear-gradient(#163a5a,#061b33) !important;
+}
+.table_cr .sorting:after{color: #4ace8b;}
+.table_cr a.link-ver-actividades{
+    cursor: help;
+    background: #1767c4;
+    padding: 6px 2px;
+    color: #ffffff;
+    position: relative;
+    left: -8px;
+    transition: .5s;
+    text-decoration: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    float: left;
+}
+.table_cr a.link-ver-actividades:hover{
+    background: #126d15;
+    transition: .2s;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.table_cr a.link-ver-actividades:active{
+    background: #10529c;
+    border: 1px solid #a6c7ff;
+    border-left: none;
+}
+.table_cr th.sorting:active,.table_cr th.sorting_desc:active,.table_cr th.sorting_asc:active,.table_cr th.sorting_desc,.table_cr th.sorting_asc,.table_cr th.sorting{
+    transition: .3s;
+}   
+/* body #tableTransport_length, #tableTransport_filter, #tableGDATOS_length,#tableGDATOS_filter, #tableRF_filter label, #tableEventosPrioritarios_length, #tableEventosPrioritarios_filter,#table-fechas_filter,#table-fechas_length, #example_filter { */
+.dataTables_length,.dataTables_filter{
+    background: linear-gradient(#10355b,#175e9a);
+    padding: 20px 20px 12px 20px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid gray;
+    border-bottom: none !important;
+    color: white !important;
+    font-weight: normal;
+    font-size: 11px;
+    text-align: center; 
+}
+.dataTables_length select{color: black !important}
+.dataTables_length{float: left;}
+.dataTables_filter{float: right;}
+.table_cr{font-size: 11px;
+    text-align: center;}
+#tableGDATOS{
+    width: 100% !important;
+}
+div.collapse navbar-collapse navbar-ex1-collapse a{
+    background: red !important;
+}
+table{
+    border: 1px solid #d0cdcd;
+    border-top: none
+}
+td#Asignada{
+    background: #97e4cf;
+    border: 1px solid #15549c;
+}
+td#Asignada,#ejecutado,#Cancelado,#Enviado{
+    vertical-align: middle;    
+}
+.table_cr button.dt-button.buttons-columnVisibility.active, .table_cr button.dt-button.buttons-columnVisibility{
+    color: black !important;
+}
+div.dataTables_processing {
+    position: absolute;
+    left: 32.5%;
+    top: 3em;
+    padding: 20px 14.8%;
+    border: 3px solid;
+    border-radius: 31px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    animation: bucle 3s infinite !important;
+}
+@keyframes bucle {
+    0%{background-color: #175e9d; color: whitesmoke;border-color: whitesmoke;}
+    50%{background-color: whitesmoke;color: #175e9d;border-color: #175e9d;}
+    100%{background-color: #175e9d; color: whitesmoke;border-color: whitesmoke;}
+}
+.modal_a{
+    background:linear-gradient(132deg,#000000,#00000073);
+    background-size:200%;
+    animation:Animacionxd 30s infinite, nose .5s;
+    height:100%;
+    width:100%;
+    position:fixed;
+    overflow:auto;
+    display:none;
+    top:0px;
+    z-index: 1030;
+}
+@keyframes nose{
+    from{opacity:0;}
+    to{opacity:1;}}
+@keyframes Animacionxd {
+    0%{background-position:0% 100%}
+    50% {background-position:100% 150%}
+    100%{background-position:0% 100%}
+}
+.formContainer{
+    background: white;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 23px;
+    top: 10%;
+}
+.formOrderModer{
+    padding: 15px 13px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2;
+    box-shadow: 5px 13px 20px #5c5c5c;
+}
+#close_modal{
+    height: 50px;
+    width: 50px;
+    float: right;
+    color: #eae7e7;
+    transition: .3s;
+}
+#close_modal:hover{
+    color: white;
+}
+.ex{
+    top: 28%;
+    font-size: 19px;
+
+}
+.camposModal{
+    text-align: center;
+}
+.modalLabel{
+    color: white;
+    font-size: 11px;
+    background: #325358b8;
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+.sinCambio{
+    background: #dfdfdf  !important;
+}
+.sinCambio::placeholder{
+    color: black
+}
+.mar{
+    margin: 10px 0px;
+    background: #eaeaea;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    padding: 10px 0px;
+    padding: 10px 0px;
+    box-shadow: 7px 5px 8px 2px #828181;
+}
+h4 a {
+    padding: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none !important;
+}.centrado{text-align: center;}
+div.panel.panel-default{
+    margin: 5px 0px 28px;
+    box-shadow: 5px 5px 7px 3px #adadad;
+}
+div.panel-heading{transition: .5s; background: #d2d2d2 !important;}
+div.panel-heading:hover{
+        background: #a5a5a5 !important;
+        transition: .5s;
+        color:black;
+}h4.panel-title a{color:black;}
+.style_button{
+    background: #e83a3a;
+    color: white !important;
+    height: 44px;
+    transition: .5s;
+}
+div.block{
+    position: relative;
+    left: 23%;
+}
+.style_button:hover {
+    background: white;
+    border: 2px solid #e83a3a;
+    color: #e83a3a !important;
+    font-weight: bold;
+}
+input.s_b{
+    background-color: #ffce28;
+    font-weight: bold;
+    padding: 8px;
+    transition: .4s;
+}
+input.s_b:hover {
+    background: white;
+    border: 2px solid #ffce28;
+    color: #ffce28;
+}
+.editable{color: #228c26;}.noEditable{color:#d41c2c; }.editable,.noEditable{font-weight: bold}
+button.edModer{
+    padding: 17px 25%;
+    margin-bottom: 1em;
+    color: white;
+    font-weight: bold;
+    background: #3871a2;
+    float: right;
+    border: 2px solid #123f6a;
+    border-radius: 8px;
+    transition: .5s;
+}
+button#edModer:hover {
+    color: #2450a9;
+    background: white;
+    border-color: #2450a9;
+    transition: .2s;
+}
+button#edModer:active {
+    background: #3871a2;
+    color:white;
+}
+.btn_moder_modal{
+    background: #24d45b;
+    color: white;
+    transition: .5s;
+    padding: 1em;
+    border: 1px solid #0c980c;
+    font-weight: bold;
+    border-radius: 1em;
+    box-shadow: 0px 0px 8px 0px black;
+}
+.btn_moder_modal:hover {
+    background: #2e992c;
+    border-color: #24d45b;
+}

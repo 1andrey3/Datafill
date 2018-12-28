@@ -29,6 +29,7 @@
         <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
         <!--   SWEET ALERT    -->
         <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
         <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
@@ -88,7 +89,7 @@
                 <legend>Modernizaciones</legend>
             </center>
             <div class="col col-md-12">
-                <table id="tabla_modernizaciones" class="table table-bordered table-striped dataTable no-footer"></table>
+                <table id="tabla_modernizaciones" class="table_cr table-hover table table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->

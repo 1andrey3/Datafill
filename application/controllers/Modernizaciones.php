@@ -34,5 +34,4 @@ class Modernizaciones extends CI_Controller {
         echo json_encode($get_modernizaciones);
     }
 }
-
 ?>

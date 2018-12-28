@@ -34,5 +34,4 @@ class Dao_modernizaciones_model extends CI_Model {
     }
 
 }
-
 ?>

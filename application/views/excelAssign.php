@@ -18,6 +18,7 @@
         <script src="<?= URL::to('assets/js/jquery-2.1.1.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/js/bootstrap.js'); ?>"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
 
 <style>
 
@@ -36,6 +37,7 @@
   }
   #botones{
     margin-bottom: 15px;
+    display: inline-block;
   }
 
   .selected{
@@ -49,6 +51,49 @@
     background-color: rgba(0, 0, 0, 0.1);
     color: white;
   }
+  .stylesxx{
+    background-color: #32bd54 !important;
+    display: none;
+    top: -55px;
+    float: right;
+    color: #fff !important;
+    z-index: 2;
+    animation: aparecer .5s ease;
+    border: 2px solid #32bd54;
+    transition: .3s;
+    font-weight: bold;
+  }
+  .stylesxx:hover{
+    background: #fff !important;
+    color: #32bd54 !IMPORTANT;
+  }
+  @keyframes aparecer{
+    from{transform: scale(0)};
+    to{transform: scale(1)};
+  }
+  #bt_delall,#bt_add{
+    border: 1px solid #ddd;
+    transition: .3s;
+    background: #eeeeee;
+    color: #555555;
+  }
+  #bt_delall:hover,#bt_add:hover{
+    /* border-color: black; */
+    transition: .3s;
+    /* color: white; */
+    background: white;
+    border-width: 1.6px;
+  }
+  #bt_delall:hover{
+    border-color: #dc1c1c;
+    color: #dc1c1c;
+  }
+  #bt_add:hover{
+    border-color: #4dbd38;
+    color: #4dbd38;
+  }
+
+
 </style>
     <script>
       var cont = 0;
@@ -100,7 +145,7 @@
         fila = fila + '</select>';
         fila = fila + '</td>';
         fila = fila + '<td>';
-        fila = fila + '<input type="text" class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
+        fila = fila + '<input type="text"  disabled class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
         fila = fila + '</td>';
         fila = fila + '<td>';
         if(cont>1){
@@ -202,22 +247,23 @@
      </header><br><br><br><br>
 <!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
 <form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
-    <div class="btn-group col-xs-8" id="botones">
-        <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus"
-        aria-hidden="true"></span></a>
-        <div class="form-group" style="display: flex; padding-left: 108px;">
-            <label class="col-md-4 control-label">Fecha Asignación ZTE:</label>
-            <div class="col-md-9 selectContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
-                    <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
-                    <div class="input-group-btn">
-                        <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </div>
-                </div>
-            </div>
+  <div id="botones">
+    <div class="btn-group" style="float:left;">
+      <a id="bt_add" class="btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+      <a id="bt_delall" class="btn" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <label class="control-label" style="float: left;padding: 0px 39px;position: relative;top: 6px;">Fecha Asignación  ZTE:</label>
+      <div class="selectContainer col-sm-3" style="padding:0px;">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
+          <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
+          <div class="input-group-btn">
+            <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon  glyphicon-calendar"></i></button>
+          </div>
         </div>
+      </div>
+    </div>
             <span class="advertencia" style="display: none;"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;  La fecha de asignación a ZTE no puede ser menor a la de creación &nbsp;&nbsp; <i class="glyphicon glyphicon-warning-sign"></i></span>
             <!-- <?php
               // echo var_dump($document);
@@ -244,8 +290,8 @@
 
  ?>
     </div>
-      <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "validar_selects_doc()">
-        <table id="tabla" class="table table-bordered">
+      <input type="submit" name="bt_form" id="bt_form" value="Enviar Asignación " class="btn col-xs-5 stylesxx" onclick = "validar_selects_doc()">
+        <table id="tabla" class="table_cr table">
         <thead>
           <tr>
             <td>Nº</td>
@@ -273,7 +319,7 @@
        echo "</div>";
        echo "<!-- /.box-header -->";
        echo "<div class='box-body'>";
-         echo "<table id='example' class='table table-bordered table-striped'>";
+         echo "<table id='example' class='table_cr table-hover table table-striped'>";
            echo "<thead>";
            echo "<tr>";
              echo "<th>ID Actividad</th>";

@@ -15,22 +15,6 @@
         $this->load->model('data/Dao_service_model');
         // $this->load->model('data/Dao_report_model');
       }
-
-
-
-      // Version de phpexcel para el reporte total de actividaddes
-      public function totalReport2(){
-        $mes = "";$idUser = "";$role = "";
-        if (isset($_GET['id']) && isset($_GET['role'])) {
-          $idUser = $_GET['id'];
-          $role = $_GET['role'];
-        }
-      }
-      //_________________________________terminar reporte 2_____________________________
-
-
-
-
       //crea el objeto con el total de actividades
       public function totalReport(){
       	$mes = "";$idUser = "";$role = "";
@@ -91,7 +75,7 @@
 		      		<td>F CREACION</td>
 		      		<td>SOLICITANTE</td>
               <td>REGION</td>
-		      		<td>DESCRIPCION</td>
+		      		<td colspan="10">DESCRIPCION</td>
 
 				</tr>
 <?php 
@@ -130,7 +114,7 @@
 				      		echo '<td>'.$value->F_CREACION.'</td>';
 				      		echo '<td>'.$value->SOLICITANTE.'</td>';
                   echo '<td>'.$value->REGION.'</td>';
-				      		echo '<td>'.$value->DESCRIPCION.'</td>';
+				      		echo '<td colspan="10">'.$value->DESCRIPCION.'</td>';
 						echo '</tr>';
 					}
 

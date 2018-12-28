@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="<?= URL::to('assets/css/emergente.min.css'); ?>">
   <!-- datatables-->
   <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-  <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap2.css'); ?>" rel="stylesheet">
   <link href="<?= URL::to('assets/css/bootstrap.min.css" rel="stylesheet'); ?>">
   <!--   HEADER CSS    -->
   <link href="<?= URL::to('assets/css/styleHeader.css?v=1.0'); ?>" rel="stylesheet" />
@@ -31,6 +30,7 @@
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
   <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
   <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
   <script type="text/javascript" charset="utf-8" async defer>
     //Funcion para mostrar mensaje de error de validacion de datos
     function modalEditar(servicio, orden, idIng, role){
@@ -461,7 +461,7 @@ function showMessage(mensaje){
         <h4 class="modal-title" id="titleEvent">Modal tabla vencidas</h4>
       </div>
       <div class="modal-body" id="cuerpoModal">
-        <table id="tableEventosPrioritarios" class='table table-bordered table-striped' width='100%'>
+        <table id="tableEventosPrioritarios" class='table_cr table-hover table-striped table ' width='100%'>
         </table>
       </div>
       <div class="modal-footer">
@@ -474,13 +474,14 @@ function showMessage(mensaje){
 <!--========================================= tabla transporte =========================================-->
 <?php
 if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
-  echo "<div style='display: block; padding-top: 40px' id='section_transport'></div><div class='container'>";
+  // echo "<div style='display: block; padding-top: 40px' id='section_transport'></div><div class='container-fluid'>";
+  echo "<br><br>";
 //<!-- /.box-header -->
-  echo "<div class='box-body'>";
+  echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
   echo "<legend >Lista de Actividades TRANSPORTE</legend>";
   echo "</center>";
-  echo "<table id='tableTransport' class='table table-bordered table-striped' width='100%'>";
+  echo "<table id='tableTransport' class='table-hover table_cr table table-striped' width='100%'>";
   echo "</table>";
   echo "</div>";
   echo "</div>";
@@ -490,13 +491,13 @@ if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
 //   //========================================<!-- tabla gdatos========================================-->
   echo "<div id='section_GDATOS'></div><br><br><br>";
-  echo "<div class='container' >";
+  echo "<div>";
 //       //<!-- /.box-header -->
-  echo "<div class='box-body'>";
+  echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
   echo "<legend>Lista de Actividades GDATOS</legend>";
   echo "</center>";
-  echo "<table id='tableGDATOS' class='table table-bordered table-striped'>";
+  echo "<table id='tableGDATOS' class='table_cr table  table-hover table-striped'>";
   echo "</table>";
   echo "</div>";
   echo "</div>";
@@ -521,7 +522,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
           <div class="container">
             <div class="modal-body">
               <h3 class="subtitulo">Tabla Actividades</h3>
-              <table id='tablaActividades' class='table table-bordered table-striped'>
+              <table id='tablaActividades' class='table-hover table_cr table table-striped'>
                 <thead>
                   <tr>
                     <th>
@@ -551,7 +552,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                 <input type="button" id="btn_actualizar_links" value="Actualizar Evidencia">
               </div>
                 <!-- if ($_SESSION["role"] == 0 || $_SESSION["role"] == 4) { -->
-              <div style='display: none;background-color: #fafafa;width: 97%;border-radius: 19px;border: 1px solid #f0f0f0; margin: 15px 16px;' id='reasignar' class="container">
+              <div style='transition: 2s; display: none;background-color: #fafafa;width: 97%;border-radius: 19px;border: 1px solid #f0f0f0; margin: 15px 16px;' id='reasignar' class="container">
                 <h3 class="subtitulo">Reasignar Actividades</h3>
                 <div class='row-fluid'>
                   <div class='input-group'>

@@ -28,6 +28,7 @@
         <!--   SWEET ALERT    -->
         <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
         <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
     <body data-url="<?= URL::base(); ?>">
@@ -82,14 +83,360 @@
         <!--      fin header         -->
         <br><br><br><br>
         <div class="container">
-            <center>
+            <div class="col-sm-8">
                 <legend>Modernizaciones asociadas a la orden <b><?= $idOrden; ?></b></legend>
-            </center>
+            </div>
+            <div class="col-sm-4">
+                <button id="edModer" class="edModer">Editar Modernizaciones</button>
+            </div>
             <div class="col col-md-12">
-                <table id="tabla_ordenAsoc" class="table table-bordered table-striped table-hover dataTable dataTable_camilo"></table>
+                <table id="tabla_ordenAsoc" class="table_cr table table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->
+        
+
+        <!-- modal -->
+<!-- document.getElementById('modal_form').style.display='none'; -->
+          <div class="modal_a" id="modal_form">
+            <a id="close_modal" class='pull-right' onclick="$('#modal_form').hide();" title='Cerrar'><span class='glyphicon glyphicon-remove ex'></span></a>
+             <div class="col-xs-offset-2 col-md-8 formContainer">
+                <form action="???" method="post" onsubmit="???" class="formOrderModer">
+                    <div class="panel-group" id="accordion">
+                        <center> <h2 style="margin-bottom: 4%;">Asociadas</h2></center><hr>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <span class="noEditable">OT</span> - <span class="noEditable">ACTIVIDAD</span> - <span class="editable">TIPO</span> - <span class="noEditable">SITIO<span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">OT</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="OT">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ACTIVIDAD</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="ACTIVIDAD">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">TIPO</label>
+                                            <input type="text" class="form-control" placeholder="TIPO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">SITIO</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="SITIO">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> <span class="editable">TRABAJO</span> - <span class="editable">ID</span> - <span class="editable">TIPO</span> - <spanc class="noEditable">F. ASIGNACIÓN</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">TRABAJO</label>
+                                            <input type="text" class="form-control" placeholder="TRABAJO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ID</label>
+                                            <input type="text" class="form-control" placeholder="ID">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">TIPO</label>
+                                            <input type="text" class="form-control" placeholder="TIPO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. ASIGNACIÓN</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. ASIGNACIÓN">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"> <span class="editable"> F. CIERRE ING</span> - <span class="noEditable">F. EJECUCIÓN CLARO</span> - <span class="noEditable">ESTADO</span> - <span class="noEditable">PROYECTO</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. CIERRE ING.</label>
+                                            <input type="date" class="form-control" placeholder="F. CIERRE ING.">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. EJECUCIÓN CLARO</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. EJECUCIÓN CLARO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="ESTADO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">PROYECTO</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="PROYECTO">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"> <span class="noEditable"> F. FORECAST</span> - <span class="noEditable">F. CREACIÓN</span> - <span class="noEditable">SOLICITANTE</span> - <span class="noEditable">REGIÓN</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. FORECAST</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. FORECAST">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. CREACIÓN</label>
+                                            <input type="text" class="form-control sinCambio"disabled placeholder="F. CREACIÓN">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">SOLICITANTE</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="SOLICITANTE">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">REGIÓN</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="REGIÓN">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"> <span class="noEditable">DESCRIPCIÓN</span> - <span class="editable">INGENIERO</span> - <span class="editable"> IN SERVICE SITIO</span> - <span class="editable">F. INGRESO DE SERVICIO CLARO</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                  <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">DESCRIPCIÓN.</label>
+                                            <input type="text" class="form-control sinCambio" disabled placeholder="DESCRIPCIÓN.">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">INGENIERO</label>
+                                            <input type="text" class="form-control" placeholder="INGENIERO">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">IN SERVICE SITIO</label>
+                                            <!-- <input type="text" class="form-control" placeholder="IN SERVICE SITIO"> -->
+                                            <select class="form-control" name="inServiceSitio" id="inServiceSitio">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">F. INGRESO DE SERVICIO CLARO</label>
+                                            <input type="date" class="form-control " placeholder="F. INGRESO DE SERVICIO CLARO">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7"> <span class="editable">ESTADO TX</span> - <span class="editable">FECHA TX LISTA</span> - <span class="editable">ESTADO CW</span> - <span class="editable">FECHA CW LISTA</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO TX</label>
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO TX"> -->
+                                            <select class="form-control" name="estadoTX" id="estadoTX">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA TX LISTA</label>
+                                            <input type="date" class="form-control" placeholder="FECHA TX LISTA">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO CW</label>
+                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO CW"> -->
+                                            <select class="form-control" name="estadoCW" id="estadoCW">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="NOKIA">NOKIA</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA CW LISTA</label>
+                                            <input type="date" class="form-control"  placeholder="FECHA CW LISTA">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse8"> <span class="editable">RFE(orden de tx orden cw)</span> - <span class="editable">ESTADO DF</span> - <span class="editable">FECHA DF</span> - <span class="editable">RFIC(TX OK  Y CW OK)</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse8" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">RFE(orden de tx orden cw)</label>
+                                            <input type="date" class="form-control" placeholder="RFE(orden de tx orden cw)">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO DF</label>
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO DF"> -->
+                                            <select class="form-control" name="estadoDF" id="estadoDF">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
+                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
+                                                <option value="OK">OK</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA DF</label>
+                                            <input type="date" class="form-control" placeholder="FECHA DF">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">RFIC(TX OK  Y CW OK)</label>
+                                            <input type="date" class="form-control" placeholder="RFIC(TX OK  Y CW OK)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse9"> <span class="editable">RFI(RFIC OK Y HW OK DF OK)</span> - <span class="editable">ESTADO INSTALACIÓN</span> - <span class="editable">FECHA INSTALACIÓN</span> - <span class="editable">ESTADO INTEGRACIÓN</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse9" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">RFI(RFIC OK Y HW OK DF OK)</label>
+                                            <input type="date" class="form-control" placeholder="RFI(RFIC OK Y HW OK DF OK)">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO INSTALACIÓN</label>
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO INSTALACIÓN"> -->
+                                            <select class="form-control" name="estadoInstalacion" id="estadoInstalacion">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
+                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
+                                                <option value="OK">OK</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA INSTALACIÓN</label>
+                                            <input type="date" class="form-control"  placeholder="FECHA INSTALACIÓN">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO INTEGRACIÓN</label>
+                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO INTEGRACIÓN"> -->
+                                            <select class="form-control" name="estadoIntegracion" id="estadoIntegracion">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse10"> <span class="editable">FECHA INTEGRACIÓN</span> - <span class="editable">ESTADO ONAIR</span> - <span class="editable">FECHA INSERVICE</span> - <span class="editable">CONTRATISTA CW</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA INTEGRACIÓN</label>
+                                            <input type="date" class="form-control" placeholder="FECHA INTEGRACIÓN">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">ESTADO ONAIR</label>
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO ONAIR"> -->
+                                            <select class="form-control" name="estadoOnAir" id="estadoOnAir">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE NOKIA">PENDIENTE NOKIA</option>
+                                                <option value="PENDIENTE CLARO">PENDIENTE CLARO</option>
+                                                <option value="SEGUIMIENTO PARA PRODUCCION">SEGUIMIENTO PARA PRODUCCION</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">FECHA INSERVICE</label>
+                                            <input type="date" class="form-control" placeholder="FECHA INSERVICE">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-3">
+                                            <label class="modalLabel">CONTRATISTA CW</label>
+                                            <input type="text" class="form-control" placeholder="CONTRATISTA CW">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse11"> <span class="editable">MES INSERVICE</span> - <span class="editable">AÑO INSERVICE</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse11" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row mar">
+                                        <div class="form-group camposModal col-xs-6">
+                                            <label class="modalLabel">MES INSERVICE</label>
+                                            <input type="number" class="form-control" placeholder="MES INSERVICE">
+                                        </div>
+                                        <div class="form-group camposModal col-xs-6">
+                                            <label class="modalLabel">AÑO INSERVICE</label>
+                                            <input type="number" class="form-control" placeholder="AÑO INSERVICE">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row centrado">
+                            <button type="submit" class="btn_moder_modal">Enviar Información</button>
+                        </div>
+                    </div>
+                 </form>
+             </div>
+          </div>
+        <!-- fin modal -->
         <!--footer-->
         <div class="for-full-back " id="footer">
             Zolid By ZTE Colombia | All Right Reserved

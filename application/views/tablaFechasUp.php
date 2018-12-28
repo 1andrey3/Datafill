@@ -23,7 +23,7 @@
         <!--   SWEET ALERT    -->
         <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
         <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
-
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <!-- Push.js   -->
         <script src="<?= URL::to('assets/js/push.min.js'); ?>"></script>
 
@@ -82,20 +82,20 @@
         <!--      fin header         -->
         <?php $this->load->helper('camilo'); ?>
         <div class="container-max">
-            <h2 align="center" style="color:#207be5">FECHAS INCONSITENTES</h2>
-            <table class="table table-bordered table-striped table-hover" id="table-fechas">
+            <h2 align="center" style="color:#207be5">FECHAS INCONSISTENTES</h2>
+            <table class="table table-bordered table-striped table-hover table_cr" id="table-fechas">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Orden</th>
                         <th>Claro</th>
-                        <th>F.creacion</th>
-                        <th>F.asignacion a ZTE</th>
+                        <th>F.creación</th>
+                        <th>F.asignación a ZTE</th>
                         <th>Forecast</th>
-                        <th>F.asignacion ingeniero</th>
+                        <th>F.asignación ingeniero</th>
                         <th>F.inicio ingeniero</th>
                         <th>F.fin ingeniero</th>
-                        <th>F.ejecucion</th>
+                        <th>F.ejecución</th>
                         <th>Estado</th>
                         <th>Ingeniero</th>
                         <th>    </th>

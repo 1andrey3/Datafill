@@ -23,7 +23,9 @@
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/jquery.dataTables.min.css'); ?>">
         <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.css"> -->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/buttons.dataTables.css'); ?>">
-
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
+        
+        
         <script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
         <script type="text/javascript" src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
 
@@ -97,7 +99,7 @@
                         <div class="modal-body" id="cuerpoModal">
                             <div class="container lg-cntr">
                                 <h4>Tabla Nuevos</h4>
-                                <table id="tableEventos" class='table table-bordered table-striped' width='100%'></table>
+                                <table id="tableEventos" class='table_cr table  table-striped' width='100%'></table>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -129,13 +131,13 @@
 
                                     <div id="tab_cambios" class="tab-pane fade in active  lg-cntr">
                                         <h4 align="center">TABLA CAMBIOS</h4>
-                                        <table id="tableEventosChanges" class='table table-bordered table-striped' width='100%'>
+                                        <table id="tableEventosChanges" class='table_cr table  table-striped' width='100%'>
 
                                         </table>
                                     </div>
                                     <div id="tab_log" class="tab-pane fade">
                                         <h4 align="center">TABLA LOG</h4>
-                                        <table id="tableLog" class='table table-bordered table-striped tableCami' width='100%'></table>
+                                        <table id="tableLog" class='table_cr table  table-striped tableCami' width='100%'></table>
                                     </div>
 
                                 </div>
@@ -162,7 +164,7 @@
                         <div class="modal-body" id="cuerpoModal">
                             <div class="container lg-cntr">
                                 <h3>Tabla Log</h3>
-                                <table id="tableHistorialLog" class='table table-bordered table-striped tableCami' width='100%'></table>
+                                <table id="tableHistorialLog" class='table_cr table  table-striped tableCami' width='100%'></table>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -177,7 +179,7 @@
 
         <div class="container lg-cntr">
             <!-- tABLA RF -->
-            <table id="tableRF" class='table table-bordered table-striped table-hover' ></table>
+            <table id="tableRF" class='table_cr table  table-striped table-hover' ></table>
         </div>
         <br><br><br>
         <!-- FOOTER -->
