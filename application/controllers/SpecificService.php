@@ -1179,9 +1179,9 @@ class SpecificService extends CI_Controller {
         for ($i = 0; $i < $_POST['cant']; $i++) {
             if ($_POST['actividades_' . $i] != "") {
                 $existe[$i]                 = $this->dao_service_model->getServiceByIdActivity($_POST['actividades_' . $i]);
-                $existe[$i]->fechaEjecucion = str_replace(array("\n", "\r", "\t", " "), '', $_POST['fechaEjecucion_' . $i]);
 
                 if ($existe[$i]) {
+                    $existe[$i]->fechaEjecucion = str_replace(array("\n", "\r", "\t", " "), '', $_POST['fechaEjecucion_' . $i]);
                     $this->dao_service_model->executeFromExcel($_POST['actividades_' . $i], $_POST['fechaEjecucion_' . $i], $_POST['estado_' . $i]);
                 } else {
                     $flag = 1;
