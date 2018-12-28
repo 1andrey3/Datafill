@@ -24,7 +24,7 @@ return [
       |
      */
 
-    'default' => 'mysqlLocalhost',
+    'default' => 'local',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
@@ -54,7 +54,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-        'mysqlLocalhost' => [
+        'local' => [
             'driver' => 'mysql',
             'host' => 'localhost',
             'port' => '3306',
