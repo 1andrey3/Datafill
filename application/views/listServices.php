@@ -577,7 +577,13 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                         <option value="1070916624"><b>Daniel Guillermo Reyes Prieto</b></option>
                         <option value="1012399862"><b>Jhon Fredy Novoa</b></option>
                         <option value="80831884"><b>Juan Carlos Estevez Rojas</b></option>
-                        <!-- <option value="1065631508"><b>Julián Camilo Durán Hernández</b></option> -->
+
+                        <option value="1023919425"><b>Juri Andrea Pita Correa</b></option>
+                        <option value="1026284286"><b>Alvaro Agudelo Bayona</b></option>
+                        <option value="79615710"><b>Freddy Carlos Peña Moreno</b></option>
+
+
+
                       </optgroup>
                     </select>
                     <button style='margin-left: 40px;' type='submit' class='btn btn-success'  onclick="quitarRequired(); this.form.action='<?= URL::to('SpecificService/reasign'); ?>'">Reasignar</button>

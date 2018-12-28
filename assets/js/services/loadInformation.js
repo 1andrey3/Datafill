@@ -51,7 +51,7 @@ var vista = {
                 })
                 .start();
     },
-    limit: 100,
+    limit: 1000,
     indexTemp: 0,
     index: 2,
     linesFile: -1,
@@ -103,6 +103,8 @@ var vista = {
                 .complete(function () {
                 })
                 .success(function (response) {
+                    console.log("response", response);
+                    
                     if (response.code == 2) {
                         swal("Importado", "Se ha importado toda la información del archivo correctamente.", "success")
                                 .then(function () {

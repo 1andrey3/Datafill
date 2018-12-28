@@ -26,7 +26,6 @@ $(function() {
                 },
 
         printTable: function(data) {
-            // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
             modernizacion.tabla_modernizaciones = $('#tabla_modernizaciones').DataTable(modernizacion.configTable(data, [
                 {title: "OT", data: "K_IDORDER"},
                 {title: "Actividad", data: "K_IDCLARO"},
@@ -69,7 +68,7 @@ $(function() {
 
         getButtons: function(obj) {
             var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs opc-orden btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-edit'></span></a>"
+                    + "<a class='btn btn-default btn-xs opc-orden btn_datatable_cami' data-btn='hito' title='Ver Asociadas'><span class='glyphicon glyphicon-eye-open'></span></a>"
                     + "</div>";
             return botones;
         },
@@ -78,6 +77,9 @@ $(function() {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = modernizacion.tabla_modernizaciones.row(trParent).data();
+
+            const url = baseurl + `/Modernizaciones/c_getOrdenDetail/${record.K_IDORDER}`;
+            window.open(url, '_blank');
 
 //            modernizacion.showDetailsOrdenModer(record);
             console.log(record);
