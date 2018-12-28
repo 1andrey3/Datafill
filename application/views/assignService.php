@@ -115,7 +115,7 @@
 
         echo "<div class='container'>";
         echo "<form class= 'well form-horizontal' action='' method='post'  id='assignService' name='assignServie' enctype= 'multipart/form-data'>";
-            echo "<div class='row'>
+            echo "<div class='row' style='padding-top: 2em;'>
                     <div class='col-sm-4 cen'><button  name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\">Asignación  <span class= 'glyphicon glyphicon-plus'></span></button></div>";
             echo "<div class='col-sm-4 cen'><button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\">Cancelación  <span class= 'glyphicon glyphicon-remove-circle'></span></button></div>";
             echo "<div class='col-sm-4 cen'><button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\">Ejecución  <span class= 'glyphicon glyphicon-ok-circle'></span></button></div></div><br>";

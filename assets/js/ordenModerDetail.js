@@ -8,6 +8,7 @@ $(function() {
         //Eventos de la ventana.
         events: function() {
             $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.onClickBtnEditOrden);
+            $('#edModer').on('click',ordenModer.displayModal)
         },
 
         getList_moderDetail: function() {
@@ -74,10 +75,10 @@ $(function() {
             var record = ordenModer.tabla_ordenAsoc.row(trParent).data();
 //            ordenModer.showDetailsOrdenModer(record);
             console.log(record);
-            $('#modal_form').show();
         },
-
+        displayModal: function(){
+            $('#modal_form').show();
+        }
     };
     ordenModer.init();
-    
 });

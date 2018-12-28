@@ -101,7 +101,7 @@
           <div class="modal_a" id="modal_form">
             <a id="close_modal" class='pull-right' onclick="$('#modal_form').hide();" title='Cerrar'><span class='glyphicon glyphicon-remove ex'></span></a>
              <div class="col-xs-offset-2 col-md-8 formContainer">
-                <form action="" method="post" onsubmit="Validate()" class="formOrderModer">
+                <form action="???" method="post" onsubmit="???" class="formOrderModer">
                     <div class="panel-group" id="accordion">
                         <center> <h2 style="margin-bottom: 4%;">Asociadas</h2></center><hr>
                         <div class="panel panel-default">
@@ -173,7 +173,7 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">F. CIERRE ING.</label>
-                                            <input type="text" class="form-control" placeholder="F. CIERRE ING.">
+                                            <input type="date" class="form-control" placeholder="F. CIERRE ING.">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">F. EJECUCIÓN CLARO</label>
@@ -239,11 +239,16 @@
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">IN SERVICE SITIO</label>
-                                            <input type="text" class="form-control" placeholder="IN SERVICE SITIO">
+                                            <!-- <input type="text" class="form-control" placeholder="IN SERVICE SITIO"> -->
+                                            <select class="form-control" name="inServiceSitio" id="inServiceSitio">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">F. INGRESO DE SERVICIO CLARO</label>
-                                            <input type="text" class="form-control " placeholder="F. INGRESO DE SERVICIO CLARO">
+                                            <input type="date" class="form-control " placeholder="F. INGRESO DE SERVICIO CLARO">
                                         </div>
                                     </div>
                                 </div>
@@ -260,19 +265,30 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO TX</label>
-                                            <input type="text" class="form-control" placeholder="ESTADO TX">
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO TX"> -->
+                                            <select class="form-control" name="estadoTX" id="estadoTX">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA TX LISTA</label>
-                                            <input type="text" class="form-control" placeholder="FECHA TX LISTA">
+                                            <input type="date" class="form-control" placeholder="FECHA TX LISTA">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO CW</label>
-                                            <input type="text" class="form-control"  placeholder="ESTADO CW">
+                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO CW"> -->
+                                            <select class="form-control" name="estadoCW" id="estadoCW">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="NOKIA">NOKIA</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA CW LISTA</label>
-                                            <input type="text" class="form-control"  placeholder="FECHA CW LISTA">
+                                            <input type="date" class="form-control"  placeholder="FECHA CW LISTA">
                                         </div>
                                     </div>
                                 </div>
@@ -289,19 +305,26 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">RFE(orden de tx orden cw)</label>
-                                            <input type="text" class="form-control" placeholder="RFE(orden de tx orden cw)">
+                                            <input type="date" class="form-control" placeholder="RFE(orden de tx orden cw)">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO DF</label>
-                                            <input type="text" class="form-control" placeholder="ESTADO DF">
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO DF"> -->
+                                            <select class="form-control" name="estadoDF" id="estadoDF">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
+                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
+                                                <option value="OK">OK</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA DF</label>
-                                            <input type="text" class="form-control" placeholder="FECHA DF">
+                                            <input type="date" class="form-control" placeholder="FECHA DF">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">RFIC(TX OK  Y CW OK)</label>
-                                            <input type="text" class="form-control" placeholder="RFIC(TX OK  Y CW OK)">
+                                            <input type="date" class="form-control" placeholder="RFIC(TX OK  Y CW OK)">
                                         </div>
                                     </div>
                                 </div>
@@ -318,19 +341,31 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">RFI(RFIC OK Y HW OK DF OK)</label>
-                                            <input type="text" class="form-control" placeholder="RFI(RFIC OK Y HW OK DF OK)">
+                                            <input type="date" class="form-control" placeholder="RFI(RFIC OK Y HW OK DF OK)">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO INSTALACIÓN</label>
-                                            <input type="text" class="form-control" placeholder="ESTADO INSTALACIÓN">
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO INSTALACIÓN"> -->
+                                            <select class="form-control" name="estadoInstalacion" id="estadoInstalacion">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
+                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
+                                                <option value="OK">OK</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA INSTALACIÓN</label>
-                                            <input type="text" class="form-control"  placeholder="FECHA INSTALACIÓN">
+                                            <input type="date" class="form-control"  placeholder="FECHA INSTALACIÓN">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO INTEGRACIÓN</label>
-                                            <input type="text" class="form-control"  placeholder="ESTADO INTEGRACIÓN">
+                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO INTEGRACIÓN"> -->
+                                            <select class="form-control" name="estadoIntegracion" id="estadoIntegracion">
+                                                <option value="">Seleccione</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -347,15 +382,23 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA INTEGRACIÓN</label>
-                                            <input type="text" class="form-control" placeholder="FECHA INTEGRACIÓN">
+                                            <input type="date" class="form-control" placeholder="FECHA INTEGRACIÓN">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO ONAIR</label>
-                                            <input type="text" class="form-control" placeholder="ESTADO ONAIR">
+                                            <!-- <input type="text" class="form-control" placeholder="ESTADO ONAIR"> -->
+                                            <select class="form-control" name="estadoOnAir" id="estadoOnAir">
+                                                <option value="">Seleccione</option>
+                                                <option value="PENDIENTE NOKIA">PENDIENTE NOKIA</option>
+                                                <option value="PENDIENTE CLARO">PENDIENTE CLARO</option>
+                                                <option value="SEGUIMIENTO PARA PRODUCCION">SEGUIMIENTO PARA PRODUCCION</option>
+                                                <option value="OK">OK</option>
+                                                <option value="PENDIENTE">PENDIENTE</option>
+                                            </select>
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">FECHA INSERVICE</label>
-                                            <input type="text" class="form-control" placeholder="FECHA INSERVICE">
+                                            <input type="date" class="form-control" placeholder="FECHA INSERVICE">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">CONTRATISTA CW</label>
@@ -376,18 +419,18 @@
                                     <div class="row mar">
                                         <div class="form-group camposModal col-xs-6">
                                             <label class="modalLabel">MES INSERVICE</label>
-                                            <input type="text" class="form-control" placeholder="MES INSERVICE">
+                                            <input type="number" class="form-control" placeholder="MES INSERVICE">
                                         </div>
                                         <div class="form-group camposModal col-xs-6">
                                             <label class="modalLabel">AÑO INSERVICE</label>
-                                            <input type="text" class="form-control" placeholder="AÑO INSERVICE">
+                                            <input type="number" class="form-control" placeholder="AÑO INSERVICE">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <button type="submit" class="btn btn-success col-sm-6 col-sm-offset-3">Enviar Información</button>
+                        <div class="row centrado">
+                            <button type="submit" class="btn_moder_modal">Enviar Información</button>
                         </div>
                     </div>
                  </form>
