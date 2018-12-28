@@ -27,6 +27,8 @@
       	$respuesta = $this->Dao_service_model->getTotalActivities($mes, $idUser, $role);
       	$nombre = "ReporteTotal  ";
       	$this->generateReport($respuesta, $nombre);
+
+        
       }
       //crea el objeto de actividades del mes actual
       public function thisMonthReport(){

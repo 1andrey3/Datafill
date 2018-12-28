@@ -98,11 +98,71 @@ class Service extends CI_Controller {
         $res = $this->dao_service_model->upDateInconsistentes($data);
         $res2 = $this->dao_service_model->upDateInconsistentesOt($data2);
 
-       // print_r($res);
-      //  print_r($res2);
         $this->json($res);
         
     }
 
-}
 
+
+
+
+    //funcion para reparar la tabla sites y de specific service parta eliminar los sitios repetidos
+    public function reparar_tabla_sites(){
+        set_time_limit(-1);
+        ini_set('memory_limit', '1500M');
+
+        // CONTADORES
+        $ss_actualizados = 0;
+        $site_eliminados = 0;
+
+
+        // Seleccionar todos los sitios de la base de datos
+        $allSites = $this->dao_site_model->getAllSites();
+
+        // K_IDSITE
+        // N_NAME
+
+        $total = count($allSites);
+        // recorrer todos los elementos que existen en allSites
+        for ($i=0; $i < $total; $i++) { 
+            $group = $this->dao_site_model->getSitesByNameMinus($allSites[$i]['N_NAME']);
+            // Si tiene mas de un elemento es porque existen sitios repetidos( debe dejarse solo uno de ellos y actualizarse sprecific_service)
+                // echo '<pre>*'; print_r(count($group)); echo '*</pre>';
+                echo '<pre>****'; print_r(count($group)); echo '**</pre>';
+            if (count($group) > 1) {
+                //actualizar tabla de specific_service y dejar solo ids originales
+                $respuesta = $this->reparar_specific_service($group);
+                $ss_actualizados += $respuesta;
+                // si se actualizó con exito borrar ids repetidos de tabla site
+                if ($respuesta) {
+                    $borrar = $this->borrar_sites_repeat($group);
+                    $site_eliminados += $borrar;
+                }
+            } 
+
+        } // end for
+      
+        echo '<pre>recorridas => '; print_r($i); echo '</pre>';
+        echo '<pre>specific actualizados'; print_r($ss_actualizados); echo '</pre>';
+        echo '<pre>sitios repetidos borrados'; print_r($site_eliminados); echo '</pre>';
+
+    }
+
+
+    // actualizar tabla de specific_service y dejar solo ids originales    
+    private function reparar_specific_service($group){
+        $copias = array_column($group, 'K_IDSITE'); // array de ids repetidos
+        $id_original = $copias[0]; // id que va a quedar como original en site y en registros de specific service
+        $respuesta = $this->Dao_service_model->actualizar_sites_specific_service($id_original, $copias);
+        return $respuesta;
+    }
+
+    // Eliminar sitios repetidos de la tabla site
+    private function borrar_sites_repeat($group){
+        $array_copias = array_column($group, 'K_IDSITE');
+        $array_borrar = array_values( array_diff($array_copias, array($array_copias[0])));
+        $res = $this->dao_site_model->delete_site_where_in($array_borrar);
+        return $res;
+    }
+
+}

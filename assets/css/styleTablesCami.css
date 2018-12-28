@@ -93,13 +93,11 @@ table#tableRF td, table#tableEventos td, table#tableEventosChanges td,table#tabl
 /*================================================*/
 
 .dt-button.buttons-columnVisibility{
-    background: #FFF !important;
-    box-shadow: unset !important;
-    border: 0px !important;
+    background: #6797c1 !important;
     text-align: left;
-    position: relative;
     padding-left: 30px;
     z-index: -10;
+    border-radius: 10px; 
 }
 .dt-button.buttons-columnVisibility span:before{
     display: inline-block;
@@ -113,6 +111,9 @@ table#tableRF td, table#tableEventos td, table#tableEventosChanges td,table#tabl
     content: "\f096";
     z-index: -10;
 }
+.dt-button.buttons-columnVisibility.active{
+    background: #068900 !important;
+}
 .dt-button.buttons-columnVisibility.active span:before{    
     content: "\f046";        
     z-index: -10;
@@ -124,6 +125,7 @@ table#tableRF td, table#tableEventos td, table#tableEventosChanges td,table#tabl
 .dt-button.buttons-columnVisibility:hover{
     background-color: #f3f3f3 !important;
     z-index: -10;
+    color: black;
 }
 
 /* .dt-button-collection{

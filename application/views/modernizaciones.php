@@ -89,7 +89,7 @@
                 <legend>Modernizaciones</legend>
             </center>
             <div class="col col-md-12">
-                <table id="tabla_modernizaciones" class="table_cr table table-bordered table-striped dataTable no-footer"></table>
+                <table id="tabla_modernizaciones" class="table_cr table-hover table table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->

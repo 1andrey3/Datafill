@@ -1,5 +1,5 @@
 .modal-header{
-    background-color: #207be5;
+    background-color: #1e3f67;
     color: #fff;    
     box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.91);
 }
@@ -11,7 +11,7 @@
 }
 
 .modal-footer{
-    background-color: #207be5;
+    background-color: #1e3f67;
     box-shadow: -1px -1px 9px rgba(0, 0, 0, 0.91);
 }
 .modal-footer button{

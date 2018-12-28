@@ -13,8 +13,7 @@
         <link href="<?= URL::to('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
         <!--   HEADER CSS    -->
         <link href="<?= URL::to('assets/css/styleHeader.css'); ?>" rel="stylesheet" />
-
-
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
     </head>
     <body>
         <!-- Navigation -->
@@ -71,8 +70,9 @@
             }
             echo "<input type='hidden' name='cant' value='" . count($cancelar['idActividad']) . "'>";
             ?>
-
-            <input type="submit" name="bt_form" id="bt_form" value="enviar cancelacion" class="btn btn-primary col-xs-4  " style="background-color: red; margin-left: 55%" onclick = "this.form.action = '<?= URL::to('SpecificService/saveCancelExcel'); ?>'">
+            <div class="block">
+                <input type="submit" name="bt_form" id="bt_form" value="Enviar Cancelación" class="btn col-xs-6 style_button" onclick= "this.form.action = '<?= URL::to('SpecificService/saveCancelExcel'); ?>'">
+            </div>
 
         </form>
         <section class="content">
@@ -81,12 +81,12 @@
                     <div class="box">
                         <?php
                         echo "<div class='box-header'>";
-                        echo "<h5>OT: " . $cancelar['ot'] . "</h5><h5>Solicitante: " . $cancelar['solicitante'] . "</h5><h5>Fecha de Creacion: " . $cancelar['fCreacion'] . "</h5>";
-                        echo "<h5>Descripción: " . $cancelar['descripcion'] . "</h5>";
-                        echo "</div>";
+                        echo "<h5><b>OT : </b> " . $cancelar['ot'] . "</h5><h5><b>Solicitante : </b> " . $cancelar['solicitante'] . "</h5><h5><b>Fecha de Creacion : </b> " . $cancelar['fCreacion'] . "</h5>";
+                        echo "<h5><b>Descripción : </b> " . $cancelar['descripcion'] . "</h5>";
+                        echo "</div><hr>";
                         echo "<!-- /.box-header -->";
                         echo "<div class='box-body'>";
-                        echo "<table id='example' class='table table-bordered table-striped'>";
+                        echo "<table id='example' class='table-hover table_cr table table-bordered table-striped'>";
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th>ID Actividad</th>";
