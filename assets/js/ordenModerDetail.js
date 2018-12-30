@@ -8,7 +8,6 @@ $(function() {
         //Eventos de la ventana.
         events: function() {
             $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.onClickBtnEditOrden);
-            $('#edModer').on('click',ordenModer.displayModal)
         },
 
         getList_moderDetail: function() {
@@ -47,6 +46,21 @@ $(function() {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
                 dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 ordering: true,
@@ -73,12 +87,11 @@ $(function() {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = ordenModer.tabla_ordenAsoc.row(trParent).data();
+
 //            ordenModer.showDetailsOrdenModer(record);
             console.log(record);
         },
-        displayModal: function(){
-            $('#modal_form').show();
-        }
+
     };
     ordenModer.init();
 });
