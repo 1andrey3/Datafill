@@ -78,7 +78,7 @@ $(function() {
             var trParent = aLinkLog.parents('tr');
             var record = modernizacion.tabla_modernizaciones.row(trParent).data();
 
-            const url = baseurl + `/Modernizaciones/c_getOrdenDetail/${record.K_IDORDER}`;
+            const url = baseurl + `/Modernizaciones/c_getOrdenDetail/${record.K_IDORDER}/${record.K_IDCLARO}/${record.N_NAME}/${record.D_ASIG_Z}/${record.D_CLARO_F}/${record.N_ESTADO}/${record.N_PROYECTO}/${record.D_FORECAST}/${record.D_DATE_CREATION}/${record.N_ING_SOL}/${record.n_region}`;
             window.open(url, '_blank');
 
 //            modernizacion.showDetailsOrdenModer(record);
