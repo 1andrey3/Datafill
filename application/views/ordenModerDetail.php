@@ -437,6 +437,67 @@
              </div>
           </div>
         <!-- fin modal -->
+    <!--*********************  INPUT TEXT  *********************-->
+    <!-- <div class="form-group">
+        <label for="nombre" class="col-md-3 control-label">etiqueta: &nbsp;</label>
+        <div class="col-md-8 selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="nombre" id="nombre" required class="form-control">
+            </div>
+        </div>
+    </div> -->
+    
+    
+
+        <!-- <form>
+            <div class="col-sm-12">
+                <div class="col-sm-2 input-group input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
+            </div>
+
+        </form>
+     -->
+
+
+
+
         <!--footer-->
         <div class="for-full-back " id="footer">
             Zolid By ZTE Colombia | All Right Reserved

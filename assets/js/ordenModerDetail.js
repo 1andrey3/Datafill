@@ -8,6 +8,9 @@ $(function() {
         //Eventos de la ventana.
         events: function() {
             $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.onClickBtnEditOrden);
+            $('#edModer').click(function(){
+                $('#modal_form').show();
+            })
         },
 
         getList_moderDetail: function() {
