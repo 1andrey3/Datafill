@@ -8,7 +8,7 @@ $(function() {
         events: function() {
             $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.onClickBtnEditOrden);
             $('#edModer').click(function(){
-                $('#modal_form').show();
+                $('#mdl-form').modal('show');
             })
         },
 
