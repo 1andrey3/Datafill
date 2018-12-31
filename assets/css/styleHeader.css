@@ -1,60 +1,59 @@
-
-            * {
-                margin:0px;
-                padding:0px;
-            }
-
-
-            ul, ol {
-                list-style:none;
-            }
-
-            .nav li a {
-                background-color: inherit;
-                padding:15px 12px;
-                display:block;
-            }
+* {
+    margin:0px;
+    padding:0px;
+}
 
 
-            .nav li ul {
-                background: #004c96;
-                display:none;
-                position:absolute;
-                min-width:180px;
-            }
+ul, ol {
+    list-style:none;
+}
 
-            .nav li a:hover {
-                /* background-color: rgba(0, 48, 221, 0.973); */
-                background-color: rgb(32, 123, 229);
-                /* color: red !important; */
-                transition: .4s;
-            }
-            .nav li:hover > ul {
-                display:block;
-            }
-            .navbar a {
-                color:#ffffff !important;
-                text-decoration: none;
-            }
-            .navbar a:hover {
-                background-color: rgb(32, 123, 229)!important;
-            }
+.nav li a {
+    background-color: inherit;
+    padding:15px 14px;
+    display:block;
+}
 
-            .cam:hover{
-                background: rgba(0,0,0,0.1);
-            }
-            .navbar-inverse {
-            background: linear-gradient(#0e2d4e,#15538a);
-            border-color: blue;
-            transition: 1.2s;
-            font-size: 13px;
-            }
-            .navbar-inverse:hover {
-                border-color: #004c96;
-                border-bottom-width: 1.2px;
-                transition: .2s;
-            }
-  /*----------------------------------------------------*/
+
+.nav li ul {
+    background: #004c96;
+    display:none;
+    position:absolute;
+    min-width:180px;
+}
+
+.nav li a:hover {
+    /* background-color: rgba(0, 48, 221, 0.973); */
+    background-color: rgb(32, 123, 229);
+    /* color: red !important; */
+    transition: .4s;
+}
+.nav li:hover > ul {
+    display:block;
+}
+.navbar a {
+    color:#ffffff !important;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: rgb(32, 123, 229)!important;
+}
+
+.cam:hover{
+    background: rgba(0,0,0,0.1);
+}
+.navbar-inverse {
+background: linear-gradient(#0e2d4e,#15538a);
+border-color: blue;
+transition: 1.2s;
+font-size: 13px;
+}
+.navbar-inverse:hover {
+    border-color: #004c96;
+    border-bottom-width: 1.2px;
+    transition: .2s;
+}
+/*----------------------------------------------------*/
 
 #Cancelado{
     color: white;
@@ -65,29 +64,37 @@
     color: white;
     background-color: #08a011;
 }
-
 #Enviado{
     color: white;
     background-color: #2043f3;
     margin-bottom: 15px;
 }
-
 body {
-          font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size:14px;
 }
-
-
 #logo{
 height: 30px;
 width: 60px;
 margin-top: 10px;
-/*margin-left: -80px;*/
 }
 .cen{
     text-align: center;
 }
-
+div.for-full-back{
+    text-align: center;
+    background: #12426f;
+    color: white;
+    padding: 1.3em 0px;
+}
+span.badge-mn{
+    position: absolute;
+    border: 1px solid;
+    background: linear-gradient(#155389,#0e2f51);
+    color: #ffffff;
+    margin: -14px -39px;
+    z-index: 1;
+}
 /*=======================================
     FOOTER STYLES
 }

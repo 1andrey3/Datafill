@@ -3,7 +3,6 @@ $(function() {
         init: function() {
             ordenModer.events();
             ordenModer.getList_moderDetail();
-
         },
         //Eventos de la ventana.
         events: function() {
@@ -76,8 +75,9 @@ $(function() {
 //            ordenModer.showDetailsOrdenModer(record);
             console.log(record);
         },
-        displayModal: function(){
+        displayModal: function(algo){
             $('#modal_form').show();
+            console.log(algo);
         }
     };
     ordenModer.init();
