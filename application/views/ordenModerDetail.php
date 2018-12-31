@@ -26,8 +26,7 @@
         <!-- checkbox -->
         <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
         <!--   SWEET ALERT    -->
-        <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
-        <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
@@ -554,8 +553,6 @@
      </div>
 
 
-
-
         <!--footer-->
         <div class="for-full-back " id="footer">
             Zolid By ZTE Colombia | All Right Reserved
@@ -567,6 +564,8 @@
             var formato_fecha = new Date();
             const meses_anual = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
             var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+            var ss = <?php echo json_encode($ss); ?>
+
         </script>
         <!-- DataTables -->
         <script src="<?= URL::to('assets/plugins/datatables2/DataTables-1.10.16/js/jquery.dataTables.min.js'); ?>"></script>

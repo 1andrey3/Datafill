@@ -3,13 +3,12 @@ $(function() {
         init: function() {
             ordenModer.events();
             ordenModer.getList_moderDetail();
+
         },
         //Eventos de la ventana.
         events: function() {
-            $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.onClickBtnEditOrden);
-            $('#edModer').click(function(){
-                $('#mdl-form').modal('show');
-            })
+            $('#edModer').click(ordenModer.form_modal);
+            $('#tabla_ordenAsoc').on('click', 'a.opc-orden', ordenModer.modalSolo)
         },
 
         getList_moderDetail: function() {
@@ -35,7 +34,7 @@ $(function() {
                 {title: "Id", data: "id"},
                 {title: "Tipo Tecnologia", data: "tipo_tecnologia"},
                 {title: "Fecha Cierre Ingeniero", data: "f_cierre_ing"},
-                {title: "Opciones", data: ordenModer.getButtons},
+                {title: "opc", data: ordenModer.getButtons},
             ]));
         },
 
@@ -85,18 +84,93 @@ $(function() {
             return botones;
         },
 
-        onClickBtnEditOrden: function(e) {
-            var aLinkLog = $(this);
-            var trParent = aLinkLog.parents('tr');
+        // funcionews para modal de unico registro
+        modalSolo: function(e){
+            var aMod = $(this);
+            var trParent = aMod.parents('tr');
             var record = ordenModer.tabla_ordenAsoc.row(trParent).data();
+            ordenModer.postModer(record.id_moder);
 
-//            ordenModer.showDetailsOrdenModer(record);
-            console.log(record);
         },
-        displayModal: function(algo){
-            $('#modal_form').show();
-            console.log(algo);
-        }
+
+
+        // funciones para el modal
+        form_modal: function(e){
+            const hay_sel = ordenModer.tabla_ordenAsoc.rows({selected: true}).any();// booleanos q indica si hay algo seleccionado
+            if (hay_sel) {
+                const seleccionadas = ordenModer.tabla_ordenAsoc.rows({selected: true}).data();// los datos de los elem seleccionados
+                const cuantas = ordenModer.tabla_ordenAsoc.rows( { selected: true } ).count();
+                const id_modernizaciones = [];
+
+                for (var i = 0; i < cuantas; i++) {
+                    id_modernizaciones.push(seleccionadas[i].id_moder);
+                }
+
+                ordenModer.postModer(id_modernizaciones);
+
+
+            } else {
+                const toast = swal.mixin({
+                    toast: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                toast({
+                    type: 'error',
+                    title: 'No seleccionaste ninguna fila!'
+                });
+            }
+            
+        },
+
+        //
+        postModer: function(id_modernizaciones){
+             $.post( baseurl + '/Modernizaciones/js_getModer', 
+                    {
+                        mds: id_modernizaciones
+                    }, 
+                    function(data) {
+                        const obj = JSON.parse(data);
+                        if (obj.length > 1) {
+                            ordenModer.fillModal(obj);
+                        } else {
+                            ordenModer.fillModal(obj, true);
+                        } 
+
+
+                    }
+                );
+        },
+
+        // llenar el modal
+        fillModal: function(obj, unic = false){
+           if (unic) {
+                console.log('es unico');
+                ordenModer.llenarModalUnico(obj)
+
+           } else {
+
+                ordenModer.llenarModalVarios(obj)
+                console.log('es de varios');
+           }
+            
+        },
+
+        //
+        llenarModalUnico: function(obj){
+            console.log(ss); // ss Valores no editables
+        },
+
+        //
+        llenarModalVarios: function(obj){
+            console.log(ss);
+        },
+
+
+
+
+
     };
     ordenModer.init();
 });
