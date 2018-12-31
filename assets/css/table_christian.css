@@ -243,3 +243,8 @@ button#edModer:active {
     background: #2e992c;
     border-color: #24d45b;
 }
+table tbody tr.selected{
+    background: #332d8e !important;
+    color: white;
+    transition: .2s;
+}
