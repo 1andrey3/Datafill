@@ -90,7 +90,7 @@
                 <button id="edModer" class="edModer">Editar Modernizaciones</button>
             </div>
             <div class="col col-md-12">
-                <table id="tabla_ordenAsoc" class="table_cr table table-bordered table-striped dataTable no-footer"></table>
+                <table id="tabla_ordenAsoc" class="table_cr table table-hover table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->
@@ -136,7 +136,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> <span class="editable">TRABAJO</span> - <span class="editable">ID</span> - <span class="editable">TIPO</span> - <spanc class="noEditable">F. ASIGNACIÓN</span></a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> <span class="editable">glyphicon glyphicon-calendar> - <span class="editable">ID</span> - <span class="editable">TIPO</span> - <spanc class="noEditable">F. ASIGNACIÓN</span></a>
                                 </h4>
                             </div>
                             <div id="collapse2" class="panel-collapse collapse">
@@ -154,9 +154,8 @@
                                             <label class="modalLabel">TIPO</label>
                                             <input type="text" class="form-control" placeholder="TIPO">
                                         </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. ASIGNACIÓN</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. ASIGNACIÓN">
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. ASIGNACIÓN</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. ASIGNACIÓN">
                                         </div>
                                     </div>
                                 </div>
@@ -164,20 +163,17 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"> <span class="editable"> F. CIERRE ING</span> - <span class="noEditable">F. EJECUCIÓN CLARO</span> - <span class="noEditable">ESTADO</span> - <span class="noEditable">PROYECTO</span></a>
+                                <h4 class="panel-titleglyphicon glyphicon-calendar data-toggle="collapse" data-parentglyphicon glyphicon-calendar" href="#collapse3"> <span class="editable"> F. CIERRE ING</span> - <span class="noEditable">F. EJECUCIÓN CLARO</span> - <span class="noEditable">ESTADO</span> - <span class="noEditable">PROYECTO</span></a>
                                 </h4>
                             </div>
                             <div id="collapse3" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. CIERRE ING.</label>
-                                            <input type="date" class="form-control" placeholder="F. CIERRE ING.">
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. CIERRE ING.</labelglyphicon glyphicon-calendar type="date" class="form-control" placeholder="F. CIERRE ING.">
                                         </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. EJECUCIÓN CLARO</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. EJECUCIÓN CLARO">
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. EJECUCIÓN CLARO</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. EJECUCIÓN CLARO">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">ESTADO</label>
@@ -193,20 +189,17 @@
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"> <span class="noEditable"> F. FORECAST</span> - <span class="noEditable">F. CREACIÓN</span> - <span class="noEditable">SOLICITANTE</span> - <span class="noEditable">REGIÓN</span></a>
+                                <h4 class="panel-titleglyphicon glyphicon-calendar data-toggle="collapse" data-parent="#glyphicon glyphicon-calendar="#collapse4"> <span class="noEditable"> F. FORECAST</span> - <span class="noEditable">F. CREACIÓN</span> - <span class="noEditable">SOLICITANTE</span> - <span class="noEditable">REGIÓN</span></a>
                                 </h4>
                             </div>
                             <div id="collapse4" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. FORECAST</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="F. FORECAST">
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. FORECAST</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. FORECAST">
                                         </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. CREACIÓN</label>
-                                            <input type="text" class="form-control sinCambio"disabled placeholder="F. CREACIÓN">
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. CREACIÓN</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio"disabled placeholder="F. CREACIÓN">
                                         </div>
                                         <div class="form-group camposModal col-xs-3">
                                             <label class="modalLabel">SOLICITANTE</label>
@@ -223,7 +216,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"> <span class="noEditable">DESCRIPCIÓN</span> - <span class="editable">INGENIERO</span> - <span class="editable"> IN SERVICE SITIO</span> - <span class="editable">F. INGRESO DE SERVICIO CLARO</span></a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"> <span class="noEditable">DESCRIPCIÓN</span> - <span glyphicon glyphicon-calendareditable">INGENIERO</span> - <span class="editable"> IN SERVICE SITIO</span> - <span class="editable">F. INGRESO DE SERVICIO CLARO</span></a>
                                 </h4>
                             </div>
                             <div id="collapse5" class="panel-collapse collapse">
@@ -246,8 +239,8 @@
                                                 <option value="PENDIENTE">PENDIENTE</option>
                                             </select>
                                         </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">F. INGRESO DE SERVICIO CLARO</label>
+                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
+                                            <label class="modalLabel">F. INGRESO DE SERVICIO glyphicon glyphicon-calendar>
                                             <input type="date" class="form-control " placeholder="F. INGRESO DE SERVICIO CLARO">
                                         </div>
                                     </div>
@@ -447,66 +440,113 @@
             </div>
         </div>
     </div> -->
-    
-    
-
-        <!-- <form>
-            <div class="col-sm-12">
-                <div class="col-sm-2 input-group input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-                <div class="col-sm-2 input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input type="text" placeholder="texto"></div>
-            </div>
-
-        </form>
-     -->
-
      <div id="mdl-form" class="modal fade" role="dialog">
-         <div class="modal-dialog modal-lg">
+         <div class="modal-dialog modal-lg" style="width: 90%;">
              <div class="modal-content">
                  <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-                     <h3 class="modal-title">el titulo bien chevere</h3>
+                     <h3 class="modal-title">Editar Modernizaciones</h3>
                  </div>
-                 <div class="modal-body">
-                     
-                 </div>
+                <div class="modal-body">
+                    <div class="row gray">
+                        <form action="" method="post">
+                            <div class="col-sm-12 d-if"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span><input name="ot" id="ot" class="nose form-control" disabled type="text" placeholder="ot"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span><input name="actividad" id="actividad" class="nose form-control" disabled type="text" placeholder="actividad"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span><input name="sitio" id="sitio" class="nose form-control" disabled type="text" placeholder="sitio"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_asignacion" id="f_asignacion" class="nose form-control" disabled type="text" placeholder="F. ASIGNACIÓN"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ejecucion_claro" id="f_ejecucion_claro" class="nose form-control" disabled type="text" placeholder="F. EJECUCIÓN CLARO"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span><input name="estado" id="estado" class="nose form-control" disabled type="text" placeholder="ESTADO"></div>
+
+                            </div>
+                            <div class="col-sm-12 d-if" style="padding-left: 12em;"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span><input name="proyecto" id="proyecto" class="nose form-control" disabled type="text" placeholder="proyecto"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_forecast" id="f_forecast" class="nose form-control" disabled type="text" placeholder="F. FORECAST"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_creacion" id="f_creacion" class="nose form-control" disabled type="text" placeholder="F. CREACIÓN"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="solicitante" id="solicitante" class="nose form-control" disabled type="text" placeholder="SOLICITANTE"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span><input name="region" id="region" class="nose form-control" disabled type="text" placeholder="REGIÓN"></div>
+
+                            <!-- SI SE REQUEIRE EL CAMPO DE DESCRIPCIÓN, ACÁ ESTÁ -->
+                            <!-- <div class="col-sm-12 d-if"> 
+                                <div class="col-sm-12 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span><textarea class="form-control" disabled name="DESCRIPCION" id="" cols="30" placeholder="DESCRIPCIÓN"></textarea></div>-->
+                            </div> 
+
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input name="tipo_orden" id="tipo_orden" class="nose form-control" type="text" placeholder="tipo_orden"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span><input name="trabajo" id="trabajo" class="nose form-control" type="text" placeholder="trabajo"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span><input name="id" id="id" class="nose form-control" type="text" placeholder="id"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-task"></i></span><input name="tipo_tecnologia" id="tipo_tecnologia" class="nose form-control" type="text" placeholder="tipo_tecnologia"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="f_cierre_ing" id="f_cierre_ing" class="nose form-control" type="text" placeholder="f_cierre_ing"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="ingeniero" id="ingeniero" class="nose form-control" type="text" placeholder="ingeniero"></div>
+
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="in_service_sitio" id="in_service_sitio" class="nose form-control" type="text" placeholder="in_service_sitio"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ingreso_servicio_claro" id="f_ingreso_servicio_claro" class="nose form-control" type="text" placeholder="f_ingreso_servicio_claro"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_tx" id="estado_tx" class="nose form-control" type="text" placeholder="estado_tx"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_tx_lista" id="fecha_tx_lista" class="nose form-control" type="text" placeholder="fecha_tx_lista"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_cw" id="estado_cw" class="nose form-control" type="text" placeholder="estado_cw"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_cw_lista" id="fecha_cw_lista" class="nose form-control" type="text" placeholder="fecha_cw_lista"></div>
+
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfe" id="rfe" class="nose form-control" type="text" placeholder="RFE(ORDEN_DE_TX_ORDEN_CW)"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_df" id="estado_df" class="nose form-control" type="text" placeholder="estado_df"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_df" id="fecha_df" class="nose form-control" type="text" placeholder="fecha_df"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfic" id="rfic" class="nose form-control" type="text" placeholder="RFIC(TX_OK_Y_CW_OK)"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfi" id="rfi" class="nose form-control" type="text" placeholder="RFI(RFIC_OK_Y_HW_OK_DF_OK)"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_instalacion" id="estado_instalacion" class="nose form-control" type="text" placeholder="estado_instalacion"></div>
+
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_instalacion" id="fecha_instalacion" class="nose form-control" type="text" placeholder="fecha_instalacion"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_integracion" id="estado_integracion" class="nose form-control" type="text" placeholder="estado_integracion"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_integracion" id="fecha_integracion" class="nose form-control" type="text" placeholder="fecha_integracion"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_onair" id="estado_onair" class="nose form-control" type="text" placeholder="estado_onair"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_inservice" id="fecha_inservice" class="nose form-control" type="text" placeholder="fecha_inservice"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span><input name="contratista_cw" id="contratista_cw" class="nose form-control" type="text" placeholder="contratista_cw"></div>
+
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="mes_inservice" id="mes_inservice" class="nose form-control" type="text" placeholder="mes_inservice"></div>
+
+                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="anio_inservice" id="anio_inservice" class="nose form-control" type="text" placeholder="anio_inservice"></div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
                  <div class="modal-footer">
-                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                      <button type="button" class="btn btn-success" id="mdl-moder-send"><i class='glyphicon glyphicon-send'></i>&nbsp;enviar</button>
                  </div>
              </div>

@@ -2,30 +2,22 @@
     margin:0px;
     padding:0px;
 }
-
-
 ul, ol {
     list-style:none;
 }
-
 .nav li a {
     background-color: inherit;
     padding:15px 14px;
     display:block;
 }
-
-
 .nav li ul {
     background: #004c96;
     display:none;
     position:absolute;
     min-width:180px;
 }
-
 .nav li a:hover {
-    /* background-color: rgba(0, 48, 221, 0.973); */
     background-color: rgb(32, 123, 229);
-    /* color: red !important; */
     transition: .4s;
 }
 .nav li:hover > ul {
@@ -83,14 +75,14 @@ margin-top: 10px;
 }
 div.for-full-back{
     text-align: center;
-    background: #12426f;
+    background: linear-gradient(#155186,#0f3358);;
     color: white;
     padding: 1.3em 0px;
 }
 span.badge-mn{
     position: absolute;
     border: 1px solid;
-    background: linear-gradient(#155389,#0e2f51);
+    background: linear-gradient(#5490c5,#124273);
     color: #ffffff;
     margin: -14px -39px;
     z-index: 1;

@@ -248,3 +248,16 @@ table tbody tr.selected{
     color: white;
     transition: .2s;
 }
+div.modal-content div.modal-body div.row div.d-if{display: inline-flex;}
+
+div.gray{
+    padding: 1em;
+    background: #f1f1f1;
+}
+
+div.p15{
+    padding: 7px 4px !important;
+}
+input.nose{
+    padding: 1em;
+}   
