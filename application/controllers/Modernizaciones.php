@@ -44,4 +44,14 @@ class Modernizaciones extends CI_Controller {
         $response = $this->Dao_modernizaciones_model->getAllModernizacionesByIds($ms);
         echo json_encode($response);
     }
+    //FUNCIÓN PARA ACTUALIZAR LAS ASOCIADAS DE LAS MODERNIZACIONES
+    public function updateModer()
+    {
+        $update = $this->input->post('updates');
+        $cambios = array_merge($update["selects"],$update["inputs"]); //FUNCION PARA COMBINAR ARRAYS
+        $answer = $this->Dao_modernizaciones_model->UpdateModernizaciones($cambios,$cambios["id_moder"]);
+        echo $answer;
+    }
+
+
 }

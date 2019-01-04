@@ -93,453 +93,110 @@
             </div>
         </div>
         <!--  container  -->
-        
 
-        <!-- modal -->
-<!-- document.getElementById('modal_form').style.display='none'; -->
-          <div class="modal_a" id="modal_form">
-            <a id="close_modal" class='pull-right' onclick="$('#modal_form').hide();" title='Cerrar'><span class='glyphicon glyphicon-remove ex'></span></a>
-             <div class="col-xs-offset-2 col-md-8 formContainer">
-                <form action="???" method="post" onsubmit="???" class="formOrderModer">
-                    <div class="panel-group" id="accordion">
-                        <center> <h2 style="margin-bottom: 4%;">Asociadas</h2></center><hr>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <span class="noEditable">OT</span> - <span class="noEditable">ACTIVIDAD</span> - <span class="editable">TIPO</span> - <span class="noEditable">SITIO<span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">OT</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="OT">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ACTIVIDAD</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="ACTIVIDAD">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">TIPO</label>
-                                            <input type="text" class="form-control" placeholder="TIPO">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">SITIO</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="SITIO">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"> <span class="editable">glyphicon glyphicon-calendar> - <span class="editable">ID</span> - <span class="editable">TIPO</span> - <spanc class="noEditable">F. ASIGNACIÓN</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">TRABAJO</label>
-                                            <input type="text" class="form-control" placeholder="TRABAJO">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ID</label>
-                                            <input type="text" class="form-control" placeholder="ID">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">TIPO</label>
-                                            <input type="text" class="form-control" placeholder="TIPO">
-                                        </div>
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. ASIGNACIÓN</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. ASIGNACIÓN">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-titleglyphicon glyphicon-calendar data-toggle="collapse" data-parentglyphicon glyphicon-calendar" href="#collapse3"> <span class="editable"> F. CIERRE ING</span> - <span class="noEditable">F. EJECUCIÓN CLARO</span> - <span class="noEditable">ESTADO</span> - <span class="noEditable">PROYECTO</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse3" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. CIERRE ING.</labelglyphicon glyphicon-calendar type="date" class="form-control" placeholder="F. CIERRE ING.">
-                                        </div>
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. EJECUCIÓN CLARO</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. EJECUCIÓN CLARO">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="ESTADO">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">PROYECTO</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="PROYECTO">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-titleglyphicon glyphicon-calendar data-toggle="collapse" data-parent="#glyphicon glyphicon-calendar="#collapse4"> <span class="noEditable"> F. FORECAST</span> - <span class="noEditable">F. CREACIÓN</span> - <span class="noEditable">SOLICITANTE</span> - <span class="noEditable">REGIÓN</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse4" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. FORECAST</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio" disabled placeholder="F. FORECAST">
-                                        </div>
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. CREACIÓN</labelglyphicon glyphicon-calendar type="text" class="form-control sinCambio"disabled placeholder="F. CREACIÓN">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">SOLICITANTE</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="SOLICITANTE">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">REGIÓN</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="REGIÓN">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"> <span class="noEditable">DESCRIPCIÓN</span> - <span glyphicon glyphicon-calendareditable">INGENIERO</span> - <span class="editable"> IN SERVICE SITIO</span> - <span class="editable">F. INGRESO DE SERVICIO CLARO</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse5" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                  <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">DESCRIPCIÓN.</label>
-                                            <input type="text" class="form-control sinCambio" disabled placeholder="DESCRIPCIÓN.">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">INGENIERO</label>
-                                            <input type="text" class="form-control" placeholder="INGENIERO">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">IN SERVICE SITIO</label>
-                                            <!-- <input type="text" class="form-control" placeholder="IN SERVICE SITIO"> -->
-                                            <select class="form-control" name="inServiceSitio" id="inServiceSitio">
-                                                <option value="">Seleccione</option>
-                                                <option value="OK">OK</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group glyphicon glyphicon-calendar-xs-3">
-                                            <label class="modalLabel">F. INGRESO DE SERVICIO glyphicon glyphicon-calendar>
-                                            <input type="date" class="form-control " placeholder="F. INGRESO DE SERVICIO CLARO">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7"> <span class="editable">ESTADO TX</span> - <span class="editable">FECHA TX LISTA</span> - <span class="editable">ESTADO CW</span> - <span class="editable">FECHA CW LISTA</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse7" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO TX</label>
-                                            <!-- <input type="text" class="form-control" placeholder="ESTADO TX"> -->
-                                            <select class="form-control" name="estadoTX" id="estadoTX">
-                                                <option value="">Seleccione</option>
-                                                <option value="OK">OK</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA TX LISTA</label>
-                                            <input type="date" class="form-control" placeholder="FECHA TX LISTA">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO CW</label>
-                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO CW"> -->
-                                            <select class="form-control" name="estadoCW" id="estadoCW">
-                                                <option value="">Seleccione</option>
-                                                <option value="OK">OK</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                                <option value="NOKIA">NOKIA</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA CW LISTA</label>
-                                            <input type="date" class="form-control"  placeholder="FECHA CW LISTA">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse8"> <span class="editable">RFE(orden de tx orden cw)</span> - <span class="editable">ESTADO DF</span> - <span class="editable">FECHA DF</span> - <span class="editable">RFIC(TX OK  Y CW OK)</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse8" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">RFE(orden de tx orden cw)</label>
-                                            <input type="date" class="form-control" placeholder="RFE(orden de tx orden cw)">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO DF</label>
-                                            <!-- <input type="text" class="form-control" placeholder="ESTADO DF"> -->
-                                            <select class="form-control" name="estadoDF" id="estadoDF">
-                                                <option value="">Seleccione</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
-                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
-                                                <option value="OK">OK</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA DF</label>
-                                            <input type="date" class="form-control" placeholder="FECHA DF">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">RFIC(TX OK  Y CW OK)</label>
-                                            <input type="date" class="form-control" placeholder="RFIC(TX OK  Y CW OK)">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse9"> <span class="editable">RFI(RFIC OK Y HW OK DF OK)</span> - <span class="editable">ESTADO INSTALACIÓN</span> - <span class="editable">FECHA INSTALACIÓN</span> - <span class="editable">ESTADO INTEGRACIÓN</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse9" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">RFI(RFIC OK Y HW OK DF OK)</label>
-                                            <input type="date" class="form-control" placeholder="RFI(RFIC OK Y HW OK DF OK)">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO INSTALACIÓN</label>
-                                            <!-- <input type="text" class="form-control" placeholder="ESTADO INSTALACIÓN"> -->
-                                            <select class="form-control" name="estadoInstalacion" id="estadoInstalacion">
-                                                <option value="">Seleccione</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                                <option value="DF SOLICITADO">DF SOLICITADO</option>
-                                                <option value="DF PENDIENTE OTRAS AREAS">DF PENDIENTE OTRAS AREAS</option>
-                                                <option value="OK">OK</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA INSTALACIÓN</label>
-                                            <input type="date" class="form-control"  placeholder="FECHA INSTALACIÓN">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO INTEGRACIÓN</label>
-                                            <!-- <input type="text" class="form-control"  placeholder="ESTADO INTEGRACIÓN"> -->
-                                            <select class="form-control" name="estadoIntegracion" id="estadoIntegracion">
-                                                <option value="">Seleccione</option>
-                                                <option value="OK">OK</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse10"> <span class="editable">FECHA INTEGRACIÓN</span> - <span class="editable">ESTADO ONAIR</span> - <span class="editable">FECHA INSERVICE</span> - <span class="editable">CONTRATISTA CW</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse10" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA INTEGRACIÓN</label>
-                                            <input type="date" class="form-control" placeholder="FECHA INTEGRACIÓN">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">ESTADO ONAIR</label>
-                                            <!-- <input type="text" class="form-control" placeholder="ESTADO ONAIR"> -->
-                                            <select class="form-control" name="estadoOnAir" id="estadoOnAir">
-                                                <option value="">Seleccione</option>
-                                                <option value="PENDIENTE NOKIA">PENDIENTE NOKIA</option>
-                                                <option value="PENDIENTE CLARO">PENDIENTE CLARO</option>
-                                                <option value="SEGUIMIENTO PARA PRODUCCION">SEGUIMIENTO PARA PRODUCCION</option>
-                                                <option value="OK">OK</option>
-                                                <option value="PENDIENTE">PENDIENTE</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">FECHA INSERVICE</label>
-                                            <input type="date" class="form-control" placeholder="FECHA INSERVICE">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-3">
-                                            <label class="modalLabel">CONTRATISTA CW</label>
-                                            <input type="text" class="form-control" placeholder="CONTRATISTA CW">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse11"> <span class="editable">MES INSERVICE</span> - <span class="editable">AÑO INSERVICE</span></a>
-                                </h4>
-                            </div>
-                            <div id="collapse11" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="row mar">
-                                        <div class="form-group camposModal col-xs-6">
-                                            <label class="modalLabel">MES INSERVICE</label>
-                                            <input type="number" class="form-control" placeholder="MES INSERVICE">
-                                        </div>
-                                        <div class="form-group camposModal col-xs-6">
-                                            <label class="modalLabel">AÑO INSERVICE</label>
-                                            <input type="number" class="form-control" placeholder="AÑO INSERVICE">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row centrado">
-                            <button type="submit" class="btn_moder_modal">Enviar Información</button>
-                        </div>
-                    </div>
-                 </form>
-             </div>
-          </div>
-        <!-- fin modal -->
     <!--*********************  INPUT TEXT  *********************-->
-    <!-- <div class="form-group">
-        <label for="nombre" class="col-md-3 control-label">etiqueta: &nbsp;</label>
-        <div class="col-md-8 selectContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="nombre" id="nombre" required class="form-control">
-            </div>
-        </div>
-    </div> -->
-     <div id="mdl-form" class="modal fade" role="dialog">
-         <div class="modal-dialog modal-lg" style="width: 90%;">
+        <input type="hidden" name="id_moder" id="id_moder" required class="form-control">
+    <!-- ******************************MODAL*************************** -->
+    <div id="mdl-form" class="modal fade" role="dialog" style="overflow: auto;">
+         <div class="modal-dialog modal-lg" style="width: 90%;overflow:auto;">
              <div class="modal-content">
                  <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
                      <h3 class="modal-title">Editar Modernizaciones</h3>
                  </div>
                 <div class="modal-body">
+                    <h2>Editar Asociadas</h2></center>
                     <div class="row gray">
-                        <form action="" method="post">
+                        <form method="post" id="updateModer">
                             <div class="col-sm-12 d-if"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span><input name="ot" id="ot" class="nose form-control" disabled type="text" placeholder="ot"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span><input name="actividad" id="actividad" class="nose form-control" disabled type="text" placeholder="actividad"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span><input name="sitio" id="sitio" class="nose form-control" disabled type="text" placeholder="sitio"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_asignacion" id="f_asignacion" class="nose form-control" disabled type="text" placeholder="F. ASIGNACIÓN"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ejecucion_claro" id="f_ejecucion_claro" class="nose form-control" disabled type="text" placeholder="F. EJECUCIÓN CLARO"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span><input name="estado" id="estado" class="nose form-control" disabled type="text" placeholder="ESTADO"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>ot</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-book"></i></span><input name="ot" id="ot" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>actividad</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-barcode"></i></span><input name="actividad" id="actividad" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>sitio</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-globe"></i></span><input name="sitio" id="sitio" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_asignacion</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_asignacion" id="f_asignacion" class="styleInput form-control" disabled type="text"  ASIGNACIÓN"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_ejecucion_claro</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ejecucion_claro" id="f_ejecucion_claro" class="styleInput form-control" disabled type="text"  EJECUCIÓN CLARO"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-tag"></i></span><input name="estado" id="estado" class="styleInput form-control" disabled type="text" ></div>
                             </div>
-                            <div class="col-sm-12 d-if" style="padding-left: 12em;"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span><input name="proyecto" id="proyecto" class="nose form-control" disabled type="text" placeholder="proyecto"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_forecast" id="f_forecast" class="nose form-control" disabled type="text" placeholder="F. FORECAST"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_creacion" id="f_creacion" class="nose form-control" disabled type="text" placeholder="F. CREACIÓN"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="solicitante" id="solicitante" class="nose form-control" disabled type="text" placeholder="SOLICITANTE"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span><input name="region" id="region" class="nose form-control" disabled type="text" placeholder="REGIÓN"></div>
-
+                            <div class="col-sm-12 d-if"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
+                                <div class="col-sm-3 input-group form-group p15"><div class="titdate"><p>proyecto</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-folder-open"></i></span><input name="proyecto" id="proyecto" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_forecast</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_forecast" id="f_forecast" class="styleInput form-control" disabled type="text"  FORECAST"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_creacion</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_creacion" id="f_creacion" class="styleInput form-control" disabled type="text"  CREACIÓN"></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>solicitante</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-user"></i></span><input name="solicitante" id="solicitante" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>region</p></center></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-globe"></i></span><input name="region" id="region" class="styleInput form-control" disabled type="text" ></div>
                             <!-- SI SE REQUEIRE EL CAMPO DE DESCRIPCIÓN, ACÁ ESTÁ -->
                             <!-- <div class="col-sm-12 d-if"> 
-                                <div class="col-sm-12 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span><textarea class="form-control" disabled name="DESCRIPCION" id="" cols="30" placeholder="DESCRIPCIÓN"></textarea></div>-->
+                                <div class="col-sm-12 input-group form-group p15 "><div class="titdate"><p>DESCRIPCION</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-list-alt"></i></span><textarea class="form-control" disabled name="DESCRIPCION" id="" cols="30" ></textarea></div>-->
                             </div> 
-
                             <div class="col-sm-12 d-if">
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span><input name="tipo_orden" id="tipo_orden" class="nose form-control" type="text" placeholder="tipo_orden"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span><input name="trabajo" id="trabajo" class="nose form-control" type="text" placeholder="trabajo"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span><input name="id" id="id" class="nose form-control" type="text" placeholder="id"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-task"></i></span><input name="tipo_tecnologia" id="tipo_tecnologia" class="nose form-control" type="text" placeholder="tipo_tecnologia"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="f_cierre_ing" id="f_cierre_ing" class="nose form-control" type="text" placeholder="f_cierre_ing"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input name="ingeniero" id="ingeniero" class="nose form-control" type="text" placeholder="ingeniero"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="tit"><label class="pdown" for="tipo_orden">tipo_orden</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-briefcase"></i></span><input name="tipo_orden" id="tipo_orden" class="clickx styleInput form-control" placeholder="tipo_orden" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="trabajo">trabajo</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-list"></i></span><input name="trabajo" id="trabajo" class="clickx styleInput form-control" placeholder="trabajo" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="id">id</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-barcode"></i></span><input name="id" id="id" class="clickx styleInput form-control" placeholder="id" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="tipo_tecnologia">tipo_tecnologia</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-tasks"></i></span><input name="tipo_tecnologia" id="tipo_tecnologia" class="clickx styleInput form-control" placeholder="tipo_tecnologia" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_cierre_ing</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_cierre_ing" id="f_cierre_ing" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="ingeniero">ingeniero</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-user"></i></span><input name="ingeniero" id="ingeniero" class="clickx styleInput form-control" placeholder="ingeniero" type="text" ></div>
                             </div>
                             <div class="col-sm-12 d-if">
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="in_service_sitio" id="in_service_sitio" class="nose form-control" type="text" placeholder="in_service_sitio"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ingreso_servicio_claro" id="f_ingreso_servicio_claro" class="nose form-control" type="text" placeholder="f_ingreso_servicio_claro"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_tx" id="estado_tx" class="nose form-control" type="text" placeholder="estado_tx"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_tx_lista" id="fecha_tx_lista" class="nose form-control" type="text" placeholder="fecha_tx_lista"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_cw" id="estado_cw" class="nose form-control" type="text" placeholder="estado_cw"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_cw_lista" id="fecha_cw_lista" class="nose form-control" type="text" placeholder="fecha_cw_lista"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>in_service_sitio</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="in_service_sitio" id="in_service_sitio" class="styleInput form-control">
+                                    <option value="" disabled>in_service_sitio</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>f_ingreso_servicio_claro</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ingreso_servicio_claro" id="f_ingreso_servicio_claro" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_tx</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_tx" id="estado_tx" class="styleInput form-control">
+                                    <option value="" disabled>estado_tx</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>fecha_tx_lista</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_tx_lista" id="fecha_tx_lista" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_cw</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_cw" id="estado_cw" class="styleInput form-control">
+                                    <option value=""disabled>estado_cw</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="NOKIA">NOKIA</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>fecha_cw_lista</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_cw_lista" id="fecha_cw_lista" class="styleInput form-control" type="date" ></div>
                             </div>
                             <div class="col-sm-12 d-if">
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfe" id="rfe" class="nose form-control" type="text" placeholder="RFE(ORDEN_DE_TX_ORDEN_CW)"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_df" id="estado_df" class="nose form-control" type="text" placeholder="estado_df"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_df" id="fecha_df" class="nose form-control" type="text" placeholder="fecha_df"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfic" id="rfic" class="nose form-control" type="text" placeholder="RFIC(TX_OK_Y_CW_OK)"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfi" id="rfi" class="nose form-control" type="text" placeholder="RFI(RFIC_OK_Y_HW_OK_DF_OK)"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_instalacion" id="estado_instalacion" class="nose form-control" type="text" placeholder="estado_instalacion"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>rfe</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfe" id="rfe" class="styleInput form-control" type="date" ORDEN_DE_TX_ORDEN_CW)"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_df</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_df" id="estado_df" class="styleInput form-control">
+                                    <option value=""disabled>estado_df</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="DF_SOLICITADO">DF_SOLICITADO</option>
+                                    <option value="DF_PENDIENTE_OTRAS_AREAS">DF_PENDIENTE_OTRAS_AREAS</option>
+                                    <option value="OK">OK</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>fecha_df</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_df" id="fecha_df" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>rfic</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfic" id="rfic" class="styleInput form-control" type="date" TX_OK_Y_CW_OK)"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>rfi</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfi" id="rfi" class="styleInput form-control" type="date" RFIC_OK_Y_HW_OK_DF_OK)"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_instalacion</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_instalacion" id="estado_instalacion" class="styleInput form-control">
+                                    <option value="" disabled>estado_instalacion</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="DF_SOLICITADO">DF_SOLICITADO</option>
+                                    <option value="DF_PENDIENTE_OTRAS_AREAS">DF_PENDIENTE_OTRAS_AREAS</option>
+                                    <option value="OK">OK</option>
+                                </select></div>
                             </div>
                             <div class="col-sm-12 d-if">
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_instalacion" id="fecha_instalacion" class="nose form-control" type="text" placeholder="fecha_instalacion"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_integracion" id="estado_integracion" class="nose form-control" type="text" placeholder="estado_integracion"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_integracion" id="fecha_integracion" class="nose form-control" type="text" placeholder="fecha_integracion"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span><input name="estado_onair" id="estado_onair" class="nose form-control" type="text" placeholder="estado_onair"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_inservice" id="fecha_inservice" class="nose form-control" type="text" placeholder="fecha_inservice"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span><input name="contratista_cw" id="contratista_cw" class="nose form-control" type="text" placeholder="contratista_cw"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>fecha_instalacion</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_instalacion" id="fecha_instalacion" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_integracion</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_integracion" id="estado_integracion" class="styleInput form-control">
+                                    <option value="" disabled>estado_integracion</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>fecha_integracion</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_integracion" id="fecha_integracion" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>estado_onair</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_onair" id="estado_onair" class="styleInput form-control">
+                                    <option value="" disabled>estado_onair</option>
+                                    <option value="PENDIENTE_NOKIA">PENDIENTE_NOKIA</option>
+                                    <option value="PENDIENTE_CLARO">PENDIENTE_CLARO</option>
+                                    <option value="SEGUIMIENTO_PARA_PRODUCCION">SEGUIMIENTO_PARA_PRODUCCION</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>fecha_inservice</p></center></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_inservice" id="fecha_inservice" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="contratista_cw">contratista_cw</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-align-justify"></i></span><input name="contratista_cw" id="contratista_cw" class="clickx styleInput form-control" placeholder="contratista_cw" type="text" ></div>
                             </div>
                             <div class="col-sm-12 d-if">
-                                <div class="col-sm-2 input-group form-group p15"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="mes_inservice" id="mes_inservice" class="nose form-control" type="text" placeholder="mes_inservice"></div>
-
-                                <div class="col-sm-2 input-group form-group p15 "><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input name="anio_inservice" id="anio_inservice" class="nose form-control" type="text" placeholder="anio_inservice"></div>
-
+                                <div class="col-sm-2 input-group form-group p15"><div class="tit"><label class="pdown" for="mes_inservice">mes_inservice</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="mes_inservice" id="mes_inservice" class="clickx styleInput form-control" placeholder="mes_inservice" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="anio_inservice">año_inservice</label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="anio_inservice" id="anio_inservice" class="clickx styleInput form-control" placeholder="anio_inservice" type="text" ></div>
                             </div>
                         </form>
                     </div>
@@ -552,7 +209,7 @@
          </div>
      </div>
 
-
+    <!-- ******************************FIN MODAL*************************** -->
         <!--footer-->
         <div class="for-full-back " id="footer">
             Zolid By ZTE Colombia | All Right Reserved

@@ -9,6 +9,7 @@ ul, ol {
     background-color: inherit;
     padding:15px 14px;
     display:block;
+    transition: .5s;
 }
 .nav li ul {
     background: #004c96;
@@ -17,8 +18,9 @@ ul, ol {
     min-width:180px;
 }
 .nav li a:hover {
-    background-color: rgb(32, 123, 229);
+    background-color: rgb(253, 253, 253);
     transition: .4s;
+    color: black !important;
 }
 .nav li:hover > ul {
     display:block;
@@ -27,12 +29,10 @@ ul, ol {
     color:#ffffff !important;
     text-decoration: none;
 }
-.navbar a:hover {
-    background-color: rgb(32, 123, 229)!important;
-}
-
+.cam{transition: .5s;}
 .cam:hover{
-    background: rgba(0,0,0,0.1);
+    background: rgb(177, 177, 177);
+    transition: .5s;
 }
 .navbar-inverse {
 background: linear-gradient(#0e2d4e,#15538a);

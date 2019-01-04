@@ -43,4 +43,18 @@ class Dao_modernizaciones_model extends CI_Model {
         $query = $this->db->get('modernizacion');
         return $query->result();
     }
+    //
+    //FUNCIÓN PARA ACTUALIZAR LAS ASOCIADAS DE LAS MODERNIZACIONES
+    public function UpdateModernizaciones($cambios,$id_moder)
+    {
+        // echo("SI LLEGA :'D");
+        // echo("-------------");
+        // print_r($cambios); 
+        $this->db->where("id_moder", $id_moder);
+        $this->db->update("modernizacion", $cambios);
+        if ($this->db->affected_rows()>0)
+            return $this->db->affected_rows();
+        else 
+            return 0;
+    }
 }
