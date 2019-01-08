@@ -96,7 +96,7 @@
 
     <!-- ******************************MODAL*************************** -->
     <div id="mdl-form" class="modal fade" role="dialog" style="overflow: auto;">
-         <div class="modal-dialog modal-lg" style="width: 90%;overflow:auto;">
+         <div class="modal-dialog modal-lg" style="width: 90%;">
              <div class="modal-content">
                  <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                  <div class="modal-footer">
-                     <button type="button" class="btn btn-danger"  data-dismiss="modal" aria-label="Close"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+                     <button type="button" class="btn btn-danger Cancelar"  data-dismiss="modal" aria-label="Close"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                      <button type="button" class="btn btn-success" id="mdl-moder-send"><i class='glyphicon glyphicon-send'></i>&nbsp;enviar</button>
                  </div>
              </div>

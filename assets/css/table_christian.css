@@ -313,3 +313,10 @@ label.pdown2{
     color: #000000;
 }
 #alertCI{ display: none;}
+.fixh1rf{
+    margin: 0px;
+    left: 1em;
+    position: relative;
+    font-size: 3em;
+    width: fit-content;
+}

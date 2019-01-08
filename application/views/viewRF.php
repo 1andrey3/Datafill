@@ -80,7 +80,7 @@
         </header><br><br><br><br>
         <!--      fin header         -->
 
-        <h1 class="h1">RF</h1><hr>
+        <h1 class="h1 fixh1rf">RF</h1><hr>
 
         <div class="container" align="center">
             <button type="button" class="btn btn-success" id="nuevos"><i class="fa fa-fw fa-plus"></i> Nuevos <span id="nuevosBadge" class="badge">...</span></button>

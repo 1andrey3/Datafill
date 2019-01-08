@@ -5,6 +5,12 @@ $(function() {
             ordenModer.getList_moderDetail();
         },
         ids_form: 0,
+        alertaModal: false,
+        cleanModal: function(){
+            $("#mdl-form").removeClass("in").hide();
+            $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
+            $("#updateModer")[0].reset();
+        },
         //Eventos de la ventana.
         events: function() {
             $('#edModer').click(ordenModer.form_modal);
@@ -18,11 +24,8 @@ $(function() {
                 const div = $(this).siblings("div.tit");
                 ordenModer.animacionPlaceholder(div);
             });
-            $("button.close").on("click",function(){
-                $("#mdl-form").removeClass("in").hide();
-                $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
-                $("#updateModer")[0].reset();
-             });
+            $("button.close").on("click",ordenModer.cleanModal);
+            $("button.Cancelar").on("click",ordenModer.cleanModal)
         },
 
         getList_moderDetail: function() {
@@ -184,7 +187,7 @@ $(function() {
                 }
             });
             ordenModer.ids_form = obj[0].id_moder;
-            
+            ordenModer.alertaModal = false;
 
         },
 
@@ -197,6 +200,7 @@ $(function() {
 
         llenarModalVarios: function(obj){
             ordenModer.ids_form = ordenModer.arrayColumn(obj, 'id_moder');
+            ordenModer.alertaModal = true;
             ordenModer.llenarNoEditables(ss);
             //Función para la animación del placeholder
             
@@ -570,33 +574,55 @@ $(function() {
 
         //AQUÍ IRÁ LA RECOLECCIÓN DE INFORMACIÓN DE LOS CAMPOS  PARA LUEGO PASARLOS POR LA FUNCION DE ACTUALIZACIÓN
         getUpdates: function(){
-            var form = $("#updateModer").children();
-            form = form.children();
-            var inputs = form.children("input");
-            var selects = form.children("select");
-            var valoresInput = {};
-            var valoresSelect = {};
-            var cont = 0;
-            $.each(inputs, function(i,item){
-                valoresInput[inputs[i].id] = inputs[i].value;
-                while(cont < 7){
-                    valoresSelect[selects[cont].id] = selects[cont].value;
-                    cont++;
-                }
-            })
-            const updateData= {selects : valoresSelect, inputs : valoresInput};
-            //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO
-            function clean(obj) { 
-                for (var propName in obj) { 
-                    if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") { 
-                        delete obj[propName]; 
-                    } 
-                } 
-            } 
-            clean(updateData.selects);clean(updateData.inputs);
-            console.log(updateData);
-            $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
-            ordenModer.updateModer(updateData); //<----- VA AL AJAX DE ACTUALIZACIÓN 
+            if(ordenModer.alertaModal == true){
+                Swal({
+                    title: '¿Seguro que desea continuar?',
+                    text: "se editará la información de las filas seleccionadas",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: 'green',
+                    cancelButtonColor: 'red',
+                    confirmButtonText: 'Actualizar',
+                    cancelButtonText: 'Cancelar'
+                  }).then((booleano) => {
+                    if (booleano.value == true) {
+                        update();
+                    }else{
+                        swal("Actualización Cancelada","","info");
+                    }
+                  });
+            }else{
+                update();
+            }
+
+            function update(){
+                var form = $("#updateModer").children();
+                        form = form.children();
+                        var inputs = form.children("input");
+                        var selects = form.children("select");
+                        var valoresInput = {};
+                        var valoresSelect = {};
+                        var cont = 0;
+                        $.each(inputs, function(i,item){
+                            valoresInput[inputs[i].id] = inputs[i].value;
+                            while(cont < 7){
+                                valoresSelect[selects[cont].id] = selects[cont].value;
+                                cont++;
+                            }
+                        })
+                        const updateData= {selects : valoresSelect, inputs : valoresInput};
+                        //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO
+                        function clean(obj) { 
+                            for (var propName in obj) { 
+                                if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") { 
+                                    delete obj[propName]; 
+                                } 
+                            } 
+                        } 
+                        clean(updateData.selects);clean(updateData.inputs);
+                        $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
+                        ordenModer.updateModer(updateData); //<----- VA AL AJAX DE ACTUALIZACIÓN 
+            }
         },
         //
         updateModer: function(cambios){
@@ -624,9 +650,11 @@ $(function() {
                 },
                 function(data){
                     if(data){
-                        swal("Actualización Realizada con Éxito","" ,"warning");
+                        swal("Actualización realizada con Éxito","" ,"success").then((result) => {
+                            location.reload();
+                        });
                     }else{
-                        alert("esto es un error")
+                        swal("Actualización realizada con Éxito","" ,"error");
                     }
                 }
 
