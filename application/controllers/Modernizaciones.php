@@ -48,8 +48,11 @@ class Modernizaciones extends CI_Controller {
     public function updateModer()
     {
         $update = $this->input->post('updates');
+        $ids = $this->input->post('ids');
         $cambios = array_merge($update["selects"],$update["inputs"]); //FUNCION PARA COMBINAR ARRAYS
-        $answer = $this->Dao_modernizaciones_model->UpdateModernizaciones($cambios,$cambios["id_moder"]);
+        // print_r($cambios["id_moder"]);
+        
+        $answer = $this->Dao_modernizaciones_model->UpdateModernizaciones($cambios,$ids);
         echo $answer;
     }
 

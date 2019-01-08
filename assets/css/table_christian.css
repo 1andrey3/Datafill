@@ -10,7 +10,7 @@
 }
 .table_cr .sorting:after{color: #4ace8b;}
 .table_cr a.link-ver-actividades{
-    cursor: help;
+    cursor: pointer;
     background: #1767c4;
     padding: 6px 2px;
     color: #ffffff;
@@ -248,7 +248,7 @@ table tbody tr.selected{
 }
 div.modal-content div.modal-body div.row div.d-if{display: inline-flex;}
 div.gray{
-    padding: 1em 2em;
+    padding: 1em;
     background: #f4f4f4;
     box-shadow: 0px 0px 17px 2px #c9c9c9;
 }
@@ -312,3 +312,4 @@ label.pdown{
 label.pdown2{
     color: #000000;
 }
+#alertCI{ display: none;}

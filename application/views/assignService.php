@@ -111,16 +111,16 @@
         echo "</ul>";
         echo "</center>";
         //--------asignacion
-        echo "<div class='tab-content' id='tab1'><br>";
+        echo "<div class='tab-content' id='tab1'>";
 
         echo "<div class='container'>";
         echo "<form class= 'well form-horizontal' action='' method='post'  id='assignService' name='assignServie' enctype= 'multipart/form-data'>";
-            echo "<div class='row' style='padding-top: 2em;'>
+        echo "<legend >Agendamiento de actividades</legend>";
+            echo "<div class='row'>
                     <div class='col-sm-4 cen'><button  name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\">Asignación  <span class= 'glyphicon glyphicon-plus'></span></button></div>";
             echo "<div class='col-sm-4 cen'><button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\">Cancelación  <span class= 'glyphicon glyphicon-remove-circle'></span></button></div>";
             echo "<div class='col-sm-4 cen'><button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\">Ejecución  <span class= 'glyphicon glyphicon-ok-circle'></span></button></div></div><br>";
         echo "<fieldset>";
-        echo "<legend >Agendamiento de actividades</legend>";
         //-------- Text area------
         echo "<div class='form-group'>";
         echo "<div class='col-md-12 inputGroupContainer'>";
@@ -136,11 +136,8 @@
         echo "</div>";
         echo "</div>";
         ?>
-
-
-
         <!--footer-->
-        <div class="for-full-back " id="footer">
+        <div class="for-full-back " id="footer" style="position:relative;left: -30px; width: 106.32%;">
             Zolid By ZTE Colombia | All Right Reserved
         </div>
         <!-- <script type="text/javascript"> Cufon.now(); </script> -->

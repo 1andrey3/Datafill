@@ -50,7 +50,7 @@ class Dao_modernizaciones_model extends CI_Model {
         // echo("SI LLEGA :'D");
         // echo("-------------");
         // print_r($cambios); 
-        $this->db->where("id_moder", $id_moder);
+        $this->db->where_in("id_moder", $id_moder);
         $this->db->update("modernizacion", $cambios);
         if ($this->db->affected_rows()>0)
             return $this->db->affected_rows();
