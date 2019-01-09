@@ -109,6 +109,8 @@
         });
       });
       var id_fila_selected=[];
+      var clase= "colorz";
+      var boolClase= false;
       function agregar(){
         var user = '<?php echo json_encode($asignar['eng']); ?>';
         var users = JSON.parse(user);
@@ -127,9 +129,16 @@
           }
         }
 
-
         cont++;
-        var fila='<tr class="selected" id="fila'+cont+'" >';
+        //PARA PINTAR LAS FILAS CON DISTINTO COLOR DE FONDO
+        if (boolClase) {
+          clase= "colorz";
+          boolClase = false;
+        }else {
+          clase= "colorx";
+          boolClase = true;
+        };
+        var fila='<tr class='+clase+' id="fila'+cont+'" >';
         fila = fila + '<td>'+cont+'</td>';
         fila = fila + '<td>';
         fila = fila + '<select name="inge'+cont+'" id="inge" class="form-control selectpicker" required>';
@@ -201,50 +210,50 @@
    ?>
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
+                    </div>
+                    <!-- Collect the nav links for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
+                            </li>
+                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
+                            <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
+                            </li>
+                            <li class="cam"><a href="#services">Servicios</a>
+                                <ul>
+                                    <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
+                                    <li><a href="<?= URL::to('Service/listService'); ?>s">Ver Actividades</a></li>
+                                    <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="#services">RF</a>
+                                <ul>
+                                    <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
+                                    <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+                            </li>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- Collect the nav links for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName']?></a>
-                        </li>
-                        <li class="cam fz-18"><a href="#"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
-                        <li class="cam"><a href="#home">Home</a>
-                        </li>
-                        <li class="cam"><a href="#services">Servicios</a>
-                            <ul>
-                                <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
-                                <li><a href="<?= URL::to('Service/listServices'); ?>">Ver Actividades</a></li>
-                                <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
-                            </ul>
-                        </li>
-                        <li class="cam"><a href="#services">RF</a>
-                            <ul>
-                                <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
-                                <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
-                            </ul>
-                        </li>
-                         <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
-                        </li>
-                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
-                        </li>
-                        </li>
-                         <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-     </header><br><br><br><br>
+            </nav>
+        </header><br><br><br><br>
 <!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
 <form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
   <div id="botones">
@@ -253,7 +262,7 @@
       <a id="bt_delall" class="btn" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
     </div>
     <div>
-      <label class="control-label" style="float: left;padding: 0px 39px;position: relative;top: 6px;">Fecha Asignación  ZTE:</label>
+      <label class="control-label" style="float: left;padding: 0px 39px;position: relative;top: 6px;">Fecha de asignación ZTE:</label>
       <div class="selectContainer col-sm-3" style="padding:0px;">
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
@@ -295,9 +304,9 @@
         <thead>
           <tr>
             <td>Nº</td>
-            <td>Asignacion de Ingeniero</td>
-            <td>porcentaje(%)</td>
-            <td>cantidad</td>
+            <td>Asignación de ingeniero</td>
+            <td>Porcentaje(%)</td>
+            <td>Cantidad</td>
           </tr>
         </thead>
   </table>
@@ -311,8 +320,8 @@
   <?php
   /*header('Content-Type: text/plain');
     print_r($asignar);*/
-       echo "<div class='box-header'>";
-         echo "<h5><b>OT : </b>".$asignar['ot']."</h5><h5><b>Solicitante : </b>".$asignar['solicitante']."</h5><h5><b>Fecha de Creacion : </b><span id='fecha_creacion'>".$asignar['fCreacion']."</span></h5>";
+       echo "<div class='box-header infoExcelActivity'>";
+         echo "<h5><b>OT : </b>".$asignar['ot']."</h5><h5><b>Solicitante : </b>".$asignar['solicitante']."</h5><h5><b>Fecha de creación : </b><span id='fecha_creacion'>".$asignar['fCreacion']."</span></h5>";
          echo "<h5><b>Proyecto : </b>".$asignar['proyecto']."</h5>";
          echo "<h5><b>Descripción : </b>".$asignar['descripcion']."</h5>";
          echo "<h5><b>Prioridad : </b><spam style='color:red'>".$asignar['prioridad']."</spam></h5>";
@@ -326,7 +335,7 @@
              echo "<th>Tipo Actividad</th>";
              echo "<th>Regional</th>";
              echo "<th>Cantidad</th>";
-             echo "<th>Descripcion</th>";
+             echo "<th>Descripción</th>";
              echo "<th>Forecast</th>";
              echo "<th>Documentador</th>";
            echo "</tr>";
@@ -355,7 +364,7 @@
              echo "<th>Tipo Actividad</th>";
              echo "<th>Regional</th>";
              echo "<th>Cantidad</th>";
-             echo "<th>Descripcion</th>";
+             echo "<th>Descripción</th>";
              echo "<th>Forecast</th>";
              echo "<th>Documentador</th>";
            echo "</tr>";

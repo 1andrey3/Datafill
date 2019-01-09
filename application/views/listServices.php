@@ -329,7 +329,7 @@ function showMessage(mensaje){
         <!-- Collect the nav links for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="cam"><a >Bienvenid@ <?php print_r( $_SESSION['userName']) ?></a>
+            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
             </li>
             <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -347,12 +347,12 @@ function showMessage(mensaje){
                 <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
               </ul>
             </li>
-            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
             </li>
             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
             </li>
           </li>
-          <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+          <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
           </li>
         </ul>
       </div>
@@ -362,9 +362,9 @@ function showMessage(mensaje){
 <!--      fin header         -->
 <br><br><br><br>
 <div class="container center">
-  <button type="button" class="btn btn-primary" id="proximos">Proximos </button><span id="proximosBadge" class="badge">...</span>
-  <button type="button" class="btn btn-warning" id="hoy">hoy <span id="hoyBadge" class="badge">...</span></button>
-  <button type="button" class="btn btn-danger" id="expirados">expirados <span id="expiradosBadge" class="badge">...</span></button>
+  <button type="button" class="btn btn-primary" id="proximos">Próximos </button><span id="proximosBadge" class="badge">...</span>
+  <button type="button" class="btn btn-warning" id="hoy">Hoy <span id="hoyBadge" class="badge">...</span></button>
+  <button type="button" class="btn btn-danger" id="expirados">Expirados <span id="expiradosBadge" class="badge">...</span></button>
 </div>
 <!-- <a href="<?= URL::to('Grafics/getGrafics'); ?>" data-toggle="tooltip" title="Ver Graficas"><img src="<?= URL::to('assets/img/grafics.gif'); ?>" alt="graficas"  class="botonIcon"></a> -->
 <!-- menu sticky -->
@@ -479,7 +479,7 @@ if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 //<!-- /.box-header -->
   echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
-  echo "<legend >Lista de Actividades TRANSPORTE</legend>";
+  echo "<legend >Lista de actividades TRANSPORTE</legend>";
   echo "</center>";
   echo "<table id='tableTransport' class='table-hover table_cr table table-striped' width='100%'>";
   echo "</table>";
@@ -495,7 +495,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 //       //<!-- /.box-header -->
   echo "<div class='box-body' style='margin: 0px 38px;'>";
   echo "<center>";
-  echo "<legend>Lista de Actividades GDATOS</legend>";
+  echo "<legend>Lista de actividades GDATOS</legend>";
   echo "</center>";
   echo "<table id='tableGDATOS' class='table_cr table  table-hover table-striped'>";
   echo "</table>";

@@ -7,9 +7,11 @@ $(function() {
         ids_form: 0,
         alertaModal: false,
         cleanModal: function(){
-            $("#mdl-form").removeClass("in").hide();
-            $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
+            $("#mdl-form").removeClass("este");
+            $(".d-if div.p15 input, .d-if div.p15 select").css({"border-color":"#d2d6de","background":"white"}); // PARA CUANDO SE CIERRE EL MODAL, TODOS LOS BORDES QUEDEN DEL COLOR PREDETERMINADOS Y NO ROJOS
             $("#updateModer")[0].reset();
+            $("div.showAlert").addClass("alertCI");
+            $("div.showAlert").removeClass("showAlert");
         },
         //Eventos de la ventana.
         events: function() {
@@ -140,7 +142,6 @@ $(function() {
             }
             
         },
-
         //
         postModer: function(id_modernizaciones){
              $.post( baseurl + '/Modernizaciones/js_getModer', 
@@ -154,8 +155,6 @@ $(function() {
                         } else {
                             ordenModer.fillModal(obj, true);
                         } 
-
-
                     }
                 );
         },
@@ -163,20 +162,16 @@ $(function() {
         // llenar el modal
         fillModal: function(obj, unic = false){
            if (unic) {
-               $("#mdl-form").addClass("in").show();
+               $("#mdl-form").addClass("este");
                ordenModer.llenarModalUnico(obj)
             } else {
-                $("#mdl-form").addClass("in").show();
-                $("button.close").on("click",function(){$("#mdl-form").removeClass("in").hide();})
+                $("#mdl-form").addClass("este");
                 ordenModer.llenarModalVarios(obj)
            }
-            
         },
         //
         llenarModalUnico: function(obj){
             ordenModer.llenarNoEditables(ss)
-            console.log(obj);
-            
             // console.log(ss); // ss Valores no editables
             $("#alertCI").css("display","none");
             $.each(obj[0], function(i, item) {
@@ -203,347 +198,87 @@ $(function() {
             ordenModer.alertaModal = true;
             ordenModer.llenarNoEditables(ss);
             //Función para la animación del placeholder
-            
             $.each(obj[0], function(i, item) {
                 if(item != "" || item != null){
                     const div = $('#' + i).siblings("div.tit")
                     ordenModer.animacionPlaceholder(div);
                 }
             });
-            var alertCamposIguales = false;
-            var tipo_orden = [] ;var trabajo = [] ;var id = [] ;var tipo_tecnologia = [] ;var f_cierre_ing = [] ;var ingeniero = [] ;var in_service_sitio = [] ;var f_ingreso_servicio_claro = [] ;var estado_tx = [] ;var fecha_tx_lista = [] ;var estado_cw = [] ;var fecha_cw_lista = [] ;var rfe = [] ;var estado_df = [] ;var fecha_df = [] ;var rfic = [] ;var rfi = [] ;var estado_instalacion = [] ;var fecha_instalacion = [] ;var estado_integracion = [] ;var fecha_integracion = [] ;var estado_onair = [] ;var fecha_inservice = [] ;var contratista_cw = [] ;var mes_inservice = [] ;var anio_inservice = [] ;
+            var tipo_orden1 = [] , trabajo1 = [] , tipo_tecnologia1 = [] , f_cierre_ing1 = [] , ingeniero1 = [] , in_service_sitio1 = [] , f_ingreso_servicio_claro1 = [] , estado_tx1 = [] , fecha_tx_lista1 = [] , estado_cw1 = [] , fecha_cw_lista1 = [] , rfe1 = [] , estado_df1 = [] , fecha_df1 = [] , rfic1 = [] , rfi1 = [] , estado_instalacion1 = [] , fecha_instalacion1 = [] , estado_integracion1 = [] , fecha_integracion1 = [] , estado_onair1 = [] , fecha_inservice1 = [] , contratista_cw1 = [] , mes_inservice1 = [] , anio_inservice1 = [] ;
             $.each(obj,function(i,item){
-                tipo_orden[i] = item["tipo_orden"];
-                trabajo[i] = item["trabajo"];
-                tipo_tecnologia[i] = item["tipo_tecnologia"];
-                f_cierre_ing[i] = item["f_cierre_ing"];
-                ingeniero[i] = item["ingeniero"];
-                in_service_sitio[i] = item["in_service_sitio"];
-                f_ingreso_servicio_claro[i] = item["f_ingreso_servicio_claro"];
-                estado_tx[i] = item["estado_tx"];
-                fecha_tx_lista[i] = item["fecha_tx_lista"];
-                estado_cw[i] = item["estado_cw"];
-                fecha_cw_lista[i] = item["fecha_cw_lista"];
-                rfe[i] = item["rfe"];
-                estado_df[i] = item["estado_df"];
-                fecha_df[i] = item["fecha_df"];
-                rfic[i] = item["rfic"];
-                rfi[i] = item["rfi"];
-                estado_instalacion[i] = item["estado_instalacion"];
-                fecha_instalacion[i] = item["fecha_instalacion"];
-                estado_integracion[i] = item["estado_integracion"];
-                fecha_integracion[i] = item["fecha_integracion"];
-                estado_onair[i] = item["estado_onair"];
-                fecha_inservice[i] = item["fecha_inservice"];
-                contratista_cw[i] = item["contratista_cw"];
-                mes_inservice[i] = item["mes_inservice"];
-                anio_inservice[i] = item["anio_inservice"];
+            tipo_orden1[i] = item["tipo_orden"];    trabajo1[i] = item["trabajo"];
+            tipo_tecnologia1[i] = item["tipo_tecnologia"];  f_cierre_ing1[i] = item["f_cierre_ing"];
+            ingeniero1[i] = item["ingeniero"];  in_service_sitio1[i] = item["in_service_sitio"];
+            f_ingreso_servicio_claro1[i] = item["f_ingreso_servicio_claro"];    estado_tx1[i] = item["estado_tx"];
+            fecha_tx_lista1[i] = item["fecha_tx_lista"];    estado_cw1[i] = item["estado_cw"];
+            fecha_cw_lista1[i] = item["fecha_cw_lista"];    rfe1[i] = item["rfe"];
+            estado_df1[i] = item["estado_df"];fecha_df1[i] = item["fecha_df"];
+            rfic1[i] = item["rfic"];    rfi1[i] = item["rfi"];
+            estado_instalacion1[i] = item["estado_instalacion"];    fecha_instalacion1[i] = item["fecha_instalacion"];
+            estado_integracion1[i] = item["estado_integracion"];    fecha_integracion1[i] = item["fecha_integracion"];
+            estado_onair1[i] = item["estado_onair"];    fecha_inservice1[i] = item["fecha_inservice"];
+            contratista_cw1[i] = item["contratista_cw"];    mes_inservice1[i] = item["mes_inservice"];
+            anio_inservice1[i] = item["anio_inservice"];
             });
-            var igual_tipoOrden = tipo_orden.filter(function(item2, index, array) {
-                return array.indexOf(item2) === index;
-            })
-            if (igual_tipoOrden.length === 1) {
-                $('#tipo_orden').val(obj[0]["tipo_orden"])
-                // console.log("Campos de tipo orden IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#tipo_orden').css("border-color","red");
-                // console.log("tipo orden NO IGUALES");
-            }
-
-            var igual_trabajo = trabajo.filter(function(item2, index, array) {
-                return array.indexOf(item2) === index;
-            })
-            if (igual_trabajo.length === 1) {
-                $('#trabajo').val(obj[0]["trabajo"])
-                // console.log("Campos trabajo IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#trabajo').css("border-color","red");
-                // console.log(" trabajo NO IGUALES");
-            }
-
-            var igual_tipo_tecnologia = tipo_tecnologia.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_tipo_tecnologia.length === 1) {
-                $('#tipo_tecnologia').val(obj[0]["tipo_tecnologia"])
-                // console.log("Campos tipo_tecnologia IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#tipo_tecnologia').css("border-color","red");
-                // console.log(" tipo_tecnologia NO IGUALES");
-            }
-
-            var igual_f_cierre_ing = f_cierre_ing.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_f_cierre_ing.length === 1) {
-                $('#f_cierre_ing').val(obj[0]["f_cierre_ing"])
-                // console.log("Campos f_cierre_ing IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#f_cierre_ing').css("border-color","red");
-                // console.log(" f_cierre_ing NO IGUALES");
-            }
-
-            var igual_ingeniero = ingeniero.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_ingeniero.length === 1) {
-                $('#ingeniero').val(obj[0]["ingeniero"])
-                // console.log("Campos ingeniero IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#ingeniero').css("border-color","red");
-                // console.log(" ingeniero NO IGUALES");
-            }
-
-            var igual_in_service_sitio = in_service_sitio.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_in_service_sitio.length === 1) {
-                $('#in_service_sitio').val(obj[0]["in_service_sitio"])
-                // console.log("Campos in_service_sitio IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#in_service_sitio').css("border-color","red").val('');
-                // console.log(" in_service_sitio NO IGUALES");
-            }
-
-            var igual_f_ingreso_servicio_claro = f_ingreso_servicio_claro.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_f_ingreso_servicio_claro.length === 1) {
-                $('#f_ingreso_servicio_claro').val(obj[0]["f_ingreso_servicio_claro"])
-                // console.log("Campos f_ingreso_servicio_claro IGUALES"); 
-            }else{
-                alertCamposIguales = true;
-                $('#f_ingreso_servicio_claro').css("border-color","red");
-                // console.log(" f_ingreso_servicio_claro NO IGUALES");
-            }
-
-            var igual_estado_tx = estado_tx.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_tx.length === 1) {
-                $('#estado_tx').val(obj[0]["estado_tx"])
-                // console.log("Campos estado_tx IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_tx').css("border-color","red").val('');
-                // console.log(" estado_tx NO IGUALES");
-            }
-
-            var igual_fecha_tx_lista = fecha_tx_lista.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_tx_lista.length === 1) {
-                $('#fecha_tx_lista').val(obj[0]["fecha_tx_lista"])
-                // console.log("Campos fecha_tx_lista IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_tx_lista').css("border-color","red");
-                // console.log(" fecha_tx_lista NO IGUALES");
-            }
-
-            var igual_estado_cw = estado_cw.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_cw.length === 1) {
-                $('#estado_cw').val(obj[0]["estado_cw"])
-                // console.log("Campos estado_cw IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_cw').css("border-color","red").val('');
-                // console.log(" estado_cw NO IGUALES");
-            }
-
-            var igual_fecha_cw_lista = fecha_cw_lista.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_cw_lista.length === 1) {
-                $('#fecha_cw_lista').val(obj[0]["fecha_cw_lista"])
-                // console.log("Campos fecha_cw_lista IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_cw_lista').css("border-color","red");
-                // console.log(" fecha_cw_lista NO IGUALES");
-            }
-
-            var igual_rfe = rfe.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_rfe.length === 1) {
-                $('#rfe').val(obj[0]["rfe"])
-                // console.log("Campos rfe IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#rfe').css("border-color","red");
-                // console.log(" rfe NO IGUALES");
-            }
-
-            var igual_estado_df = estado_df.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_df.length === 1) {
-                $('#estado_df').val(obj[0]["estado_df"])
-                // console.log("Campos estado_df IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_df').css("border-color","red").val('');
-                // console.log(" estado_df NO IGUALES");
-            }
-
-            var igual_fecha_df = fecha_df.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_df.length === 1) {
-                $('#fecha_df').val(obj[0]["fecha_df"])
-                // console.log("Campos fecha_df IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_df').css("border-color","red");
-                // console.log(" fecha_df NO IGUALES");
-            }
-
-            var igual_rfic = rfic.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_rfic.length === 1) {
-                $('#rfic').val(obj[0]["rfic"])
-                // console.log("Campos rfic IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#rfic').css("border-color","red");
-                // console.log(" rfic NO IGUALES");
-            }
-
-            var igual_rfi = rfi.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_rfi.length === 1) {
-                $('#rfi').val(obj[0]["rfi"])
-                // console.log("Campos rfi IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#rfi').css("border-color","red");
-                // console.log(" rfi NO IGUALES");
-            }
-
-            var igual_estado_instalacion = estado_instalacion.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_instalacion.length === 1) {
-                $('#estado_instalacion').val(obj[0]["estado_instalacion"])
-                // console.log("Campos estado_instalacion IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_instalacion').css("border-color","red").val('');
-                // console.log(" estado_instalacion NO IGUALES");
-            }
-
-            var igual_fecha_instalacion = fecha_instalacion.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_instalacion.length === 1) {
-                $('#fecha_instalacion').val(obj[0]["fecha_instalacion"])
-                // console.log("Campos fecha_instalacion IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_instalacion').css("border-color","red");
-                // console.log(" fecha_instalacion NO IGUALES");
-            }
-
-            var igual_estado_integracion = estado_integracion.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_integracion.length === 1) {
-                $('#estado_integracion').val(obj[0]["estado_integracion"])
-                // console.log("Campos estado_integracion IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_integracion').css("border-color","red").val('');
-                // console.log(" estado_integracion NO IGUALES");
-            }
-
-            var igual_fecha_integracion = fecha_integracion.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_integracion.length === 1) {
-                $('#fecha_integracion').val(obj[0]["fecha_integracion"])
-                // console.log("Campos fecha_integracion IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_integracion').css("border-color","red");
-                // console.log(" fecha_integracion NO IGUALES");
-            }
-
-            var igual_estado_onair = estado_onair.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_estado_onair.length === 1) {
-                $('#estado_onair').val(obj[0]["estado_onair"])
-                // console.log("Campos estado_onair IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#estado_onair').css("border-color","red").val('');
-                // console.log(" estado_onair NO IGUALES");
-            }
-
-            var igual_fecha_inservice = fecha_inservice.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_fecha_inservice.length === 1) {
-                $('#fecha_inservice').val(obj[0]["fecha_inservice"])
-                // console.log("Campos fecha_inservice IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#fecha_inservice').css("border-color","red");
-                // console.log(" fecha_inservice NO IGUALES");
-            }
-
-            var igual_contratista_cw = contratista_cw.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_contratista_cw.length === 1) {
-                $('#contratista_cw').val(obj[0]["contratista_cw"])
-                // console.log("Campos contratista_cw IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#contratista_cw').css("border-color","red");
-                // console.log(" contratista_cw NO IGUALES");
-            }
-
-            var igual_mes_inservice = mes_inservice.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_mes_inservice.length === 1) {
-                $('#mes_inservice').val(obj[0]["mes_inservice"])
-                // console.log("Campos mes_inservice IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#mes_inservice').css("border-color","red");
-                // console.log(" mes_inservice NO IGUALES");
-            }
-
-
-            var igual_anio_inservice = anio_inservice.filter(function(item2, index, array) {
-                    return array.indexOf(item2) === index;
-                })
-            if (igual_anio_inservice.length === 1) {
-                $('#anio_inservice').val(obj[0]["anio_inservice"])
-                // console.log("Campos anio_inservice IGUALES");
-            }else{
-                alertCamposIguales = true;
-                $('#anio_inservice').css("border-color","red");
-                // console.log(" anio_inservice NO IGUALES");
-            }
+            var array = [];
+            array[0] = tipo_orden1;
+            array[1] = trabajo1;
+            array[2] = tipo_tecnologia1;
+            array[3] = f_cierre_ing1;
+            array[4] = ingeniero1;
+            array[5] = in_service_sitio1;
+            array[6] = f_ingreso_servicio_claro1;
+            array[7] = estado_tx1;
+            array[8] = fecha_tx_lista1;
+            array[9] = estado_cw1;
+            array[10] = fecha_cw_lista1;
+            array[11] = rfe1;
+            array[12] = estado_df1;
+            array[13] = fecha_df1;
+            array[14] = rfic1;
+            array[15] = rfi1;
+            array[16] = estado_instalacion1;
+            array[17] = fecha_instalacion1;
+            array[18] = estado_integracion1;
+            array[19] = fecha_integracion1;
+            array[20] = estado_onair1;
+            array[21] = fecha_inservice1;
+            array[22] = contratista_cw1;
+            array[23] = mes_inservice1;
+            array[24] = anio_inservice1;
+            var campos = Object.keys(obj[0]);
+            campos.splice(0,2); campos.splice(2,1);
+            ordenModer.valFiltro(array,campos);
             if(alertCamposIguales){
-                $("#alertCI").css("display","block");
+                $("div.alertCI").addClass("showAlert");
+                $("div.alertCI").removeClass("alertCI");
             }
         },
-        //
+        //VALFILTRO Y FILTAR VERIFICAN SI LOS CAMPOS SELECCIONADOS SON IGUALES EN TODAS LAS FILAS O NO
+        valFiltro: function(arreglo,valores){
+            $.each(arreglo,function(i){
+                if(ordenModer.filtrar(arreglo[i])){
+                    $('#'+valores[i]).val(arreglo[i][0]);
+
+                    // console.log(valores[i]," : SI")
+                }else{
+                    alertCamposIguales = true;
+                    $('#'+valores[i]).css({"border-color":"red", "background":"floralwhite"});
+                    // console.log(valores[i]," : NO")
+                }
+            })
+        },
+        filtrar: function(arreglo){
+            const equal = arreglo.filter(function(item, index, array){
+                return array.indexOf(item) === index;
+            });
+            if (equal.length === 1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        //LLENA LOS QUE NO SON EDITABLE
         llenarNoEditables: function(noEditable){
             $("#ot").val(noEditable[0]);
             $("#actividad").val(noEditable[1]);
@@ -557,6 +292,7 @@ $(function() {
             $("#solicitante").val(noEditable[9]);
             $("#region").val(noEditable[10]);
         },
+        //animación para los input, si estan vacíos
         animacionPlaceholder: function(div){
             div.addClass("tit2");
             const titulo = div.children("label")
@@ -611,7 +347,7 @@ $(function() {
                             }
                         })
                         const updateData= {selects : valoresSelect, inputs : valoresInput};
-                        //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO
+                        //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO Y ASÍ NO SE REMPLACEN LOS CAMPOS VACÍOS
                         function clean(obj) { 
                             for (var propName in obj) { 
                                 if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") { 
@@ -626,27 +362,10 @@ $(function() {
         },
         //
         updateModer: function(cambios){
-            // NOTACIÓN AJAX
-            // $.post( baseurl + '/Modernizaciones/js_getModer', 
-            //         {
-            //             mds: id_modernizaciones
-            //         }, 
-            //         function(data) {
-            //             const obj = JSON.parse(data);
-            //             if (obj.length > 1) {
-            //                 ordenModer.fillModal(obj);
-            //             } else {
-            //                 ordenModer.fillModal(obj, true);
-            //             } 
-            //         }
-            //     );
-            // var obj = JSON.stringify(cambios);
-            // console.log(cambios);
             $.post(baseurl + '/Modernizaciones/updateModer',
                 {
                     updates : cambios,
                     ids :ordenModer.ids_form
-                    // updates : cambios.serializeArray()
                 },
                 function(data){
                     if(data){
@@ -657,9 +376,6 @@ $(function() {
                         swal("Actualización realizada con Éxito","" ,"error");
                     }
                 }
-
-            
-            
             );
         }
     }

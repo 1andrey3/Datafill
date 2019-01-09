@@ -49,7 +49,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName'] ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
                             </li>
                             <li class="cam fz-18"><a href="#"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -67,12 +67,12 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -116,7 +116,7 @@
                             if ($_SESSION['role'] == 4) {
                                 if (comparar_fecha($fechas[$i]->asig_a_ZTE, $fechas[$i]->asignacion)) {
                                     ?>
-                                    <td><input id="as_zte_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->asig_a_ZTE ?>" style="border: 1px solid red; color: red;"/></td>
+                                    <td><input id="as_zte_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->asig_a_ZTE ?>" style="border: 1px solid red; color: red;font-weight:bold"/></td>
                                 <?php } else { ?>
                                     <td><input id="as_zte_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->asig_a_ZTE ?>"/></td>
                                 <?php
@@ -154,7 +154,7 @@
                             if ($_SESSION['role'] != 4 || $_SESSION['role'] == 4) {
                                 if (comparar_fecha($fechas[$i]->fin_ing, $fechas[$i]->ejecucion)) {
                                     ?>
-                                    <td><input id="fin_ing_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->fin_ing ?>" style="border: 1px solid red; color: red;"/></td>
+                                    <td><input id="fin_ing_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->fin_ing ?>" style="border: 1px solid red; color: red;font-weight:bold"/></td>
                                 <?php } else { ?>
                                     <td><input id="fin_ing_<?= $fechas[$i]->claro ?>" class="cambiofecha" type="date" value="<?= $fechas[$i]->fin_ing ?>"/></td>
                                 <?php

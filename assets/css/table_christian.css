@@ -183,10 +183,7 @@ div.panel-heading:hover{
     color: white !important;
     height: 44px;
     transition: .5s;
-}
-div.block{
-    position: relative;
-    left: 23%;
+    width: 98%;
 }
 .style_button:hover {
     background: white;
@@ -199,11 +196,13 @@ input.s_b{
     font-weight: bold;
     padding: 8px;
     transition: .4s;
+    width: 98%;
+    height: 3.2em;
 }
 input.s_b:hover {
     background: white;
     border: 2px solid #ffce28;
-    color: #ffce28;
+    color: #ffce28 !important;
 }
 .editable{color: #228c26;}.noEditable{color:#d41c2c; }.editable,.noEditable{font-weight: bold}
 button.edModer{
@@ -312,7 +311,14 @@ label.pdown{
 label.pdown2{
     color: #000000;
 }
-#alertCI{ display: none;}
+div.alertCI{display: none;}
+div.showAlert{
+    animation: 1s alert ease;
+}
+@keyframes alert{
+    from{display: block;opacity: 0;}
+    to{opacity: 1;}
+}
 .fixh1rf{
     margin: 0px;
     left: 1em;
@@ -320,3 +326,48 @@ label.pdown2{
     font-size: 3em;
     width: fit-content;
 }
+div.modal-header button.x{
+    opacity: 1;
+    color: white;
+    transition: .2s;
+}
+div.modal-header button.x:hover{
+    font-size: 2em;
+    transition: .2s;
+    color: antiquewhite;
+}
+#mdl-form.este{
+    display: block;
+    animation: .5s modalModer ease; 
+}
+@keyframes modalModer{
+    from{display: block;transform: scale(0);}
+    50%{transform: scale(1.2)}
+    to{transform: scale(1)}
+}
+.colorz{background: linear-gradient(#dfdfdf,white);}
+.colorx{background: linear-gradient(white,#dfdfdf);}
+.colorz,.colorx{
+    color: #000;
+    animation: .5s assignByMail ease;
+}
+@keyframes assignByMail{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+div.infoExcelActivity{
+    border: 1px solid lightgrey;
+    padding: 5px 15px;
+    margin-bottom: 1.5em;
+    border-radius: .5em;
+    box-shadow: 2px 3px 5px #333333;
+    background: #f9f9f9;
+}
+div.infoExcelActivity h5{
+    background: #fbfbfb;
+    padding: .5em;
+    border: 1px solid #d6d6d6;
+    border-radius: .4em;
+    transition: .3s;
+}
+div.infoExcelActivity h5:hover{ background: #353535; color: white; }

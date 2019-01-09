@@ -64,7 +64,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName'] ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
                             </li>
                             <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -82,12 +82,12 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -117,21 +117,19 @@
         echo "<form class= 'well form-horizontal' action='' method='post'  id='assignService' name='assignServie' enctype= 'multipart/form-data'>";
         echo "<legend >Agendamiento de actividades</legend>";
             echo "<div class='row'>
-                    <div class='col-sm-4 cen'><button  name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\">Asignación  <span class= 'glyphicon glyphicon-plus'></span></button></div>";
-            echo "<div class='col-sm-4 cen'><button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\">Cancelación  <span class= 'glyphicon glyphicon-remove-circle'></span></button></div>";
-            echo "<div class='col-sm-4 cen'><button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\">Ejecución  <span class= 'glyphicon glyphicon-ok-circle'></span></button></div></div><br>";
-        echo "<fieldset>";
+                    <div class='col-sm-4 cen'><button name='button1' id='button1' value='button1' type= 'submit' class= 'btn btn-primary tamanoAssign' onclick = \"this.form.action = '" . URL::to('SpecificService/assignByMail') . "'\"><span class= 'glyphicon glyphicon-plus'></span>  Asignación</button></div>";
+            echo "<div class='col-sm-4 cen'><button name='button2' id='button2' value='button2' type= 'submit' class= 'btn btn-danger tamanoAssign' onclick = \"this.form.action = '" . URL::to('SpecificService/cancelByMail') . "'\"><span class= 'glyphicon glyphicon-remove-circle'></span>  Cancelación</button></div>";
+            echo "<div class='col-sm-4 cen'><button name='button3' id='button3' value='button3' type= 'submit' class= 'btn btn-success tamanoAssign' onclick = \"this.form.action = '" . URL::to('SpecificService/executeByExcel') . "'\"><span class= 'glyphicon glyphicon-ok-circle'></span>  Ejecución</button></div></div><br>";
         //-------- Text area------
         echo "<div class='form-group'>";
         echo "<div class='col-md-12 inputGroupContainer'>";
         echo "<div class='input-group'>";
-        echo "<span class='input-group-addon'><i class='glyphicon glyphicon-file'></i></span>";
+        echo "<span class='input-group-addon spanColor1'><i class='glyphicon glyphicon-file'></i></span>";
         echo "<textarea class='form-control' rows='14' name='actividades' placeholder='Copiar asignación'></textarea>";
         echo "</div>";
         echo "</div>";
         echo "</div>";
         echo "</div>";
-        echo "</fieldset>";
         echo "</form>";
         echo "</div>";
         echo "</div>";

@@ -75,14 +75,14 @@ $(function () {
                     {title: "Orden", data: "orden"},
                     {title: "ID", data: "id"},
                     {title: "Tipo", data: "tipo"},
-                    {title: "Cant", data: "cantidad"},
+                    {title: "Cant.", data: "cantidad"},
                     {title: "Ingeniero", data: "ingeniero"},
                     {title: "Proyecto", data: "proyecto"},
                     {title: "Solicitante", data: "solicitante"},
                     {title: "Asignación", data: "asignacion"},
-                    {title: "Primera Entrega", data: "fEnvio1"},
+                    {title: "Primera entrega", data: "fEnvio1"},
                     {title: "  ", data: mostrar.getPrimeraEntrega},
-                    {title: "Segunda Entrega", data: "fEnvio2"},
+                    {title: "Segunda entrega", data: "fEnvio2"},
                     {title: "  ", data: mostrar.getSegundaEntrega}
                     
                 ]));

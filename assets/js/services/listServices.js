@@ -181,16 +181,16 @@ $(function () {
                 columns: [
                     {title: "Id orden", data: vista.getLinkOrden},
                     {title: "Fecha creación", data: "creationDate"},
-                    {title: "Ingeniero Solicitante", data: "services.0.ingSol"},
+                    {title: "Ingeniero solicitante", data: "services.0.ingSol"},
 
-                    {title: "Forecast Aprox.", data: "services.0.dateForecast"},
-                    {title: "Asignacio a ZTE", data: "D_ASIG_Z"},
+                    {title: "Forecast aprox.", data: "services.0.dateForecast"},
+                    {title: "Asignación a ZTE", data: "D_ASIG_Z"},
 
-                    {title: "F.Asignacion", data: vista.getdateStartP},
+                    {title: "F.Asignación", data: vista.getdateStartP},
                     {title: "Proyecto", data: "services.0.proyecto"},
-                    {title: "Region", data: "services.0.region"},
-                    {title: "Ingenieros Asignados", data: vista.getEngs},
-                    {title: "Documentadores Asignados", data: vista.getDocs},
+                    {title: "Región", data: "services.0.region"},
+                    {title: "Ingenieros asignados", data: vista.getEngs},
+                    {title: "Documentadores asignados", data: vista.getDocs},
                     {title: "Descripción de la orden", data: vista.getDescription},
                     {title: "Prioridad", data: vista.getPrioridad},// Cantidad de actividades
                     {title: "#", data: "services.length"},// Cantidad de actividades

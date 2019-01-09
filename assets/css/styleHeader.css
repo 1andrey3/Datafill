@@ -73,6 +73,13 @@ margin-top: 10px;
 .cen{
     text-align: center;
 }
+form#assignService div.row div.cen button.tamanoAssign{
+    width: 96%;
+    height: 3.5em;
+    border-radius: 0px;
+    transition: .8s;
+    font-weight:bold;
+}
 div.for-full-back{
     text-align: center;
     background: linear-gradient(#155186,#0f3358);;
@@ -86,6 +93,13 @@ span.badge-mn{
     color: #ffffff;
     margin: -14px -39px;
     z-index: 1;
+}
+div.input-group span.spanColor1{
+    background: linear-gradient(-72deg,#000000,#226caf);
+    color: white;
+    border-top-left-radius: .5em !important;
+    border-bottom-left-radius: .5em !important;
+    border:none;
 }
 /*=======================================
     FOOTER STYLES

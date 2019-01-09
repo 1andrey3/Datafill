@@ -32,7 +32,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName'] ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
                             </li>
                             <li class="cam fz-18"><a href="#"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="#home">Home</a>
@@ -50,12 +50,12 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -70,8 +70,12 @@
             }
             echo "<input type='hidden' name='cant' value='" . count($cancelar['idActividad']) . "'>";
             ?>
-            <div class="block">
-                <input type="submit" name="bt_form" id="bt_form" value="Enviar Cancelación" class="btn col-xs-6 style_button" onclick= "this.form.action = '<?= URL::to('SpecificService/saveCancelExcel'); ?>'">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-7">
+                        <input type="submit" name="bt_form" id="bt_form" value="Enviar Cancelación" class="btn col-xs-6 style_button" onclick= "this.form.action = '<?= URL::to('SpecificService/saveCancelExcel'); ?>'">
+                    </div>
+                </div>
             </div>
 
         </form>
@@ -80,7 +84,7 @@
                 <div class="col-xs-10 col-xs-offset-1">
                     <div class="box">
                         <?php
-                        echo "<div class='box-header'>";
+                        echo "<div class='box-header infoExcelActivity'>";
                         echo "<h5><b>OT : </b> " . $cancelar['ot'] . "</h5><h5><b>Solicitante : </b> " . $cancelar['solicitante'] . "</h5><h5><b>Fecha de Creacion : </b> " . $cancelar['fCreacion'] . "</h5>";
                         echo "<h5><b>Descripción : </b> " . $cancelar['descripcion'] . "</h5>";
                         echo "</div><hr>";
