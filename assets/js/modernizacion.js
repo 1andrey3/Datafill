@@ -82,7 +82,7 @@ $(function() {
             window.open(url, '_blank');
 
 //            modernizacion.showDetailsOrdenModer(record);
-            console.log(record);
+            // console.log(record);
         },
 
     };

@@ -95,7 +95,7 @@
         <!--  container  -->
 
     <!-- ******************************MODAL*************************** -->
-    <div id="mdl-form" class="modal" role="dialog" style="overflow: auto;">
+    <div id="mdl-form" class="modal closemd" role="dialog" style="overflow: auto;">
          <div class="modal-dialog modal-lg" style="width: 90%;">
              <div class="modal-content">
                  <div class="modal-header">

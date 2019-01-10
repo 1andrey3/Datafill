@@ -7,8 +7,10 @@ $(function() {
         ids_form: 0,
         alertaModal: false,
         cleanModal: function(){
+            $("#mdl-form").animate({scrollTop:0},0);
             $("#mdl-form").removeClass("este");
-            $(".d-if div.p15 input, .d-if div.p15 select").css({"border-color":"#d2d6de","background":"white"}); // PARA CUANDO SE CIERRE EL MODAL, TODOS LOS BORDES QUEDEN DEL COLOR PREDETERMINADOS Y NO ROJOS
+            $("form#updateModer .d-if div.p15 input, form#updateModer .d-if div.p15 select").css({"border-color":"#d2d6de","background":"white"}); // PARA CUANDO SE CIERRE EL MODAL, TODOS LOS BORDES QUEDEN DEL COLOR PREDETERMINADOS Y NO ROJOS
+            $("input#id").val("=================");
             $("#updateModer")[0].reset();
             $("div.showAlert").addClass("alertCI");
             $("div.showAlert").removeClass("showAlert");
@@ -249,6 +251,7 @@ $(function() {
             var campos = Object.keys(obj[0]);
             campos.splice(0,2); campos.splice(2,1);
             ordenModer.valFiltro(array,campos);
+
             if(alertCamposIguales){
                 $("div.alertCI").addClass("showAlert");
                 $("div.alertCI").removeClass("alertCI");
@@ -257,11 +260,10 @@ $(function() {
         //VALFILTRO Y FILTAR VERIFICAN SI LOS CAMPOS SELECCIONADOS SON IGUALES EN TODAS LAS FILAS O NO
         valFiltro: function(arreglo,valores){
             $.each(arreglo,function(i){
-                if(ordenModer.filtrar(arreglo[i])){
+                if(ordenModer.filtrar(arreglo[i])){//SI TODOS SON IGUALES ENTRA A TRUE Y LLENA EL CAMPO CON EL VALOR
                     $('#'+valores[i]).val(arreglo[i][0]);
-
                     // console.log(valores[i]," : SI")
-                }else{
+                }else{ //SI NO SE LE PONDRÁ UNA ALERTA CON BORDE DEL INPUT ROJO
                     alertCamposIguales = true;
                     $('#'+valores[i]).css({"border-color":"red", "background":"floralwhite"});
                     // console.log(valores[i]," : NO")
@@ -347,7 +349,7 @@ $(function() {
                             }
                         })
                         const updateData= {selects : valoresSelect, inputs : valoresInput};
-                        //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO Y ASÍ NO SE REMPLACEN LOS CAMPOS VACÍOS
+                        //FUNCIÓN PARA LIMPIAR TODOS LOS CAMPOS QUE ESTÉN VACÍOS EN UN OBEJTO Y ASÍ NO SE REMPLACEN LOS CAMPOS VACÍOS EN LA ACTUALIZACIÓN
                         function clean(obj) { 
                             for (var propName in obj) { 
                                 if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") { 
@@ -355,7 +357,8 @@ $(function() {
                                 } 
                             } 
                         } 
-                        clean(updateData.selects);clean(updateData.inputs);
+                        clean(updateData.selects);
+                        clean(updateData.inputs);
                         $(".d-if div.p15 input, .d-if div.p15 select").css("border-color","#d2d6de");
                         ordenModer.updateModer(updateData); //<----- VA AL AJAX DE ACTUALIZACIÓN 
             }
@@ -367,13 +370,11 @@ $(function() {
                     updates : cambios,
                     ids :ordenModer.ids_form
                 },
-                function(data){
+                function(data){ // el data es la respuesta del controlador, en este caso las columnas afectadas
                     if(data){
                         swal("Actualización realizada con Éxito","" ,"success").then((result) => {
                             location.reload();
                         });
-                    }else{
-                        swal("Actualización realizada con Éxito","" ,"error");
                     }
                 }
             );

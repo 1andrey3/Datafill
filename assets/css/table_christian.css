@@ -371,3 +371,6 @@ div.infoExcelActivity h5{
     transition: .3s;
 }
 div.infoExcelActivity h5:hover{ background: #353535; color: white; }
+div#mdl-form.closemd{
+    animation: 
+}

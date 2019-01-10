@@ -52,8 +52,9 @@ class Dao_modernizaciones_model extends CI_Model {
         // print_r($cambios); 
         $this->db->where_in("id_moder", $id_moder);
         $this->db->update("modernizacion", $cambios);
-        if ($this->db->affected_rows()>0)
-            return $this->db->affected_rows();
+        $colAfectadas = $this->db->affected_rows();
+        if ($colAfectadas>0)
+            return "columnas actualizadas: $colAfectadas";
         else 
             return 0;
     }
