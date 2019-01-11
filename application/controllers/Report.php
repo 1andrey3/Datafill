@@ -36,126 +36,118 @@
       	if (isset($_GET['mesSel'])) {
       		$month = $_GET['mesSel'];
       	}
+        $nm = ["01" =>'enero', "02" =>'febrero', "03" =>'marzo', "04" =>'abril', "05" =>'mayo', "06" =>'junio', "07" =>'julio', "08" =>'agosto', "09" =>'septiembre', "10" =>'octubre', "11" =>'noviembre', "12" =>'diciembre'];
       	if (isset($_GET['id']) && isset($_GET['role'])) {
       		$idUser = $_GET['id'];
       		$role = $_GET['role'];
       	}
       	$respuesta = $this->Dao_service_model->getTotalActivities($month, $idUser, $role);
-      	$nombre = "Reporte_mes_".$month." ";
+      	$nombre = "Reporte_mes_".$nm[$month]." ";
       	$this->generateReport($respuesta, $nombre);
       }
       //descarga un excel con los datos del objeto enviado
       public function generateReport($respuesta, $nombre){
-      	header("Content-Type: application/vnd.ms-excel; charset=UTF-8");
-      	header("Content-Disposition: attachment;filename= ".$nombre." ".date('d-M-Y H:i:a').".xls");
-      	header("Pragma: no-cache");
-      	header("Expires: 0");
-?>      
-      <table>
-      	<tr>
-      		<td>
-		      <table width="100%" border="1" >
-      			<h4 align="center">Reporte Datafill del <?php echo date('d-M-Y H:i:a') ?></h4>
-		      	<tr bgcolor="blue" style="color: white;" align="center">
-		      		<td>ORDEN</td>
-		      		<td>ACTIVIDAD</td>
-              <td>TIPO</td>
-		      		<td>TIEMPO</td>
-		      		<td>CANT</td>
-		      		<td>ESTACION</td>
-		      		<td>NOMBRE ING</td>
-              <td>NOMBRE DOCUMENTADOR</td>
-		      		<td>F ASIFGNACION</td>
-		      		<td>F CIERRE ING</td>
-		      		<td>F EJECUCION</td>
-		      		<td>ESTADO</td>
-		      		<td>PROYECTO</td>
+        set_time_limit(-1);
+        ini_set('memory_limit', '1500M');
+        // echo '<pre>'; print_r($respuesta[0]->ORDEN); echo '</pre>';
+        //Inicio uso de phpExcel
+        $objPhpExcel = new PHPExcel();
+        //Propiedades de archivo.
+        $objPhpExcel->getProperties()->setCreator("ZTE");
+        $objPhpExcel->getProperties()->setLastModifiedBy("ZTE");
+        $objPhpExcel->getProperties()->setTitle($nombre." ".date('d-M-Y H:i:a'));
+        $objPhpExcel->getProperties()->setSubject("Reporte - Zolid");
+        $objPhpExcel->getProperties()->setDescription($nombre." ".date('d-M-Y H:i:a'));
+        //Seleccionamos la página.
+        $objPhpExcel->setActiveSheetIndex(0);
 
-		      		<td>F FORECAST</td>
-		      		<td>F CREACION</td>
-		      		<td>SOLICITANTE</td>
-              <td>REGION</td>
-		      		<td>DESCRIPCION</td>
 
-				</tr>
-<?php 
-				$color = "";$enviado = 0;$ejecutado = 0;$cancelado = 0; $asignado = 0;
+        /*******************************INICIO CAMPOS FIJOS*******************************/
+        //Escribir cabecearas. Y TITULOS LATERALES
+        $objPhpExcel->getActiveSheet()
+                    ->setCellValue("A1", 'ORDEN')
+                    ->setCellValue("B1", 'ACTIVIDAD')
+                    ->setCellValue("C1", 'TIPO')
+                    ->setCellValue("D1", 'TIEMPO')
+                    ->setCellValue("E1", 'CANT.')
+                    ->setCellValue("F1", 'ESTACIÓN')
+                    ->setCellValue("G1", 'NOMBRE ING.')
+                    ->setCellValue("H1", 'NOMBRE DOCUMENTADOR')
+                    ->setCellValue("I1", 'F. ASIFGNACIÓN')
+                    ->setCellValue("J1", 'F. CIERRE ING.')
+                    ->setCellValue("K1", 'F. EJECUCIÓN')
+                    ->setCellValue("L1", 'ESTADO')
+                    ->setCellValue("M1", 'PROYECTO')
+                    ->setCellValue("N1", 'F. FORECAST')
+                    ->setCellValue("O1", 'F. CREACION')
+                    ->setCellValue("P1", 'SOLICITANTE')
+                    ->setCellValue("Q1", 'REGIÓN')
+                    ->setCellValue("R1", 'DESCRIPCIÓN');
 
-					foreach ($respuesta as $value) {					
-						echo '<tr>';
-				      		echo '<td>'.$value->ORDEN.'</td>';
-				      		echo '<td>'.$value->ACTIVIDAD.'</td>';
-                  echo '<td>'.$value->TIPO.'</td>';
-				      		echo '<td>'.$value->TIEMPO.'</td>';
-				      		echo '<td>'.$value->CANT.'</td>';
-				      		echo '<td>'.utf8_decode($value->ESTACION).'</td>';
-				      		echo '<td>'.utf8_decode($value->NOMBRE_ING).'</td>';
-                  echo '<td>'.utf8_decode($value->documentador).'</td>';
-				      		echo '<td>'.$value->F_ASIFGNACION.'</td>';
-				      		echo '<td>'.$value->F_CIERRE_ING.'</td>';
-				      		echo '<td>'.$value->F_EJECUCION.'</td>';
-				      		if ($value->ESTADO == 'Enviado') {
-				      			$color = "#a6a6fc";
-				      			$enviado ++;
-				      		}elseif ($value->ESTADO == 'Ejecutado') {
-				      			$color = "#59f859";
-				      			$ejecutado ++;
-				      		}elseif ($value->ESTADO == 'Cancelado') {
-				      			$color = "#ff8383";
-				      			$cancelado ++;				      			
-				      		}else {
-				      			$color = "#f4f4f4";
-				      			$asignado ++;				      			
-				      		}
-				      		echo '<td bgcolor="'.$color.'">'.$value->ESTADO.'</td>';
-				      		echo '<td>'.utf8_decode($value->PROYECTO).'</td>';
+        // Estilos
+        $style_azul =array('font'=>array('name'=>'Arial','bold'=>true,'italic'=>false,'strike'=>false,'size'=>8,'color'=>array('rgb'=>'ffffff')),'fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID,'color'=>array('argb'=>'12406c')),'borders'=>array('allborders'=>array('style'=>PHPExcel_Style_Border::BORDER_THIN)),'alignment'=>array('horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'rotation'=>0,'wrap'=>TRUE));
 
-				      		echo '<td>'.$value->F_FORECAST.'</td>';
-				      		echo '<td>'.$value->F_CREACION.'</td>';
-				      		echo '<td>'.$value->SOLICITANTE.'</td>';
-                  echo '<td>'.$value->REGION.'</td>';
-				      		echo '<td>'.$value->DESCRIPCION.'</td>';
-						echo '</tr>';
-					}
 
-				?>		
-		      </table>
-			</td>
-			<td>
-				<table>
-					<tr>
-						<td></td>
-					</tr>
-				</table>
-			</td>
-			<td>
-		      <table width="100%" border="1" >
-		      <h4 align="center">TOTAL</h4>
-		      	<tr>
-		      		<td>Asig</td>
-		      		<td><?php echo $asignado; ?></td>
-				</tr>
-				<tr>
-		      		<td bgcolor="blue" style="color:white;">Env</td>
-		      		<td><?php echo $enviado; ?></td>
-				</tr>
-				<tr>
-		      		<td bgcolor="red" style="color:white;">Canc</td>
-		      		<td><?php echo $cancelado; ?></td>
-				</tr>	
-				<tr>
-		      		<td bgcolor="green" style="color:white;">Ejec</td>
-		      		<td><?php echo $ejecutado; ?></td>
-				</tr>	
-				<tr>
-		      		<td bgcolor="purple" style="color:white;">Total</td>
-		      		<td><?php echo $asignado + $enviado + $cancelado + $ejecutado; ?></td>
-				</tr>
-		      </table>
-		   </td>   
-	   </tr>   
-	</table>
-<?php 	
+         $total = count($respuesta);
+
+        // body... informacion
+        // for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < $total; $i++) { 
+
+          $row = $i + 2;
+          $objPhpExcel->getActiveSheet()
+                    ->setCellValue('A' . $row, $respuesta[$i]->ORDEN)
+                    ->setCellValue('B' . $row, $respuesta[$i]->ACTIVIDAD)
+                    ->setCellValue('C' . $row, $respuesta[$i]->TIPO)
+                    ->setCellValue('D' . $row, $respuesta[$i]->TIEMPO)
+                    ->setCellValue('E' . $row, $respuesta[$i]->CANT)
+                    ->setCellValue('F' . $row, $respuesta[$i]->ESTACION)
+                    ->setCellValue('G' . $row, $respuesta[$i]->NOMBRE_ING)
+                    ->setCellValue('H' . $row, $respuesta[$i]->documentador)
+                    ->setCellValue('I' . $row, $respuesta[$i]->F_ASIFGNACION)
+                    ->setCellValue('J' . $row, $respuesta[$i]->F_CIERRE_ING)
+                    ->setCellValue('K' . $row, $respuesta[$i]->F_EJECUCION)
+                    ->setCellValue('L' . $row, $respuesta[$i]->ESTADO)
+                    ->setCellValue('M' . $row, $respuesta[$i]->PROYECTO)
+                    ->setCellValue('N' . $row, $respuesta[$i]->F_FORECAST)
+                    ->setCellValue('O' . $row, $respuesta[$i]->F_CREACION)
+                    ->setCellValue('P' . $row, $respuesta[$i]->SOLICITANTE)
+                    ->setCellValue('Q' . $row, $respuesta[$i]->REGION)
+                    ->setCellValue('R' . $row, $respuesta[$i]->DESCRIPCION);
+        }
+
+
+        // fin body
+
+        //Aplicamos estilos a las celdas.
+        $style_info = array('font'=>array('name'=>'Calibri','bold'=>false,'italic'=>false,'strike'=>false,'size'=>9,'color'=>array('rgb'=>'000000')),'fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID,'color'=>array('argb'=>'ffffff')),'borders'=>array('allborders'=>array('style'=>PHPExcel_Style_Border::BORDER_THIN)),'alignment'=>array('horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'rotation'=>0,'wrap'=>false));
+
+        $objPhpExcel->getActiveSheet()->getStyle('A2:R' . $row)->applyFromArray($style_info);
+        $objPhpExcel->getActiveSheet()->getStyle('A1:R1')->applyFromArray($style_azul);
+        //DIMENSIONES DE LAS COLUMNAS agrandadas
+        $objPhpExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);//ESTACION
+        $objPhpExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);//NOMBRE_ING
+        $objPhpExcel->getActiveSheet()->getColumnDimension('H')->setWidth(30);//documentador
+        $objPhpExcel->getActiveSheet()->getColumnDimension('M')->setWidth(20);//PROYECTO
+        $objPhpExcel->getActiveSheet()->getColumnDimension('P')->setWidth(30);//SOLICITANTE
+        $objPhpExcel->getActiveSheet()->getColumnDimension('Q')->setWidth(20);//REGION
+        $objPhpExcel->getActiveSheet()->getColumnDimension('R')->setWidth(90);//DESCRIPCION
+
+        //$objPhpExcel->getActiveSheet()->getColumnDimension($col[$p+9] )->setWidth(15);
+
+        //arreglo de las columnas 
+
+        //CONGELAR EL PRINCIPIO DEL EXCEL
+        $objPhpExcel->getActiveSheet()->freezePane("A2");
+
+        $objPhpExcel->getActiveSheet()->setTitle($nombre);
+        //Hacemos la hoja activa...
+        $objPhpExcel->setActiveSheetIndex(0);
+        //Guardamos.
+        $objWriter = new PHPExcel_Writer_Excel2007($objPhpExcel);
+        $filename = 'Reporte ZOLID '.date("Y-m-d").'.xlsx';
+        $objWriter->save($filename);
+        Redirect::to(URL::to($filename));	
 
       }
 
