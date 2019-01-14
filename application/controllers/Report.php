@@ -21,11 +21,11 @@
       	if (isset($_GET['id']) && isset($_GET['role'])) {
       		$idUser = $_GET['id'];
       		$role = $_GET['role'];
-      	}
+        }
 
       	// header('Content-Type: text/plain');
       	$respuesta = $this->Dao_service_model->getTotalActivities($mes, $idUser, $role);
-      	$nombre = "ReporteTotal  ";
+        $nombre = "ReporteTotal  ";
       	$this->generateReport($respuesta, $nombre);
 
         
@@ -49,7 +49,8 @@
       public function generateReport($respuesta, $nombre){
         set_time_limit(-1);
         ini_set('memory_limit', '1500M');
-        // echo '<pre>'; print_r($respuesta[0]->ORDEN); echo '</pre>';
+
+        // print_r($respuesta);
         //Inicio uso de phpExcel
         $objPhpExcel = new PHPExcel();
         //Propiedades de archivo.
@@ -87,9 +88,7 @@
         // Estilos
         $style_azul =array('font'=>array('name'=>'Arial','bold'=>true,'italic'=>false,'strike'=>false,'size'=>8,'color'=>array('rgb'=>'ffffff')),'fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID,'color'=>array('argb'=>'12406c')),'borders'=>array('allborders'=>array('style'=>PHPExcel_Style_Border::BORDER_THIN)),'alignment'=>array('horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'rotation'=>0,'wrap'=>TRUE));
 
-
-         $total = count($respuesta);
-
+        $total = count($respuesta);
         // body... informacion
         // for ($i=0; $i < 5; $i++) { 
         for ($i=0; $i < $total; $i++) { 
@@ -114,7 +113,11 @@
                     ->setCellValue('P' . $row, $respuesta[$i]->SOLICITANTE)
                     ->setCellValue('Q' . $row, $respuesta[$i]->REGION)
                     ->setCellValue('R' . $row, $respuesta[$i]->DESCRIPCION);
+                    
         }
+
+
+
 
 
         // fin body
@@ -122,8 +125,40 @@
         //Aplicamos estilos a las celdas.
         $style_info = array('font'=>array('name'=>'Calibri','bold'=>false,'italic'=>false,'strike'=>false,'size'=>9,'color'=>array('rgb'=>'000000')),'fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID,'color'=>array('argb'=>'ffffff')),'borders'=>array('allborders'=>array('style'=>PHPExcel_Style_Border::BORDER_THIN)),'alignment'=>array('horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'rotation'=>0,'wrap'=>false));
 
+        
+        $style_estado = array('font'=>array('name'=>'Calibri','bold'=>false,'italic'=>false,'strike'=>false,'size'=>9,'color'=>array('rgb'=>'000000')),'fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID,'color'=>array('argb'=>'bababa')),'borders'=>array('allborders'=>array('style'=>PHPExcel_Style_Border::BORDER_THIN)),'alignment'=>array('horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER,'vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'rotation'=>0,'wrap'=>false));
+         
+        //  print_r($style_estado["fill"]["color"]["argb"]);
+
         $objPhpExcel->getActiveSheet()->getStyle('A2:R' . $row)->applyFromArray($style_info);
         $objPhpExcel->getActiveSheet()->getStyle('A1:R1')->applyFromArray($style_azul);
+        // for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < $total; $i++) { 
+          $row2= $i+2;
+          switch ($respuesta[$i]->ESTADO) {
+              case 'Enviado':
+                $style_estado["fill"]["color"]["argb"] = "0f3793";
+                $style_estado["font"]["color"]["rgb"] = "ffffff";
+              break;
+              case 'Ejecutado':
+                $style_estado["fill"]["color"]["argb"] = "0cd100";
+                $style_estado["font"]["color"]["rgb"] = "000000";
+              break;
+              case 'Cancelado':
+                $style_estado["fill"]["color"]["argb"] = "d10000";
+                $style_estado["font"]["color"]["rgb"] = "ffffff";
+              break;
+              case 'Asignada':
+                $style_estado["fill"]["color"]["argb"] = "bababa";
+                $style_estado["font"]["color"]["rgb"] = "000000";
+              break;
+          }
+          $objPhpExcel->getActiveSheet()->getStyle('L'.$row2)->applyFromArray($style_estado);
+        }
+        
+        
+
+
         //DIMENSIONES DE LAS COLUMNAS agrandadas
         $objPhpExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);//ESTACION
         $objPhpExcel->getActiveSheet()->getColumnDimension('G')->setWidth(30);//NOMBRE_ING
