@@ -29,6 +29,7 @@
         <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
         <!--   SWEET ALERT    -->
         <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
         <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
@@ -51,7 +52,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php print_r($_SESSION['userName']) ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
                             </li>
                             <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -69,12 +70,12 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -88,7 +89,7 @@
                 <legend>Modernizaciones</legend>
             </center>
             <div class="col col-md-12">
-                <table id="tabla_modernizaciones" class="table table-bordered table-striped dataTable no-footer"></table>
+                <table id="tabla_modernizaciones" class="table_cr table-hover table table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->

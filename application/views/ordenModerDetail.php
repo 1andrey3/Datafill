@@ -26,8 +26,8 @@
         <!-- checkbox -->
         <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
         <!--   SWEET ALERT    -->
-        <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
-        <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
         <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
     </head>
     <body data-url="<?= URL::base(); ?>">
@@ -49,7 +49,7 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php print_r($_SESSION['userName']) ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
                             </li>
                             <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
@@ -67,12 +67,12 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -82,14 +82,138 @@
         <!--      fin header         -->
         <br><br><br><br>
         <div class="container">
-            <center>
+            <div class="col-sm-8">
                 <legend>Modernizaciones asociadas a la orden <b><?= $idOrden; ?></b></legend>
-            </center>
+            </div>
+            <div class="col-sm-4">
+                <button id="edModer" class="edModer">Editar Modernizaciones</button>
+            </div>
             <div class="col col-md-12">
-                <table id="tabla_ordenAsoc" class="table table-bordered table-striped table-hover dataTable dataTable_camilo"></table>
+                <table id="tabla_ordenAsoc" class="table_cr table table-hover table-bordered table-striped dataTable no-footer"></table>
             </div>
         </div>
         <!--  container  -->
+
+    <!-- ******************************MODAL*************************** -->
+    <div id="mdl-form" class="modal closemd" role="dialog" style="overflow: auto;">
+         <div class="modal-dialog modal-lg" style="width: 90%;">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button type="button" class="close x" data-dismiss="modal" aria-label="Close">X</button>
+                     <h3 class="modal-title">Editar Modernizaciones</h3>
+                 </div>
+                <div class="modal-body">
+                    <h2>Editar Asociadas</h2>
+                    <div class="row gray">
+                        <div class="row"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
+                            <div class="col-sm-12 d-if"> 
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>OT </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-book"></i></span><input name="ot" id="ot" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>ACTIVIDAD </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-barcode"></i></span><input name="actividad" id="actividad" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>SITIO </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-globe"></i></span><input name="sitio" id="sitio" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>F. ASIGNACIÓN </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_asignacion" id="f_asignacion" class="styleInput form-control" disabled type="text"  ASIGNACIÓN"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>F. EJECUCIÓN CLARO </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ejecucion_claro" id="f_ejecucion_claro" class="styleInput form-control" disabled type="text"  EJECUCIÓN CLARO"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>ESTADO </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-tag"></i></span><input name="estado" id="estado" class="styleInput form-control" disabled type="text" ></div>
+                            </div>
+                            <div class="col-sm-12 d-if"> <!-- AQUÍ VAN LOS QUE NO SON EDITABLES -->
+                                <div class="col-sm-3 input-group form-group p15"><div class="titdate"><p>PROYECTO </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-folder-open"></i></span><input name="proyecto" id="proyecto" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>F. FORECAST </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_forecast" id="f_forecast" class="styleInput form-control" disabled type="text"  FORECAST"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>F. CREACIÓN </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_creacion" id="f_creacion" class="styleInput form-control" disabled type="text"  CREACIÓN"></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>SOLICITANTE </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-user"></i></span><input name="solicitante" id="solicitante" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>REGIÓN </p></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-globe"></i></span><input name="region" id="region" class="styleInput form-control" disabled type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="id">ID </label></div><span class="input-group-addon colorSpan noEditable"><i class="glyphicon glyphicon-barcode"></i></span><input disabled id="id" class="clickx styleInput form-control" placeholder="id" type="text" ></div>
+                            <!-- SI SE REQUEIRE EL CAMPO DE DESCRIPCIÓN, ACÁ ESTÁ -->
+                            <!-- <div class="col-sm-12 d-if"> 
+                                <div class="col-sm-12 input-group form-group p15 "><div class="titdate"><p>DESCRIPCION</p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-list-alt"></i></span><textarea class="form-control" disabled name="DESCRIPCION" id="" cols="30" ></textarea></div>-->
+                            </div> 
+                        </div>
+                        <div class="alertCI alert alert-warning">
+                        <center><strong>¡Cuidado!</strong> Los campos con borde rojo indica que en las filas seleccionadas, no todas tienen el mismo valor</center>
+                        </div>
+                        <hr>
+                        <form method="post" id="updateModer">
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15"><div class="tit"><label class="pdown" for="tipo_orden">TIPO ORDEN </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-briefcase"></i></span><input name="tipo_orden" id="tipo_orden" class="clickx styleInput form-control" placeholder="tipo_orden" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="trabajo">TRABAJO </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-list"></i></span><input name="trabajo" id="trabajo" class="clickx styleInput form-control" placeholder="trabajo" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="tipo_tecnologia">TIPO TECNOLOGÍA </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-tasks"></i></span><input name="tipo_tecnologia" id="tipo_tecnologia" class="clickx styleInput form-control" placeholder="tipo_tecnologia" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>F. CIERRE ING. </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_cierre_ing" id="f_cierre_ing" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="ingeniero">INGENIERO </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-user"></i></span><input name="ingeniero" id="ingeniero" class="clickx styleInput form-control" placeholder="ingeniero" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>IN SERVICE SITIO </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="in_service_sitio" id="in_service_sitio" class="styleInput form-control">
+                                    <option value="" >Seleccione</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>F. INGRESO SERVICIO CLARO </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="f_ingreso_servicio_claro" id="f_ingreso_servicio_claro" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>ESTADO TX </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_tx" id="estado_tx" class="styleInput form-control">
+                                    <option value="" >Seleccione</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>FECHA TX LISTA </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_tx_lista" id="fecha_tx_lista" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>ESTADO CW </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_cw" id="estado_cw" class="styleInput form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="NOKIA">NOKIA</option>
+                                </select></div>
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>FECHA CW LISTA </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_cw_lista" id="fecha_cw_lista" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15"><div class="titdate"><p>RFE </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfe" id="rfe" class="styleInput form-control" type="date" ORDEN_DE_TX_ORDEN_CW)"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>ESTADO DF </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_df" id="estado_df" class="styleInput form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="DF_SOLICITADO">DF_SOLICITADO</option>
+                                    <option value="DF_PENDIENTE_OTRAS_AREAS">DF_PENDIENTE_OTRAS_AREAS</option>
+                                    <option value="OK">OK</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>FECHA DF </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_df" id="fecha_df" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>RFIC </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfic" id="rfic" class="styleInput form-control" type="date" TX_OK_Y_CW_OK)"></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>RFI </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="rfi" id="rfi" class="styleInput form-control" type="date" RFIC_OK_Y_HW_OK_DF_OK)"></div>
+                            </div>
+                            <div class="col-sm-12 d-if">
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>ESTADO INSTALACIÓN </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_instalacion" id="estado_instalacion" class="styleInput form-control">
+                                    <option value="" >Seleccione</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="DF_SOLICITADO">DF_SOLICITADO</option>
+                                    <option value="DF_PENDIENTE_OTRAS_AREAS">DF_PENDIENTE_OTRAS_AREAS</option>
+                                    <option value="OK">OK</option>
+                                </select></div>
+                                <div class="col-sm-3 input-group form-group p15"><div class="titdate"><p>FECHA INSTALACIÓN </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_instalacion" id="fecha_instalacion" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>ESTADO INTEGRACIÓN </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_integracion" id="estado_integracion" class="styleInput form-control">
+                                    <option value="" >Seleccione</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-3 input-group form-group p15 "><div class="titdate"><p>FECHA INTEGRACIÓN </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_integracion" id="fecha_integracion" class="styleInput form-control" type="date" ></div>
+                            </div>
+                            <div class="col-sm-offset-1 col-sm-12 d-if">
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>ESTADO ONAIR </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-menu-down"></i></span><select name="estado_onair" id="estado_onair" class="styleInput form-control">
+                                    <option value="" >Seleccione</option>
+                                    <option value="PENDIENTE_NOKIA">PENDIENTE_NOKIA</option>
+                                    <option value="PENDIENTE_CLARO">PENDIENTE_CLARO</option>
+                                    <option value="SEGUIMIENTO_PARA_PRODUCCION">SEGUIMIENTO_PARA_PRODUCCION</option>
+                                    <option value="OK">OK</option>
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                </select></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="titdate"><p>FECHA INSERVICE </p></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="fecha_inservice" id="fecha_inservice" class="styleInput form-control" type="date" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="contratista_cw">CONTRATISTA CW </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-align-justify"></i></span><input name="contratista_cw" id="contratista_cw" class="clickx styleInput form-control" placeholder="contratista_cw" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15"><div class="tit"><label class="pdown" for="mes_inservice">MES INSERVICE </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="mes_inservice" id="mes_inservice" class="clickx styleInput form-control" placeholder="mes_inservice" type="text" ></div>
+                                <div class="col-sm-2 input-group form-group p15 "><div class="tit"><label class="pdown" for="anio_inservice">AÑO INSERVICE </label></div><span class="input-group-addon colorSpan"><i class="glyphicon glyphicon-calendar"></i></span><input name="anio_inservice" id="anio_inservice" class="clickx styleInput form-control" placeholder="anio_inservice" type="text" ></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-danger Cancelar"  data-dismiss="modal" aria-label="Close"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+                     <button type="button" class="btn btn-success" id="mdl-moder-send"><i class='glyphicon glyphicon-send'></i>&nbsp;enviar</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+    <!-- ******************************FIN MODAL*************************** -->
         <!--footer-->
         <div class="for-full-back " id="footer">
             Zolid By ZTE Colombia | All Right Reserved
@@ -101,6 +225,8 @@
             var formato_fecha = new Date();
             const meses_anual = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
             var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+            var ss = <?php echo json_encode($ss); ?>
+
         </script>
         <!-- DataTables -->
         <script src="<?= URL::to('assets/plugins/datatables2/DataTables-1.10.16/js/jquery.dataTables.min.js'); ?>"></script>

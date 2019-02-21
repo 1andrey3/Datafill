@@ -18,6 +18,7 @@
         <script src="<?= URL::to('assets/js/jquery-2.1.1.min.js'); ?>"></script>
         <script src="<?= URL::to('assets/js/bootstrap.js'); ?>"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
 
 <style>
 
@@ -36,6 +37,7 @@
   }
   #botones{
     margin-bottom: 15px;
+    display: inline-block;
   }
 
   .selected{
@@ -49,6 +51,49 @@
     background-color: rgba(0, 0, 0, 0.1);
     color: white;
   }
+  .stylesxx{
+    background-color: #32bd54 !important;
+    display: none;
+    top: -55px;
+    float: right;
+    color: #fff !important;
+    z-index: 2;
+    animation: aparecer .5s ease;
+    border: 2px solid #32bd54;
+    transition: .3s;
+    font-weight: bold;
+  }
+  .stylesxx:hover{
+    background: #fff !important;
+    color: #32bd54 !IMPORTANT;
+  }
+  @keyframes aparecer{
+    from{transform: scale(0)};
+    to{transform: scale(1)};
+  }
+  #bt_delall,#bt_add{
+    border: 1px solid #ddd;
+    transition: .3s;
+    background: #eeeeee;
+    color: #555555;
+  }
+  #bt_delall:hover,#bt_add:hover{
+    /* border-color: black; */
+    transition: .3s;
+    /* color: white; */
+    background: white;
+    border-width: 1.6px;
+  }
+  #bt_delall:hover{
+    border-color: #dc1c1c;
+    color: #dc1c1c;
+  }
+  #bt_add:hover{
+    border-color: #4dbd38;
+    color: #4dbd38;
+  }
+
+
 </style>
     <script>
       var cont = 0;
@@ -64,6 +109,8 @@
         });
       });
       var id_fila_selected=[];
+      var clase= "colorz";
+      var boolClase= false;
       function agregar(){
         var user = '<?php echo json_encode($asignar['eng']); ?>';
         var users = JSON.parse(user);
@@ -82,9 +129,16 @@
           }
         }
 
-
         cont++;
-        var fila='<tr class="selected" id="fila'+cont+'" >';
+        //PARA PINTAR LAS FILAS CON DISTINTO COLOR DE FONDO
+        if (boolClase) {
+          clase= "colorz";
+          boolClase = false;
+        }else {
+          clase= "colorx";
+          boolClase = true;
+        };
+        var fila='<tr class='+clase+' id="fila'+cont+'" >';
         fila = fila + '<td>'+cont+'</td>';
         fila = fila + '<td>';
         fila = fila + '<select name="inge'+cont+'" id="inge" class="form-control selectpicker" required>';
@@ -100,7 +154,7 @@
         fila = fila + '</select>';
         fila = fila + '</td>';
         fila = fila + '<td>';
-        fila = fila + '<input type="text" class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
+        fila = fila + '<input type="text"  disabled class="form-control selectpicker" name="porcen'+cont+'" id="porcen'+cont+'" value="" max="100">';
         fila = fila + '</td>';
         fila = fila + '<td>';
         if(cont>1){
@@ -156,68 +210,69 @@
    ?>
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
-                </div>
-                <!-- Collect the nav links for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName']?></a>
-                        </li>
-                        <li class="cam fz-18"><a href="#"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
-                        <li class="cam"><a href="#home">Home</a>
-                        </li>
-                        <li class="cam"><a href="#services">Servicios</a>
-                            <ul>
-                                <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
-                                <li><a href="<?= URL::to('Service/listServices'); ?>">Ver Actividades</a></li>
-                                <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
-                            </ul>
-                        </li>
-                        <li class="cam"><a href="#services">RF</a>
-                            <ul>
-                                <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
-                                <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
-                            </ul>
-                        </li>
-                         <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
-                        </li>
-                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
-                        </li>
-                        </li>
-                         <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-     </header><br><br><br><br>
-<!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
-<form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
-    <div class="btn-group col-xs-8" id="botones">
-        <a id="bt_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-        <a id="bt_delall" class="btn btn-primary"><span class="glyphicon glyphicon-minus"
-        aria-hidden="true"></span></a>
-        <div class="form-group" style="display: flex; padding-left: 108px;">
-            <label class="col-md-4 control-label">Fecha Asignación ZTE:</label>
-            <div class="col-md-9 selectContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
-                    <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
-                    <div class="input-group-btn">
-                        <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon glyphicon-calendar"></i></button>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
+                    </div>
+                    <!-- Collect the nav links for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
+                            </li>
+                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
+                            <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
+                            </li>
+                            <li class="cam"><a href="#services">Servicios</a>
+                                <ul>
+                                    <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
+                                    <li><a href="<?= URL::to('Service/listService'); ?>s">Ver Actividades</a></li>
+                                    <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="#services">RF</a>
+                                <ul>
+                                    <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
+                                    <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+                            </li>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+            </nav>
+        </header><br><br><br><br>
+<!-- <?= URL::to('SpecificService/saveServicesExcel'); ?> -->
+<form class="form-group container" action="<?= URL::to('SpecificService/saveServicesExcel'); ?>" method="post"  id="assignEng" name="assignEng"> 
+  <div id="botones">
+    <div class="btn-group" style="float:left;">
+      <a id="bt_add" class="btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+      <a id="bt_delall" class="btn" style="border-top-right-radius: 4px; border-bottom-right-radius: 4px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <label class="control-label" style="float: left;padding: 0px 39px;position: relative;top: 6px;">Fecha de asignación ZTE:</label>
+      <div class="selectContainer col-sm-3" style="padding:0px;">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar "></i></span>
+          <input type='date' name="D_ASIG_Z" id="D_ASIG_Z" class="form-control" value="" required>
+          <div class="input-group-btn">
+            <button type="button" id="btnTodayDate" class="btn btn-primary" title="Fecha Actual"><i class="glyphicon  glyphicon-calendar"></i></button>
+          </div>
         </div>
+      </div>
+    </div>
             <span class="advertencia" style="display: none;"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;  La fecha de asignación a ZTE no puede ser menor a la de creación &nbsp;&nbsp; <i class="glyphicon glyphicon-warning-sign"></i></span>
             <!-- <?php
               // echo var_dump($document);
@@ -244,14 +299,14 @@
 
  ?>
     </div>
-      <input type="submit" name="bt_form" id="bt_form" value="enviar Asignacion " class="btn btn-primary col-xs-4  " style="background-color: green; display: none" onclick = "validar_selects_doc()">
-        <table id="tabla" class="table table-bordered">
+      <input type="submit" name="bt_form" id="bt_form" value="Enviar Asignación " class="btn col-xs-5 stylesxx" onclick = "validar_selects_doc()">
+        <table id="tabla" class="table_cr table">
         <thead>
           <tr>
             <td>Nº</td>
-            <td>Asignacion de Ingeniero</td>
-            <td>porcentaje(%)</td>
-            <td>cantidad</td>
+            <td>Asignación de ingeniero</td>
+            <td>Porcentaje(%)</td>
+            <td>Cantidad</td>
           </tr>
         </thead>
   </table>
@@ -265,22 +320,22 @@
   <?php
   /*header('Content-Type: text/plain');
     print_r($asignar);*/
-       echo "<div class='box-header'>";
-         echo "<h5><b>OT : </b>".$asignar['ot']."</h5><h5><b>Solicitante : </b>".$asignar['solicitante']."</h5><h5><b>Fecha de Creacion : </b><span id='fecha_creacion'>".$asignar['fCreacion']."</span></h5>";
+       echo "<div class='box-header infoExcelActivity'>";
+         echo "<h5><b>OT : </b>".$asignar['ot']."</h5><h5><b>Solicitante : </b>".$asignar['solicitante']."</h5><h5><b>Fecha de creación : </b><span id='fecha_creacion'>".$asignar['fCreacion']."</span></h5>";
          echo "<h5><b>Proyecto : </b>".$asignar['proyecto']."</h5>";
          echo "<h5><b>Descripción : </b>".$asignar['descripcion']."</h5>";
          echo "<h5><b>Prioridad : </b><spam style='color:red'>".$asignar['prioridad']."</spam></h5>";
        echo "</div>";
        echo "<!-- /.box-header -->";
        echo "<div class='box-body'>";
-         echo "<table id='example' class='table table-bordered table-striped'>";
+         echo "<table id='example' class='table_cr table-hover table table-striped'>";
            echo "<thead>";
            echo "<tr>";
              echo "<th>ID Actividad</th>";
              echo "<th>Tipo Actividad</th>";
              echo "<th>Regional</th>";
              echo "<th>Cantidad</th>";
-             echo "<th>Descripcion</th>";
+             echo "<th>Descripción</th>";
              echo "<th>Forecast</th>";
              echo "<th>Documentador</th>";
            echo "</tr>";
@@ -309,7 +364,7 @@
              echo "<th>Tipo Actividad</th>";
              echo "<th>Regional</th>";
              echo "<th>Cantidad</th>";
-             echo "<th>Descripcion</th>";
+             echo "<th>Descripción</th>";
              echo "<th>Forecast</th>";
              echo "<th>Documentador</th>";
            echo "</tr>";

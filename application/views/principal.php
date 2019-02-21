@@ -15,51 +15,53 @@
 </head>
 <body>
     <!-- Navigation -->
-    <header>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
+    <div id="headNavigation">
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
+                    </div>
+                    <!-- Collect the nav links for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
+                            </li>
+                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
+                            <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
+                            </li>
+                            <li class="cam"><a href="#services">Servicios</a>
+                                <ul>
+                                    <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
+                                    <li><a href="<?= URL::to('Service/listService'); ?>s">Ver Actividades</a></li>
+                                    <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="#services">RF</a>
+                                <ul>
+                                    <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
+                                    <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
+                                </ul>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
+                            </li>
+                            </li>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- Collect the nav links for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="cam"><a >Bienvenid@ <?php echo $_SESSION['userName']?></a>
-                        </li>
-                        <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
-                        <li class="cam"><a href="#home">Home</a>
-                        </li>
-                        <li class="cam"><a href="#services">Servicios</a>
-                            <ul>
-                                <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
-                                <li><a href="<?= URL::to('Service/listServices'); ?>">Ver Actividades</a></li>
-                                <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
-                            </ul>
-                        </li>
-                        <li class="cam"><a href="#services">RF</a>
-                            <ul>
-                                <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
-                                <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
-                            </ul>
-                        </li>
-                        <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
-                        </li>
-                        <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
-                        </li>
-                        </li>
-                        <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-     </header>
+            </nav>
+        </header>
+    </div>
     <!--End Navigation -->
     <!--Header section  -->
     <div id="home">
@@ -131,11 +133,7 @@
     <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2 ">
-                    <h2><i class="fa fa-desktop fa-3x"></i>&nbsp;Just Space </h2>
-                    <h4><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
-                        </strong>
-                    </h4>
+                    
                 </div>
             </div>
         </div>
@@ -171,5 +169,6 @@
     <script src="<?= URL::to('assets/plugins/4jquery.parallax-1.1.3.js'); ?>"></script>
     <!-- CUSTOM SCRIPT   -->
     <script src="<?= URL::to('assets/js/custom.js'); ?>"></script>
+    <!-- <script src="<?= URL::to('assets/js/header.js'); ?>"></script>  -->
 </body>
 </html>

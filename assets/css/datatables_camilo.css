@@ -491,9 +491,6 @@ table.dataTable_camilo .btn_datatable_cami:hover{
     transition: all 0.2s ease 0s;
 }
 
-.btn_check:hover{
-    /*background: #348ab7;*/
-}
 .btn_checkeado {
     color: #45EC45;
     background: #084c6f;
@@ -580,7 +577,11 @@ table.dataTable_camilo .btn_datatable_cami:hover{
   opacity: 1;
   right: 0;
 }
-
+.table-hover>tbody>tr{
+    transition: .4s;
+}
 .table-hover>tbody>tr:hover {
-    background-color: #83b3d8 !important;
+    background-color: #144e7bc2;
+    color: white;
+    transition: .4s
 }

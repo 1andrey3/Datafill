@@ -1,12 +1,9 @@
 #squaredTwo {
 	visibility: hidden;
 }
-
-
-
 /* SQUARED TWO */
 .squaredTwo {
-	width: 20px;
+	/* width: 20px;
 	height: 20px;
 	background: #fcfff4;
 
@@ -16,16 +13,23 @@
 	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
-	/*margin: 20px auto;*/
 
 	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
 	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
 	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	position: relative; */
+
+	width: 19px;
+	height: 21px;
+	background: #0b294d !important;
+	margin: 12px 0px ;
+	box-shadow: inset 0px 1px 1px #207be5, 0px 1px 3px rgba(0,0,0,0.5);
 	position: relative;
+	border-radius:2px;
 }
 
 .squaredTwo label {
-	cursor: pointer;
+	/* cursor: pointer;
 	position: absolute;
 	width: 14px;
 	height: 14px;
@@ -41,7 +45,20 @@
 	background: -o-linear-gradient(top, #222 0%, #45484d 100%);
 	background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
 	background: linear-gradient(top, #222 0%, #45484d 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 ); */
+
+	cursor: pointer;
+	position: absolute;
+	width: 14px;
+	height: 16px;
+	left: 2.3px;
+	top: 2.5px;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.81);
+	background: -webkit-linear-gradient(top, #4d4a4a 0%, #000000 100%);
+	background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+	background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+	background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+	border-radius: 2px;
 }
 
 .squaredTwo label:after {
@@ -50,12 +67,12 @@
 	opacity: 0;
 	content: '';
 	position: absolute;
-	width: 9px;
-	height: 5px;
+	width: 10px;
+	height: 6px;
 	background: transparent;
-	top: 4px;
-	left: 4px;
-	border: 3px solid #fcfff4;
+	top: 4.2px;
+	left: 2.4px;
+	border: 3px solid #e0e0e0;
 	border-top: none;
 	border-right: none;
 
@@ -80,19 +97,38 @@
 .cambiofecha {	
     line-height: 10px;
     background-color: transparent;
-    border: azure;
+	border: transparent;
 } 
 input[type="date"] {
-    line-height: 10px;
-        width: 115px;
+     line-height: 15px;
+		/* width: 115px;  */
+		width: 90% ;
 }
 .btn-circle {
-		align-content: center;
+	/* align-content: center;
     width: 31px;
-    height: 28px;
     background-color: #207be5;
     float: left;
     color: #fff;
     border: 1px solid #000;
-    border-radius: 50%;
+	border-radius: 50%; */
+    height: 30px;
+    background-color: #1767c4;
+    color: #fff;
+	border: none;
+	margin-top: 15px;
+	transition: .5s;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	border-radius: 5%;
+}
+.btn-circle:hover {
+    transition: .2s;
+	background: #1a7a1c;
+	transform: scale(1.37);
+}
+.btn-circle:active {
+    background: #1e4b80;
 }

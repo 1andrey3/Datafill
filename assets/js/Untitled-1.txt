@@ -1,0 +1,30 @@
+tipo_orden: "T13"
+trabajo: "Ampliacion"
+id: "RF-AMP-20410"
+tipo_tecnologia: "SysModule850"
+f_cierre_ing: ""
+ingeniero: "Maria Fernanda Abello"
+//in_service_sitio FALTA----------------------------------------------------------->>>>_-----------------------
+f_ingreso_servicio_claro: "2018-01-22"
+//estado:tx FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_tx_lista: "2018-01-22"
+//estado_cw FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_cw_lista: "2017-09-13"
+rfe: "2018-11-15"
+//estado_df FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_df: "2018-01-22"
+rfic: "2018-08-03"
+rfi: "2018-11-15"
+//estado_instalacion FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_instalacion: ""
+//estado_integracion FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_integracion: ""
+//estado_onair FALTA----------------------------------------------------------->>>>_-----------------------
+fecha_inservice: ""
+contratista_cw: "N/A"
+mes_inservice: "0"
+anio_inservice: "0"
+
+
+
+

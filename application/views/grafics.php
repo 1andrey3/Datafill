@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Graficas</title>
+        <title>Gráficas</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,11 +38,11 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php print_r($_SESSION['userName']) ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
+                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             </li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
                             </li>
-                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="#services">Servicios</a>
                                 <ul>
                                     <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
@@ -56,11 +56,11 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -68,12 +68,12 @@
             </nav>
         </header><br><br><br><br>
         <!--      fin header         -->
-    <center><h1 class="h1">GRAFICAS POR MESES</h1></center>
+    <center><h1 class="h1">GRÁFICAS POR MESES</h1></center>
     <div class="container">
-        <!-- GRAFICAS -->
+        <!-- GRÁFICAS -->
         <canvas id="graficsTotal" width="400" height="155"></canvas>
     </div>
-    <!-- Modal Graficas Mes-->
+    <!-- Modal Gráficas Mes-->
     <div class="modal fade" id="graficsModal" tabindex="-1"  data-toggle="modal" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

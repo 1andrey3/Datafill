@@ -23,7 +23,9 @@
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/jquery.dataTables.min.css'); ?>">
         <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.css"> -->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/buttons.dataTables.css'); ?>">
-
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
+        
+        
         <script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
         <script type="text/javascript" src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
 
@@ -47,11 +49,11 @@
                     <!-- Collect the nav links for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cam"><a >Bienvenid@ <?php print_r($_SESSION['userName']) ?></a>
+                            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
+                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             </li>
                             <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
                             </li>
-                            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
                             <li class="cam"><a href="#services">Servicios</a>
                                 <ul>
                                     <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
@@ -65,11 +67,11 @@
                                     <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
                                 </ul>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Graficas</a>
+                            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
                             </li>
                             <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
                             </li>
-                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir</a>
+                            <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -78,7 +80,7 @@
         </header><br><br><br><br>
         <!--      fin header         -->
 
-        <h1 class="h1">RF</h1><hr>
+        <h1 class="h1 fixh1rf">RF</h1><hr>
 
         <div class="container" align="center">
             <button type="button" class="btn btn-success" id="nuevos"><i class="fa fa-fw fa-plus"></i> Nuevos <span id="nuevosBadge" class="badge">...</span></button>
@@ -97,7 +99,7 @@
                         <div class="modal-body" id="cuerpoModal">
                             <div class="container lg-cntr">
                                 <h4>Tabla Nuevos</h4>
-                                <table id="tableEventos" class='table table-bordered table-striped' width='100%'></table>
+                                <table id="tableEventos" class='table_cr table  table-striped' width='100%'></table>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -129,13 +131,13 @@
 
                                     <div id="tab_cambios" class="tab-pane fade in active  lg-cntr">
                                         <h4 align="center">TABLA CAMBIOS</h4>
-                                        <table id="tableEventosChanges" class='table table-bordered table-striped' width='100%'>
+                                        <table id="tableEventosChanges" class='table_cr table  table-striped' width='100%'>
 
                                         </table>
                                     </div>
                                     <div id="tab_log" class="tab-pane fade">
                                         <h4 align="center">TABLA LOG</h4>
-                                        <table id="tableLog" class='table table-bordered table-striped tableCami' width='100%'></table>
+                                        <table id="tableLog" class='table_cr table  table-striped tableCami' width='100%'></table>
                                     </div>
 
                                 </div>
@@ -162,7 +164,7 @@
                         <div class="modal-body" id="cuerpoModal">
                             <div class="container lg-cntr">
                                 <h3>Tabla Log</h3>
-                                <table id="tableHistorialLog" class='table table-bordered table-striped tableCami' width='100%'></table>
+                                <table id="tableHistorialLog" class='table_cr table  table-striped tableCami' width='100%'></table>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -177,7 +179,7 @@
 
         <div class="container lg-cntr">
             <!-- tABLA RF -->
-            <table id="tableRF" class='table table-bordered table-striped table-hover' ></table>
+            <table id="tableRF" class='table_cr table  table-striped table-hover' ></table>
         </div>
         <br><br><br>
         <!-- FOOTER -->

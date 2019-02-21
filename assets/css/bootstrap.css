@@ -1432,7 +1432,6 @@ th {
 .table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
@@ -4162,12 +4161,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #fff;
   border: 1px solid #ddd;
 }
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
-  margin-left: 0;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-top-right-radius: 4px;
@@ -4177,9 +4170,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #2a6496;
-  background-color: #eee;
-  border-color: #ddd;
+    color: #fff !important;
+    background-color: #144c80 !important;
 }
 .pagination > .active > a,
 .pagination > .active > span,
@@ -4199,10 +4191,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > .disabled > a,
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
-  color: #999;
-  cursor: not-allowed;
-  background-color: #fff;
-  border-color: #ddd;
+  color: #fff !important;
+  background-color: #999 !important;
+  border-color: #ddd !important ;
+  cursor: auto !important;
 }
 .pagination-lg > li > a,
 .pagination-lg > li > span {
