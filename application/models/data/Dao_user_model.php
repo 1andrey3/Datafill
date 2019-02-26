@@ -15,7 +15,7 @@
           $dbConnection = new configdb_model();
           $session = $dbConnection->openSession();
           //selecciono solo ingenieros asignables
-          $sql = "SELECT * FROM user where K_IDROLE = 1 or K_IDROLE = 2 or K_IDROLE = 3;";
+          $sql = "SELECT * FROM user where K_IDROLE = 1 or K_IDROLE = 2 or K_IDROLE = 3 or K_IDROLE = 7;";
           if ($session != "false"){
             $result = $session->query($sql);
             if ($result->num_rows > 0) {

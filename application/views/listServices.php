@@ -473,7 +473,7 @@ function showMessage(mensaje){
 </div>
 <!--========================================= tabla transporte =========================================-->
 <?php
-if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
+if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 || $_SESSION["role"] == 7) {
   // echo "<div style='display: block; padding-top: 40px' id='section_transport'></div><div class='container-fluid'>";
   echo "<br><br>";
 //<!-- /.box-header -->
@@ -488,7 +488,7 @@ if ($_SESSION["role"] == 1 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
 //
 //   //===================================<!-- fin tabla transporte ===================================-->
 }
-if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) {
+if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 || $_SESSION["role"] == 7) {
 //   //========================================<!-- tabla gdatos========================================-->
   echo "<div id='section_GDATOS'></div><br><br><br>";
   echo "<div>";

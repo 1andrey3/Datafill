@@ -150,6 +150,9 @@
           if (gdatos == 1 && users[i].role.id == 2) {
             fila = fila + "<option value="+users[i].id+ ">"+users[i].name+" "+users[i].lastname+"</option>";
           }
+          if (users[i].role.id == 7) {
+            fila = fila + "<option value="+users[i].id+ ">"+users[i].name+" "+users[i].lastname+"</option>";
+          }
         }
         fila = fila + '</select>';
         fila = fila + '</td>';
