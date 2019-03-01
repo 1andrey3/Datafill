@@ -402,23 +402,14 @@ function showMessage(mensaje){
       <i class="glyphicon glyphicon-chevron-right"></i> Cerrar
     </span>
     <a href="<?= URL::to('Report/totalReport?id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>" class="boton2" id="total">TOTAL</a>
-    <a href="<?= URL::to('Report/thisMonthReport?id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>" class="boton2" id="esteMes">Total este Mes</a>
+    <a href="<?= URL::to('Report/thisMonthReport?id='.$_SESSION["id"].'&&role='.$_SESSION["role"].'&anio='.date('Y')); ?>" class="boton2" id="esteMes">Total este Mes</a>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle boton2" type="button" id="porMes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Por Mes</button>
-      <div class="dropdown-menu per" aria-labelledby="dropdownMenuButton">
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=01&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Enero</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=02&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Febrero</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=03&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Marzo</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=04&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Abril</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=05&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Mayo</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=06&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Junio</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=07&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Julio</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=08&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Agosto</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=09&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Septiembre</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=10&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Octubre</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=11&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Noviembre</a>
-        <a class="mes" href="<?= URL::to('Report/thisMonthReport?mesSel=12&id='.$_SESSION["id"].'&&role='.$_SESSION["role"].''); ?>">Diciembre</a>
+      <button class="btn btn-secondary dropdown-toggle boton2 btnPorMes" type="button" id="porMes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Por Mes</button>
+      <div class="dropdown-menu per" aria-labelledby="dropdownMenuButton" id="boxPorMes">
+      <!-- ****************************CAMBIOS***************** -->
+      <!-- SE LLENA DINAMICAMENTE -->
       </div>
+      
     </div>
     <?php
     if ($_SESSION["role"] == 4) {
@@ -753,12 +744,14 @@ if (isset($message)) {
   });
 
   var baseurl = "<?php echo URL::base(); ?>";
+  var rol = "<?php echo $_SESSION["role"] ?>";
+  var id_usuario = "<?php echo $_SESSION["id"] ?>";
 </script>
 <!-- DataTables -->
 <script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 <!-- llenar tablas -->
-<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=24"); ?>"></script>
+<script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=25"); ?>"></script>
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>

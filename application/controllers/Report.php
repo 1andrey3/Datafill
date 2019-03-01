@@ -23,8 +23,9 @@
       		$role = $_GET['role'];
         }
 
-      	// header('Content-Type: text/plain');
-      	$respuesta = $this->Dao_service_model->getTotalActivities($mes, $idUser, $role);
+        // header('Content-Type: text/plain');
+        // en el anio se le pasa 0 para que en el dao valide que es total de actividades
+      	$respuesta = $this->Dao_service_model->getTotalActivities($mes, $idUser, $role,0);
         $nombre = "ReporteTotal  ";
       	$this->generateReport($respuesta, $nombre);
 
@@ -32,16 +33,21 @@
       }
       //crea el objeto de actividades del mes actual
       public function thisMonthReport(){
-      	$month = date('m');$idUser = "";$role = "";
+        
+        $month = date('m'); $idUser = "";$role = "";
+        
       	if (isset($_GET['mesSel'])) {
-      		$month = $_GET['mesSel'];
+          $month = $_GET['mesSel'];
       	}
         $nm = ["01" =>'enero', "02" =>'febrero', "03" =>'marzo', "04" =>'abril', "05" =>'mayo', "06" =>'junio', "07" =>'julio', "08" =>'agosto', "09" =>'septiembre', "10" =>'octubre', "11" =>'noviembre', "12" =>'diciembre'];
       	if (isset($_GET['id']) && isset($_GET['role'])) {
       		$idUser = $_GET['id'];
       		$role = $_GET['role'];
-      	}
-      	$respuesta = $this->Dao_service_model->getTotalActivities($month, $idUser, $role);
+        }
+
+        $anio = $this->input->get('anio');
+        
+        $respuesta = $this->Dao_service_model->getTotalActivities($month, $idUser, $role,$anio);
       	$nombre = "Reporte_mes_".$nm[$month]." ";
       	$this->generateReport($respuesta, $nombre);
       }
@@ -1112,8 +1118,55 @@
           end($array);
           return key( $array );  
       }
+      // obtiene qué años tienen datos para poder pintarlo en el boton de por mes de reportes excel
+      public function c_getyearsWithData()
+      {
+        $aniosFechaInicio = $this->Dao_service_model->getYearsWithData('D_DATE_START_P',"'%Y'");
+
+        $aniosFechaClaro = $this->Dao_service_model->getYearsWithData('D_CLARO_F',"'%Y'");
 
 
+        $fechas = array_merge($aniosFechaClaro,$aniosFechaInicio);
+
+        $fechas = $this->organizarInfoMesesYear($fechas);
+
+        $meses = array();
+        foreach ($fechas as $key => $anio) {
+          $meses2 = $this->Dao_service_model->getMonthsPerYear($anio,'D_CLARO_F');
+          $meses1 = $this->Dao_service_model->getMonthsPerYear($anio,'D_DATE_START_P');
+
+          $meses[$anio] = array_merge($meses1,$meses2);
+        }
+        foreach ($meses as $key => $value) {
+          $aa = array();
+          foreach ($value as $k => $v) {
+            array_push($aa , $v->mes);
+          }
+          sort($aa);
+          $meses[$key] = array_unique($aa);
+        }
+        
+        echo json_encode($meses);
+        
+      }
+
+      public function organizarInfoMesesYear($anioOMes)
+      {
+        foreach ($anioOMes as $campo => $val) {
+          if (isset($val->D_CLARO_Fx)) {
+            $anioOMes[$campo] = $val->D_CLARO_Fx;
+          }else{
+            $anioOMes[$campo] = $val->D_DATE_START_Px;
+          }
+
+          // se eliminan campos repetidos
+          $anioOMes = array_unique($anioOMes);
+          // ordena las anioOMes de menor a mayor
+          sort($anioOMes);
+        }
+
+        return $anioOMes;
+      }
 
 }
 

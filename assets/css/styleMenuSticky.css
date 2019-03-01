@@ -335,21 +335,57 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 
 }
-.mes {
+.anioMes, .mes {
 	display: block;
 	background-color: white;
-	border-radius: 15px;
+	border-radius: 5px;
 	width:70%;
 	color: #17951b;
 	text-align: center;
-
-
+	transition: .8s;
+	cursor: pointer;
+	font-weight: bold;
 }
-.mes:hover {
+span.anioMes{
+	width: auto !important;
+	padding: 8px;
+}
+
+
+.mesesPoranio .header .cerrar{
+	position: absolute;
+    right: 4px;
+    font-size: 23px;
+	top: 12px;
+	cursor: pointer;
+}
+.anioMes:hover, .mes:hover {
 	text-decoration: none;
 	background-color: #17951b;
 	color: #fff;
+	transition: .5s;
 }
+
+.mesesPoranio{
+	position: fixed;
+    transition: 1s;
+    z-index: 1;
+    background: white;
+    border: 1px solid;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    right: 0px;
+    bottom: -40em;
+}
+.mesesPoranio .header{
+	background: #3673ad;
+    border-top-left-radius: 3px;
+    font-weight: bold;	
+    color: white;
+    padding: 8px 58px;
+}
+	
 .per {
 	background-color: white;
 	border-radius: 15px;
