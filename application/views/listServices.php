@@ -48,7 +48,7 @@
       // body += "<th><input type='checkbox' name='checkbox' id= "+i+" value="+servicio.services[i].idClaro+" '></th>";
       body += "<td>"+servicio.services[i].idClaro+"</td>";
       // body += "<td>"+servicio.services[i].proyecto+"</td>";
-      body += "<td><input class='form-control' value='"+servicio.services[i].service.type+"'> </td>";
+      body += "<td><input class='form-control actData' value='"+servicio.services[i].service.type+"'> </td>";
       body += "<td>"+servicio.services[i].quantity+"</td>";
       body += "<td>"+servicio.services[i].site.name+"</td>";
       body += "<td>"+servicio.services[i].user.name+" "+servicio.services[i].user.lastname+"</td>";
@@ -70,17 +70,18 @@
       //
       //
       //
-      body += "<td><input class='form-control DStartP' value='"+servicio.services[i].dateStartP+"'> </td>";
+      body += "<td><input class='form-control DStartP actData' value='"+servicio.services[i].dateStartP+"'> </td>";
+
       if (servicio.services[i].estado == 'Cancelado') {
-        body += "<td><input class='form-control' value='"+servicio.services[i].dateStartP+"'> </td>";
+        body += "<td><input class='form-control DStartP actData' value='"+servicio.services[i].dateStartP+"'> </td>";
       }else{
-        body += "<td><input class='form-control' value='"+servicio.services[i].dateFinishR+"'> </td>";
+        body += "<td><input class='form-control actData' value='"+servicio.services[i].dateFinishR+"'> </td>";
       }
-      body += "<td><input class='form-control' value='"+servicio.services[i].dateForecast+"'> </td>";
-      body += "<td><input class='form-control' value='"+servicio.services[i].dateFinishClaro+"'> </td>";
+      body += "<td><input class='form-control actData' value='"+servicio.services[i].dateForecast+"'> </td>";
+      body += "<td><input class='form-control actData' value='"+servicio.services[i].dateFinishClaro+"'> </td>";
       body += "<td id='"+servicio.services[i].estado+"'>"+servicio.services[i].estado+"</td>";
       if (servicio.services[i].link1 == null || servicio.services[i].link1 == "") {
-        body += "<td><input type='text' class='form-control miniInput' id='" + servicio.services[i].idClaro + "_lk1' name='" + servicio.services[i].idClaro + "_lk1' placeholder='evidencia 1'/></td>";
+        body += "<td><input type='text' class='form-control miniInput actData' id='" + servicio.services[i].idClaro + "_lk1' name='" + servicio.services[i].idClaro + "_lk1' placeholder='evidencia 1'/></td>";
       } else {
         body += "<td><img src='"+baseurl+"/assets/img/check.png' alt='evidencia Enviada' width='35' title='evidencia Enviada'></td>";
       }
@@ -135,9 +136,17 @@
 
   validarFechasCierre(servicio.services[0].dateStartP);
   validarLink(servicio.link);
+  cambiarFechas();
 }
 
-
+  function cambiarFechas(){
+    $(".actData").on('blur',function(){
+      var valChanged = $(this).val();
+      var id = $(this).parents('td').siblings()[2].innerHTML;
+      console.log(valChanged);
+      console.log(id);    
+    });
+  };
   function validarFechasCierre(fechaAsig){
 
     $('#fInicior').on('change', function(){
@@ -733,19 +742,19 @@ if (isset($message)) {
       return false; // Evitar ejecutar el submit del formulario.
     });
   });
-  $(function(){
-    $("#btn_actualizar_links").click(function(){
-      $.ajax({
-        type: "POST",
-        url: baseurl + "/SpecificService/inputFechas",
-      data: 
-      success: function(data){
-        var obj = JSON.parse(data);
-      }
-      });
-      return false; // Evitar ejecutar el submit del formulario.
-    });
-  });
+    
+  
+  // $(".DstartP")
+    // $("#btn_actualizar_links").click(function(){
+    //   var inpuType = $('.DstartP').val();
+    //   console.log(inpuType);
+      // $.ajax({
+      //   type: "POST",
+      //   url: baseurl + "/SpecificService/inputFechas",
+      // data: $(".DStartP"),
+
+      // });
+    // });
 </script>
 <script type="text/javascript"> 
   const list_docs = '<?php echo json_encode($list_docs); ?>';
