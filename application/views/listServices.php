@@ -582,14 +582,63 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4) 
                         <option value="1023919425"><b>Juri Andrea Pita Correa</b></option>
                         <option value="1026284286"><b>Alvaro Agudelo Bayona</b></option>
                         <option value="79615710"><b>Freddy Carlos Peña Moreno</b></option>
-
-
-
+                        <option value="1070951857"><b>Oscar Leonardo Gomez Ramirez</b></option>
+                      </optgroup>
+                      <optgroup label="Ingeniero Claro">
+                        <option value="1"><b>Jhon Alejandro Salazar Tapasco</b></option>
+                        <option value="10"><b>Lina Marcela Duque Morales</b></option>
+                        <option value="1065631508"><b>Julián Camilo Durán Hernández</b></option>
+                        <option value="11"><b>Luis Mauricio Gomez Arias</b></option>
+                        <option value="12"><b>Luis Gabriel Pineda Gomez</b></option>
+                        <option value="13"><b>Luis Carlos Mejia Ahumada</b></option>
+                        <option value="14"><b>Oscar Javier Barbosa Cuellar</b></option>
+                        <option value="15"><b>Oscar Eduardo Otero Flores</b></option>
+                        <option value="16"><b>Vivian Lorena Plazas Riano</b></option>
+                        <option value="17"><b>Yolanda Cortes Gil</b></option>
+                        <option value="18"><b>Eduardo Martinez</b></option>
+                        <option value="19"><b>Guillermo Riaño</b></option>
+                        <option value="2"><b>Andres Hernandez</b></option>
+                        <option value="20"><b>r Riano</b></option>
+                        <option value="21"><b>Diego Velez</b></option>
+                        <option value="3"><b>Carlos Andres Tovar Piraban</b></option>
+                        <option value="4"><b>Henry Ledesma</b></option>
+                        <option value="5"><b>Javier Pineda Lopez</b></option>
+                        <option value="52700033"><b>Sandra Paola Varón García</b></option>
+                        <option value="6"><b>Jhon Vicente Salgado Rodriguez</b></option>
+                        <option value="7"><b>Johann Smit Orozco Larrota</b></option>
+                        <option value="8"><b>Jorge Anibal Hernandez Rodriguez</b></option>
+                        <option value="80158472"><b>Andres Alberto Rubio Idrobo</b></option>
+                        <option value="9"><b>Jose Zambrano</b></option>
+                      </optgroup>
+                      <optgroup label="Ingeniero Datafill Seguimiento">
+                        <option value="1019101659"><b>Maria Fernanda Abello Forero</b></option>
+                        <option value="1074415450"><b>Luis Alberto Guzman Gonzales</b></option>
+                        <option value="17653787"><b>Leonardo Alberto Conde Torres</b></option>
+                        <option value="94499841"><b>Diego Javier Arboleda Loaiza</b></option>
                       </optgroup>
                     </select>
-                    <button style='margin-left: 40px;' type='submit' class='btn btn-success'  onclick="quitarRequired(); this.form.action='<?= URL::to('SpecificService/reasign'); ?>'">Reasignar</button>
+                    
+                    <button style='margin-left: 20px;' type='submit' class='btn btn-success'  onclick="quitarRequired(); this.form.action='<?= URL::to('SpecificService/reasign'); ?>'">Reasignar</button>
                   </div>
+
+                  <div class='input-group'>
+                    <!-- <?php /*print_r*/($list_docs) ?> -->
+                    <span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+                    <select class='selectBre' name='Documentador' id="Documentador" data-show-subtext='true' data-live-search='true'  data-width='80%'>
+                      <option value=''>Seleccione Documentador</option>
+                      <?php
+                      for ($i=0; $i <count($list_docs) ; $i++) { 
+                        echo '<option value="'. $list_docs[$i]->K_IDUSER . '">'. $list_docs[$i]->nombres .'</option>';
+                      }
+                      ?>
+                    </select>
+                    
+                    <button style='margin-left: 20px;' type='submit' class='btn btn-success'  onclick="quitarRequired(); this.form.action='<?= URL::to('SpecificService/reasignardocumentador'); ?>'">Reasignar documentador</button>
+                  </div>
+
+
                 </div>
+
                 <br><br>
 
               </div>

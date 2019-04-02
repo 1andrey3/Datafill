@@ -184,12 +184,18 @@
 
         }
 
-
-
-
-       
-
-
-
+        // Función que muestra los nombres de los documentadores(JC)
+        public function listardocumentadores(){
+        $sql=$this->db->query("
+            SELECT
+            CONCAT(us.N_NAME, ' ' , us.N_LASTNAME) AS Nombre
+            FROM user us
+            INNER JOIN role
+            ON us.K_IDROLE=role.K_IDROLE
+            WHERE role.K_IDROLE='6'
+            ");
+        return $query->result();
     }
+
+  }
 ?>

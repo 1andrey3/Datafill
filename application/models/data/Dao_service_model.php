@@ -759,5 +759,17 @@ class Dao_service_model extends CI_Model {
             return 0;
         }
     }
-
+    //Función que reasigna a un ingeniero una actividad(JC)
+    public function actualizardocu($actividad, $docu){
+        $sql=$this->db->query("
+            UPDATE specific_service SET K_ID_DOCUMENTADOR = '$docu' WHERE K_IDCLARO = '$actividad'
+            ");
+        
+        if ($this->db->affected_rows() > 0){
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
+        
+    }
 }

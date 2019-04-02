@@ -24,7 +24,7 @@ class Service extends CI_Controller {
     }
 
     public function listServices() {
-        $res['list_docs'] = $this->dao_user_model->getAllDocs();
+        $res['list_docs'] = $this->dao_user_model->getAllDocs(); 
         $this->load->view('listServices', $res);
         //Limpiamos la variable glogal
         unset($_SESSION["message"]);
