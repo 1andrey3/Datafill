@@ -19,20 +19,6 @@ class Configdb_model extends CI_Model {
         $_SESSION['role'] = $user->getRole();
     }
 
-    /*     * ***********************servidor de prueba************************ /
-
-    // public function openSession(){
-    //   $user = "AdminZTE";
-    //   $pass =  "a4b3c2d1";
-    //   $db = "datafill_test";
-    //   try {
-    //     $connection = new mysqli('zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com', $user, $pass, $db);
-    //     $connection->set_charset("utf8");
-    //   } catch (Exception $e ) {
-    //      $connection = "false";
-    //   }
-    //   return $connection;
-    // }
     
     // /**************************servidor del cliente**************************/
     // public function openSession(){

@@ -121,30 +121,6 @@ $db['jj'] = array(
 	'save_queries' => TRUE
 );
 
-
-/*=====================================Servidor de Prueba=====================================*/
-$db['prueba'] = array(
-	'dsn'	=> '',
-	'hostname' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
-	'username' => 'adminZTE',
-	'password' => 'a4b3c2d1',
-	'database' => 'datafill_test',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => FALSE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
 /*======================================servidor cliente======================================*/
 $db['servidor'] = array(
 	'dsn'	=> '',

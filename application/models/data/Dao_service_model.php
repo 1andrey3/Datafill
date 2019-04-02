@@ -355,18 +355,25 @@ class Dao_service_model extends CI_Model {
         return $answer['count(*)'];
     }
     //consulta de todas las actividades
-    public function getTotalActivities($mes, $idUser, $role) {
+    public function getTotalActivities($mes, $idUser, $role,$anio) {
         $where   = "";
         $usuario = "";
         if ($idUser != '1069722400') {
             $usuario = " and ss.K_IDUSER =" . $idUser . "";
+        }
 
+        $mesMasUno = (strlen($mes + 1) == 1) ? '0'.($mes+1) : $mes+1;
+
+        if (strlen($mes) === 1) {
+            $mes = '0'.$mes;
         }
         //si le enviamos mes
-        if ($mes) {
-            $where = "where (ss.D_CLARO_F >= '2018-" . $mes . "-01' and ss.D_CLARO_F < '2018-" . ($mes + 1) . "-01'" . $usuario . ") or ( ss.D_DATE_START_P >= '2018-" . $mes . "-01' and ss.D_DATE_START_P < '2018-" . ($mes + 1) . "-01' and ss.D_CLARO_F is null" . $usuario . ")";
-        } elseif ($mes == '12') {
-            $where = "where (ss.D_CLARO_F >= '2018-" . $mes . "-01' and ss.D_CLARO_F < '2019-01-01'" . $usuario . ") or ( ss.D_DATE_START_P >= '2018-" . $mes . "-01' and ss.D_DATE_START_P < '2019-01-01' and ss.D_CLARO_F is null" . $usuario . ")";
+        if ($anio != 0) { // si es igual a 0 significa que es el total de actividades, entonces no necesita el where
+            if ($mes != 12) {
+                $where = "WHERE (ss.D_CLARO_F >= '".$anio."-" . $mes . "-01' AND ss.D_CLARO_F < '".$anio."-" . ($mesMasUno) . "-01'" . $usuario . ") OR ( ss.D_DATE_START_P >= '".$anio."-" . $mes . "-01' AND ss.D_DATE_START_P < '".$anio."-" . ($mesMasUno) . "-01' AND ss.D_CLARO_F is null" . $usuario . ")";
+            } else {
+                $where = "WHERE (ss.D_CLARO_F >= '".$anio."-" . $mes . "-01' AND ss.D_CLARO_F < '".($anio + 1)."-01-01'" . $usuario . ") OR ( ss.D_DATE_START_P >= '".$anio."-" . $mes . "-01' AND ss.D_DATE_START_P < '".($anio + 1)."-01-01' AND ss.D_CLARO_F is null" . $usuario . ")";
+            }
         }
 
         $query = $this->db->query("
@@ -413,7 +420,7 @@ class Dao_service_model extends CI_Model {
             order by ss.K_IDORDER asc
             ;"
         );
-
+        // echo("<pre>"); print_r($this->db->last_query()); echo("</pre>");
         return $query->result();
     }
     //Modelo de los meses totales que han asignado actividad
@@ -770,6 +777,38 @@ class Dao_service_model extends CI_Model {
         } else {
             return 0;
         }
+    }
+
+    // retorna los años en los cuales existan datos
+    // recibe la columna
+    public function getYearsWithData($col,$anioOMes)
+    {
+        $this->db->group_by($col.'x');
+        $query = $this->db->select('DATE_FORMAT('.$col.' , '.$anioOMes.') AS '.$col.'x')
+                        ->from('specific_service')
+                        ->where(''.$col.' IS NOT NULL')
+                        ->where(''.$col.' <>', '0000-00-00')
+                        ->get();
+        
+        return $query->result();
+    }
+
+
+    public function getMonthsPerYear($anio,$tipoFecha)
+    {
+        $condicionFechaInicio = '';
+        
+        $this->db->group_by('mes');
+        $query = $this->db->select('MONTH('.$tipoFecha.') AS mes')
+                            ->from('specific_service')
+                            ->where('YEAR('.$tipoFecha.')',$anio)
+                            ->get();
+        
+        if ($tipoFecha != 'D_DATE_START_P') {
+            $condicionFechaInicio = 'D_CLARO_F IS NULL';
+            $this->db->where($condicionFechaInicio);
+        }
+        return $query->result();
         
     }
 }

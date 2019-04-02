@@ -3,9 +3,76 @@ $(function () {
         urlbase: $('body').attr('data-url'),
         init: function () {
             vista.events();
+            vista.getSelectForMes();
             vista.getListTransport();
             vista.getListGDATOS();
         },
+
+        getSelectForMes : function () {
+            $.post(vista.urlbase + "/Report/c_getyearsWithData", 
+            {},
+            function (data) {
+                const anios = JSON.parse(data);
+                vista.printAniosSegunDatos(anios);
+            },
+        );},
+
+        printAniosSegunDatos: function(anios){
+            console.log('anios:', anios);
+            var nombreMeses = {
+            '1' : 'Enero',
+            '2' : 'Febrero',
+            '3' : 'Marzo',
+            '4' : 'Abril',
+            '5' : 'Mayo',
+            '6' : 'Junio',
+            '7' : 'Julio',
+            '8' : 'Agosto',
+            '9' : 'Septiembre',
+            '10' : 'Octubre',
+            '11' : 'Noviembre',
+            '12' : 'Diciembre'};
+
+            
+            $.each(anios, function (anio,meses) { 
+                $('#boxPorMes').append(`<a id="${anio}" class="anioMes anio">${anio}</a>`);
+                $("#"+anio).on('click',function(){
+                    const selectorMes = $(".mesesPoranio");
+                    $(".mesesPoranio .header span").html(`<h5><b>${anio}<b></h5>`);
+                    selectorMes.css("bottom",'0em');
+                    $(".mesesPoranio section").children().remove();
+                    
+                    $.each(meses, function (i, numMes) { 
+                        $(".mesesPoranio section").append(`<span id="${numMes}"class="anioMes" data-anio="${anio}">${nombreMeses[numMes]}</span>`);
+                         $("#"+numMes).on('click',function(){
+                            var anio = $(this).attr('data-anio');
+                            var mes = $(this).attr('id');
+                            selectorMes.css("bottom",'-40em');
+                            $(".mesesPoranio section").children().remove();
+                            console.log(window.location.href = baseurl+'/Report/thisMonthReport?mesSel='+mes+'&id='+id_usuario+'&&role='+rol+'&anio='+anio);
+                            
+                        });
+                    });
+
+                    
+
+                });
+                
+            });
+            $('#boxPorMes').parent().append(`<div class="mesesPoranio">
+            <div class="header"><span></span><i class="glyphicon glyphicon-remove-circle cerrar"></i></div>
+            <section>
+            </section>
+        </div>`);
+
+            $(".mesesPoranio .header .cerrar").on("click",function(){
+                console.log("aaa");
+                $(".mesesPoranio").css("bottom",'-40em');
+                $(".mesesPoranio section").children().remove();
+            });
+            
+        },
+        
         getListTransport: function () {
             vista.tableTransport = $('#tableTransport').DataTable(vista.genericCogDataTable("Service/getListServices", "tableTransport"));
         },
@@ -252,7 +319,6 @@ $(function () {
 
             $('#tableTransport').on('click', 'button.btn-circle', vista.TRupdateFecha);
             $('#tableGDATOS').on('click', 'button.btn-circle', vista.GDupdateFecha);
-
             // $('table').off('click', '.btn-preview', vista.onClickPreviewBtn);
             // $('table').on('click', '.btn-preview', vista.onClickPreviewBtn);
             // $('.tab-tables').on('click', vista.onClickTabTables);
