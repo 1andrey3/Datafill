@@ -600,6 +600,16 @@ class SpecificService extends CI_Controller {
         return $array['excel'];
     }
 
+    public function UpdateInputs(){
+        $datos = [];
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['cambio'];
+        $datos[2] = $_POST['nombreCampo'];
+        print_r("=============");
+        print_r($datos);
+        $this->Dao_service_model->enviarDatos($datos);        
+    }
+
     public function updateLinkFormModal() {
         $actualizados = []; //arreglo q lleno con los id de los registros actualizados
         foreach ($_POST as $key => $value) {

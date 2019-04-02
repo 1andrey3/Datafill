@@ -70,15 +70,15 @@
       //
       //
       //
-      body += "<td><input class='form-control DStartP actData' id='dateStartP' value='"+servicio.services[i].dateStartP+"'> </td>";
+      body += "<td><input type='date' size='20' class='form-control DStartP actData' id='dateStartP' value='"+servicio.services[i].dateStartP+"'> </td>";
 
       if (servicio.services[i].estado == 'Cancelado') {
-        body += "<td><input class='form-control DStartP actData' id='dateStartP' value='"+servicio.services[i].dateStartP+"'> </td>";
+        body += "<td><input type='date' size='20' class='form-control DStartP actData' id='dateStartP' value='"+servicio.services[i].dateStartP+"'> </td>";
       }else{
-        body += "<td><input class='form-control actData' id='dateFinishR' value='"+servicio.services[i].dateFinishR+"'> </td>";
+        body += "<td><input  type='date' class='form-control actData' id='dateFinishR' value='"+servicio.services[i].dateFinishR+"'> </td>";
       }
-      body += "<td><input class='form-control actData' id='dateForecast' value='"+servicio.services[i].dateForecast+"'> </td>";
-      body += "<td><input class='form-control actData' id='dateFinishClaro' value='"+servicio.services[i].dateFinishClaro+"'> </td>";
+      body += "<td><input type='date' class='form-control actData' id='dateForecast' value='"+servicio.services[i].dateForecast+"'> </td>";
+      body += "<td><input type='date' class='form-control actData' id='dateFinishClaro' value='"+servicio.services[i].dateFinishClaro+"'> </td>";
       body += "<td id='"+servicio.services[i].estado+"'>"+servicio.services[i].estado+"</td>";
       if (servicio.services[i].link1 == null || servicio.services[i].link1 == "") {
         body += "<td><input type='text' class='form-control miniInput actData' id='" + servicio.services[i].idClaro + "_lk1' name='" + servicio.services[i].idClaro + "_lk1' placeholder='evidencia 1'/></td>";
@@ -144,13 +144,18 @@
       const valChanged = $(this).val();
       const id = $(this).parents('td').siblings()[2].innerHTML;
       const campo = $(this).attr('id');
+      console.log(id);
+      console.log(campo);
       console.log(valChanged);
-      console.log(id);    
-      // fetch('/SpecificService/updateLinkFormModal',
-      // method: 'POST'
-      // ).then(data=> data.json()).then(data=>{
-      //   console.log(data);
-      // })
+      const datosCambiados = new FormData();
+      datosCambiados.append('id', id);
+      datosCambiados.append('nombreCampo',campo);
+      datosCambiados.append('cambio', valChanged);
+        fetch(baseurl + "/SpecificService/UpdateInputs",{
+        method:"POST",
+        body: datosCambiados
+        })
+        .then(responsive => responsive.text());     
   })
 }
 
