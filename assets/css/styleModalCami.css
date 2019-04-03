@@ -62,6 +62,21 @@
 #tablaActividades td, #tablaActividades thead{
     font-size:11px
 }
+.TablaModal{
+    overflow: auto;
+  }
+  #fechas{
+    width: 20px;
+  }
+  input[id="serviceType"]:not([size]){
+      width: 5em;
+  }
+  input[type="text"]:not([size]) {
+    width: 15em;
+  }
+  input[type="date"]:not([size]) {
+    width: 10em;
+  }
 
 
 

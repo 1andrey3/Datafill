@@ -530,7 +530,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
             <h1 class="modal-title">Detalles del Evento</h1>
             <h4 id="orden"></h4>
           </div>
-          <div class="container">
+          <div class="container-fluid TablaModal">
             <div class="modal-body">
               <h3 class="subtitulo">Tabla Actividades</h3>
               <table id='tablaActividades' class='table-hover table_cr table table-striped'>
@@ -550,12 +550,13 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
                     <th>Ingeniero Asignado</th>
                     <th>Documentador Asignado</th>
                     <th>F. Asignación</th>
-                    <th>Fecha Cierre </th>
+                    <th id="fechas">Fecha Cierre </th>
                     <th>F. Forecast</th>
                     <th>F. Ejecución</th>
                     <th>estado</th>
                     <th>Link Envio 1</th>
                     <th>Link Envio 2</th>
+                    <th>Costos</th>
                   </tr>
                 </thead>
                 <tbody name="body" id="body">
@@ -713,6 +714,7 @@ if (isset($message)) {
 }
 ?>
 <script>
+  $("#tablaActividades").width("100%"); 
   $('#btnTodayDateIni').on('click', function(){
     var hoy = formatDate(new Date());
     var fecha =  $('#fInicior');
