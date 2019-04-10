@@ -557,6 +557,23 @@ class Dao_service_model extends CI_Model {
 
         return $query->result();
     }
+    public function enviarDatos($data){
+        if($data[2] == 'serviceType'){
+            $this->db->query("UPDATE specific_service SET K_IDSERVICES = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateStartP'){
+            $this->db->query("UPDATE specific_service SET D_DATE_START_P   = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateFinishR'){
+            $this->db->query("UPDATE specific_service SET D_DATE_FINISH_P  = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateForecast'){
+            $this->db->query("UPDATE specific_service SET D_FORECAST   = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateFinishClaro'){
+            $this->db->query("UPDATE specific_service SET D_DATE_FINISH_R  = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+    }
 
     public function updateLink1($actividad, $link, $columna) {
         $data = array(
