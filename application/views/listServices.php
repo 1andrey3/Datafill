@@ -553,10 +553,10 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
                       <optgroup label="Transporte  GDRT">
                         <option value="80158472" class="ing"><b>Andres Alberto Rubio Idrobo</b></option>
                         <option value="1032364958"><b>Cesar David Duran Alvarez</b></option>
-                        <option value="1030565500"><b>David Arevalo Bravo</b></option>
                         <option value="1022350779"><b>Giovanny Reyes Torres</b></option>
                         <option value="80392886"><b>Juan Carlos Olmos Bonilla</b></option>
-                        <option value="1016028754"><b>Lina Casallas Melgarejo</b></option>
+                        <option value="5166463"><b>Jhon Erik Gamez Gonzales</b></option>
+                        <option value="1013638956"><b>Charlinne Yessenia Suarez Medina</b></option>
                         <option value="1014251868"><b>Marcela Fernanda Herrera Quila</b></option>
                         <option value="80160305"><b>Miguel Angel Moreno Alarcon</b></option>
                         <option value="72265383"><b>Jaime Luis Escobar De Los Reyes</b></option>
