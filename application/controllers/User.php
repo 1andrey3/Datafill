@@ -19,7 +19,9 @@
           $pass = $this->dao_user_model->getUsernamePassword($_POST['username']);
           if($pass['N_PASSWORD'] == $_POST['password']){
             $this->configdb_model->startSession($response);
+            $this->load->view('Template/header');
             $this->load->view('principal');
+            $this->load->view('Template/footer');
           } else {
             $answer['error'] = "error";
             $this->load->view('login', $answer);
@@ -31,7 +33,9 @@
       }
 
       public function principalView(){
+        $this->load->view('Template/header');
         $this->load->view('principal');
+        $this->load->view('Template/footer');
       }
 
 
