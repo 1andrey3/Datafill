@@ -557,6 +557,23 @@ class Dao_service_model extends CI_Model {
 
         return $query->result();
     }
+    public function enviarDatos($data){
+        if($data[2] == 'serviceType'){
+            $this->db->query("UPDATE specific_service SET K_IDSERVICES = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateStartP'){
+            $this->db->query("UPDATE specific_service SET D_DATE_START_P   = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateFinishR'){
+            $this->db->query("UPDATE specific_service SET D_DATE_FINISH_P  = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateForecast'){
+            $this->db->query("UPDATE specific_service SET D_FORECAST   = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+        if($data[2] == 'dateFinishClaro'){
+            $this->db->query("UPDATE specific_service SET D_DATE_FINISH_R  = '$data[1]' WHERE K_IDCLARO = '$data[0]'");
+        }
+    }
 
     public function updateLink1($actividad, $link, $columna) {
         $data = array(
@@ -761,6 +778,18 @@ class Dao_service_model extends CI_Model {
         $this->db->where_in('K_IDSITE', $where_in);
         $this->db->update('specific_service', array('K_IDSITE' => $id));
         if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
+    }
+    //Función que reasigna a un ingeniero una actividad(JC)
+    public function actualizardocu($actividad, $docu){
+        $sql=$this->db->query("
+            UPDATE specific_service SET K_ID_DOCUMENTADOR = '$docu' WHERE K_IDCLARO = '$actividad'
+            ");
+        
+        if ($this->db->affected_rows() > 0){
             return $this->db->affected_rows();
         } else {
             return 0;

@@ -600,6 +600,16 @@ class SpecificService extends CI_Controller {
         return $array['excel'];
     }
 
+    public function UpdateInputs(){
+        $datos = [];
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['cambio'];
+        $datos[2] = $_POST['nombreCampo'];
+        print_r("=============");
+        print_r($datos);
+        $this->Dao_service_model->enviarDatos($datos);        
+    }
+
     public function updateLinkFormModal() {
         $actualizados = []; //arreglo q lleno con los id de los registros actualizados
         foreach ($_POST as $key => $value) {
@@ -1437,5 +1447,135 @@ class SpecificService extends CI_Controller {
             header('Location: ' . URL::to("Service/listServices"));
 
         }
+    }
+    public function reasignardocumentador(){
+        $a=[];
+        if ($_POST['Documentador']) { 
+            for ($i=0; $i < count($_POST['checkbox']) ; $i++) { 
+                $actividades[$i]=$this->dao_service_model->getServiceByIdActivity($_POST['checkbox'][$i]);
+                $this->dao_service_model->actualizardocu($_POST['checkbox'][$i], $_POST['Documentador']);
+            }
+            for ($k = 0; $k < count($actividades); $k++) {
+                $a[$k] = $actividades[$k]->user->mail;
+            }
+            $to    = array_values(array_unique($a));
+            $mails = "";
+            for ($h = 0; $h < count($to); $h++) {
+                if ($h < count($to) - 1) {
+                    $mails = $mails . $to[$h] . ", ";
+                } else {
+                    $mails = $mails . $to[$h];
+                }
+            }
+             $_POST['Documentador'] = $this->dao_user_model->getUserById($_POST['Documentador']);
+             /*var_dump($_POST['Documentador']);*/
+            // print_r($_POST['Ingeniero']->name." ".$_POST['Ingeniero']->lastname);
+            //concateno ingeniero mail ingeniero seleccionado con ingenieros asignados
+            $mails  = $_POST['Documentador']->mail . ", " . $mails;
+            $cuerpo = "<html>
+                          <head>
+                          <title>reasignacion</title>
+                          <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css'>
+                          <link rel= 'stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css'>
+                          <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+                          </head>
+                          <body>
+                            <h4 style= 'color: #7851DA'>Buen Día documentador(s), las siguientes actividades de la orden " . $_POST['ot'] . " han sido reasignadas a:</h4><h3>" . $_POST['Documentador']->name . " " . $_POST['Documentador']->lastname . "</h3><br>
+                            <div class='box-header'>
+                              <h5><b>OT: </b>" . $_POST['ot'] . "</h5>
+                              <h5><b>Solicitante: </b>" . $actividades[0]->ingSol . "</h5>
+                              <h5><b>Fecha de Creacion: </b>" . $actividades[0]->dateCreation . "</h5>
+                              <h5><b>Proyecto: </b>" . $actividades[0]->proyecto . "</h5>
+                              <h5><b>Descripción: </b>" . $actividades[0]->claroDescription . "</h5>
+                            </div>
+                            <div class='box-body'>
+                              <table id='example1' class='table table-bordered table-striped' border = '1'>
+                                  <thead style='background-color: #4486f8;color: #fff;'>
+                                    <tr>
+                                      <th>ID Actividad</th>
+                                      <th>Tipo Actividad</th>
+                                      <th>Regional</th>
+                                      <th>Cantidad</th>
+                                      <th>Descripcion</th>
+                                      <th>Fecha Ejecución</th>
+                                      <th>Forecast</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>";
+            for ($j = 0; $j < count($actividades); $j++) {
+                $cuerpo = $cuerpo . "<tr>
+                                        <td>" . $actividades[$j]->idClaro . "</td>
+                                        <td>" . $actividades[$j]->service->type . "</td>
+                                        <td>" . $actividades[$j]->region . "</td>
+                                        <td>" . $actividades[$j]->quantity . "</td>
+                                        <td>" . $actividades[$j]->description . "</td>
+                                        <td>" . $actividades[$j]->fechaEjecucion . "</td>
+                                        <td>" . $actividades[$j]->dateForecast . "</td>
+                                      </tr>
+                                  </tbody>";
+            }
+            $cuerpo = $cuerpo . "<tfoot style='background-color: #4486f8;color: #fff;'>
+                                      <tr>
+                                        <th>ID Actividad</th>
+                                        <th>Tipo Actividad</th>
+                                        <th>Regional</th>
+                                        <th>Cantidad</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha Ejecución</th>
+                                        <th>Forecast</th>
+                                       </tr>
+                                    </tfoot>
+                              </table>
+                                 </div><br><br>
+                              <p style= 'color: blue'> Este es un correo automático. Por favor, no responda este mensaje. </p>
+                          </body>
+                     </html>";
+
+            // $this->load->library('email');
+            // $config['mailtype'] = 'html'; // o text
+            // $this->email->initialize($config);
+            // $this->email->from('datafill@zte.com', 'DATAFILL');
+
+            // $this->email->to(strtolower($mails));
+            // //$this->email->to('bredybuitrago@outlook.com, yuyupa14@gmail.com');
+
+            // //$this->email->to('yuyupa14@gmail.com, andrea.rosero.ext@claro.com.co, andrea.lorenaroserochasoy@zte.com.cn, pablo.esteban@zte.com.cn, bredybuitrago@gmail.com');
+            // //$this->email->cc('andrea.rosero.ext@claro.com.co, andrea.lorenaroserochasoy@zte.com.cn');//, cesar.rios.ext@claro.com.co
+            // //$this->email->bcc('bredybuitrago@gmail.com ,bredi.buitrago@zte.com.cn, pablo.esteban@zte.com.cn');
+            // $this->email->subject("Notificación de REASIGNACIÓN de orden de servicio. Orden: ".$_POST['ot'].". Proyecto: ".$activity[0]->proyecto.".");
+            // $this->email->message($cuerpo);
+            // $this->email->send();
+
+            $this->load->library('parser');
+
+            $config = Array(
+                'protocol'  => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'zolid.datafill@gmail.com',
+                'smtp_pass' => 'z0lid.datafil1',
+                'mailtype'  => 'html',
+                'charset'   => 'utf-8',
+                'priority'  => 5,
+            );
+
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+            $this->email->from('zolid.datafill@gmail.com', 'ZOLID'); // change it to yours
+            $this->email->to(strtolower($mails)); // change it to yours
+            // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
+            $this->email->subject("Notificación de REASIGNACIÓN de orden de servicio. Orden: " . $_POST['ot'] . ". Proyecto: " . $actividades[0]->proyecto . ".");
+            $this->email->message($cuerpo);
+            $this->email->send();
+
+            $_SESSION["message"] = 'actualizado';
+            header('Location: ' . URL::to("Service/listServices"));
+        } else {
+            $_SESSION["message"] = 'no seleccionado';
+            header('Location: ' . URL::to("Service/listServices"));
+
+        }
+
+        
     }
 }
