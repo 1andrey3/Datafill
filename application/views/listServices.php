@@ -4,7 +4,6 @@
   <link href="<?= URL::to('assets/css/styleBoton.css'); ?>" rel="stylesheet" />
   <!-- menu sticky -->
   <link href="<?= URL::to('assets/css/styleMenuSticky.css'); ?>" rel="stylesheet" />
-  <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
   <!-- checkbox -->
   <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
   <script type="text/javascript" charset="utf-8" async defer>
@@ -452,7 +451,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
   <form method="post">
     <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content"  style="z-index: 100000">
+        <div class="modal-content" >
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" onclick="ocultarForm()" aria-label="Close"><span aria-hidden="true"><i class='glyphicon glyphicon-eye-close'></i> cerrar</span></button>
             <h1 class="modal-title">Detalles del Evento</h1>
@@ -674,11 +673,6 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
   </div>
 </form>
 
-
-
-
-<!--  container  -->
-<!--footer-->
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> -->
 <?php
 $r = time();
@@ -746,4 +740,3 @@ if (isset($message)) {
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>
-</html>

@@ -4,7 +4,6 @@
 <link href="<?= URL::to('assets/css/styleBoton.css'); ?>" rel="stylesheet" />
 <!-- menu sticky -->
 <link href="<?= URL::to('assets/css/styleMenuSticky.css'); ?>" rel="stylesheet" />
-<link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
 <!-- checkbox -->
 <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
 <!--   SWEET ALERT    -->

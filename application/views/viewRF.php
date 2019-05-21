@@ -1,6 +1,4 @@
 
-        <!-- Modal Cami -->
-        <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
         <!-- estilo tablas camilo -->
         <!-- <link href="<?= URL::to('assets/css/styleTablesCami.css'); ?>" rel="stylesheet" /> -->       
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/buttons.dataTables.css'); ?>">

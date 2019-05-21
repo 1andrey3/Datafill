@@ -3,7 +3,8 @@
 <head>
     <!--   HEADER CSS    -->
     <link href="<?= URL::to('assets/css/styleHeader.css'); ?>" rel="stylesheet" />
-
+    <!-- Modal Cami -->
+    <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
     <!--   ICONO PAGINA    -->
     <link rel="icon" href="http://cellaron.com/media/wysiwyg/zte-mwc-2015-8-l-124x124.png">
 

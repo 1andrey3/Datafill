@@ -1,10 +1,4 @@
- 
-        <!-- Modal Cami -->
-        <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
-
-
-    </head>
-    <body data-url="<?= URL::base(); ?>">
+<body data-url="<?= URL::base(); ?>">
     <center><h1 class="h1">GRÁFICAS POR MESES</h1></center>
     <div class="container">
         <!-- GRÁFICAS -->
@@ -57,4 +51,4 @@
     <script type="text/javascript">var baseurl = "<?php echo URL::base(); ?>";</script>
     <script type="text/javascript" src="<?= URL::to('assets/js/grafics.js'); ?>"></script>
 </body>
-</html>
+
