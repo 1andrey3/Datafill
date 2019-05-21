@@ -80,10 +80,12 @@ class Service extends CI_Controller {
     }
 
     public function fechasInconsistentes(){
-       $data['fechas'] = $this->dao_service_model->fechasInconsistentes();
-       $this->load->view('tablaFechasUp', $data);
-       // header('content-type: text/plain');
-       // print_r($data);
+        $data['fechas'] = $this->dao_service_model->fechasInconsistentes();
+        $this->load->view('Template/header');
+        $this->load->view('tablaFechasUp', $data);
+        $this->load->view('Template/footer');
+        // header('content-type: text/plain');
+        // print_r($data);
 
     }
     public function upDateFechInconsistentes(){
