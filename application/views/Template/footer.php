@@ -3,11 +3,9 @@
 
 <!-- BOOTSTRAP CORE SCRIPT   -->
 <script src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
-
+<script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
 <!-- PARALLAX SCRIPT   -->
 <script src="<?= URL::to('assets/plugins/4jquery.parallax-1.1.3.js'); ?>"></script>
-
-
 
 <!-- JQUERY -->
 <script src="<?= URL::to('assets/js/jquery-2.1.1.min.js'); ?>"></script>
