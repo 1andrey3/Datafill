@@ -152,10 +152,14 @@ class SpecificService extends CI_Controller {
                 $asignar['document'] = $this->dao_user_model->getAllDocs();
 
                 $array['asignar'] = $asignar;
+                $this->load->view('Template/header');
                 $this->load->view('excelAssign', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
 
@@ -274,10 +278,14 @@ class SpecificService extends CI_Controller {
                 $asignar['eng']      = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
                 $asignar['document'] = $this->Dao_user_model->getAllDocs();
                 $array['asignar'] = $asignar;
+                $this->load->view('Template/header');
                 $this->load->view('excelAssign', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         }
     }
@@ -333,12 +341,17 @@ class SpecificService extends CI_Controller {
                     $plus++;
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
+
 
                 // print_r( explode("\n", $_POST['actividades'] ));
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
             //verificacion si viene de correo cancelacion
@@ -367,12 +380,16 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
+
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
-
         }
     }
 
@@ -405,10 +422,14 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['ejecutar'] = $ejecutar;
+                $this->load->view('Template/header');
                 $this->load->view('excelExecute', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
             // print_r(str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])));
@@ -453,12 +474,15 @@ class SpecificService extends CI_Controller {
                         }
                     }
                 }
-
                 $array['ejecutar'] = $ejecutar;
+                $this->load->view('Template/header');
                 $this->load->view('excelExecute', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         }
 

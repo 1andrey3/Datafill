@@ -96,9 +96,6 @@
 </section>
 <!--End Contact Section -->
 
-
-<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-
 <!-- CUSTOM SCRIPT   -->
 <script src="<?= URL::to('assets/js/custom.js'); ?>"></script>
 <!-- <script src="<?= URL::to('assets/js/header.js'); ?>"></script>  -->

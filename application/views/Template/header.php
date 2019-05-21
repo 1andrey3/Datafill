@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--   HEADER CSS    -->
+    <link href="<?= URL::to('assets/css/styleHeader.css'); ?>" rel="stylesheet" />
+
     <!--   ICONO PAGINA    -->
     <link rel="icon" href="http://cellaron.com/media/wysiwyg/zte-mwc-2015-8-l-124x124.png">
+
     <!--   BOOTSTRAP    -->
     <link rel="stylesheet" href="<?= URL::to('assets/css/bootstrap.css'); ?>"/>
-    <link rel="stylesheet" href="<?= URL::to('assets/css/font-awesome.min.css'); ?>"/>
+    <link href="<?= URL::to('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+
+    <!--   FONT AWESOME   -->
+    <!-- <link rel="stylesheet" href="<?= URL::to('assets/css/font-awesome.min.css'); ?>"/> -->
+
     <!-- GOOGLE API -->
     <link rel='stylesheet' type='text/css'  href='http://fonts.googleapis.com/css?family=Open+Sans'/>
+
+    <!-- DATATABLE -->
+    <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
+
+    <!--   SWEET ALERT    -->
+    <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
+    <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+
+    <!-- CALENDARY GOOGLE -->
+    <script src='<?= URL::to('assets/plugins/fullcalendar/lib/jquery.min.js'); ?>'></script>
+
     <title> <?php echo $title ?></title>
 </head>
 <body>

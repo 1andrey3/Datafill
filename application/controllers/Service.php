@@ -19,8 +19,10 @@ class Service extends CI_Controller {
         //$answer['engineers'] = $this->dao_user_model->getAllEngineers();
         //$answer['sites'] = $this->dao_site_model->getAllSites();
         //$answer['orders'] = $this->dao_order_model->getAllOrders();
-
+        
+        $this->load->view('Template/header');
         $this->load->view('assignService', $answer);
+        $this->load->view('Template/footer');
     }
 
     public function listServices() {
@@ -60,7 +62,9 @@ class Service extends CI_Controller {
     }
 
     public function RF() {
+        $this->load->view('Template/header');
         $this->load->view('updateRF');
+        $this->load->view('Template/footer');
     }
 
     public function actualizarfechaAsig(){
