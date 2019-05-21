@@ -767,7 +767,9 @@ class SpecificService extends CI_Controller {
             }
         }
         $AllRF['rf'] = $rf;
+        // $this->load->view('Template/header');
         $this->load->view('viewRF', $AllRF);
+        // $this->load->view('Template/footer');
     }
 
 //**************************guardar en bd asignar con mail**************************

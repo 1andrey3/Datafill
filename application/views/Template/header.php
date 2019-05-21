@@ -10,6 +10,7 @@
     <!--   BOOTSTRAP    -->
     <link rel="stylesheet" href="<?= URL::to('assets/css/bootstrap.css'); ?>"/>
     <link href="<?= URL::to('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/jquery.dataTables.min.css'); ?>">
 
     <!--   FONT AWESOME   -->
     <!-- <link rel="stylesheet" href="<?= URL::to('assets/css/font-awesome.min.css'); ?>"/> -->
@@ -27,6 +28,9 @@
     
     <!-- STYLE TABLES -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
+
+    <!-- scrollbar -->
+    <link href="<?= URL::to('assets/css/jquery.mCustomScrollbar.css'); ?>" rel="stylesheet" />
 
     <!-- CALENDARY GOOGLE -->
     <script src='<?= URL::to('assets/plugins/fullcalendar/lib/jquery.min.js'); ?>'></script>

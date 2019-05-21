@@ -14,7 +14,9 @@ class Modernizaciones extends CI_Controller {
 
     // no trae las modernizaciones pero carga la vista modernixzaciones
     public function getModernizaciones() {
+        $this->load->view('Template/header');
         $this->load->view('modernizaciones');
+        $this->load->view('Template/footer');
     }
 
     // Tabla que muestran las ordenes que se encuentran en la tabla de modernizaciones
