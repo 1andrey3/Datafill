@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css');?>">     
 <form class="form-group" action=" " method="post"  id="cancel" name="cancel">
     <?php
     for ($r = 0; $r < count($ejecutar['idActividad']); $r++) {

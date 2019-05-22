@@ -6,10 +6,6 @@
 <link href="<?= URL::to('assets/css/styleMenuSticky.css'); ?>" rel="stylesheet" />
 <!-- checkbox -->
 <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
-<!--   SWEET ALERT    -->
-<link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
-<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
-<script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
 <body data-url="<?= URL::base(); ?>">
     <input type="hidden" id="session_id" value="<?= $_SESSION["id"] ?>"/>

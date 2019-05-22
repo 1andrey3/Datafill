@@ -10,6 +10,7 @@
         $this->load->model('data/Dao_rf_model');
         $this->load->model('data/Dao_service_model');
       }
+
       // llama todas las actividades de rf
       public function getListRF(){
           $data = $this->Dao_rf_model->getAllActivitiesRF();
@@ -33,8 +34,7 @@
         $data = $this->Dao_rf_model->getLogById($id);
         echo json_encode($data);
       }
-
-
+      
       public function viewRF(){
         $this->load->view('Template/header');
         $this->load->view('viewRF');

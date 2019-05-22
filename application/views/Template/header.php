@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/plugins/datatables/css/jquery.dataTables.min.css'); ?>">
 
     <!--   FONT AWESOME   -->
-    <!-- <link rel="stylesheet" href="<?= URL::to('assets/css/font-awesome.min.css'); ?>"/> -->
+        <!-- <link rel="stylesheet" href="<?= URL::to('assets/css/font-awesome.min.css'); ?>"/> -->
 
     <!-- GOOGLE API -->
     <link rel='stylesheet' type='text/css'  href='http://fonts.googleapis.com/css?family=Open+Sans'/>
@@ -90,6 +90,5 @@
         </header>
     </div>
     <!--End Navigation -->
-    
 </body>
 </html>
