@@ -12,8 +12,9 @@
       }
 
       public function getGrafics(){
-      	 $this->load->view('grafics');
-
+        $this->load->view('Template/header');
+        $this->load->view('grafics');
+        $this->load->view('Template/footer');
       }
       //*****************parametros para mostrar primera grafica*****************
       public function getParams() {

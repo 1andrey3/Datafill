@@ -152,10 +152,14 @@ class SpecificService extends CI_Controller {
                 $asignar['document'] = $this->dao_user_model->getAllDocs();
 
                 $array['asignar'] = $asignar;
+                $this->load->view('Template/header');
                 $this->load->view('excelAssign', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
 
@@ -274,10 +278,14 @@ class SpecificService extends CI_Controller {
                 $asignar['eng']      = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
                 $asignar['document'] = $this->Dao_user_model->getAllDocs();
                 $array['asignar'] = $asignar;
+                $this->load->view('Template/header');
                 $this->load->view('excelAssign', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         }
     }
@@ -316,7 +324,9 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
             } elseif ($dic2 != "Fecha ejecución" && $dic2 > 0) {
                 $can = explode("\n", $_POST['actividades']);
                 // defino las variables de cancelar
@@ -333,12 +343,17 @@ class SpecificService extends CI_Controller {
                     $plus++;
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
+
 
                 // print_r( explode("\n", $_POST['actividades'] ));
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
             //verificacion si viene de correo cancelacion
@@ -367,12 +382,16 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
+
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
-
         }
     }
 
@@ -405,10 +424,14 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['ejecutar'] = $ejecutar;
+                $this->load->view('Template/header');
                 $this->load->view('excelExecute', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         } else {
             // print_r(str_replace(array("\n", "\r", "\t"), '', explode("\n", $_POST['actividades'])));
@@ -453,12 +476,15 @@ class SpecificService extends CI_Controller {
                         }
                     }
                 }
-
                 $array['ejecutar'] = $ejecutar;
+                $this->load->view('Template/header');
                 $this->load->view('excelExecute', $array);
+                $this->load->view('Template/footer');
             } else {
                 $answer['error'] = "error";
+                $this->load->view('Template/header');
                 $this->load->view('assignService', $answer);
+                $this->load->view('Template/footer');
             }
         }
 
@@ -587,14 +613,19 @@ class SpecificService extends CI_Controller {
         //llamar vista segun opcion
         if ($_GET['option'] == 1) {
             $array['eng'] = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
-
+            $this->load->view('Template/header');
             $this->load->view('excelAssign', $array);
+            $this->load->view('Template/footer');
         }
         if ($_GET['option'] == 2) {
+            $this->load->view('Template/header');
             $this->load->view('excelCancel', $array);
+            $this->load->view('Template/footer');
         }
         if ($_GET['option'] == 3) {
+            $this->load->view('Template/header');
             $this->load->view('excelExecute', $array);
+            $this->load->view('Template/footer');
         }
 
         return $array['excel'];
@@ -731,7 +762,9 @@ class SpecificService extends CI_Controller {
             }
         }
         $AllRF['rf'] = $rf;
+        $this->load->view('Template/header');
         $this->load->view('viewRF', $AllRF);
+        $this->load->view('Template/footer');
     }
 
     public function viewRF() {
@@ -743,7 +776,9 @@ class SpecificService extends CI_Controller {
             }
         }
         $AllRF['rf'] = $rf;
+        $this->load->view('Template/header');
         $this->load->view('viewRF', $AllRF);
+        $this->load->view('Template/footer');
     }
 
 //**************************guardar en bd asignar con mail**************************
@@ -946,11 +981,15 @@ class SpecificService extends CI_Controller {
                 // $this->email->send();
             }
             $mensaje["message"] = 'ok';
+            $this->load->view('Template/header');
             $this->load->view('assignService', $mensaje);
+            $this->load->view('Template/footer');
             // header('Location: '. URL::to("Service/listServices"));
         } else {
             $mensaje["message"] = 'error';
+            $this->load->view('Template/header');
             $this->load->view('assignService', $mensaje);
+            $this->load->view('Template/footer');
             // header('Location: '. URL::to("Service/listServices"));
         }
     }

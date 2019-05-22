@@ -19,13 +19,17 @@ class Service extends CI_Controller {
         //$answer['engineers'] = $this->dao_user_model->getAllEngineers();
         //$answer['sites'] = $this->dao_site_model->getAllSites();
         //$answer['orders'] = $this->dao_order_model->getAllOrders();
-
+        
+        $this->load->view('Template/header');
         $this->load->view('assignService', $answer);
+        $this->load->view('Template/footer');
     }
 
     public function listServices() {
         $res['list_docs'] = $this->dao_user_model->getAllDocs(); 
+        $this->load->view('Template/header');
         $this->load->view('listServices', $res);
+        $this->load->view('Template/footer');
         //Limpiamos la variable glogal
         unset($_SESSION["message"]);
     }
@@ -56,11 +60,15 @@ class Service extends CI_Controller {
 
     public function serviceDetails() {
         $answer['service'] = $this->dao_service_model->getServiceById($_GET['K_ID_SP_SERVICE']);
+        $this->load->view('Template/header');
         $this->load->view('orderDetail', $answer);
+        $this->load->view('Template/footer');
     }
 
     public function RF() {
+        $this->load->view('Template/header');
         $this->load->view('updateRF');
+        $this->load->view('Template/footer');
     }
 
     public function actualizarfechaAsig(){
@@ -74,10 +82,12 @@ class Service extends CI_Controller {
     }
 
     public function fechasInconsistentes(){
-       $data['fechas'] = $this->dao_service_model->fechasInconsistentes();
-       $this->load->view('tablaFechasUp', $data);
-       // header('content-type: text/plain');
-       // print_r($data);
+        $data['fechas'] = $this->dao_service_model->fechasInconsistentes();
+        $this->load->view('Template/header');
+        $this->load->view('tablaFechasUp', $data);
+        $this->load->view('Template/footer');
+        // header('content-type: text/plain');
+        // print_r($data);
 
     }
     public function upDateFechInconsistentes(){

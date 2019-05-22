@@ -36,10 +36,9 @@
 
 
       public function viewRF(){
+        $this->load->view('Template/header');
         $this->load->view('viewRF');
+        $this->load->view('Template/footer');
       }
-      
-
  }
-
 ?>

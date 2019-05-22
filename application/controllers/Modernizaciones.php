@@ -14,7 +14,9 @@ class Modernizaciones extends CI_Controller {
 
     // no trae las modernizaciones pero carga la vista modernixzaciones
     public function getModernizaciones() {
+        $this->load->view('Template/header');
         $this->load->view('modernizaciones');
+        $this->load->view('Template/footer');
     }
 
     // Tabla que muestran las ordenes que se encuentran en la tabla de modernizaciones
@@ -28,7 +30,9 @@ class Modernizaciones extends CI_Controller {
         echo '<pre>'; print_r($record); echo '</pre>';
         $datos['idOrden'] = $idOrden;
         $datos['ss'] = [urldecode($idOrden), urldecode($actividad), urldecode($sitio), urldecode($f_asignacion), urldecode($f_ejecucion_claro), urldecode($estado), urldecode($proyecto), urldecode($f_forecast), urldecode($f_creacion), urldecode($solicitante), urldecode($region)];
+        $this->load->view('Template/header');
         $this->load->view('ordenModerDetail', $datos);
+        $this->load->view('Template/footer');
     }
 
     // PONGA UN HP COMENTARIO DE Q MIERDAS HACE ESTA FUNCIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNN
@@ -55,6 +59,4 @@ class Modernizaciones extends CI_Controller {
         $answer = $this->Dao_modernizaciones_model->UpdateModernizaciones($cambios,$ids);
         echo $answer;
     }
-
-
 }

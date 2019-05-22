@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Lista Actividades</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!--   ICONO PAGINA    -->
-  <link rel="icon" href="http://cellaron.com/media/wysiwyg/zte-mwc-2015-8-l-124x124.png">
-  <!--   BOOTSTRAP    -->
-  <link href="<?= URL::to('assets/css/bootstrap.css'); ?>" rel="stylesheet" />
-  <script type="text/javascript" src="<?= URL::to('assets/plugins/jQuery/jquery-3.1.1.js'); ?>"></script>
-  <script type="text/javascript" src="<?= URL::to('assets/plugins/bootstrap.js'); ?>"></script>
-  <!-- bottstrap select -->
-  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" /> -->
   <!-- modal stilo -->
   <link rel="stylesheet" href="<?= URL::to('assets/css/emergente.min.css'); ?>">
-  <!-- datatables-->
-  <link href="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet">
-  <link href="<?= URL::to('assets/css/bootstrap.min.css" rel="stylesheet'); ?>">
-  <!--   HEADER CSS    -->
-  <link href="<?= URL::to('assets/css/styleHeader.css?v=1.0'); ?>" rel="stylesheet" />
   <!-- boton -->
   <link href="<?= URL::to('assets/css/styleBoton.css'); ?>" rel="stylesheet" />
   <!-- menu sticky -->
   <link href="<?= URL::to('assets/css/styleMenuSticky.css'); ?>" rel="stylesheet" />
-  <link href="<?= URL::to('assets/css/styleModalCami.css'); ?>" rel="stylesheet" />
   <!-- checkbox -->
   <link href="<?= URL::to('assets/css/checkboxStyle.css'); ?>" rel="stylesheet" />
-  <!--   SWEET ALERT    -->
-  <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
-  <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
-  <!-- <script type="text/javascript" src="<?= URL::to('assets/js/showMessage.js'); ?>"></script> -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
   <script type="text/javascript" charset="utf-8" async defer>
     //Funcion para mostrar mensaje de error de validacion de datos
     function modalEditar(servicio, orden, idIng, role){
@@ -329,57 +304,9 @@ function showMessage(mensaje){
   }
 }
 </script>
-</head>
 <body data-url="<?= URL::base(); ?>">
   <input type="hidden" id="session_id" value="<?= $_SESSION["id"] ?>"/>
   <input type="hidden" id="session_role" value="<?= $_SESSION["role"] ?>"/>
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="logo"><img id="logo" src="<?= URL::to('assets/img/logo2.png'); ?>" /></a>
-        </div>
-        <!-- Collect the nav links for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="cam"><a >Bienvenid@ <b><?php echo($_SESSION['userName']) ?>  <span class="glyphicon glyphicon glyphicon-user"></span>  </b></a>
-            </li>
-            <li class="cam fz-18"><a href="<?= URL::base(); ?>/Service/fechasInconsistentes"><i class="glyphicon glyphicon-warning-sign"></i><span class="badge badge-mn"><?php print_r($this->Dao_service_model->cantFechasInconsistentes()->cant); ?></span></a></li>
-            <li class="cam"><a href="<?= URL::to('user/principalView'); ?>">Home</a>
-            </li>
-            <li class="cam"><a href="#services">Servicios</a>
-              <ul>
-                <li><a href="<?= URL::to('Service/assignService'); ?>">Agendar Actividad</a></li>
-                <li><a href="<?= URL::to('Service/listService'); ?>s">Ver Actividades</a></li>
-                <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount&followup=https%3A%2F%2Faccounts.google.com%2FManageAccount&flowName=GlifWebSignIn&flowEntry=ServiceLogin" title="drive" target='_blank'>Drive</a></li>
-              </ul>
-            </li>
-            <li class="cam"><a href="#services">RF</a>
-              <ul>
-                <li class="cam"><a href="<?= URL::to('Service/RF'); ?>">Actualizar RF</a></li>
-                <li class="cam"><a href="<?= URL::to('SpecificService/viewRF'); ?>">Ver RF</a></li>
-              </ul>
-            </li>
-            <li class="cam"><a href="<?= URL::to('Grafics/getGrafics'); ?>">Gráficas</a>
-            </li>
-            <li class="cam"><a href="<?= URL::to('Modernizaciones/getModernizaciones'); ?>">Modernizaciones</a>
-            </li>
-          </li>
-          <li class="cam"><a href="<?= URL::to('welcome/index'); ?>">Salir  <span class="glyphicon glyphicon glyphicon-off"></span></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
-<!--      fin header         -->
 <br><br><br><br>
 <div class="container center">
   <button type="button" class="btn btn-primary" id="proximos">Próximos </button><span id="proximosBadge" class="badge">...</span>
@@ -464,7 +391,7 @@ function showMessage(mensaje){
 </div>
 </div>
 <!-- Modal tabla actividades por entregar-->
-<div class="modal fade" id="ModalEventosProximos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="ModalEventosProximos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style= "z-index: 100000">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -524,7 +451,7 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
   <form method="post">
     <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content" >
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" onclick="ocultarForm()" aria-label="Close"><span aria-hidden="true"><i class='glyphicon glyphicon-eye-close'></i> cerrar</span></button>
             <h1 class="modal-title">Detalles del Evento</h1>
@@ -573,10 +500,10 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
                       <optgroup label="Transporte  GDRT">
                         <option value="80158472" class="ing"><b>Andres Alberto Rubio Idrobo</b></option>
                         <option value="1032364958"><b>Cesar David Duran Alvarez</b></option>
-                        <option value="1030565500"><b>David Arevalo Bravo</b></option>
                         <option value="1022350779"><b>Giovanny Reyes Torres</b></option>
                         <option value="80392886"><b>Juan Carlos Olmos Bonilla</b></option>
-                        <option value="1016028754"><b>Lina Casallas Melgarejo</b></option>
+                        <option value="5166463"><b>Jhon Erik Gamez Gonzales</b></option>
+                        <option value="1013638956"><b>Charlinne Yessenia Suarez Medina</b></option>
                         <option value="1014251868"><b>Marcela Fernanda Herrera Quila</b></option>
                         <option value="80160305"><b>Miguel Angel Moreno Alarcon</b></option>
                         <option value="72265383"><b>Jaime Luis Escobar De Los Reyes</b></option>
@@ -746,14 +673,6 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
   </div>
 </form>
 
-
-
-
-<!--  container  -->
-<!--footer-->
-<div class="for-full-back " id="footer">
-  Zolid By ZTE Colombia | All Right Reserved
-</div>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> -->
 <?php
 $r = time();
@@ -816,12 +735,8 @@ if (isset($message)) {
   var rol = "<?php echo $_SESSION["role"] ?>";
   var id_usuario = "<?php echo $_SESSION["id"] ?>";
 </script>
-<!-- DataTables -->
-<script src="<?= URL::to('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?= URL::to('assets/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
 <!-- llenar tablas -->
 <script type="text/javascript" src="<?= URL::to("assets/js/services/listServices.js?v=25"); ?>"></script>
 <!-- alertas de proximidad de tiempo -->
 <script type="text/javascript" src="<?= URL::to('assets/js/services/ModalTiempos.js'); ?>"></script>
 </body>
-</html>
