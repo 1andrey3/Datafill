@@ -1,3 +1,6 @@
+.modal-dialog{
+    z-index:100000000;
+}
 .modal-header{
     background-color: #1e3f67;
     color: #fff;    
@@ -9,7 +12,6 @@
     text-align: center;
     font-family: verdana;
 }
-
 .modal-footer{
     background-color: #1e3f67;
     box-shadow: -1px -1px 9px rgba(0, 0, 0, 0.91);
@@ -21,8 +23,7 @@
     border: 1px solid #727272;
 }
 .foot {
-    display:inline-block;
-    float: left;
+    display: inline-block;
     margin: 0;
     font-size:13px;
     color:#fff;

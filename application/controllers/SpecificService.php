@@ -324,7 +324,9 @@ class SpecificService extends CI_Controller {
                     }
                 }
                 $array['cancelar'] = $cancelar;
+                $this->load->view('Template/header');
                 $this->load->view('excelCancel', $array);
+                $this->load->view('Template/footer');
             } elseif ($dic2 != "Fecha ejecución" && $dic2 > 0) {
                 $can = explode("\n", $_POST['actividades']);
                 // defino las variables de cancelar
@@ -611,14 +613,19 @@ class SpecificService extends CI_Controller {
         //llamar vista segun opcion
         if ($_GET['option'] == 1) {
             $array['eng'] = $this->dao_user_model->getAllEngineers(); //llama todos los ing para pintar en select
-
+            $this->load->view('Template/header');
             $this->load->view('excelAssign', $array);
+            $this->load->view('Template/footer');
         }
         if ($_GET['option'] == 2) {
+            $this->load->view('Template/header');
             $this->load->view('excelCancel', $array);
+            $this->load->view('Template/footer');
         }
         if ($_GET['option'] == 3) {
+            $this->load->view('Template/header');
             $this->load->view('excelExecute', $array);
+            $this->load->view('Template/footer');
         }
 
         return $array['excel'];
@@ -755,7 +762,9 @@ class SpecificService extends CI_Controller {
             }
         }
         $AllRF['rf'] = $rf;
+        $this->load->view('Template/header');
         $this->load->view('viewRF', $AllRF);
+        $this->load->view('Template/footer');
     }
 
     public function viewRF() {
@@ -972,11 +981,15 @@ class SpecificService extends CI_Controller {
                 // $this->email->send();
             }
             $mensaje["message"] = 'ok';
+            $this->load->view('Template/header');
             $this->load->view('assignService', $mensaje);
+            $this->load->view('Template/footer');
             // header('Location: '. URL::to("Service/listServices"));
         } else {
             $mensaje["message"] = 'error';
+            $this->load->view('Template/header');
             $this->load->view('assignService', $mensaje);
+            $this->load->view('Template/footer');
             // header('Location: '. URL::to("Service/listServices"));
         }
     }

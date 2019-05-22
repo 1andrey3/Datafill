@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/table_christian.css'); ?>">
-
 <style>
 
   #content{

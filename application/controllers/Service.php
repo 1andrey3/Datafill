@@ -60,7 +60,9 @@ class Service extends CI_Controller {
 
     public function serviceDetails() {
         $answer['service'] = $this->dao_service_model->getServiceById($_GET['K_ID_SP_SERVICE']);
+        $this->load->view('Template/header');
         $this->load->view('orderDetail', $answer);
+        $this->load->view('Template/footer');
     }
 
     public function RF() {
