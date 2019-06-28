@@ -24,7 +24,7 @@ return [
       |
      */
 
-    'default' => 'local',
+    'default' => 'servidor',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
