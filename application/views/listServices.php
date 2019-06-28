@@ -594,6 +594,8 @@ if ($_SESSION["role"] == 2 || $_SESSION["role"] == 3 || $_SESSION["role"] == 4 |
                         <option value="1026284286"><b>Alvaro Agudelo Bayona</b></option>
                         <option value="79615710"><b>Freddy Carlos Peña Moreno</b></option>
                         <option value="1070951857"><b>Oscar Leonardo Gomez Ramirez</b></option>
+                        <option value="1013638956"><b>Charlinne Yessenia Suarez Medina</b></option>
+                        <option value="80156215"><b>Fabian Martinez Zarate</b></option>
                       </optgroup>
                       <optgroup label="Ingeniero Claro">
                         <option value="1"><b>Jhon Alejandro Salazar Tapasco</b></option>
