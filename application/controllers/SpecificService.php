@@ -487,7 +487,10 @@ class SpecificService extends CI_Controller {
         }
         for ($i = 0; $i < count($_POST['checkbox']); $i++) {
             $close = new service_spec_model;
-            $close->closeService($_POST['fInicior'], $_POST['fFinr'], $_POST['crq'], $_POST['state'], $_POST['observacionesCierre'], $_POST['link']);
+//            print_r($_POST['observaciones'] . '<br>');
+//            print_r($_POST['observacionesCierre'] . '<br>');
+//            exit('termina aqui');
+            $close->closeService($_POST['fInicior'], $_POST['fFinr'], $_POST['crq'], $_POST['state'], $_POST['observacionesCierre'], $_POST['observaciones']);
             $close->setIdClaro($_POST['checkbox'][$i]);
             // print_r($close);
             // echo "<br><br><br>";

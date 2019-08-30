@@ -182,8 +182,8 @@ class Dao_service_model extends CI_Model {
     public function updateClose($close) {
         $dbConnection = new configdb_model();
         $session      = $dbConnection->openSession();
-        $sql          = "UPDATE specific_service SET D_DATE_START_R = STR_TO_DATE('" . $close->getDateStartR() . "', '%Y-%m-%d'),  D_DATE_FINISH_R = STR_TO_DATE('" . $close->getDateFinishR() . "', '%Y-%m-%d'),  N_ESTADO = '" . $close->getEstado() . "', N_CRQ = '" . $close->getCRQ() . "', N_CIERRE_DESCRIPTION = '" . $close->getCierreDescription() . "' WHERE K_IDCLARO = '" . $close->getIdClaro() . "';";
-        // echo $sql;
+        $sql          = "UPDATE specific_service SET D_DATE_START_R = STR_TO_DATE('" . $close->getDateStartR() . "', '%Y-%m-%d'),  D_DATE_FINISH_R = STR_TO_DATE('" . $close->getDateFinishR() . "', '%Y-%m-%d'),  N_ESTADO = '" . $close->getEstado() . "', N_CRQ = '" . $close->getCRQ() . "', N_CIERRE_DESCRIPTION = '" . $close->getCierreDescription() . "', N_DESCRIPTION_PROCESS = '" . $close->getDescriptionProceso() . "' WHERE K_IDCLARO = '" . $close->getIdClaro() . "';";
+//         echo $sql;exit('termina aqui');
         $session->query($sql);
     }
     //---------------------------------------------------------------------------------------
