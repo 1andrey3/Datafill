@@ -67,25 +67,21 @@ class SpecificService extends CI_Controller {
 
                         //creacion tipo
                         //funciones para comparar el tipo extraido text area, y convertirlo en el id del tipo q esta en bd
-                        $service = (explode("-", $id[$x + 1])[0]); // funcion para dividir una cadena de caracteres dependiendo la llave, en este caso se usa para tomar la primera parte, antes del guion (-)
-
-                        if ((explode("-", $id[$x + 1])[0][2]) == "0") {
+                        preg_match("/[CDT]\d+/",explode("-", $id[$x + 1])[0], $match);
+                        $service = $match[0]; // funcion para dividir una cadena de caracteres dependiendo la llave, en este caso se usa para tomar la primera parte, antes del guion (-)
+                        // print_r($service);
+                        // echo "<br>";
+                        if ($match[0] == "T10") {
                         //los T10 T11 Y T12 hay q convertirlos en C1 C2 Y C3 respectivamente
                             $service = "C1";
                         }
-                        if ((explode("-", $id[$x + 1])[0][2]) == "1") {
+                        if ($match[0] == "T11") {
                             $service = "C2";
                         }
-                        if ((explode("-", $id[$x + 1])[0][2]) == "2") {
+                        if ($match[0] == "T12") {
                             $service = "C3";
                         }
-                        if (substr($service, 0, 3) == 'T13') {
-                            $service = "T13";
-                        }
-                        if (substr($service, 0, 3) == 'T14') {
-                            $service = "T14";
-                        }
-
+                        
                         //traer todos los servicios
                         $allService = $this->dao_service_model->getAllServices(); //trae todos los servicios
                         for ($i = 0; $i < count($allService); $i++) {
